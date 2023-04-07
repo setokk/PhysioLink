@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/psf_nav"
+    app:startDestination="@id/psfHomeFragment">
+
+    <fragment
+        android:id="@+id/psfHomeFragment"
+        android:name="com.example.myapplication.PsfHomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_psf_home" >
+        <action
+            android:id="@+id/action_psfHomeFragment_to_psfDoctorFragment"
+            app:destination="@id/psfDoctorFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/psfDoctorFragment"
+        android:name="com.example.myapplication.PsfDoctorFragment"
+        android:label="fragment_psf_doctor"
+        tools:layout="@layout/fragment_psf_doctor" >
+        <action
+            android:id="@+id/action_psfDoctorFragment_to_psfHomeFragment"
+            app:destination="@id/psfHomeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="psfInfo"
+            app:argType="string[]" />
+    </fragment>
+</navigation>
