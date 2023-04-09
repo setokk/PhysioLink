@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.mobile.physiolink;
 
 import org.junit.Test;
 

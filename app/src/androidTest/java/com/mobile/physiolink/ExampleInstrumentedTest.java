@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.mobile.physiolink;
 
 import android.content.Context;
 

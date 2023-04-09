@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background_lime">#0DAB8B</color>
     <color name="button_purple">#6750A4</color>
+    <color name="lighter_purple">#7960BD</color>
     <color name="navbar_white">#FFFBFE</color>
+    <color name="input_grey">#999999</color>
 </resources>

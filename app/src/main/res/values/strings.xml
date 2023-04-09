@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">PhysioLink</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="psf_doctor_button">Doctor Page</string>
-    <string name="psf_home_button">Home PSF Page</string>
     <string name="btn_login_text">Συνδεση</string>
+    <string name="home_label">Αρχική</string>
+    <string name="input_username">Username</string>
+    <string name="input_password">Password</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
 </resources>
