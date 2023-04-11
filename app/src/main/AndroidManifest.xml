@@ -23,7 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.HomeActivity"
+        <activity android:name=".ui.PSFActivity"
+                  android:label="@string/home_label"/>
+        <activity android:name=".ui.DoctorActivity"
+            android:label="@string/home_label"/>
+        <activity android:name=".ui.PatientActivity"
             android:label="@string/home_label"/>
     </application>
 

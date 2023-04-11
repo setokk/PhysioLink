@@ -53,6 +53,7 @@
             android:backgroundTint="@color/white"
             android:fontFamily="@font/roboto"
             android:hint="@string/hint_username"
+            android:inputType="textNoSuggestions"
             android:textColorHint="#00796B" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,6 +86,7 @@
             android:backgroundTint="@color/white"
             android:fontFamily="@font/roboto"
             android:hint="@string/hint_password"
+            android:inputType="textPassword"
             android:textColorHint="#00796B" />
     </com.google.android.material.textfield.TextInputLayout>
 

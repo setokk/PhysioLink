@@ -4,17 +4,17 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mobile.physiolink.databinding.ActivityHomeBinding;
+import com.mobile.physiolink.databinding.ActivityPatientBinding;
 
-public class HomeActivity extends AppCompatActivity
+public class PatientActivity extends AppCompatActivity
 {
-    private ActivityHomeBinding binding;
+    private ActivityPatientBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceBundle)
     {
         super.onCreate(savedInstanceBundle);
-        binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        binding = ActivityPatientBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 }
