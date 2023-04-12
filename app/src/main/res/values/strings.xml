@@ -7,4 +7,9 @@
     <string name="input_password">Password</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
+    <string name="home_hello">Καλωσήρθες,</string>
+    <string name="doctor_appointments">Προσεχή Ραντεβού</string>
+    <string name="doctor_patients">Οι Ασθενείς μου</string>
+    <string name="doctor_provisions">Οι Παροχές μου</string>
+    <string name="doctor_requests">Νέα Αιτήματα</string>
 </resources>

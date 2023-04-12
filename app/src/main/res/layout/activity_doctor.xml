@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
-        android:text="Καλωσήρθες, "
+        android:text="@string/home_hello"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +58,7 @@
         android:background="@drawable/rounded_button"
 
         android:fontFamily="@font/roboto_bold"
-        android:text="Προσεχή Ραντεβού"
+        android:text="@string/doctor_appointments"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +76,7 @@
 
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/roboto_bold"
-        android:text="Οι Ασθενείς μου"
+        android:text="@string/doctor_patients"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +93,7 @@
         android:background="@drawable/rounded_button"
 
         android:fontFamily="@font/roboto_bold"
-        android:text="Οι Παροχές μου"
+        android:text="@string/doctor_provisions"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,7 +110,7 @@
         android:background="@drawable/rounded_button"
 
         android:fontFamily="@font/roboto_bold"
-        android:text="Νέα Αιτήματα"
+        android:text="@string/doctor_requests"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
