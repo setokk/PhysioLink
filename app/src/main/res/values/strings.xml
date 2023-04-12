@@ -7,4 +7,5 @@
     <string name="input_password">Password</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
+    <string name="welcome_text">Καλωσήρθες!</string>
 </resources>
