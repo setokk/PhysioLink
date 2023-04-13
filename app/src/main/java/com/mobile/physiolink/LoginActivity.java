@@ -51,6 +51,9 @@ public class LoginActivity extends AppCompatActivity
                 .toString()
                 .replaceAll(" ", ""); // Remove whitespaces;
 
+        if (username.isEmpty() || password.isEmpty())
+            return;
+
         /* Validate credentials */
         User user = validateUser(username, password);
         if (user.isValid())

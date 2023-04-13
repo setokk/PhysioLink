@@ -12,4 +12,6 @@
     <string name="doctor_patients">Οι Ασθενείς μου</string>
     <string name="doctor_provisions">Οι Παροχές μου</string>
     <string name="doctor_requests">Νέα Αιτήματα</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

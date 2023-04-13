@@ -28,7 +28,7 @@ public class LoginInputValidator
         /* Fetch from API */
         // User user = ...
 
-        User user = new User(username, "PSF");
+        User user = new User(username, "Doctor");
 
         return Optional.ofNullable(user)
                 .orElse(new User(NOT_VALID));

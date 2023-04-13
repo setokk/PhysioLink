@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/doctorHomeFragment"
-        android:name="com.mobile.physiolink.DoctorHomeFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorHomeFragment"
         android:label="fragment_doctor_home"
         tools:layout="@layout/fragment_doctor_home" />
 </navigation>
