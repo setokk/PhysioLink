@@ -26,6 +26,7 @@ public class LoginInputValidator
                                     String password)
     {
         /* Fetch from API */
+
         // User user = ...
 
         User user = new User(username, "Doctor");

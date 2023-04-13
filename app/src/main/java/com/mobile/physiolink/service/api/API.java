@@ -1,4 +1,4 @@
-package com.mobile.physiolink.model.api;
+package com.mobile.physiolink.service.api;
 
 /**
  * @author Kote Kostandin (setokk) <br>
@@ -12,22 +12,22 @@ package com.mobile.physiolink.model.api;
  */
 public final class API
 {
-    public static final String URL = "http://192.168.1.8/physiolink/api/";
+    public static final String URL = "http://192.168.1.8:8080/physiolink/api/";
 
     /* Provision related API endpoints */
     public static final String CREATE_PROVISION = API.URL + "/provision/create";
     public static final String EDIT_PROVISION = API.URL + "/provision/edit/";
-    public static final String SHOW_PROVISIONS = API.URL + "/provisions/show";
+    public static final String GET_PROVISIONS = API.URL + "/provisions/get";
 
     /* Doctor related API endpoints */
     public static final String CREATE_DOCTOR = API.URL + "/doctor/create";
     public static final String EDIT_DOCTOR = API.URL + "/doctor/edit/";
-    public static final String SHOW_DOCTOR = API.URL + "/doctor/get/";
-    public static final String SHOW_DOCTORS = API.URL + "/doctors/get";
+    public static final String GET_DOCTOR = API.URL + "/doctor/get/";
+    public static final String GET_DOCTORS = API.URL + "/doctors/get";
 
     /* Patient related API endpoints */
     public static final String CREATE_PATIENT = API.URL + "/patient/create";
     public static final String EDIT_PATIENT = API.URL + "/patient/edit/";
-    public static final String SHOW_PATIENT = API.URL + "/patient/get/";
-    public static final String SHOW_PATIENTS = API.URL + "/patients/show";
+    public static final String GET_PATIENT = API.URL + "/patient/get/";
+    public static final String GET_PATIENTS = API.URL + "/patients/get";
 }
