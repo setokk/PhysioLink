@@ -9,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mobile.physiolink.model.user.User;
 import com.mobile.physiolink.databinding.ActivityLoginBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
 import com.mobile.physiolink.ui.PatientActivity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity
@@ -66,8 +68,8 @@ public class LoginActivity extends AppCompatActivity
             else
                 intent = new Intent(this, PatientActivity.class);
 
-            /* Pass user to home activity */
-            intent.putExtra("user", user);
+            /* Pass user to UserHolder static class */
+            UserHolder.setInstance(user);
             startActivity(intent);
             finish();
         }

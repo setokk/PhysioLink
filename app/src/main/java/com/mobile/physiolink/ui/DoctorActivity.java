@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mobile.physiolink.databinding.ActivityDoctorBinding;
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.model.user.User;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 
 public class DoctorActivity extends AppCompatActivity
 {
@@ -21,16 +22,6 @@ public class DoctorActivity extends AppCompatActivity
         binding = ActivityDoctorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        /* Get passed user */
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null)
-        {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
-            {
-                doctor = bundle.getSerializable("user", Doctor.class);
-            }
-        }
-
-        System.out.println(doctor.toString());
+        doctor = UserHolder.doctor();
     }
 }
