@@ -1,5 +1,7 @@
 package com.mobile.physiolink.service.api;
 
+import android.os.StrictMode;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +14,10 @@ import okhttp3.Response;
 
 public class RequestFacade
 {
-    public static Response getRequest(String URL)
+    public static Response getRequest(String URL) throws IOException
     {
+        configThreadPolicy();
+
         OkHttpClient client = new OkHttpClient()
                 .newBuilder()
                 .build();
@@ -23,18 +27,15 @@ public class RequestFacade
                 .get()
                 .build();
 
-        Response response = null;
-        try
-        {
-            response = client.newCall(request).execute();
-        }
-        catch (IOException ignored) { }
+        Response response = client.newCall(request).execute();
 
         return response;
     }
 
-    public static Response postRequest(String URL, HashMap<String, String> keyValues)
+    public static Response postRequest(String URL, HashMap<String, String> keyValues) throws IOException
     {
+        configThreadPolicy();
+
         OkHttpClient client = new OkHttpClient()
                 .newBuilder()
                 .build();
@@ -51,13 +52,14 @@ public class RequestFacade
                 .post(formBody)
                 .build();
 
-        Response response = null;
-        try
-        {
-            response = client.newCall(request).execute();
-        }
-        catch (IOException ignored) { }
+        Response response = client.newCall(request).execute();
 
         return response;
+    }
+
+    private static void configThreadPolicy()
+    {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 }
