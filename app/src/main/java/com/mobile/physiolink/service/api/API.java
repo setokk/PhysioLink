@@ -9,10 +9,19 @@ package com.mobile.physiolink.service.api;
  * <br> <br>
  * Wherever there is a "/" at the end of an endpoint, it indicates the need
  * for one or more parameters at the end of the request URL.
+ * <br> <br>
+ * List of REST API methods for each constant:
+ * <ul>
+ *     <li>{@link API#AUTH_USER}: POST request (username, password)</li>
+ *     <li>{@link API#CREATE_DOCTOR}: POST request (username, password, name, surname, email, phoneNumber, afm)</li>
+ * </ul>
  */
 public final class API
 {
     public static final String URL = "http://192.168.1.8:8080/physiolink/api/";
+
+    /* User auth related API endpoint */
+    public static final String AUTH_USER = API.URL + "/auth/log-in";
 
     /* Provision related API endpoints */
     public static final String CREATE_PROVISION = API.URL + "/provision/create";

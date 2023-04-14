@@ -6,13 +6,17 @@ import java.io.Serializable;
 
 public class User implements Serializable
 {
+    private long id;
     private String username;
     private final String type;
 
 
-    /* Default Constructor*/
-    public User(String username, String type)
+    /* Default Constructor */
+    public User(long id,
+                String username,
+                String type)
     {
+        this.id = id;
         this.username = username;
         this.type = type;
     }
@@ -22,6 +26,17 @@ public class User implements Serializable
     {
         this.username = username;
         this.type = "";
+        this.id = -1;
+    }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    public String getUsername()
+    {
+        return username;
     }
 
     public boolean isValid()

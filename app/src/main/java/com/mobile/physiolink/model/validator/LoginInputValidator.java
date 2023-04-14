@@ -29,7 +29,7 @@ public class LoginInputValidator
 
         // User user = ...
 
-        User user = new User(username, "Doctor");
+        User user = new User(1L, username, "Doctor");
 
         return Optional.ofNullable(user)
                 .orElse(new User(NOT_VALID));
