@@ -1,5 +1,7 @@
 package com.mobile.physiolink.model.user;
 
+import java.io.Serializable;
+
 public class Doctor extends User
 {
     private String name;
@@ -61,5 +63,17 @@ public class Doctor extends User
     public String getAfm()
     {
         return afm;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Doctor{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", afm='" + afm + '\'' +
+                '}';
     }
 }

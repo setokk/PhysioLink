@@ -35,7 +35,9 @@ public class RequestFacade
 
     public static Response postRequest(String URL, HashMap<String, String> keyValues)
     {
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient()
+                .newBuilder()
+                .build();
 
         FormBody.Builder formBuilder = new FormBody.Builder();
         for (Map.Entry<String, String> entry : keyValues.entrySet())

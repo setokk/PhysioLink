@@ -1,6 +1,7 @@
 package com.mobile.physiolink.model.validator;
 
 import com.mobile.physiolink.model.user.User;
+import com.mobile.physiolink.service.api.UserAuthenticator;
 
 import java.util.Optional;
 
@@ -26,10 +27,7 @@ public class LoginInputValidator
                                     String password)
     {
         /* Fetch from API */
-
-        // User user = ...
-
-        User user = new User(1L, username, "Doctor");
+        User user = UserAuthenticator.authenticateUser(username, password);
 
         return Optional.ofNullable(user)
                 .orElse(new User(NOT_VALID));
