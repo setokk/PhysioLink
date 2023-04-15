@@ -1,4 +1,4 @@
-package com.mobile.physiolink.service.api.validator;
+package com.mobile.physiolink.service.validator;
 
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.model.user.PSF;
@@ -53,31 +53,26 @@ public class UserAuth
                 long id = json.getLong("id");
                 String type = json.getString("role");
 
-                /* Create User superclass and check the type of user*/
                 user = new User(id, username, type);
-                if (user.isPSF())
+                if (!user.isPSF()) // Either doctor or patient
                 {
-                    user = new PSF(id, username, type);
-                }
-                else if (user.isDoctor())
-                {
+                    /* Common fields from JSON response */
                     String name = json.getString("name");
                     String surname = json.getString("surname");
                     String email = json.getString("email");
                     String phoneNumber = json.getString("phone_number");
-                    String afm = json.getString("afm");
 
-                    user = new Doctor(id, username, type, name, surname, email, phoneNumber, afm);
-                }
-                else if (user.isPatient())
-                {
-                    String name = json.getString("name");
-                    String surname = json.getString("surname");
-                    String email = json.getString("email");
-                    String phoneNumber = json.getString("phone_number");
-                    String amka = json.getString("amka");
-
-                    user = new Patient(id, username, type, name, surname, email, phoneNumber, amka);
+                    /* Uncommon fields */
+                    if (user.isDoctor())
+                    {
+                        String afm = json.getString("afm");
+                        user = new Doctor(id, username, type, name, surname, email, phoneNumber, afm);
+                    }
+                    else if (user.isPatient())
+                    {
+                        String amka = json.getString("amka");
+                        user = new Patient(id, username, type, name, surname, email, phoneNumber, amka);
+                    }
                 }
             }
         }

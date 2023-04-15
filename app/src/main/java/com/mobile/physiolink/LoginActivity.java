@@ -1,6 +1,6 @@
 package com.mobile.physiolink;
 
-import static com.mobile.physiolink.service.api.validator.UserAuth.authenticateUser;
+import static com.mobile.physiolink.service.validator.UserAuth.authenticateUser;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mobile.physiolink.model.user.User;
 import com.mobile.physiolink.databinding.ActivityLoginBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
-import com.mobile.physiolink.service.api.validator.UserAuth;
-import com.mobile.physiolink.service.dao.UserDAO;
-import com.mobile.physiolink.service.schemas.DoctorSchema;
-import com.mobile.physiolink.service.schemas.UserSchema;
+import com.mobile.physiolink.service.validator.UserAuth;
 import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
 import com.mobile.physiolink.ui.PatientActivity;
@@ -85,7 +82,7 @@ public class LoginActivity extends AppCompatActivity
         else
         {
             // TODO: Show error popup message!
-            Toast.makeText(this, "Λάθος στοιχεία χρήστη", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Λάθος στοιχεία χρήστη", Toast.LENGTH_SHORT).show();
         }
     }
 }
