@@ -1,6 +1,6 @@
 package com.mobile.physiolink.model.user;
 
-import static com.mobile.physiolink.model.validator.LoginInputValidator.NOT_VALID;
+import static com.mobile.physiolink.service.api.validator.UserAuth.NOT_VALID;
 
 import java.io.Serializable;
 

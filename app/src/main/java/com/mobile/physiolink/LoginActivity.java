@@ -1,6 +1,6 @@
 package com.mobile.physiolink;
 
-import static com.mobile.physiolink.model.validator.LoginInputValidator.validateUser;
+import static com.mobile.physiolink.service.api.validator.UserAuth.authenticateUser;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mobile.physiolink.model.user.User;
 import com.mobile.physiolink.databinding.ActivityLoginBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.api.validator.UserAuth;
 import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
 import com.mobile.physiolink.ui.PatientActivity;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity
@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity
      * of user logged in (if the attempt was successful).
      * <br><br>
      * If not successful, it displays a popup window with an error message.
-     * @see com.mobile.physiolink.model.validator.LoginInputValidator
+     * @see UserAuth
      */
     private void validateCredentialsAndNavigate()
     {
@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity
             return;
 
         /* Validate credentials */
-        User user = validateUser(username, password);
+        User user = authenticateUser(username, password);
         if (user.isValid())
         {
             Intent intent;
@@ -72,6 +72,10 @@ public class LoginActivity extends AppCompatActivity
             UserHolder.setInstance(user);
             startActivity(intent);
             finish();
+        }
+        else
+        {
+            // TODO: Show error popup message!
         }
     }
 }

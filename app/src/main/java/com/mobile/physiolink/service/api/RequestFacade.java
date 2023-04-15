@@ -14,6 +14,8 @@ import okhttp3.Response;
 
 public class RequestFacade
 {
+    private static StrictMode.ThreadPolicy policy = null; // Singleton
+
     public static Response getRequest(String URL) throws IOException
     {
         configThreadPolicy();
@@ -59,7 +61,10 @@ public class RequestFacade
 
     private static void configThreadPolicy()
     {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        if (policy != null)
+            return;
+
+        policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
     }
 }
