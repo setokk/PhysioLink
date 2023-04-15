@@ -4,6 +4,6 @@ public interface InterfaceDAO<T>
 {
      void create(T item);
      void update(T item);
-     void delete(T item);
-     T get(T item);
+     void delete(long id);
+     T get(long id);
 }
