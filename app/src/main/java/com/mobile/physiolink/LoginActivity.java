@@ -4,6 +4,7 @@ import static com.mobile.physiolink.service.api.validator.UserAuth.authenticateU
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +12,14 @@ import com.mobile.physiolink.model.user.User;
 import com.mobile.physiolink.databinding.ActivityLoginBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.service.api.validator.UserAuth;
+import com.mobile.physiolink.service.dao.UserDAO;
+import com.mobile.physiolink.service.schemas.DoctorSchema;
+import com.mobile.physiolink.service.schemas.UserSchema;
 import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
 import com.mobile.physiolink.ui.PatientActivity;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity
@@ -28,7 +33,11 @@ public class LoginActivity extends AppCompatActivity
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btnLogin.setOnClickListener((view) -> validateCredentialsAndNavigate());
+        binding.btnLogin.setOnClickListener((view) ->
+        {
+            try { validateCredentialsAndNavigate(); }
+            catch (IOException|InterruptedException ignored) {}
+        });
     }
 
     /**
@@ -42,18 +51,16 @@ public class LoginActivity extends AppCompatActivity
      * If not successful, it displays a popup window with an error message.
      * @see UserAuth
      */
-    private void validateCredentialsAndNavigate()
+    private void validateCredentialsAndNavigate() throws IOException, InterruptedException
     {
         /* Get and sanitize credentials */
         String username = Objects.requireNonNull(binding.editTextUsername.getText())
                 .toString()
                 .replaceAll(" ", ""); // Remove whitespaces
 
-        String password = Objects.requireNonNull(binding.editTextPassword.getText())
-                .toString()
-                .replaceAll(" ", ""); // Remove whitespaces;
+        String password = Objects.requireNonNull(binding.editTextPassword.getText()).toString();
 
-        if (username.isEmpty() || password.isEmpty())
+        if (username.isEmpty() || password.isEmpty() || password.contains(" "))
             return;
 
         /* Validate credentials */
@@ -68,6 +75,8 @@ public class LoginActivity extends AppCompatActivity
             else
                 intent = new Intent(this, PatientActivity.class);
 
+            Toast.makeText(this, "Επιτυχής Σύνδεση!", Toast.LENGTH_SHORT).show();
+
             /* Pass user to UserHolder static class */
             UserHolder.setInstance(user);
             startActivity(intent);
@@ -76,6 +85,7 @@ public class LoginActivity extends AppCompatActivity
         else
         {
             // TODO: Show error popup message!
+            Toast.makeText(this, "Λάθος στοιχεία χρήστη", Toast.LENGTH_LONG).show();
         }
     }
 }
