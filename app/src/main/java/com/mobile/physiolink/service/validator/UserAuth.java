@@ -53,7 +53,7 @@ public class UserAuth
                 long id = json.getLong("id");
                 String type = json.getString("role");
 
-                user = new User(id, username, type);
+
                 if (!user.isPSF()) // Either doctor or patient
                 {
                     /* Common fields from JSON response */
@@ -74,12 +74,13 @@ public class UserAuth
                         user = new Patient(id, username, type, name, surname, email, phoneNumber, amka);
                     }
                 }
+                else
+                {
+                    user = new User(id, username, type);
+                }
             }
         }
-        catch (Exception e)
-        {
-            throw new RuntimeException(e);
-        }
+        catch (Exception e) { throw new RuntimeException(e); }
 
         return Optional.ofNullable(user)
                 .orElse(new User(NOT_VALID));
