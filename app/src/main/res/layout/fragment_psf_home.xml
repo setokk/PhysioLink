@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_lime"
+    tools:context=".ui.PsfHomeFragment">
+
+    <TextView
+        android:id="@+id/psf_home_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/welcome_text"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/psf_profile_pic" />
+
+    <ImageButton
+        android:id="@+id/psf_imageButton_1"
+        android:layout_width="331dp"
+        android:layout_height="191dp"
+        android:background="@drawable/fysikotherapeutiria_photo_psf"
+        app:layout_constraintBottom_toTopOf="@+id/psf_imageButton_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/psf_home_text_view" />
+
+    <ImageButton
+        android:id="@+id/psf_imageButton_2"
+        android:layout_width="331dp"
+        android:layout_height="191dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/paroxes_photo_psf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/psf_imageButton_1" />
+
+    <ImageView
+        android:id="@+id/psf_profile_pic"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/psf_home_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
