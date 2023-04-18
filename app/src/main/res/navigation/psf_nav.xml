@@ -7,7 +7,12 @@
 
     <fragment
         android:id="@+id/fragment_home_psf"
-        android:name="com.mobile.physiolink.ui.PsfHomeFragment"
+        android:name="com.mobile.physiolink.ui.psf.PsfHomeFragment"
         android:label="fragment_home_psf"
         tools:layout="@layout/fragment_psf_home" />
+    <fragment
+        android:id="@+id/phisiotherpeftiriaFragment"
+        android:name="com.mobile.physiolink.ui.psf.PhisiotherpeftiriaFragment"
+        android:label="fragment_phisiotherpeftiria"
+        tools:layout="@layout/fragment_phisiotherpeftiria" />
 </navigation>
