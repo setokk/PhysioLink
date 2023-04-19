@@ -7,8 +7,10 @@ import com.mobile.physiolink.model.user.User;
 import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,7 +33,7 @@ public class UserAuth
      * @param password the password input
      * @return {@link com.mobile.physiolink.model.user.User}
      */
-    public static User authenticateUser(String username, String password)
+    public static User authenticateUser(String username, String password) throws JSONException, IOException
     {
         User user = null;
 
@@ -41,45 +43,42 @@ public class UserAuth
         keyValues.put("password", password);
 
         /* Make POST request to auth api route */
-        try
+
+        String response = Objects.requireNonNull(RequestFacade.postRequest(API.AUTH_USER, keyValues)
+                        .body())
+                .string();
+        JSONObject json = new JSONObject(response);
+
+        if (validCredentials(json)) // If not valid, return null
         {
-            String response = Objects.requireNonNull(RequestFacade.postRequest(API.AUTH_USER, keyValues)
-                            .body())
-                    .string();
-            JSONObject json = new JSONObject(response);
+            long id = json.getLong("id");
+            String type = json.getString("role");
 
-            if (validCredentials(json)) // If not valid, return null
+            user = new User(id, username, type);
+            if (!user.isPSF()) // Either doctor or patient
             {
-                long id = json.getLong("id");
-                String type = json.getString("role");
+                /* Common fields from JSON response */
+                String name = json.getString("name");
+                String surname = json.getString("surname");
+                String email = json.getString("email");
+                String phoneNumber = json.getString("phone_number");
+                String address = json.getString("address");
+                String physioName = json.getString("physio_name");
 
-                user = new User(id, username, type);
-                if (!user.isPSF()) // Either doctor or patient
+                /* Uncommon fields */
+                if (user.isDoctor())
                 {
-                    /* Common fields from JSON response */
-                    String name = json.getString("name");
-                    String surname = json.getString("surname");
-                    String email = json.getString("email");
-                    String phoneNumber = json.getString("phone_number");
-                    String address = json.getString("address");
-                    String physioName = json.getString("physio_name");
-
-                    /* Uncommon fields */
-                    if (user.isDoctor())
-                    {
-                        String afm = json.getString("afm");
-                        user = new Doctor(id, username, type, name, surname, email,
-                                phoneNumber, afm, address, physioName);
-                    }
-                    else if (user.isPatient())
-                    {
-                        String amka = json.getString("amka");
-                        user = new Patient(id, username, type, name, surname, email, phoneNumber, amka);
-                    }
+                    String afm = json.getString("afm");
+                    user = new Doctor(id, username, type, name, surname, email,
+                            phoneNumber, afm, address, physioName);
+                }
+                else if (user.isPatient())
+                {
+                    String amka = json.getString("amka");
+                    user = new Patient(id, username, type, name, surname, email, phoneNumber, amka);
                 }
             }
         }
-        catch (Exception e) { throw new RuntimeException(e); }
 
         return Optional.ofNullable(user)
                 .orElse(new User(NOT_VALID));

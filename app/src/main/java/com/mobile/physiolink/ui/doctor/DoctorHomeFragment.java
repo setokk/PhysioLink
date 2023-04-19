@@ -44,6 +44,5 @@ public class DoctorHomeFragment extends Fragment
                               @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        binding.button.setOnClickListener((v) -> Navigation.findNavController(binding.getRoot()).navigate(R.id.action_doctorHomeFragment_to_blankFragment));
     }
 }
