@@ -8,12 +8,14 @@
     tools:context=".ui.psf.PhisiotherpeftiriaFragment" >
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:id="@+id/new_pfisiotherapeftirio_button"
+        android:background="@drawable/round_style"
+        android:layout_width="210dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        android:text="Δημιουργία Νέου  Φυσιοθεραπευτηρίου"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,6 @@ plugins {
 }
 
 android {
-    namespace 'com.mobile.physiolink'
     compileSdk 33
 
     defaultConfig {

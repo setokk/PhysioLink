@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mobile.physiolink.R;
 import androidx.fragment.app.Fragment;
 
 import com.mobile.physiolink.databinding.FragmentPhisiotherpeftiriaBinding;
@@ -33,4 +34,7 @@ public class PhisiotherpeftiriaFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+
+
 }

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,10 +8,18 @@
         android:id="@+id/fragment_home_psf"
         android:name="com.mobile.physiolink.ui.psf.PsfHomeFragment"
         android:label="fragment_home_psf"
-        tools:layout="@layout/fragment_psf_home" />
+        tools:layout="@layout/fragment_psf_home" >
+        <action
+            android:id="@+id/action_fragment_home_psf_to_phisiotherpeftiriaFragment"
+            app:destination="@id/phisiotherpeftiriaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/phisiotherpeftiriaFragment"
         android:name="com.mobile.physiolink.ui.psf.PhisiotherpeftiriaFragment"
         android:label="fragment_phisiotherpeftiria"
-        tools:layout="@layout/fragment_phisiotherpeftiria" />
+        tools:layout="@layout/fragment_phisiotherpeftiria" >
+        <action
+            android:id="@+id/action_phisiotherpeftiriaFragment_to_fragment_home_psf"
+            app:destination="@id/fragment_home_psf" />
+    </fragment>
 </navigation>
