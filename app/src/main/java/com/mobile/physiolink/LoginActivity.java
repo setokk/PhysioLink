@@ -57,14 +57,20 @@ public class LoginActivity extends AppCompatActivity
     private void validateCredentialsAndNavigate() throws IOException, InterruptedException, JSONException
     {
         /* Get and sanitize credentials */
-        String username = Objects.requireNonNull(binding.editTextUsername.getText())
-                .toString()
-                .replaceAll(" ", ""); // Remove whitespaces
-
+        String username = Objects.requireNonNull(binding.editTextUsername.getText()).toString().trim();
         String password = Objects.requireNonNull(binding.editTextPassword.getText()).toString();
 
-        if (username.isEmpty() || password.isEmpty() || password.contains(" "))
+        if (username.isEmpty() || password.isEmpty())
+        {
+            Toast.makeText(this, "Δεν επιτρέπονται κενά πεδία!", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        if (username.contains(" ") || password.contains(" "))
+        {
+            Toast.makeText(this, "Δεν επιτρέπονται κενά στα πεδία!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         /* Validate credentials */
         User user = authenticateUser(username, password);
