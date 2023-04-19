@@ -5,11 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorHomeBinding;
 
 
@@ -42,5 +44,6 @@ public class DoctorHomeFragment extends Fragment
                               @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        binding.button.setOnClickListener((v) -> Navigation.findNavController(binding.getRoot()).navigate(R.id.action_doctorHomeFragment_to_blankFragment));
     }
 }

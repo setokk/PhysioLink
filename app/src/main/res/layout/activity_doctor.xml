@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
+        android:id="@+id/fragmentContainerView2"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="409dp"
         android:layout_height="673dp"
@@ -23,5 +23,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/doctor_nav" />
+        app:navGraph="@navigation/doc_nav" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

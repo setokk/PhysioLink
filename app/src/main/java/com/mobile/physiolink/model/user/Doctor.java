@@ -1,7 +1,5 @@
 package com.mobile.physiolink.model.user;
 
-import java.io.Serializable;
-
 public class Doctor extends User
 {
     private String name;
@@ -9,6 +7,8 @@ public class Doctor extends User
     private String email;
     private String phoneNumber;
     private String afm;
+    private String address;
+    private String physioName;
 
     public Doctor(long id,
                   String username,
@@ -17,7 +17,9 @@ public class Doctor extends User
                   String surname,
                   String email,
                   String phoneNumber,
-                  String afm)
+                  String afm,
+                  String address,
+                  String physioName)
     {
         super(id, username, type);
 
@@ -26,6 +28,8 @@ public class Doctor extends User
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.afm = afm;
+        this.address = address;
+        this.physioName = physioName;
     }
 
     public Doctor(long id,
@@ -63,6 +67,26 @@ public class Doctor extends User
     public String getAfm()
     {
         return afm;
+    }
+
+    public String getPhysioName()
+    {
+        return physioName;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
+
+    public void setPhysioName(String physioName)
+    {
+        this.physioName = physioName;
     }
 
     @Override

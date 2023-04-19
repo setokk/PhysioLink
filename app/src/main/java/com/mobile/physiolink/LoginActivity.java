@@ -81,7 +81,6 @@ public class LoginActivity extends AppCompatActivity
         }
         else
         {
-            // TODO: Show error popup message!
             Toast.makeText(this, "Λάθος στοιχεία χρήστη", Toast.LENGTH_SHORT).show();
         }
     }

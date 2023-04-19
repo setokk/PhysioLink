@@ -61,12 +61,15 @@ public class UserAuth
                     String surname = json.getString("surname");
                     String email = json.getString("email");
                     String phoneNumber = json.getString("phone_number");
+                    String address = json.getString("address");
+                    String physioName = json.getString("physio_name");
 
                     /* Uncommon fields */
                     if (user.isDoctor())
                     {
                         String afm = json.getString("afm");
-                        user = new Doctor(id, username, type, name, surname, email, phoneNumber, afm);
+                        user = new Doctor(id, username, type, name, surname, email,
+                                phoneNumber, afm, address, physioName);
                     }
                     else if (user.isPatient())
                     {

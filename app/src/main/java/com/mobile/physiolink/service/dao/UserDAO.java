@@ -43,6 +43,8 @@ public class UserDAO implements InterfaceDAO<Long, UserSchema, User>
         if (user instanceof DoctorSchema)
         {
             keyValues.put("afm", ((DoctorSchema) user).afm);
+            keyValues.put("address", ((DoctorSchema) user).address);
+            keyValues.put("physio_name", ((DoctorSchema) user).physioName);
 
             url = API.CREATE_DOCTOR;
         }
