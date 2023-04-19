@@ -16,6 +16,8 @@ import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
 import com.mobile.physiolink.ui.PatientActivity;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -32,8 +34,12 @@ public class LoginActivity extends AppCompatActivity
 
         binding.btnLogin.setOnClickListener((view) ->
         {
-            try { validateCredentialsAndNavigate(); }
-            catch (IOException|InterruptedException ignored) {}
+            try
+            {
+                validateCredentialsAndNavigate();
+            }
+            catch (IOException | InterruptedException | JSONException ignored)
+            { Toast.makeText(this, "Προέκυψε ένα σφάλμα. Ελέγξτε την σύνδεση σας στο διαδίκτυο και δοκιμάστε ξανά!", Toast.LENGTH_SHORT).show(); }
         });
     }
 
@@ -48,7 +54,7 @@ public class LoginActivity extends AppCompatActivity
      * If not successful, it displays a popup window with an error message.
      * @see UserAuth
      */
-    private void validateCredentialsAndNavigate() throws IOException, InterruptedException
+    private void validateCredentialsAndNavigate() throws IOException, InterruptedException, JSONException
     {
         /* Get and sanitize credentials */
         String username = Objects.requireNonNull(binding.editTextUsername.getText())
