@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:layout_gravity="center_vertical"
+    android:foregroundGravity="center_vertical"
+    app:layout_anchorGravity="center_horizontal|center_vertical">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
@@ -12,6 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/psf_nav"
-         />
+        app:navGraph="@navigation/psf_nav" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:background="@color/navbar_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/psf_bottom_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
