@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_fragment_home_psf_to_phisiotherpeftiriaFragment"
             app:destination="@id/phisiotherpeftiriaFragment" />
+        <action
+            android:id="@+id/action_fragment_home_psf_to_parohesFragment"
+            app:destination="@id/parohesFragment" />
     </fragment>
     <fragment
         android:id="@+id/phisiotherpeftiriaFragment"
@@ -21,5 +24,30 @@
         <action
             android:id="@+id/action_phisiotherpeftiriaFragment_to_fragment_home_psf"
             app:destination="@id/fragment_home_psf" />
+        <action
+            android:id="@+id/action_phisiotherpeftiriaFragment_to_createPhisiotherapeftiriaFragment"
+            app:destination="@id/createPhisiotherapeftiriaFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/parohesFragment"
+        android:name="com.mobile.physiolink.ui.psf.ParohesFragment"
+        android:label="fragment_parohes"
+        tools:layout="@layout/fragment_parohes" >
+        <action
+            android:id="@+id/action_parohesFragment_to_fragment_home_psf"
+            app:destination="@id/fragment_home_psf" />
+        <action
+            android:id="@+id/action_parohesFragment_to_createParoxesFragment"
+            app:destination="@id/createParoxesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPhisiotherapeftiriaFragment"
+        android:name="com.mobile.physiolink.ui.psf.CreatePhisiotherapeftiriaFragment"
+        android:label="fragment_create_phisioterapeftiria"
+        tools:layout="@layout/fragment_create_phisioterapeftiria" />
+    <fragment
+        android:id="@+id/createParoxesFragment"
+        android:name="com.mobile.physiolink.ui.psf.CreateParoxesFragment"
+        android:label="fragment_create_paroxes"
+        tools:layout="@layout/fragment_create_paroxes" />
 </navigation>

@@ -17,6 +17,7 @@
         app:navGraph="@navigation/psf_nav" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_psf"
         android:layout_width="0dp"
         android:layout_height="47dp"
         android:background="@color/navbar_white"

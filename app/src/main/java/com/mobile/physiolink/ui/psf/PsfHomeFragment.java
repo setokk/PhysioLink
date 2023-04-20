@@ -21,13 +21,24 @@ public class PsfHomeFragment extends Fragment {
 
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentPsfHomeBinding.inflate(inflater, container, false);;
+
+        //phisiotherapeftiria button
         binding.psfImageButton1.setOnClickListener((v)->{Navigation.findNavController(binding.getRoot()).navigate(R.id.action_fragment_home_psf_to_phisiotherpeftiriaFragment);});
+
+        //parohes button
+        binding.psfImageButton2.setOnClickListener((v)->{Navigation.findNavController(binding.getRoot()).navigate(R.id.action_fragment_home_psf_to_parohesFragment);});
+
         return binding.getRoot();
     }
 
