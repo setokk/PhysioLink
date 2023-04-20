@@ -3,7 +3,6 @@ package com.mobile.physiolink.service.schemas;
 public class DoctorSchema extends UserSchema
 {
     public final String afm;
-    public final String address;
     public final String physioName;
 
     public DoctorSchema(String username,
@@ -16,10 +15,9 @@ public class DoctorSchema extends UserSchema
                         String address,
                         String physioName)
     {
-        super(username, password, name, surname, email, phoneNumber);
+        super(username, password, name, surname, email, phoneNumber, address);
 
         this.afm = afm;
-        this.address = address;
         this.physioName = physioName;
     }
 }

@@ -40,10 +40,10 @@ public class UserDAO implements InterfaceDAO<Long, UserSchema, User>
         keyValues.put("surname", user.surname);
         keyValues.put("email", user.email);
         keyValues.put("phone_number", user.phoneNumber);
+        keyValues.put("address", user.address);
         if (user instanceof DoctorSchema)
         {
             keyValues.put("afm", ((DoctorSchema) user).afm);
-            keyValues.put("address", ((DoctorSchema) user).address);
             keyValues.put("physio_name", ((DoctorSchema) user).physioName);
 
             url = API.CREATE_DOCTOR;
@@ -51,8 +51,7 @@ public class UserDAO implements InterfaceDAO<Long, UserSchema, User>
         else if (user instanceof PatientSchema)
         {
             keyValues.put("amka", ((PatientSchema) user).amka);
-            /* We need the doctor id to associate the patient with the doctor
-                                [1 - 1 relationship] */
+            /* We need the doctor id to associate the patient with the doctor [1 - 1 relationship] */
             keyValues.put("doctor_id", String.valueOf(((PatientSchema) user).doctor_id));
 
             url = API.CREATE_PATIENT;

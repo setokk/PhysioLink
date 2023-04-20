@@ -11,9 +11,10 @@ public class PatientSchema extends UserSchema
                          String surname,
                          String email,
                          String phoneNumber,
+                         String address,
                          String amka, long doctor_id)
     {
-        super(username, password, name, surname, email, phoneNumber);
+        super(username, password, name, surname, email, phoneNumber, address);
         this.amka = amka;
         this.doctor_id = doctor_id;
     }

@@ -7,13 +7,16 @@ public class UserSchema
     public final String name;
     public final String surname;
     public final String email;
+    public final String address;
     public final String phoneNumber;
 
     public UserSchema(String username,
                       String password,
                       String name,
                       String surname,
-                      String email, String phoneNumber)
+                      String email,
+                      String phoneNumber,
+                      String address)
     {
         this.username = username;
         this.password = password;
@@ -21,5 +24,6 @@ public class UserSchema
         this.surname = surname;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 }
