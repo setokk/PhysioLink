@@ -12,4 +12,5 @@
     <color name="lighter_purple">#7960BD</color>
     <color name="navbar_white">#FFFBFE</color>
     <color name="input_grey">#999999</color>
+    <color name="card_text_color">#49454F</color>
 </resources>

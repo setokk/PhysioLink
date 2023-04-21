@@ -14,4 +14,7 @@
     <string name="doctor_requests">Νέα Αιτήματα</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_female_patient">Mαρία Δολεσίδου</string>
+    <string name="name_male_patient">Γιώργος Φασκέλας</string>
+    <string name="malaxi_service_text">Μάλαξη</string>
 </resources>
