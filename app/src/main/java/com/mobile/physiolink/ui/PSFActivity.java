@@ -25,5 +25,7 @@ public class PSFActivity extends AppCompatActivity
         super.onCreate(savedInstanceBundle);
         binding = ActivityPsfBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
