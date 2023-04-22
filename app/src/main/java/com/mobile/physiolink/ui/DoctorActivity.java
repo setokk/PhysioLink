@@ -15,6 +15,11 @@ public class DoctorActivity extends AppCompatActivity
 {
     private ActivityDoctorBinding binding;
 
+    private final DoctorHomeFragment doctorHomeFragment = new DoctorHomeFragment();
+    private final Appointments_Fragment appointmentsFragment = new Appointments_Fragment();
+    private final DoctorServicesFragment doctorServicesFragment = new DoctorServicesFragment();
+    private final DoctorPatientsFragment doctorPatientsFragment = new DoctorPatientsFragment();
+
     @Override
     public void onCreate(Bundle savedInstanceBundle)
     {
@@ -22,21 +27,26 @@ public class DoctorActivity extends AppCompatActivity
         binding = ActivityDoctorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        /* Home Fragment */
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, new DoctorHomeFragment())
+                .commit();
+
         binding.bottomNavigation.setOnItemSelectedListener(item ->
         {
             switch (item.getItemId())
             {
                 case R.id.home:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new DoctorHomeFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, doctorHomeFragment).commit();
                     return true;
                 case R.id.appointment:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new Appointments_Fragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, appointmentsFragment).commit();
                     return true;
                 case R.id.services:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new DoctorServicesFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, doctorServicesFragment).commit();
                     return true;
                 case R.id.patients:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new DoctorPatientsFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, doctorPatientsFragment).commit();
                     return true;
             }
 
