@@ -2,25 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="home"
+        android:id="@+id/home"
         android:title="Αρχική"
         android:icon="@drawable/baseline_home_24"
         />
 
     <item
-        android:id="appointment"
+        android:id="@+id/appointment"
         android:title="Ραντεβού"
         android:icon="@drawable/baseline_calendar_month_24"
         />
 
     <item
-        android:id="services"
+        android:id="@+id/services"
         android:title="Παροχές"
         android:icon="@drawable/baseline_medical_services_24"
         />
 
     <item
-        android:id="patients"
+        android:id="@+id/patients"
         android:title="Ασθενείς"
         android:icon="@drawable/baseline_contacts_24"
         />
