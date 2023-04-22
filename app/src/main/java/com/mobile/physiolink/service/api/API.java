@@ -1,5 +1,8 @@
 package com.mobile.physiolink.service.api;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * @author Kote Kostandin (setokk) <br>
  * <a href="https://www.linkedin.com/in/kostandin-kote-255382223/">LinkedIn</a>
@@ -18,7 +21,8 @@ package com.mobile.physiolink.service.api;
  */
 public final class API
 {
-    public static final String URL = "http://192.168.1.8:3000/physiolink/api";
+    public static final String IP = "192.168.1.8";
+    public static final String URL = "http://" + IP  + ":3000/physiolink/api";
 
     /* User auth related API endpoint */
     public static final String AUTH_USER = API.URL + "/auth/log-in";
