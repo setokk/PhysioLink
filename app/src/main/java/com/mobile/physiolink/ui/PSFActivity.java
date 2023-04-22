@@ -19,23 +19,30 @@ public class PSFActivity extends AppCompatActivity
 {
     private ActivityPsfBinding binding;
 
+    private final PsfHomeFragment psfHomeFragment = new PsfHomeFragment();
+
     @Override
     public void onCreate(Bundle savedInstanceBundle)
     {
         super.onCreate(savedInstanceBundle);
         binding = ActivityPsfBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+//
+//
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.fragmentContainerView,  new PsfHomeFragment())
+//                .commit();
 
-        binding.bottomNavPsf.setOnItemSelectedListener(item ->
-        {
-            switch (item.getItemId())
-            {
-                case R.id.home_psf:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new PsfHomeFragment()).commit();
-                    return true;
-            }
-
-            return false;
-        });
+//        binding.bottomNavPsf.setOnItemSelectedListener(item ->
+//        {
+//            switch (item.getItemId())
+//            {
+//                case R.id.home_psf:
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, psfHomeFragment).commit();
+//                    return true;
+//            }
+//
+//            return false;
+//        });
     }
 }
