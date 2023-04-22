@@ -26,6 +26,16 @@ public class PSFActivity extends AppCompatActivity
         binding = ActivityPsfBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        binding.bottomNavPsf.setOnItemSelectedListener(item ->
+        {
+            switch (item.getItemId())
+            {
+                case R.id.home_psf:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new PsfHomeFragment()).commit();
+                    return true;
+            }
+
+            return false;
+        });
     }
 }

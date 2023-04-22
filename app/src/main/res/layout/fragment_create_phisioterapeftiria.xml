@@ -158,17 +158,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kinito_input" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/round_style"
+        android:backgroundTint="@color/button_purple"
         android:paddingHorizontal="30dp"
         android:paddingVertical="20dp"
         android:paddingBottom="10dp"
         android:text="Αποθήκευση"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
