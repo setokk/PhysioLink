@@ -1,7 +1,6 @@
 package com.mobile.physiolink.service.validator;
 
 import com.mobile.physiolink.model.user.Doctor;
-import com.mobile.physiolink.model.user.PSF;
 import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.model.user.User;
 import com.mobile.physiolink.service.api.API;
@@ -63,19 +62,23 @@ public class UserAuth
                 String email = json.getString("email");
                 String phoneNumber = json.getString("phone_number");
                 String address = json.getString("address");
-                String physioName = json.getString("physio_name");
 
                 /* Uncommon fields */
                 if (user.isDoctor())
                 {
                     String afm = json.getString("afm");
+                    String physioName = json.getString("physio_name");
+
                     user = new Doctor(id, username, type, name, surname, email,
                             phoneNumber, afm, address, physioName);
                 }
                 else if (user.isPatient())
                 {
                     String amka = json.getString("amka");
-                    user = new Patient(id, username, type, name, surname, email, phoneNumber, amka);
+                    long doctor_id = Long.parseLong(json.getString("doctor_id"));
+
+                    user = new Patient(id, username, type, name, surname, email,
+                            phoneNumber, amka, address, doctor_id);
                 }
             }
         }

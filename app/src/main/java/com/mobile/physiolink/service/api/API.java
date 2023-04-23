@@ -1,14 +1,13 @@
 package com.mobile.physiolink.service.api;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import com.mobile.physiolink.service.dao.UserDAO;
 
 /**
  * @author Kote Kostandin (setokk) <br>
  * <a href="https://www.linkedin.com/in/kostandin-kote-255382223/">LinkedIn</a>
  * <br>
  *
- * This class is used as a simple API endpoints holder.
+ * This class is used as a simple API endpoints reference.
  * <br> <br>
  * Wherever there is a "/" at the end of an endpoint, it indicates the need
  * for one or more parameters at the end of the request URL.
