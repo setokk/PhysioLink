@@ -1,7 +1,5 @@
 package com.mobile.physiolink.service.api;
 
-import com.mobile.physiolink.service.dao.UserDAO;
-
 /**
  * @author Kote Kostandin (setokk) <br>
  * <a href="https://www.linkedin.com/in/kostandin-kote-255382223/">LinkedIn</a>
