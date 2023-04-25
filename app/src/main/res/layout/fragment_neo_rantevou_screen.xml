@@ -67,14 +67,6 @@
         app:layout_constraintTop_toBottomOf="@+id/docBar"
         app:layout_constraintVertical_bias="0.019" />
 
-    <SearchView
-        android:layout_width="50dp"
-        android:layout_height="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/searchbarText"
-        app:layout_constraintEnd_toEndOf="@+id/searchbarText"
-        app:layout_constraintTop_toTopOf="@+id/searchbarText"
-        app:layout_constraintVertical_bias="0.52" />
-
     <View
         android:id="@+id/view2"
         android:layout_width="397dp"

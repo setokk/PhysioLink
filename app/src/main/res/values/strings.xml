@@ -9,4 +9,6 @@
     <string name="hint_password">Password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="selectDateBarName">Όνομα</string>
+    <string name="selectDatePickText">Επιλογή ημερομηνίας</string>
 </resources>

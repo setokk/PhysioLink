@@ -2,13 +2,17 @@ package com.mobile.physiolink.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.mobile.physiolink.R;
+import com.mobile.physiolink.databinding.FragmentEpilogiImerominiasScreenBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +29,7 @@ public class Epilogi_Imerominias_Screen extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private FragmentEpilogiImerominiasScreenBinding binding;
 
     public Epilogi_Imerominias_Screen() {
         // Required empty public constructor
@@ -61,6 +66,21 @@ public class Epilogi_Imerominias_Screen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_epilogi__imerominias__screen, container, false);
+        binding = FragmentEpilogiImerominiasScreenBinding.inflate(inflater, container, false);
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.datePicker.setOnClickListener(v -> {
+            MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker()
+                            .setTitleText("Select date")
+                            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                            .build();
+            datePicker.show(getActivity().getSupportFragmentManager(), " ");
+        });
     }
 }
