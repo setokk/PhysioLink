@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPsfHomeBinding;
@@ -33,7 +35,7 @@ public class PsfHomeFragment extends Fragment {
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        binding = FragmentPsfHomeBinding.inflate(inflater, container, false);;
+        binding = FragmentPsfHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -43,10 +45,14 @@ public class PsfHomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //phisiotherapeftiria button
-        binding.psfImageButton1.setOnClickListener((v)->{Navigation.findNavController(binding.getRoot()).navigate(R.id.action_fragment_home_psf_to_phisiotherpeftiriaFragment);});
+        binding.psfImageButton1.setOnClickListener((v)->{
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainerView, new PhisiotherpeftiriaFragment()).commit();});
 
         //parohes button
-        binding.psfImageButton2.setOnClickListener((v)->{Navigation.findNavController(binding.getRoot()).navigate(R.id.action_fragment_home_psf_to_parohesFragment);});
+        binding.psfImageButton2.setOnClickListener((v)->{
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainerView, new ParohesFragment()).commit();});
 
     }
 }
