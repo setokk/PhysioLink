@@ -33,7 +33,7 @@ public class PsfHomeFragment extends Fragment {
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        binding = FragmentPsfHomeBinding.inflate(inflater, container, false);;
+        binding = FragmentPsfHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
