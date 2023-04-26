@@ -33,10 +33,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <EditText
+        android:id="@+id/searchbar"
+        android:layout_width="337dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="31dp"
+        android:background="@drawable/round_style"
+        android:backgroundTint="@color/white"
+        android:ems="8"
+        android:fontFamily="sans-serif"
+        android:inputType="text"
+
+
+        android:text="Αναζήτηση"
+        android:textSize="21sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <SearchView
-        android:layout_width="394dp"
-        android:layout_height="63dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="71dp" />/>
+        android:layout_width="50dp"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/searchbar"
+        app:layout_constraintEnd_toEndOf="@+id/searchbar"
+        app:layout_constraintTop_toTopOf="@+id/searchbar"
+        app:layout_constraintVertical_bias="0.52" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
