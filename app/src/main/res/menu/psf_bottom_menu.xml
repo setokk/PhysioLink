@@ -4,14 +4,14 @@
     <item
         android:id="@+id/fragment_home_psf"
         android:icon="@drawable/baseline_home_24"
-
-        android:title="Αρχική" />
+        android:title="Αρχική"
+       />
     <item
         android:id="@+id/parohesFragment"
         android:icon="@drawable/baseline_person_24"
-        android:title="Παροχές" />
+        android:title="Προφίλ" />
     <item
         android:id="@+id/phisiotherpeftiriaFragment"
-        android:title="Φυσιοθεραπευτήρια"
+        android:title="Ρυθμίσεις"
         android:icon="@drawable/baseline_settings_24" />
 </menu>

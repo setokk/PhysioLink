@@ -11,7 +11,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_psf"
         android:layout_width="0dp"
-        android:layout_height="47dp"
+        android:layout_height="60dp"
         android:background="@color/navbar_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
