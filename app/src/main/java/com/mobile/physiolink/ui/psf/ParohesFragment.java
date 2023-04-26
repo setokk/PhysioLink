@@ -34,7 +34,11 @@ public class ParohesFragment extends Fragment {
         binding = FragmentParohesBinding.inflate(inflater, container, false);
 
         //create parohes button
-        binding.paroxesButton.setOnClickListener((v)->{Navigation.findNavController(binding.getRoot()).navigate(R.id.action_parohesFragment_to_createParoxesFragment);});
+        binding.paroxesButton.setOnClickListener((v)->
+        {
+            Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                    .navigate(R.id.action_parohesFragment_to_createParoxesFragment);
+        });
 
         return binding.getRoot();
     }

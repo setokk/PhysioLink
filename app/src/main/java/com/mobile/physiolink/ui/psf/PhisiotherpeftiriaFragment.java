@@ -33,7 +33,11 @@ public class PhisiotherpeftiriaFragment extends Fragment {
         binding = FragmentPhisiotherpeftiriaBinding.inflate(inflater, container, false);
 
         //create pishiotherapeftiria button
-        binding.newPfisiotherapeftirioButton.setOnClickListener((v)->{Navigation.findNavController(binding.getRoot()).navigate(R.id.action_phisiotherpeftiriaFragment_to_createPhisiotherapeftiriaFragment);});
+        binding.newPfisiotherapeftirioButton.setOnClickListener((v)->
+        {
+            Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                    .navigate(R.id.action_phisiotherpeftiriaFragment_to_createPhisiotherapeftiriaFragment);
+        });
 
         return binding.getRoot();
     }

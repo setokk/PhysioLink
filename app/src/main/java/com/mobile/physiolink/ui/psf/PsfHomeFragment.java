@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPsfHomeBinding;
@@ -45,14 +43,18 @@ public class PsfHomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //phisiotherapeftiria button
-        binding.psfImageButton1.setOnClickListener((v)->{
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentContainerView, new PhisiotherpeftiriaFragment()).commit();});
+        binding.psfImageButton1.setOnClickListener((v)->
+        {
+            Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                    .navigate(R.id.action_fragment_home_psf_to_phisiotherpeftiriaFragment);
+        });
 
         //parohes button
-        binding.psfImageButton2.setOnClickListener((v)->{
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentContainerView, new ParohesFragment()).commit();});
+        binding.psfImageButton2.setOnClickListener((v)->
+        {
+            Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                    .navigate(R.id.action_fragment_home_psf_to_parohesFragment);
+        });
 
     }
 }
