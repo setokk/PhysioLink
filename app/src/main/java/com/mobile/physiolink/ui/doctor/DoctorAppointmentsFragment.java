@@ -10,15 +10,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mobile.physiolink.R;
+import com.mobile.physiolink.databinding.FragmentDoctorAppointmentsBinding;
 import com.mobile.physiolink.databinding.FragmentDoctorServicesBinding;
 
-public class DoctorServicesFragment extends Fragment
+public class DoctorAppointmentsFragment extends Fragment
 {
-    private FragmentDoctorServicesBinding binding;
+    private FragmentDoctorAppointmentsBinding binding;
+
+    public DoctorAppointmentsFragment() {
+        // Required empty public constructor
+    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
@@ -27,7 +32,7 @@ public class DoctorServicesFragment extends Fragment
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        binding = FragmentDoctorServicesBinding.inflate(inflater, container, false);
+        binding = FragmentDoctorAppointmentsBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
