@@ -1,19 +1,24 @@
 package com.mobile.physiolink.ui.doctor;
-
+// TODO Na ginei katallhlh allagh tou arxeiou molis ginei h diasyndesh me ta dedomena ths bashs
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorPatientsBinding;
 
 public class DoctorPatientsFragment extends Fragment
 {
+    RecyclerView patientList;
+    String s1[],s2[],s3[],s4[];
     private FragmentDoctorPatientsBinding binding;
 
     @Override
@@ -35,5 +40,15 @@ public class DoctorPatientsFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        patientList = view.findViewById(R.id.patientsListDoctor);
+
+        s1=getResources().getStringArray(R.array.patientListExampleName);
+        s2=getResources().getStringArray(R.array.patientListExampleSurnmaeame);
+        s3=getResources().getStringArray(R.array.patientListExampleAMKA);
+        s4=getResources().getStringArray(R.array.patientListExamplePhone);
+
+        AdapterForPatientList myAdapter = new AdapterForPatientList(this,s1,s2,s3,s4);
+        patientList.setAdapter(myAdapter);
+        patientList.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 }
