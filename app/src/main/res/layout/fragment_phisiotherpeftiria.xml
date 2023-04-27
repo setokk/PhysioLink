@@ -8,7 +8,7 @@
     tools:context=".ui.psf.PhisiotherpeftiriaFragment" >
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="550dp"
@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="70dp"
+
         android:background="@drawable/round_style"
         android:text="Δημιουργία Νέου  Φυσιοθεραπευτηρίου"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +48,7 @@
         android:inputType="text"
 
 
-        android:text="Αναζήτηση"
+        android:hint="Αναζήτηση"
         android:textSize="21sp"
 
         app:layout_constraintEnd_toEndOf="parent"
