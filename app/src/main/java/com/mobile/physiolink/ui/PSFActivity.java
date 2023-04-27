@@ -1,21 +1,23 @@
 package com.mobile.physiolink.ui;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.mobile.physiolink.databinding.ActivityPsfBinding;
 
 import com.mobile.physiolink.R;
-import com.mobile.physiolink.ui.psf.CreateParoxesFragment;
-import com.mobile.physiolink.ui.psf.PsfHomeFragment;
 
 public class PSFActivity extends AppCompatActivity
 {
     private ActivityPsfBinding binding;
-
-    private final PsfHomeFragment psfHomeFragment = new PsfHomeFragment();
-    private final CreateParoxesFragment createParoxesFragment = new CreateParoxesFragment();
+    private AppBarConfiguration appBarConfiguration;
 
     @Override
     public void onCreate(Bundle savedInstanceBundle)
@@ -24,26 +26,20 @@ public class PSFActivity extends AppCompatActivity
         binding = ActivityPsfBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        /* Setup Navigation with top level destinations */
+        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainerView, psfHomeFragment)
-                .commit();
+        /* AppBar Configuration */
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.bottomNavPsf, navController);
 
-        /* Bottom Navigation Listener */
-        binding.bottomNavPsf.setOnItemSelectedListener(item ->
+        /* BottomNavigation listener for popping backstack */
+        binding.bottomNavPsf.setOnItemSelectedListener((item ->
         {
-            switch (item.getItemId())
-            {
-                case R.id.home_psf:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, psfHomeFragment).commit();
-                    return true;
-                case R.id.profile_psf:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, createParoxesFragment).commit();
-                    return true;
-
-            }
-
-           return false;
-        });
+            navController.popBackStack();
+            navController.navigate(item.getItemId());
+            return true;
+        }));
     }
 }

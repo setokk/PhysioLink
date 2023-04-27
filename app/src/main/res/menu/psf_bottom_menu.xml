@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home_psf"
+        android:id="@+id/fragment_home_psf"
         android:icon="@drawable/baseline_home_24"
-
-        android:title="" />
+        android:title="Αρχική"
+       />
     <item
-        android:id="@+id/profile_psf"
+        android:id="@+id/parohesFragment"
         android:icon="@drawable/baseline_person_24"
-        android:title="" />
+        android:title="Προφίλ" />
     <item
-        android:id="@+id/settings_psf"
-        android:title=""
+        android:id="@+id/phisiotherpeftiriaFragment"
+        android:title="Ρυθμίσεις"
         android:icon="@drawable/baseline_settings_24" />
 </menu>

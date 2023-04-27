@@ -7,177 +7,287 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    android:id="@+id/create_phisiotherapeftiria_fragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_lime"
-    tools:context=".ui.psf.CreatePhisiotherapeftiriaFragment">
+        android:id="@+id/create_phisiotherapeftiria_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_lime"
+        tools:context=".ui.psf.CreatePhisiotherapeftiriaFragment">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/afm_input"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/white"
-        android:hint="ΑΦΜ *"
-        android:paddingLeft="30dp"
-        android:textColor="@color/input_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eponimo_input" />
+        <TextView
+            android:id="@+id/create_phisiotherapeftiria_title"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/lighter_purple"
+            android:gravity="center"
+            android:text="Δημιουργία Νέου Φυσιοθεραπευτηρίου"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/create_phisiotherapeftiria_title"
-        android:layout_width="0dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="40dp"
-        android:background="@color/lighter_purple"
-        android:gravity="center"
-        android:text="Δημιουργία Νέου Φυσιοθεραπευτηρίου"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/stoixia_giatrou_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="Στοιχεία Γιατρού:"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_phisiotherapeftiria_title" />
 
-    <TextView
-        android:id="@+id/stoixia_giatrou_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="Στοιχεία Γιατρού:"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_phisiotherapeftiria_title" />
+        <TextView
+            android:id="@+id/stoixia_phisiotherapeftirioy_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Στοιχεία Φυσιοθεραπευτηρίου:"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phonenumber_input_layout" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/onoma_input"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/white"
-        android:hint="Όνομα *"
-        android:paddingLeft="30dp"
-        android:textColor="@color/input_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stoixia_giatrou_textView" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/button_purple"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="20dp"
+            android:paddingBottom="10dp"
+            android:text="Αποθήκευση"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addres_input_layout" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/onoma_input_phisiotherapeftiria"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/white"
-        android:hint="Όνομα *"
-        android:paddingLeft="30dp"
-        android:textColor="@color/input_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stoixia_phisiotherapeftirioy_textView" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/docs_name_input_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stoixia_giatrou_textView">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/dieythinsi_input"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/white"
-        android:hint="Διεύθυνση *"
-        android:paddingLeft="30dp"
-        android:textColor="@color/input_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poli_input" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/docs_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_style"
+                android:backgroundTint="@color/white"
+                android:hint="Ονομα"
+                android:inputType="textNoSuggestions"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/poli_input"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/white"
-        android:hint="Πόλη *"
-        android:paddingLeft="30dp"
-        android:textColor="@color/input_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onoma_input_phisiotherapeftiria" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/docs_sname_input_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconCheckable="false"
+            app:endIconMode="clear_text"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/docs_name_input_layout">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/eponimo_input"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/white"
-        android:hint="Επώνυμο *"
-        android:paddingLeft="30dp"
-        android:textColor="@color/input_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onoma_input" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/docs_sname_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_style"
+                android:backgroundTint="@color/white"
+                android:hint="Επώνυμο"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/kinito_input"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/white"
-        android:hint="Κινητό Τηλέφωνο"
-        android:paddingLeft="30dp"
-        android:textColor="@color/input_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/afm_input" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/afm_input_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="15"
+            app:endIconMode="clear_text"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/docs_sname_input_layout">
 
-    <TextView
-        android:id="@+id/stoixia_phisiotherapeftirioy_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Στοιχεία Φυσιοθεραπευτηρίου:"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kinito_input" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/afm_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_style"
+                android:backgroundTint="@color/white"
+                android:hint="ΑΦΜ"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/button_purple"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="20dp"
-        android:paddingBottom="10dp"
-        android:text="Αποθήκευση"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dieythinsi_input" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phonenumber_input_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="10"
+            app:endIconMode="clear_text"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="?attr/colorError"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/afm_input_layout"
+            app:prefixText="+30 ">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phonenumber_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_style"
+                android:backgroundTint="@color/white"
+                android:hint="Κινητό"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/clinics_name_input_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stoixia_phisiotherapeftirioy_textView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/clinics_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_style"
+                android:backgroundTint="@color/white"
+                android:inputType="textNoSuggestions"
+                android:hint="Ονομα"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/city_input_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clinics_name_input_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/city_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_style"
+                android:backgroundTint="@color/white"
+                android:hint="Πόλη"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addres_input_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/city_input_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addres_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_style"
+                android:backgroundTint="@color/white"
+                android:inputType="textNoSuggestions"
+                android:hint="Διεύθυνση"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

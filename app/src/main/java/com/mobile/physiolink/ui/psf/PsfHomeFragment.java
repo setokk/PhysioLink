@@ -33,7 +33,7 @@ public class PsfHomeFragment extends Fragment {
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        binding = FragmentPsfHomeBinding.inflate(inflater, container, false);;
+        binding = FragmentPsfHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -43,10 +43,18 @@ public class PsfHomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //phisiotherapeftiria button
-        binding.psfImageButton1.setOnClickListener((v)->{Navigation.findNavController(binding.getRoot()).navigate(R.id.action_fragment_home_psf_to_phisiotherpeftiriaFragment);});
+        binding.psfImageButton1.setOnClickListener((v)->
+        {
+            Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                    .navigate(R.id.action_fragment_home_psf_to_phisiotherpeftiriaFragment);
+        });
 
         //parohes button
-        binding.psfImageButton2.setOnClickListener((v)->{Navigation.findNavController(binding.getRoot()).navigate(R.id.action_fragment_home_psf_to_parohesFragment);});
+        binding.psfImageButton2.setOnClickListener((v)->
+        {
+            Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                    .navigate(R.id.action_fragment_home_psf_to_parohesFragment);
+        });
 
     }
 }
