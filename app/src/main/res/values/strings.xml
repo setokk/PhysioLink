@@ -10,4 +10,14 @@
     <string name="welcome_text">Καλωσήρθες!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="codeString">Κωδικός *</string>
+    <string name="durationText">Διάρκεια (σε λεπτά)</string>
+    <string name="CreateNewService">Δημιουργία Νέας Παροχής</string>
+    <string name="ServiceDetails">Στοιχεία Παροχής:</string>
+    <string name="NameHint">Όνομα *</string>
+    <string name="ServiceDescription">Περιγραφή Παροχής :</string>
+    <string name="SaveString">Αποθήκευση</string>
+    <string name="CodeHint">Κωδικός *</string>
+    <string name="DurationHint">Διάρκεια (σε λεπτά)</string>
+    <string name="DescriptionHint">Περιγραφή *</string>
 </resources>
