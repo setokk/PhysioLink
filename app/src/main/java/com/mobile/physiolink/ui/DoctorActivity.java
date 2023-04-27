@@ -2,23 +2,22 @@ package com.mobile.physiolink.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ActivityDoctorBinding;
-import com.mobile.physiolink.ui.doctor.Appointments_Fragment;
-import com.mobile.physiolink.ui.doctor.DoctorHomeFragment;
-import com.mobile.physiolink.ui.doctor.DoctorPatientsFragment;
-import com.mobile.physiolink.ui.doctor.DoctorServicesFragment;
 
 public class DoctorActivity extends AppCompatActivity
 {
     private ActivityDoctorBinding binding;
-
-    private final DoctorHomeFragment doctorHomeFragment = new DoctorHomeFragment();
-    private final Appointments_Fragment appointmentsFragment = new Appointments_Fragment();
-    private final DoctorServicesFragment doctorServicesFragment = new DoctorServicesFragment();
-    private final DoctorPatientsFragment doctorPatientsFragment = new DoctorPatientsFragment();
+    private AppBarConfiguration appBarConfiguration;
 
     @Override
     public void onCreate(Bundle savedInstanceBundle)
@@ -27,30 +26,26 @@ public class DoctorActivity extends AppCompatActivity
         binding = ActivityDoctorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        /* Home Fragment */
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new DoctorHomeFragment())
-                .commit();
+        /* Setup Navigation with top level destinations */
+        NavController navController = Navigation.findNavController(this, R.id.container);
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 
-        binding.bottomNavigation.setOnItemSelectedListener(item ->
+        /* AppBar Configuration */
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.bottomNavigation, navController, false);
+
+        /* Pop backstack after every navigation bar click */
+        binding.bottomNavigation.setOnItemSelectedListener((item) ->
         {
-            switch (item.getItemId())
-            {
-                case R.id.home:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, doctorHomeFragment).commit();
-                    return true;
-                case R.id.appointment:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, appointmentsFragment).commit();
-                    return true;
-                case R.id.services:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, doctorServicesFragment).commit();
-                    return true;
-                case R.id.patients:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, doctorPatientsFragment).commit();
-                    return true;
-            }
+            navController.popBackStack();
+            navController.navigate(item.getItemId());
+            return true;
+        });
 
-            return false;
+        /* Hide the back button from the header */
+        navController.addOnDestinationChangedListener((oNavController, navDestination, bundle) ->
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         });
     }
 }

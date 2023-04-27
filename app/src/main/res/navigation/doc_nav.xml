@@ -7,5 +7,21 @@
     <fragment
         android:id="@+id/doctorHomeFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorHomeFragment"
-        android:label="DoctorHomeFragment" />
+        android:label="DoctorHomeFragment"
+        tools:layout="@layout/fragment_doctor_home" />
+    <fragment
+        android:id="@+id/doctorAppointmentsFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorAppointmentsFragment"
+        android:label="fragment_doctor_appointments"
+        tools:layout="@layout/fragment_doctor_appointments" />
+    <fragment
+        android:id="@+id/doctorPatientsFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorPatientsFragment"
+        android:label="fragment_doctor_patients"
+        tools:layout="@layout/fragment_doctor_patients" />
+    <fragment
+        android:id="@+id/doctorServicesFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorServicesFragment"
+        android:label="fragment_doctor_services"
+        tools:layout="@layout/fragment_doctor_services" />
 </navigation>
