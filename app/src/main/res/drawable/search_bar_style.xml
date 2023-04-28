@@ -4,4 +4,5 @@
     <stroke android:color="@color/input_grey"
         android:width="1dp" />
     <solid android:color="@color/white"/>
+    <size android:height="50dp"/>
 </shape>

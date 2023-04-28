@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:orientation="horizontal"
-    android:background="@drawable/list_item_style">
+    android:background="@drawable/list_item_style"
+    android:baselineAligned="false">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="80">
+        android:layout_weight="80"
+        android:paddingLeft="10dp">
 
         <TextView
             android:id="@+id/patientNameDoctor"
