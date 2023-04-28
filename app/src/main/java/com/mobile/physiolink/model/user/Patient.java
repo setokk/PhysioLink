@@ -7,7 +7,7 @@ public class Patient extends User
     private String email;
     private String phoneNumber;
     private String address;
-    private long doctor_id;
+    private long doctorId;
     private String amka;
 
     public Patient(long id,
@@ -18,7 +18,7 @@ public class Patient extends User
                   String email,
                   String phoneNumber,
                   String amka,
-                  String address, long doctor_id)
+                  String address, long doctorId)
     {
         super(id, username, type);
 
@@ -28,7 +28,7 @@ public class Patient extends User
         this.phoneNumber = phoneNumber;
         this.amka = amka;
         this.address = address;
-        this.doctor_id = doctor_id;
+        this.doctorId = doctorId;
     }
 
     public Patient(long id,

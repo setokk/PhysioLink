@@ -4,6 +4,7 @@ import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.model.user.User;
 import com.mobile.physiolink.service.api.API;
+import com.mobile.physiolink.service.api.Error;
 import com.mobile.physiolink.service.api.RequestFacade;
 
 import org.json.JSONException;
@@ -90,6 +91,6 @@ public class UserAuth
     private static boolean validCredentials(JSONObject json)
     {
         // message: "Invalid credentials" JSON response -> not valid credentials
-        return !json.toString().contains("Invalid credentials");
+        return !json.toString().contains(Error.INVALID_CREDENTIALS);
     }
 }
