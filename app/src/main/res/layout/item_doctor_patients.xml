@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+    android:background="@drawable/list_item_style">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="80">
+
+        <TextView
+            android:id="@+id/patientNameDoctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Onoma"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/patientSurnameDoctor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/patientSurnameDoctor"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/patientSurnameDoctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Epitheto"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/patientNameDoctor"
+            app:layout_constraintLeft_toRightOf="@+id/patientNameDoctor"
+            app:layout_constraintTop_toTopOf="@+id/patientNameDoctor" />
+
+        <TextView
+            android:id="@+id/AMKA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AMKA:"
+            app:layout_constraintBottom_toBottomOf="@+id/AMKApatientDoctor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/AMKApatientDoctor"
+            app:layout_constraintTop_toBottomOf="@+id/patientNameDoctor" />
+
+        <TextView
+            android:id="@+id/AMKApatientDoctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="0101995555"
+            app:layout_constraintBottom_toBottomOf="@+id/AMKA"
+            app:layout_constraintStart_toEndOf="@+id/AMKA"
+            app:layout_constraintTop_toTopOf="@+id/AMKA" />
+
+        <TextView
+            android:id="@+id/phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kinito Thlefwno"
+            app:layout_constraintBottom_toBottomOf="@+id/phoneNumberPatientDoctor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/phoneNumberPatientDoctor"
+            app:layout_constraintTop_toBottomOf="@+id/AMKA" />
+
+        <TextView
+            android:id="@+id/phoneNumberPatientDoctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="6912345678"
+            app:layout_constraintBottom_toBottomOf="@+id/phoneNumber"
+            app:layout_constraintStart_toEndOf="@+id/phoneNumber"
+            app:layout_constraintTop_toTopOf="@+id/phoneNumber" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
