@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_lime"
+    tools:context=".PatientHistory">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/HistoryFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_lime">
+
+        <TextView
+            android:id="@+id/history_bar"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@color/top_bar_color"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="Ιστορικο Οικονομικών κινήσεων"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.13" />
+
+        <EditText
+            android:id="@+id/history_search"
+            android:layout_width="302dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="29dp"
+            android:background="#FFFBFE"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:inputType="textPersonName"
+            android:text="Αναζήτηση"
+            android:textAlignment="gravity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/history_bar" />
+
+        <SearchView
+            android:layout_width="50dp"
+            android:layout_height="32dp"
+            app:layout_constraintBottom_toBottomOf="@+id/history_search"
+            app:layout_constraintEnd_toEndOf="@+id/history_search"
+            app:layout_constraintTop_toTopOf="@+id/history_search"
+            app:layout_constraintVertical_bias="0.52" />
+
+        <ScrollView
+            android:layout_width="378dp"
+            android:layout_height="417dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/history_search"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+
+        <!-- drawable/vector.xml -->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
