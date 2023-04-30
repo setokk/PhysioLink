@@ -13,37 +13,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
+
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/searchbar"
-            android:layout_width="337dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="31dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:ems="8"
-            android:fontFamily="sans-serif"
-            android:inputType="text"
+            android:layout_width="379dp"
+            android:layout_height="56dp"
+            android:queryHint="Search..."
+            android:background="@drawable/search"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp">
+            >
 
+            <EditText
+                android:id="@+id/search_src_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search..."
+                android:textColor="#000000"
+                android:textColorHint="#9E9E9E" />
 
-            android:hint="Αναζήτηση"
-            android:textSize="21sp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.538"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <SearchView
-
-            android:layout_width="50dp"
-            android:layout_height="32dp"
-            app:layout_constraintBottom_toBottomOf="@+id/searchbar"
-            app:layout_constraintEnd_toEndOf="@+id/searchbar"
-            app:layout_constraintTop_toTopOf="@+id/searchbar"
-            app:layout_constraintVertical_bias="0.52" />
-
+        </androidx.appcompat.widget.SearchView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerListView"
@@ -61,15 +50,13 @@
             android:id="@+id/new_pfisiotherapeftirio_button"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="70dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="44dp"
 
             android:background="@drawable/round_button"
             android:text="Δημιουργία Νέου  Φυσιοθεραπευτηρίου"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
