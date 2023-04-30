@@ -1,14 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.doctor.DoctorNewPatientFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/create_phisiotherapeftiria_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/background_lime"
+        tools:context=".ui.doctor.DoctorNewPatientFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/newPatientTitle"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/lighter_purple"
+            android:gravity="center"
+            android:text="Δημιουργία Νέου Ασθενή"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/patientDoctorPickProfilePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newPatientTitle"
+            tools:src="@drawable/profile_photo_picker" />
+
+        <TextView
+            android:id="@+id/patientInfoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Στοιχεία Ασθενή:"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientDoctorPickProfilePic" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/patientNameInput"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/white"
+            android:hint="Όνομα *"
+            android:paddingLeft="30dp"
+            android:textColor="@color/input_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientInfoTitle" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/patientSurnameInput"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/white"
+            android:hint="Επώνυμο *"
+            android:paddingLeft="30dp"
+            android:textColor="@color/input_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientNameInput" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/patientAmkaInput"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/white"
+            android:hint="ΑΜΚΑ *"
+            android:paddingLeft="30dp"
+            android:textColor="@color/input_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientSurnameInput" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/patientPhoneInput"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/white"
+            android:hint="Κινητό Τηλέφωνο *"
+            android:paddingLeft="30dp"
+            android:textColor="@color/input_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientAmkaInput" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/patientEmailInput"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/white"
+            android:hint="Email *"
+            android:paddingLeft="30dp"
+            android:textColor="@color/input_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientPhoneInput" />
+
+
+        <TextView
+            android:id="@+id/patientAccountInfoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Στοιχεία Λογαριασμού Ασθενή:"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientEmailInput" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/patientUsernameInput"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/white"
+            android:hint="Username *"
+            android:paddingLeft="30dp"
+            android:textColor="@color/input_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.441"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientAccountInfoTitle" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/patientPasswordInput"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/white"
+            android:hint="Password *"
+            android:paddingLeft="30dp"
+            android:textColor="@color/input_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.448"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientUsernameInput" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveNewPatientBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/button_purple"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="20dp"
+            android:paddingBottom="10dp"
+            android:text="Αποθήκευση"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientPasswordInput" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
