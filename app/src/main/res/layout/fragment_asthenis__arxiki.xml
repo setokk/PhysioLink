@@ -7,7 +7,7 @@
     tools:context=".Asthenis_ArxikiFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/PatientInitial"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#0DAB8B"
