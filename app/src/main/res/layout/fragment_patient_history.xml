@@ -37,7 +37,7 @@
             android:layout_marginStart="29dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="29dp"
-            android:background="#FFFBFE"
+            android:background="@drawable/round_style"
             android:ems="10"
             android:fontFamily="@font/roboto"
             android:inputType="textPersonName"
@@ -57,7 +57,7 @@
 
         <ScrollView
             android:id="@+id/scrollView2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="13dp"
             android:layout_marginTop="27dp"
@@ -74,7 +74,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <View
                         android:id="@+id/history_view_1"
@@ -82,7 +82,7 @@
                         android:layout_height="100dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:background="@color/navbar_white"
+                        android:background="@drawable/square_round_style"
                         app:layout_constraintBottom_toTopOf="@+id/history_view_2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -200,7 +200,7 @@
                         android:layout_width="334dp"
                         android:layout_height="112dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/navbar_white"
+                        android:background="@drawable/square_round_style"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/history_view_1" />
@@ -210,7 +210,7 @@
                         android:layout_width="334dp"
                         android:layout_height="112dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/navbar_white"
+                        android:background="@drawable/square_round_style"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/history_view_2" />
@@ -220,7 +220,7 @@
                         android:layout_width="334dp"
                         android:layout_height="112dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/navbar_white"
+                        android:background="@drawable/square_round_style"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/history_view_3" />
@@ -230,7 +230,7 @@
                         android:layout_width="334dp"
                         android:layout_height="112dp"
                         android:layout_marginTop="4dp"
-                        android:background="@color/navbar_white"
+                        android:background="@drawable/square_round_style"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/history_view_4" />
