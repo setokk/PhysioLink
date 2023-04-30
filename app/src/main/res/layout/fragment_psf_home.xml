@@ -22,10 +22,11 @@
 
     <ImageButton
         android:id="@+id/psf_imageButton_1"
+        android:contentDescription="Fysiotherapeythria"
         android:layout_width="331dp"
         android:layout_height="191dp"
         android:background="@drawable/images_border_radius"
-        android:backgroundTint="@color/material_dynamic_neutral30"
+        android:backgroundTint="@color/button_grey"
         android:paddingHorizontal="0dp"
         android:paddingVertical="0dp"
         android:scaleType="fitXY"
@@ -33,19 +34,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/psf_home_text_view" />
-
-    <ImageButton
-        android:id="@+id/psf_imageButton_2"
-        android:layout_width="331dp"
-        android:layout_height="191dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/images_border_radius"
-        android:backgroundTint="@color/material_dynamic_neutral30"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/psf_imageButton_1" />
 
     <ImageView
         android:id="@+id/psf_profile_pic"
@@ -60,6 +48,20 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/psf_imageButton_2"
+        android:contentDescription="Paroxes"
+        android:layout_width="331dp"
+        android:layout_height="191dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/images_border_radius"
+        android:backgroundTint="@color/button_grey"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/psf_imageButton_1" />
 
     <TextView
         android:id="@+id/textView_phisoterapeftiria"
