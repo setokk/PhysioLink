@@ -45,8 +45,8 @@
             app:layout_constraintVertical_bias="0.52" />
 
 
-        <ListView
-            android:id="@+id/customListView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerListView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
@@ -55,10 +55,9 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/searchbar"
-            app:layout_constraintVertical_bias="1.0"
-            tools:listitem="@layout/item_doc" />
+            app:layout_constraintVertical_bias="1.0" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/new_pfisiotherapeftirio_button"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
