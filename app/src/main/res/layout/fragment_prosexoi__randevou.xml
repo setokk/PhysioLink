@@ -7,7 +7,7 @@
     tools:context=".Prosexoi_RandevouFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/PatientInitial"
+        android:id="@+id/CurrentAppointmentScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#0DAB8B"
@@ -35,7 +35,7 @@
             app:layout_constraintVertical_bias="0.098" />
 
         <EditText
-            android:id="@+id/searchbarText"
+            android:id="@+id/CurrentAppointmentSearchbarText"
             android:layout_width="338dp"
             android:layout_height="50dp"
             android:background="@drawable/round_style"
@@ -53,9 +53,9 @@
         <SearchView
             android:layout_width="50dp"
             android:layout_height="32dp"
-            app:layout_constraintBottom_toBottomOf="@+id/searchbarText"
-            app:layout_constraintEnd_toEndOf="@+id/searchbarText"
-            app:layout_constraintTop_toTopOf="@+id/searchbarText"
+            app:layout_constraintBottom_toBottomOf="@+id/CurrentAppointmentSearchbarText"
+            app:layout_constraintEnd_toEndOf="@+id/CurrentAppointmentSearchbarText"
+            app:layout_constraintTop_toTopOf="@+id/CurrentAppointmentSearchbarText"
             app:layout_constraintVertical_bias="0.52" />
 
         <View
@@ -85,7 +85,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/ΙnΑbeyance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Σε Εκκρεμότητα"
