@@ -18,10 +18,23 @@
         android:id="@+id/doctorPatientsFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorPatientsFragment"
         android:label="fragment_doctor_patients"
-        tools:layout="@layout/fragment_doctor_patients" />
+        tools:layout="@layout/fragment_doctor_patients" >
+        <action
+            android:id="@+id/action_doctorPatientsFragment_to_doctorNewPatientFragment"
+            app:destination="@id/doctorNewPatientFragment" />
+    </fragment>
     <fragment
         android:id="@+id/doctorServicesFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorServicesFragment"
         android:label="fragment_doctor_services"
         tools:layout="@layout/fragment_doctor_services" />
+    <fragment
+        android:id="@+id/doctorNewPatientFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorNewPatientFragment"
+        android:label="fragment_doctor_new_patient"
+        tools:layout="@layout/fragment_doctor_new_patient" >
+        <action
+            android:id="@+id/action_doctorNewPatientFragment_to_doctorPatientsFragment"
+            app:destination="@id/doctorPatientsFragment" />
+    </fragment>
 </navigation>
