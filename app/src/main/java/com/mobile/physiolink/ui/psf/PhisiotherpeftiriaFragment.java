@@ -61,6 +61,9 @@ public class PhisiotherpeftiriaFragment extends Fragment {
         n2=getResources().getStringArray(R.array.doctorOfficeListExample);
         n3=getResources().getStringArray(R.array.doctorAddressListExample);
 
+        MyItemDecoration itemDecoration = new MyItemDecoration(20); // 20px spacing
+        doctorList.addItemDecoration(itemDecoration);
+
 
         PhysiotherapeftiriaCustomBaseAdapter myAdapter = new PhysiotherapeftiriaCustomBaseAdapter(this,n1,n2,n3);
         doctorList.setAdapter(myAdapter);
