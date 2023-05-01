@@ -8,58 +8,67 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 
-public class PhysiotherapeftiriaCustomBaseAdapter extends BaseAdapter {
+import org.w3c.dom.Text;
 
-    Context context;
+public class PhysiotherapeftiriaCustomBaseAdapter extends RecyclerView.Adapter<PhysiotherapeftiriaCustomBaseAdapter.MyViewHolder> {
+
+
     String listDoctorName[];
     String listDoctorOffice[];
     String listDoctorAddress[];
-    int listDoctorImg[];
-    LayoutInflater inflater;
 
-    public PhysiotherapeftiriaCustomBaseAdapter(PhisiotherpeftiriaFragment frgm, String [] doctorNameList, String [] physiotherapeftiria, String [] physiotherapeftiriaAddress, int [] doctorImages){
-        Context cxt = frgm.getContext();
-        this.listDoctorName=doctorNameList;
-        this.listDoctorOffice=physiotherapeftiria;
-        this.listDoctorAddress=physiotherapeftiriaAddress;
-        this.listDoctorImg=doctorImages;
-        inflater= LayoutInflater.from(cxt);
+    //int images[];
+
+
+
+    public PhysiotherapeftiriaCustomBaseAdapter(Fragment PhisiotherpeftiriaFragment, String n1[], String n2[], String n3[]){
+        Context ct =PhisiotherpeftiriaFragment.getContext();
+        listDoctorName=n1;
+        listDoctorOffice=n2;
+        listDoctorAddress=n3;
+        //images=doctorImages;
+
+
+    }
+
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View itemView = inflater.inflate(R.layout.item_doc,parent,false);
+        return new MyViewHolder(itemView);
     }
 
     @Override
-    public int getCount() {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.name.setText(listDoctorName[position]);
+        holder.office.setText(listDoctorOffice[position]);
+        holder.address.setText(listDoctorAddress[position]);
+       // holder.img.setImageResource(images[position]);
+
+    }
+
+    @Override
+    public int getItemCount() {
         return listDoctorName.length;
     }
 
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView name, office, address;
+        //ImageView img;
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            name= itemView.findViewById(R.id.doctorName);
+            office= itemView.findViewById(R.id.doctorOffice);
+            address= itemView.findViewById(R.id.doctorAddress);
+            //img=itemView.findViewById(R.id.doctorImage);
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        convertView = inflater.inflate(R.layout.item_doc, null);
-        TextView doctorNameView= (TextView) convertView.findViewById(R.id.doctorName);
-        TextView doctorOfficeView= (TextView) convertView.findViewById(R.id.doctorOffice);
-        TextView doctorAddressView= (TextView) convertView.findViewById(R.id.doctorAddress);
-        ImageView doctorImg = (ImageView) convertView.findViewById(R.id.doctorImage);
-        doctorNameView.setText(listDoctorName[position]);
-        doctorOfficeView.setText(listDoctorOffice[position]);
-        doctorAddressView.setText(listDoctorAddress[position]);
-        doctorImg.setImageResource(listDoctorImg[position]);
-
-        return convertView;
-
-
+        }
     }
 }

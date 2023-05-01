@@ -10,4 +10,35 @@
     <string name="welcome_text">Καλωσήρθες!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="doctoNameListExample">
+        <item>Γιώργος Παπαδόπουλος</item>
+        <item>Μαρία Παπανικολάου</item>
+        <item>Ιωάννης Δημητρίου</item>
+        <item>Μιχάλης Κατσουλάκης</item>
+        <item>Δήμητρα Κυριακοπούλου</item>
+        <item>Χρήστος Παπανδρέου</item>
+        <item>Κατερίνα Μαυρίδου</item>
+        <item>Απόστολος Αγαπίδης</item>
+    </string-array>
+    <string-array name="doctorOfficeListExample">
+        <item>Φυσιοθεραπευτήριο Αίολος</item>
+        <item>Φυσιοθεραπευτήριο Optimum</item>
+        <item>Φυσιοθεραπευτήριο Fantastic</item>
+        <item>Φυσιοθεραπευτήριο Cool</item>
+        <item>Φυσιοθεραπευτήριο Cool</item>
+        <item>Φυσιοθεραπευτήριο Wow</item>
+        <item>Φυσιοθεραπευτήριο Amazing</item>
+        <item>Φυσιοθεραπευτήριο Cute</item>
+    </string-array>
+    <string-array name="doctorAddressListExample">
+        <item>Αγίου Δημητρίου 45,Αττική, 23892</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823 </item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+    </string-array>
 </resources>
