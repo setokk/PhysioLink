@@ -16,13 +16,13 @@
         android:label="fragment_neo_rantevou_screen"
         tools:layout="@layout/fragment_neo_rantevou_screen" />
     <fragment
-        android:id="@+id/prosexoi_RandevouFragment"
-        android:name="com.mobile.physiolink.Prosexoi_RandevouFragment"
-        android:label="fragment_prosexoi__randevou"
-        tools:layout="@layout/fragment_prosexoi__randevou" />
-    <fragment
         android:id="@+id/epilogi_Imerominias_Screen"
         android:name="com.mobile.physiolink.ui.Epilogi_Imerominias_Screen"
         android:label="fragment_epilogi__imerominias__screen"
         tools:layout="@layout/fragment_epilogi__imerominias__screen" />
+    <fragment
+        android:id="@+id/currentAppointmentFragment2"
+        android:name="com.mobile.physiolink.ui.CurrentAppointmentFragment"
+        android:label="fragment_current_appointment"
+        tools:layout="@layout/fragment_current_appointment" />
 </navigation>
