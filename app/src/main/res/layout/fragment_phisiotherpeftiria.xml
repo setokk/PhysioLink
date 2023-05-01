@@ -67,6 +67,7 @@
         android:layout_marginBottom="31dp"
         android:background="@drawable/round_style"
         android:backgroundTint="@color/button_purple"
+
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:paddingBottom="1dp"

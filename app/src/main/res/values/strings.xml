@@ -41,4 +41,44 @@
         <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
         <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
     </string-array>
+    <string-array name="paroxesNameExample">
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη </item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+    </string-array>
+    <string-array name="paroxesIdExamle">
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+    </string-array>
+    <string-array name="paroxesCostExamle">
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+    </string-array>
+    <string-array name="paroxesDescriptionExamle">
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+    </string-array>
 </resources>

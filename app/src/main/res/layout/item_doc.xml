@@ -79,7 +79,6 @@
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/edit"
 
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
