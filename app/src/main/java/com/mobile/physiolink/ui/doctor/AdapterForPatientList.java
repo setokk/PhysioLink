@@ -17,8 +17,8 @@ import com.mobile.physiolink.R;
 public class AdapterForPatientList extends RecyclerView.Adapter<AdapterForPatientList.MyViewHolder> {
     String data1[],data2[],data3[],data4[];
 
-    public AdapterForPatientList(Fragment doctorPatientsFragment, String s1[], String s2[], String s3[], String s4[]){
-        Context ct = doctorPatientsFragment.getContext();
+    public AdapterForPatientList(Context ct, String s1[], String s2[], String s3[], String s4[]){
+        Context context = ct;
         data1=s1;
         data2=s2;
         data3=s3;

@@ -49,7 +49,7 @@ public class DoctorPatientsFragment extends Fragment
         s3=getResources().getStringArray(R.array.patientListExampleAMKA);
         s4=getResources().getStringArray(R.array.patientListExamplePhone);
 
-        AdapterForPatientList myAdapter = new AdapterForPatientList(this,s1,s2,s3,s4);
+        AdapterForPatientList myAdapter = new AdapterForPatientList(this.getContext(),s1,s2,s3,s4);
         patientList.setAdapter(myAdapter);
         patientList.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
