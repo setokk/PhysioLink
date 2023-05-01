@@ -16,8 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 import androidx.fragment.app.Fragment;
@@ -33,7 +31,7 @@ public class PhisiotherpeftiriaFragment extends Fragment {
     String physiotherapeftiriaAddress[]={"Αγίου Δημητρίου 45, Αττική, 23892","Κρατερού 13, Θεσσαλονίκη, 56823","Κρατερού 13, Θεσσαλονίκη, 56823","Κρατερού 13, Θεσσαλονίκη, 56823","Κρατερού 13, Θεσσαλονίκη, 56823","Κρατερού 13, Θεσσαλονίκη, 56823"};
     int doctorImages[] = {R.drawable.giorgos,R.drawable.maria,R.drawable.ioannis,R.drawable.michalis,R.drawable.dimitra,R.drawable.christos};
 
-    RecyclerView recyclerView;
+    ListView listView;
 
 
     private FragmentPhisiotherpeftiriaBinding binding;
@@ -61,10 +59,10 @@ public class PhisiotherpeftiriaFragment extends Fragment {
         });
         super.onCreate(savedInstanceState);
         binding = FragmentPhisiotherpeftiriaBinding.inflate(inflater, container, false);
-        recyclerView = binding.recyclerListView;
-        PhysiotherapeftiriaCustomBaseAdapter customBaseAdapter = new PhysiotherapeftiriaCustomBaseAdapter(this.getContext(),doctorNameList,physiotherapeftiria,physiotherapeftiriaAddress,doctorImages);
+        listView = binding.customListView;
+        PhysiotherapeftiriaCustomBaseAdapter customBaseAdapter = new PhysiotherapeftiriaCustomBaseAdapter(this,doctorNameList,physiotherapeftiria,physiotherapeftiriaAddress,doctorImages);
 
-        recyclerView.setAdapter(customBaseAdapter);
+        listView.setAdapter(customBaseAdapter);
 
 
         return binding.getRoot();

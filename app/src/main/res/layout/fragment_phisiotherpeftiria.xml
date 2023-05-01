@@ -8,7 +8,7 @@
     tools:context=".ui.psf.PhisiotherpeftiriaFragment" >
 
 
-    <androidx.appcompat.widget.SearchView
+    <SearchView
         android:id="@+id/searchbar"
         android:layout_width="379dp"
         android:layout_height="56dp"
@@ -19,7 +19,8 @@
         android:queryHint="Αναζήτηση"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recyclerListView">
 
 
         <EditText
@@ -30,10 +31,10 @@
             android:textColor="#000000"
             android:textColorHint="#9E9E9E" />
 
-    </androidx.appcompat.widget.SearchView>
+    </SearchView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerListView"
+    <ListView
+        android:id="@+id/customListView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -45,9 +46,9 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="256dp"
-        android:layout_height="77dp"
+        android:id="@+id/newPfisiotherapeftirioButton"
+        android:layout_width="214dp"
+        android:layout_height="72dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/round_style"
