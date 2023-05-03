@@ -27,7 +27,7 @@ public class AdapterForAppointmentsList extends RecyclerView.Adapter <AdapterFor
 
     @NonNull
     @Override
-    public com.mobile.physiolink.ui.doctor.AdapterForAppointmentsList.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterForAppointmentsList.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_doctor_appointment,parent,false);
         return new MyViewHolder(view);
