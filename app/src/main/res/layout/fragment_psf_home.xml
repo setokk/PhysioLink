@@ -22,11 +22,10 @@
 
     <ImageButton
         android:id="@+id/psf_imageButton_1"
-        android:contentDescription="Fysiotherapeythria"
         android:layout_width="331dp"
         android:layout_height="191dp"
-        android:background="@drawable/images_border_radius"
-        android:backgroundTint="@color/button_grey"
+        android:background="@drawable/clinic_photo_psf"
+        android:contentDescription="Clinic"
         android:paddingHorizontal="0dp"
         android:paddingVertical="0dp"
         android:scaleType="fitXY"
@@ -42,21 +41,20 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/round_style"
-        android:backgroundTint="@color/design_default_color_error"
         app:layout_constraintBottom_toTopOf="@+id/psf_home_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/michalis" />
 
     <ImageButton
         android:id="@+id/psf_imageButton_2"
-        android:contentDescription="Paroxes"
         android:layout_width="331dp"
         android:layout_height="191dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/images_border_radius"
-        android:backgroundTint="@color/button_grey"
+        android:background="@drawable/services_photo_psf"
+        android:contentDescription="Servecis"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
