@@ -40,6 +40,7 @@
                 android:backgroundTint="@color/white"
                 android:gravity="top"
                 android:hint="@string/DescriptionHint"
+                android:inputType="textNoSuggestions"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
@@ -100,6 +101,7 @@
                 android:background="@drawable/round_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/NameHint"
+                android:inputType="textNoSuggestions"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
@@ -130,6 +132,7 @@
                 android:background="@drawable/round_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/codeString"
+                android:inputType="textNoSuggestions"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
