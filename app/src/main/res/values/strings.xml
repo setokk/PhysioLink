@@ -3,6 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="btn_login_text">Συνδεση</string>
     <string name="home_label">Αρχική</string>
+    <string name="profil_label">Προφίλ</string>
+    <string name="settings_label">Ρυθμίσεις</string>
     <string name="input_username">Username</string>
     <string name="input_password">Password</string>
     <string name="hint_username">Username</string>
@@ -15,10 +17,15 @@
     <string name="CreateNewService">Δημιουργία Νέας Παροχής</string>
     <string name="ServiceDetails">Στοιχεία Παροχής:</string>
     <string name="NameHint">Όνομα *</string>
+    <string name="LastNameHint">Επώνυμο *</string>
+    <string name="AfmHint">ΑΦΜ *</string>
+    <string name="PhoneHint">Κινητό</string>
+    <string name="CityHint">Πόλη *</string>
+    <string name="AddressHint">Διεύθυνση *</string>
+    <string name="CreateNewClinic">Δημιουργία Νέου Φυσιοθεραπευτηρίου</string>
     <string name="ServiceDescription">Περιγραφή Παροχής :</string>
     <string name="SaveString">Αποθήκευση</string>
-    <string name="CodeHint">Κωδικός *</string>
-    <string name="DurationHint">Διάρκεια (σε λεπτά)</string>
+    <string name="DurationHint">Διάρκεια (σε λεπτά) *</string>
     <string name="DescriptionHint">Περιγραφή *</string>
 
     <string-array name="doctoNameListExample">

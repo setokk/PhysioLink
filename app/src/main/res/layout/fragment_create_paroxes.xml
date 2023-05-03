@@ -18,8 +18,9 @@
             android:id="@+id/ServiceDescriptionInputLayout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="87dp"
-            android:orientation="vertical"
+            android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:counterMaxLength="20"
@@ -27,7 +28,6 @@
             app:helperText="Υποχρεωτικό *"
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ServiceDurationInputLayout"
             app:hintEnabled="false">
@@ -38,12 +38,11 @@
                 android:layout_height="150dp"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint="@string/DescriptionHint"
                 android:gravity="top"
-                android:paddingStart="25dp"
-                android:paddingEnd="0dp"
-                android:textColor="@color/input_grey"
-                android:textSize="20sp" />
+                android:hint="@string/DescriptionHint"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -56,6 +55,7 @@
             android:text="@string/CreateNewService"
             android:textColor="@color/white"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -69,6 +69,7 @@
             android:text="@string/ServiceDetails"
             android:textColor="@color/white"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,97 +79,91 @@
             android:id="@+id/ServiceNameInputLayout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
-            android:orientation="vertical"
+            android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:counterMaxLength="20"
             app:endIconMode="clear_text"
+            app:helperTextEnabled="true"
             app:helperText="Υποχρεωτικό *"
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ServiceDetailsTextView">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ServiceNameInput"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/NameHint"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
-                android:textColor="@color/input_grey"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ServiceIdInputLayout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
-            android:orientation="vertical"
+            android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:counterMaxLength="20"
             app:endIconMode="clear_text"
             app:helperText="Υποχρεωτικό *"
+            app:helperTextEnabled="true"
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ServiceNameInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ServiceIdInput"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
                 android:backgroundTint="@color/white"
-                android:hint="@string/CodeHint"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
-                android:textColor="@color/input_grey"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:hint="@string/codeString"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ServiceDurationInputLayout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
-            android:orientation="vertical"
+            android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:counterMaxLength="20"
             app:endIconMode="clear_text"
             app:helperText="Υποχρεωτικό *"
+            app:helperTextEnabled="true"
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ServiceIdInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ServiceDurationInput"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/DurationHint"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
-                android:textColor="@color/input_grey"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey"
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -179,6 +174,7 @@
             android:text="@string/ServiceDescription"
             android:textColor="@color/white"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ServiceDurationInputLayout" />
@@ -187,8 +183,8 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="80dp"
             android:background="@drawable/round_style"
             android:backgroundTint="@color/button_purple"
             android:paddingHorizontal="30dp"
@@ -197,6 +193,7 @@
             android:text="@string/SaveString"
             android:textColor="@color/white"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
