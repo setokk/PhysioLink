@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/list_item_style">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/servicesInfoConstraint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/servicePriceDoctor"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/serviceNameDoctor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Onoma"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/serviceDescriptionDoctor"/>
+
+        <TextView
+            android:id="@+id/serviceDescriptionDoctor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Perigrafh perifragh perigrafh perigrafh perigrafh perifragh perigrafh perigrafh perigrafh"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/serviceNameDoctor" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/servicePriceDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="40"
+        android:textSize="20sp"
+        android:textColor="@color/button_purple"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/servicesInfoConstraint"
+        app:layout_constraintRight_toLeftOf="@id/serviceCurrencySymbolDoctor"/>
+    <TextView
+        android:id="@+id/serviceCurrencySymbolDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="€"
+        android:textSize="20sp"
+        android:textColor="@color/button_purple"
+        android:layout_marginRight="20dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/servicePriceDoctor"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/servicePriceDoctor"
+        app:layout_constraintBottom_toBottomOf="@id/servicePriceDoctor"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,5 +59,25 @@
         <item>6934567890</item>
         <item>6934567890</item>
     </string-array>
+    <string-array name="servicesListExampleDescription">
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+    </string-array>
+    <string-array name="servicesListExamplePrices">
+        <item>40</item>
+        <item>60</item>
+        <item>55</item>
+        <item>35</item>
+        <item>40</item>
+        <item>40</item>
+        <item>50</item>
+        <item>55</item>
+    </string-array>
 
 </resources>

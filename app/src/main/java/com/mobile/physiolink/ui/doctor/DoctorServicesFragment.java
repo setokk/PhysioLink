@@ -1,19 +1,27 @@
 package com.mobile.physiolink.ui.doctor;
-
+// TODO Na ginei katallhlh allagh tou arxeiou molis ginei h diasyndesh me ta dedomena ths bashs
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.mobile.physiolink.R;
 
 import com.mobile.physiolink.databinding.FragmentDoctorServicesBinding;
 
 public class DoctorServicesFragment extends Fragment
 {
+    RecyclerView servicesList;
+    String s1[],s2[],s3[];
     private FragmentDoctorServicesBinding binding;
 
     @Override
@@ -35,5 +43,17 @@ public class DoctorServicesFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        servicesList = view.findViewById(R.id.servicesListDoctor);
+
+        s1=getResources().getStringArray(R.array.patientListExampleName);
+        s2=getResources().getStringArray(R.array.servicesListExampleDescription);
+        s3=getResources().getStringArray(R.array.servicesListExamplePrices);
+
+        DoctorMyItemDecoration itemDecoration = new DoctorMyItemDecoration(20); // 20px spacing
+        servicesList.addItemDecoration(itemDecoration);
+
+        DoctorAdapterForServicesList myAdapter = new DoctorAdapterForServicesList(this.getContext(),s1,s2,s3);
+        servicesList.setAdapter(myAdapter);
+        servicesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 }

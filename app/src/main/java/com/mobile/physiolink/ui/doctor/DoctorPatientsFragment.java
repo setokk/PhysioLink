@@ -49,6 +49,9 @@ public class DoctorPatientsFragment extends Fragment
         s3=getResources().getStringArray(R.array.patientListExampleAMKA);
         s4=getResources().getStringArray(R.array.patientListExamplePhone);
 
+        DoctorMyItemDecoration itemDecoration = new DoctorMyItemDecoration(20); // 20px spacing
+        patientList.addItemDecoration(itemDecoration);
+
         AdapterForPatientList myAdapter = new AdapterForPatientList(this.getContext(),s1,s2,s3,s4);
         patientList.setAdapter(myAdapter);
         patientList.setLayoutManager(new LinearLayoutManager(this.getContext()));

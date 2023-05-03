@@ -6,29 +6,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_lime"
-        tools:context=".ui.doctor.DoctorPatientsFragment"
->
+        tools:context=".ui.doctor.DoctorPatientsFragment">
 
 
-        <SearchView
-            android:id="@+id/SearchViewPatientsDoctor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/search_bar_style"
-            android:queryHint="Search here.."
-            app:layout_constraintBottom_toTopOf="@id/patientsListDoctor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <SearchView
+        android:id="@+id/SearchViewPatientsDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/search_bar_style"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/patientsListDoctor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:queryHint="Αναζήτηση.."/>
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/patientsListDoctor"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,12 +40,12 @@
 
         <Button
             android:id="@+id/newPatientBtn"
-            android:layout_width="180dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/rounded_button"
-            android:text="Dimiourgia Neou Astheni"
+            android:text="Δημιουργία Νέου Ασθενή"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
