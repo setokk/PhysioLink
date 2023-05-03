@@ -14,13 +14,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.mobile.physiolink.R;
-import com.mobile.physiolink.databinding.FragmentParohesBinding;
-import com.mobile.physiolink.databinding.FragmentPhisiotherpeftiriaBinding;
+import com.mobile.physiolink.databinding.FragmentServicesBinding;
+import com.mobile.physiolink.databinding.FragmentClinicBinding;
 
 
-public class ParohesFragment extends Fragment {
+public class ServicesFragment extends Fragment {
 
-    private FragmentParohesBinding binding;
+    private FragmentServicesBinding binding;
 
     RecyclerView paroxesList;
     String k1[],k2[],k3[],k4[];
@@ -38,7 +38,7 @@ public class ParohesFragment extends Fragment {
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        binding = FragmentParohesBinding.inflate(inflater, container, false);
+        binding = FragmentServicesBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -57,7 +57,7 @@ public class ParohesFragment extends Fragment {
         paroxesList.addItemDecoration(itemDecoration);
 
 
-        ParoxesCustomBaseAdapter adapter = new ParoxesCustomBaseAdapter(this,k1,k2,k3,k4);
+        ServicesCustomBaseAdapter adapter = new ServicesCustomBaseAdapter(this,k1,k2,k3,k4);
         paroxesList.setAdapter(adapter);
         paroxesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
 

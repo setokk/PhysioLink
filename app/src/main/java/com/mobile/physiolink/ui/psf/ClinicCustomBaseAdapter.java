@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 
-import org.w3c.dom.Text;
-
-public class PhysiotherapeftiriaCustomBaseAdapter extends RecyclerView.Adapter<PhysiotherapeftiriaCustomBaseAdapter.MyViewHolder> {
+public class ClinicCustomBaseAdapter extends RecyclerView.Adapter<ClinicCustomBaseAdapter.MyViewHolder> {
 
 
     String listDoctorName[];
@@ -27,7 +23,7 @@ public class PhysiotherapeftiriaCustomBaseAdapter extends RecyclerView.Adapter<P
 
 
 
-    public PhysiotherapeftiriaCustomBaseAdapter(Fragment PhisiotherpeftiriaFragment, String n1[], String n2[], String n3[]){
+    public ClinicCustomBaseAdapter(Fragment PhisiotherpeftiriaFragment, String n1[], String n2[], String n3[]){
         Context ct =PhisiotherpeftiriaFragment.getContext();
         listDoctorName=n1;
         listDoctorOffice=n2;

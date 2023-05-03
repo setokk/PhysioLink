@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 
-public class ParoxesCustomBaseAdapter extends RecyclerView.Adapter<ParoxesCustomBaseAdapter.MyViewHolder> {
+public class ServicesCustomBaseAdapter extends RecyclerView.Adapter<ServicesCustomBaseAdapter.MyViewHolder> {
 
 
     String listParoxesName[];
@@ -22,7 +22,7 @@ public class ParoxesCustomBaseAdapter extends RecyclerView.Adapter<ParoxesCustom
 
 
 
-    public ParoxesCustomBaseAdapter(Fragment ParoxesFragment, String k1[], String k2[], String k3[], String k4[]){
+    public ServicesCustomBaseAdapter(Fragment ParoxesFragment, String k1[], String k2[], String k3[], String k4[]){
         Context ct =ParoxesFragment.getContext();
         listParoxesName=k1;
         listParoxesId=k2;
@@ -36,7 +36,7 @@ public class ParoxesCustomBaseAdapter extends RecyclerView.Adapter<ParoxesCustom
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.item_paroxes,parent,false);
+        View itemView = inflater.inflate(R.layout.item_services,parent,false);
         return new MyViewHolder(itemView);
     }
 

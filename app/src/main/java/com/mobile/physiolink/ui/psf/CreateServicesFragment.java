@@ -8,15 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mobile.physiolink.R;
-import com.mobile.physiolink.databinding.FragmentCreateParoxesBinding;
+import com.mobile.physiolink.databinding.FragmentCreateServicesBinding;
 
 
-public class CreateParoxesFragment extends Fragment {
+public class CreateServicesFragment extends Fragment {
 
-    private FragmentCreateParoxesBinding binding;
+    private FragmentCreateServicesBinding binding;
 
-    public CreateParoxesFragment() {
+    public CreateServicesFragment() {
         // Required empty public constructor
     }
 
@@ -30,7 +29,7 @@ public class CreateParoxesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentCreateParoxesBinding.inflate(inflater, container, false);
+        binding = FragmentCreateServicesBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
     }
