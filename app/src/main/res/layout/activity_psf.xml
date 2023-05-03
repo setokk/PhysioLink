@@ -8,6 +8,7 @@
     android:foregroundGravity="center_vertical"
     app:layout_anchorGravity="center_horizontal|center_vertical">
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_psf"
         android:layout_width="0dp"
