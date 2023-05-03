@@ -11,14 +11,14 @@
         android:id="@+id/upcoming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="168dp"
         android:backgroundTint="@color/button_purple"
         android:fontFamily="@font/roboto_bold"
         android:text="Προσεχή ραντεβού"
         android:textAllCaps="false"
         app:cornerRadius="30dp"
         app:layout_constraintEnd_toStartOf="@+id/all"
-        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,12 +40,20 @@
         app:strokeColor="@color/button_purple"
         app:strokeWidth="5dp" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/recyclerViewApp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="189dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

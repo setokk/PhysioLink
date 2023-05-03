@@ -4,17 +4,25 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorHomeBinding;
 
 
 public class DoctorHomeFragment extends Fragment
 {
+    RecyclerView appointmentList;
+    String sN[], sS[], sT[], sService[];
+
+
+
     private FragmentDoctorHomeBinding binding;
 
     public DoctorHomeFragment()
@@ -42,5 +50,16 @@ public class DoctorHomeFragment extends Fragment
                               @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+
+        appointmentList = view.findViewById(R.id.recyclerViewApp);
+
+        sN = getResources().getStringArray(R.array.patientListExampleName);
+        sS = getResources().getStringArray(R.array.patientListExampleSurnmaeame);
+        sT = getResources().getStringArray(R.array.appointmentTime);
+        sService = getResources().getStringArray(R.array.appointmentsService);
+
+        AdapterForAppointmentsList adapter = new AdapterForAppointmentsList(this,sN,sS,sT,sService);
+        appointmentList.setAdapter(adapter);
+        appointmentList.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 }
