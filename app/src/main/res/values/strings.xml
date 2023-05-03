@@ -35,8 +35,7 @@
         <item>Μιχάλης Κατσουλάκης</item>
         <item>Δήμητρα Κυριακοπούλου</item>
         <item>Χρήστος Παπανδρέου</item>
-        <item>Κατερίνα Μαυρίδου</item>
-        <item>Απόστολος Αγαπίδης</item>
+
     </string-array>
     <string-array name="doctorOfficeListExample">
         <item>Φυσιοθεραπευτήριο Αίολος</item>
@@ -45,8 +44,7 @@
         <item>Φυσιοθεραπευτήριο Cool</item>
         <item>Φυσιοθεραπευτήριο Cool</item>
         <item>Φυσιοθεραπευτήριο Wow</item>
-        <item>Φυσιοθεραπευτήριο Amazing</item>
-        <item>Φυσιοθεραπευτήριο Cute</item>
+
     </string-array>
     <string-array name="doctorAddressListExample">
         <item>Αγίου Δημητρίου 45,Αττική, 23892</item>
@@ -55,8 +53,7 @@
         <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
         <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
         <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
-        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
-        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+
     </string-array>
     <string-array name="paroxesNameExample">
         <item>Αθλητική Μάλαξη</item>
