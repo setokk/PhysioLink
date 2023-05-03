@@ -38,13 +38,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/SearchViewPatientsDoctor" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/newPatientBtn"
+            android:padding="10dp"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/rounded_button"
+            android:textColor="@color/white"
             android:text="Δημιουργία Νέου Ασθενή"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"

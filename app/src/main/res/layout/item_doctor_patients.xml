@@ -7,17 +7,16 @@
     android:layout_height="80dp"
     android:background="@drawable/list_item_style">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/patientDoctorProfilePic"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        tools:srcCompat="@tools:sample/avatars"
+        android:src="@drawable/boy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/patientInfoConstraint"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:scaleType="centerCrop"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

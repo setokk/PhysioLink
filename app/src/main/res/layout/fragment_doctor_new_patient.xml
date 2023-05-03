@@ -18,7 +18,7 @@
         <TextView
             android:id="@+id/newPatientTitle"
             android:layout_width="0dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             android:layout_marginTop="40dp"
             android:background="@color/lighter_purple"
             android:gravity="center"
@@ -36,7 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newPatientTitle"
             tools:src="@drawable/profile_photo_picker" />
@@ -57,7 +56,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/patientNameInput"
             android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="17dp"
             android:background="@drawable/round_style"
             android:backgroundTint="@color/white"
@@ -71,7 +70,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/patientSurnameInput"
             android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="17dp"
             android:background="@drawable/round_style"
             android:backgroundTint="@color/white"
@@ -86,7 +85,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/patientAmkaInput"
             android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="17dp"
             android:background="@drawable/round_style"
             android:backgroundTint="@color/white"
@@ -101,7 +100,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/patientPhoneInput"
             android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="17dp"
             android:background="@drawable/round_style"
             android:backgroundTint="@color/white"
@@ -116,7 +115,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/patientEmailInput"
             android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="17dp"
             android:background="@drawable/round_style"
             android:backgroundTint="@color/white"
@@ -144,7 +143,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/patientUsernameInput"
             android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="17dp"
             android:background="@drawable/round_style"
             android:backgroundTint="@color/white"
@@ -152,14 +151,13 @@
             android:paddingLeft="30dp"
             android:textColor="@color/input_grey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.441"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/patientAccountInfoTitle" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/patientPasswordInput"
             android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="17dp"
             android:background="@drawable/round_style"
             android:backgroundTint="@color/white"
@@ -167,7 +165,6 @@
             android:paddingLeft="30dp"
             android:textColor="@color/input_grey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.448"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/patientUsernameInput" />
 
@@ -177,12 +174,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:layout_marginBottom="80dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/button_purple"
+            android:background="@drawable/rounded_button"
             android:paddingHorizontal="30dp"
             android:paddingVertical="20dp"
             android:paddingBottom="10dp"
             android:text="Αποθήκευση"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
