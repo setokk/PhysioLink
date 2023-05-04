@@ -19,8 +19,7 @@ import com.mobile.physiolink.databinding.FragmentDoctorHomeBinding;
 public class DoctorHomeFragment extends Fragment
 {
     RecyclerView appointmentList;
-    String sN[], sS[], sT[], sService[];
-
+    String[] sN, sS, sT, sService;
 
 
     private FragmentDoctorHomeBinding binding;
@@ -52,7 +51,6 @@ public class DoctorHomeFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
 
         appointmentList = view.findViewById(R.id.recyclerViewApp);
-
         sN = getResources().getStringArray(R.array.patientListExampleName);
         sS = getResources().getStringArray(R.array.patientListExampleSurnmaeame);
         sT = getResources().getStringArray(R.array.appointmentTime);
