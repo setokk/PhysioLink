@@ -2,9 +2,12 @@ package com.mobile.physiolink.ui.doctor;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +29,17 @@ public class DoctorNewPatientFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        /* On back button pressed, Go back to patients fragment */
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.container);
+                navController.navigate(R.id.action_doctorNewPatientFragment_to_doctorPatientsFragment);
+            }
+        });
     }
 
     @Override
