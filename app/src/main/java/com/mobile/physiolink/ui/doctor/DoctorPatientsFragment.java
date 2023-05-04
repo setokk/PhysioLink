@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorPatientsBinding;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatientList;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatients;
 import com.mobile.physiolink.ui.doctor.decoration.DecorationDoctorItem;
 
 public class DoctorPatientsFragment extends Fragment
@@ -53,7 +53,7 @@ public class DoctorPatientsFragment extends Fragment
         DecorationDoctorItem itemDecoration = new DecorationDoctorItem(20); // 20px spacing
         patientList.addItemDecoration(itemDecoration);
 
-        AdapterForPatientList myAdapter = new AdapterForPatientList(this.getContext(),s1,s2,s3,s4);
+        AdapterForPatients myAdapter = new AdapterForPatients(this.getContext(),s1,s2,s3,s4);
         patientList.setAdapter(myAdapter);
         patientList.setLayoutManager(new LinearLayoutManager(this.getContext()));
 

@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 
-public class AdapterForPatientList extends RecyclerView.Adapter<AdapterForPatientList.MyViewHolder> {
+public class AdapterForPatients extends RecyclerView.Adapter<AdapterForPatients.MyViewHolder> {
     String data1[],data2[],data3[],data4[];
 
-    public AdapterForPatientList(Context ct, String s1[], String s2[], String s3[], String s4[]){
+    public AdapterForPatients(Context ct, String s1[], String s2[], String s3[], String s4[]){
         Context context = ct;
         data1=s1;
         data2=s2;
