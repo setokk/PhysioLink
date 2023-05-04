@@ -22,7 +22,6 @@ public class DoctorHomeFragment extends Fragment
     RecyclerView appointmentList;
     String[] sN, sS, sT, sService;
 
-
     private FragmentDoctorHomeBinding binding;
 
     public DoctorHomeFragment()
