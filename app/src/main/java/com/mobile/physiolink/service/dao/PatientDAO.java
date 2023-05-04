@@ -69,15 +69,15 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema, Patient>
     public Patient[] getPatientsOf(Long doctorId) throws IOException, JSONException
     {
         String response = RequestFacade.getRequest(API.GET_PATIENTS_OF + doctorId)
-                .toString();
+                .body().string();
 
         /* Check if server sent back that this doctor has no patients */
-        JSONObject obj = new JSONObject(response);
-        if (obj.toString().contains(Error.PATIENTS_NOT_FOUND))
+        JSONObject res = new JSONObject(response);
+        if (res.toString().contains(Error.PATIENTS_NOT_FOUND))
             return new Patient[0];
 
         /* Get JSON patients array and return a Patient array */
-        JSONArray array = obj.getJSONArray("patients");
+        JSONArray array = res.getJSONArray("patients");
         Patient[] patients = new Patient[array.length()];
         for (int i = 0; i < array.length(); i++)
         {
