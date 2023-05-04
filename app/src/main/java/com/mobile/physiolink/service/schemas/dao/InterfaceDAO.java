@@ -1,4 +1,4 @@
-package com.mobile.physiolink.service.dao;
+package com.mobile.physiolink.service.schemas.dao;
 
 import java.io.IOException;
 

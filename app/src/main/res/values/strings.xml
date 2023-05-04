@@ -103,4 +103,42 @@
         <item>Μάλαξη</item>
     </string-array>
 
+    <!-- TODO Diagrafi twn parakatw arrays otan ginei syndesi me tin vasi, dhmiourgithikan gia testing-->
+    <string-array name="requestListExampleName">
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+    </string-array>
+    <string-array name="requestListExampleSurname">
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+    </string-array>
+    <string-array name="requestListExampleAMKA">
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+    </string-array>
+    <string-array name="requestListExampleDate">
+        <item>04/04/2023</item>
+        <item>05/04/2023</item>
+        <item>06/04/2023</item>
+    </string-array>
+    <string-array name="requestListExampleTime">
+        <item>14:00</item>
+        <item>14:30</item>
+        <item>15:00</item>
+    </string-array>
+    <string-array name="requestListExampleProblem">
+        <item>Πόνος στο δεξί χέρι</item>
+        <item>Πόνος στην μέση</item>
+        <item>Πιάσιμο στον αυχένα</item>
+    </string-array>
+    <string-array name="requestListExampleRequestTime">
+        <item>10:00</item>
+        <item>10:30</item>
+        <item>19:00</item>
+    </string-array>
+
+
 </resources>
