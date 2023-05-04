@@ -11,22 +11,22 @@
         android:id="@+id/upcoming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/button_purple"
         android:fontFamily="@font/roboto_bold"
         android:text="Προσεχή ραντεβού"
         android:textAllCaps="false"
         app:cornerRadius="30dp"
-        app:layout_constraintEnd_toStartOf="@+id/all"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.306" />
+
 
     <Button
         android:id="@+id/all"
         android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/roboto_bold"
         android:text="Όλα"
@@ -35,25 +35,60 @@
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toEndOf="@+id/upcoming"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245"
+        app:layout_constraintVertical_bias="0.306"
         app:strokeColor="@color/button_purple"
         app:strokeWidth="5dp" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewApp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="189dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-    </ScrollView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upcoming" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appointRequestBtn"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
+        android:text="Νέα Αιτήματα"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/profileImg"
+        android:layout_width="103dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/boy"
+        app:layout_constraintBottom_toTopOf="@+id/upcoming"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.492" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Kαλωσήρθες Εμμανουήλ"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toEndOf="@+id/profileImg"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
