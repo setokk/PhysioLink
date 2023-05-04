@@ -1,4 +1,4 @@
-package com.mobile.physiolink.ui.doctor;
+package com.mobile.physiolink.ui.doctor.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,12 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
+import com.mobile.physiolink.ui.doctor.DoctorHomeFragment;
 
-public class AdapterForAppointmentsList extends RecyclerView.Adapter <AdapterForAppointmentsList.MyViewHolder> {
+public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder> {
 
     String d1[], d2[], d3[], d4[];
 
-    public AdapterForAppointmentsList(DoctorHomeFragment fragment_doctor_home, String[] d1, String[] d2, String[] d3, String[] d4) {
+    public AdapterForAppointments(DoctorHomeFragment fragment_doctor_home, String[] d1, String[] d2, String[] d3, String[] d4) {
 
         Context context = fragment_doctor_home.getContext();
         this.d1 = d1;
@@ -27,7 +28,7 @@ public class AdapterForAppointmentsList extends RecyclerView.Adapter <AdapterFor
 
     @NonNull
     @Override
-    public AdapterForAppointmentsList.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterForAppointments.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_doctor_appointment,parent,false);
         return new MyViewHolder(view);
@@ -39,7 +40,7 @@ public class AdapterForAppointmentsList extends RecyclerView.Adapter <AdapterFor
     }
 
     @Override
-    public void onBindViewHolder(@NonNull com.mobile.physiolink.ui.doctor.AdapterForAppointmentsList.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterForAppointments.MyViewHolder holder, int position) {
 
 
         holder.tvName.setText(d1[position]);

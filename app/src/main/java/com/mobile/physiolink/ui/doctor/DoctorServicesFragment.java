@@ -5,18 +5,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.mobile.physiolink.R;
 
 import com.mobile.physiolink.databinding.FragmentDoctorServicesBinding;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
+import com.mobile.physiolink.ui.doctor.decoration.DecorationDoctorItem;
 
 public class DoctorServicesFragment extends Fragment
 {
@@ -49,10 +49,10 @@ public class DoctorServicesFragment extends Fragment
         s2=getResources().getStringArray(R.array.servicesListExampleDescription);
         s3=getResources().getStringArray(R.array.servicesListExamplePrices);
 
-        DoctorMyItemDecoration itemDecoration = new DoctorMyItemDecoration(20); // 20px spacing
+        DecorationDoctorItem itemDecoration = new DecorationDoctorItem(20); // 20px spacing
         servicesList.addItemDecoration(itemDecoration);
 
-        DoctorAdapterForServicesList myAdapter = new DoctorAdapterForServicesList(this.getContext(),s1,s2,s3);
+        AdapterForDoctorServices myAdapter = new AdapterForDoctorServices(this.getContext(),s1,s2,s3);
         servicesList.setAdapter(myAdapter);
         servicesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
