@@ -17,9 +17,9 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
 
     String d1[], d2[], d3[], d4[];
 
-    public AdapterForAppointments(DoctorHomeFragment fragment_doctor_home, String[] d1, String[] d2, String[] d3, String[] d4) {
+    public AdapterForAppointments(Context ct, String[] d1, String[] d2, String[] d3, String[] d4) {
 
-        Context context = fragment_doctor_home.getContext();
+        Context context = ct;
         this.d1 = d1;
         this.d2 = d2;
         this.d3 = d3;
