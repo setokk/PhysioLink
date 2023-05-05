@@ -16,14 +16,16 @@ import com.mobile.physiolink.ui.doctor.DoctorHomeFragment;
 public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder> {
 
     String d1[], d2[], d3[], d4[];
+    private boolean displayAllItems;
 
-    public AdapterForAppointments(Context ct, String[] d1, String[] d2, String[] d3, String[] d4) {
+    public AdapterForAppointments(Context ct, String[] d1, String[] d2, String[] d3, String[] d4, int recyclerViewId) {
 
         Context context = ct;
         this.d1 = d1;
         this.d2 = d2;
         this.d3 = d3;
         this.d4 = d4;
+        this.displayAllItems= recyclerViewId==R.id.appointmentsListAllDoctor;
     }
 
     @NonNull
@@ -36,10 +38,10 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
 
     @Override
     public int getItemCount() {
-        if (true) {
-            return Math.min(d1.length, 3);
-        } else {
+        if (displayAllItems) {
             return d1.length;
+        } else {
+            return Math.min(d1.length, 3);
         }
     }
 

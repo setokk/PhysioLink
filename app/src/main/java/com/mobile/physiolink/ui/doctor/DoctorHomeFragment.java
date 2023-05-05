@@ -60,7 +60,7 @@ public class DoctorHomeFragment extends Fragment
         DecorationDoctorItem itemDecoration = new DecorationDoctorItem(20); // 20px spacing
         appointmentList.addItemDecoration(itemDecoration);
 
-        AdapterForAppointments adapter = new AdapterForAppointments(this.getContext(),sN,sS,sT,sService);
+        AdapterForAppointments adapter = new AdapterForAppointments(this.getContext(),sN,sS,sT,sService,R.id.recyclerViewApp);
         appointmentList.setAdapter(adapter);
         appointmentList.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
