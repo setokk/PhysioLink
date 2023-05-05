@@ -1,0 +1,156 @@
+<resources>
+    <string name="app_name">PhysioLink</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="btn_login_text">Συνδεση</string>
+    <string name="home_label">Αρχική</string>
+    <string name="input_username">Username</string>
+    <string name="input_password">Password</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="home_hello">Καλωσήρθες,</string>
+    <string name="doctor_appointments">Προσεχή Ραντεβού</string>
+    <string name="doctor_patients">Οι Ασθενείς μου</string>
+    <string name="doctor_provisions">Οι Παροχές μου</string>
+    <string name="doctor_requests">Νέα Αιτήματα</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_female_patient">Mαρία Δολεσίδου</string>
+    <string name="name_male_patient">Γιώργος Φασκέλας</string>
+    <string name="malaxi_service_text">Μάλαξη</string>
+
+    <!-- TODO: Diagrafi twn parakatw arrays, dimiourgithikan gia na fanei optika h lista twn asthenwn tou giatrou, na ginei diafrafi molis ginei h diasyndesi me ta dedomena ths bashs-->
+    <string-array name="patientListExampleName">
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+    </string-array>
+    <string-array name="patientListExampleSurnmaeame">
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+    </string-array>
+    <string-array name="patientListExampleAMKA">
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+    </string-array>
+    <string-array name="patientListExamplePhone">
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+    </string-array>
+    <string-array name="servicesListExampleDescription">
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+    </string-array>
+
+    <string-array name="servicesPatientHistoryListExampleDate">
+        <item>10/08/23</item>
+        <item>10/07/23</item>
+        <item>10/06/23</item>
+        <item>10/05/23</item>
+        <item>10/04/23</item>
+        <item>10/03/23</item>
+        <item>10/02/23</item>
+        <item>10/01/23</item>
+    </string-array>
+
+    <string-array name="servicesListExamplePrices">
+        <item>40</item>
+        <item>60</item>
+        <item>55</item>
+        <item>35</item>
+        <item>40</item>
+        <item>40</item>
+        <item>50</item>
+        <item>55</item>
+    </string-array>
+
+    <!--  TODO: Delete the following data after database is ready -->
+    <string-array name="appointmentTime">
+        <item>18.00 - 19.00</item>
+        <item>19.00 - 20.00</item>
+        <item>18.00 - 17.00</item>
+        <item>15.00 - 17.00</item>
+        <item>18.30 - 19.00</item>
+        <item>18.00 - 17.00</item>
+        <item>16.00 - 17.00</item>
+        <item>15.00 - 15.30</item>
+    </string-array>
+
+    <string-array name="appointmentsService">
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+    </string-array>
+
+    <!-- TODO Diagrafi twn parakatw arrays otan ginei syndesi me tin vasi, dhmiourgithikan gia testing-->
+    <string-array name="requestListExampleName">
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+    </string-array>
+    <string-array name="requestListExampleSurname">
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+    </string-array>
+    <string-array name="requestListExampleAMKA">
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+    </string-array>
+    <string-array name="requestListExampleDate">
+        <item>04/04/2023</item>
+        <item>05/04/2023</item>
+        <item>06/04/2023</item>
+    </string-array>
+    <string-array name="requestListExampleTime">
+        <item>14:00</item>
+        <item>14:30</item>
+        <item>15:00</item>
+    </string-array>
+    <string-array name="requestListExampleProblem">
+        <item>Πόνος στο δεξί χέρι</item>
+        <item>Πόνος στην μέση</item>
+        <item>Πιάσιμο στον αυχένα</item>
+    </string-array>
+    <string-array name="requestListExampleRequestTime">
+        <item>10:00</item>
+        <item>10:30</item>
+        <item>19:00</item>
+    </string-array>
+
+
+</resources>
