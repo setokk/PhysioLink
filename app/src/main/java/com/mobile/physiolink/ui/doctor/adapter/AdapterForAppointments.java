@@ -36,8 +36,13 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
 
     @Override
     public int getItemCount() {
-        return d1.length;
+        if (true) {
+            return Math.min(d1.length, 3);
+        } else {
+            return d1.length;
+        }
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull AdapterForAppointments.MyViewHolder holder, int position) {

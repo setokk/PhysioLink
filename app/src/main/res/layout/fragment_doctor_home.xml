@@ -46,6 +46,7 @@
         android:id="@+id/recyclerViewApp"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="12dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,6 +66,7 @@
         android:textColor="@color/white"
         android:text="Νέα Αιτήματα"
         android:textAllCaps="false"
+        android:drawableLeft="@drawable/inquiry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -87,6 +89,7 @@
         android:text="Kαλωσήρθες Εμμανουήλ"
         android:textColor="@color/white"
         android:fontFamily="@font/roboto"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toEndOf="@+id/profileImg"

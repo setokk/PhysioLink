@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorHomeBinding;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
+import com.mobile.physiolink.ui.doctor.decoration.DecorationDoctorItem;
 
 
 public class DoctorHomeFragment extends Fragment
@@ -55,6 +56,9 @@ public class DoctorHomeFragment extends Fragment
         sS = getResources().getStringArray(R.array.patientListExampleSurnmaeame);
         sT = getResources().getStringArray(R.array.appointmentTime);
         sService = getResources().getStringArray(R.array.appointmentsService);
+
+        DecorationDoctorItem itemDecoration = new DecorationDoctorItem(20); // 20px spacing
+        appointmentList.addItemDecoration(itemDecoration);
 
         AdapterForAppointments adapter = new AdapterForAppointments(this,sN,sS,sT,sService);
         appointmentList.setAdapter(adapter);
