@@ -45,6 +45,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
+        android:drawableLeft="@drawable/baseline_add_24"
         android:textColor="@color/white"
         android:text="Προσθήκη Νέας Παροχής"
         android:textAllCaps="false"
