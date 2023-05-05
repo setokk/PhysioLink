@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_doctorPatientsFragment_to_doctorNewPatientFragment"
             app:destination="@id/doctorNewPatientFragment" />
+        <action
+            android:id="@+id/action_doctorPatientsFragment_to_doctorPatientHistoryFragment"
+            app:destination="@id/doctorPatientHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorServicesFragment"
@@ -35,6 +38,15 @@
         tools:layout="@layout/fragment_doctor_new_patient" >
         <action
             android:id="@+id/action_doctorNewPatientFragment_to_doctorPatientsFragment"
+            app:destination="@id/doctorPatientsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorPatientHistoryFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorPatientHistoryFragment"
+        android:label="fragment_doctor_patient_history"
+        tools:layout="@layout/fragment_doctor_patient_history" >
+        <action
+            android:id="@+id/action_doctorPatientHistoryFragment_to_doctorPatientsFragment"
             app:destination="@id/doctorPatientsFragment" />
     </fragment>
 </navigation>

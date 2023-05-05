@@ -14,4 +14,5 @@
     <color name="input_grey">#999999</color>
     <color name="card_text_color">#49454F</color>
     <color name="request_green">#cee9dd</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

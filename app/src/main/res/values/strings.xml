@@ -69,6 +69,18 @@
         <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
         <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
     </string-array>
+
+    <string-array name="servicesPatientHistoryListExampleDate">
+        <item>10/08/23</item>
+        <item>10/07/23</item>
+        <item>10/06/23</item>
+        <item>10/05/23</item>
+        <item>10/04/23</item>
+        <item>10/03/23</item>
+        <item>10/02/23</item>
+        <item>10/01/23</item>
+    </string-array>
+
     <string-array name="servicesListExamplePrices">
         <item>40</item>
         <item>60</item>

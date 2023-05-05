@@ -61,5 +61,10 @@ public class DoctorPatientsFragment extends Fragment
                 Navigation.findNavController(getActivity(), R.id.container)
                         .navigate(R.id.action_doctorPatientsFragment_to_doctorNewPatientFragment));
 
+        binding.tempHistoryBtn.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.container)
+                        .navigate(R.id.action_doctorPatientsFragment_to_doctorPatientHistoryFragment));
+
+
     }
 }
