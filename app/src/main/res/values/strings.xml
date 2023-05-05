@@ -151,6 +151,91 @@
         <item>10:30</item>
         <item>19:00</item>
     </string-array>
+	 <string name="welcome_text">Καλωσήρθες!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="codeString">Κωδικός *</string>
+    <string name="durationText">Διάρκεια (σε λεπτά)</string>
+    <string name="CreateNewService">Δημιουργία Νέας Παροχής</string>
+    <string name="ServiceDetails">Στοιχεία Παροχής:</string>
+    <string name="NameHint">Όνομα *</string>
+    <string name="LastNameHint">Επώνυμο *</string>
+    <string name="AfmHint">ΑΦΜ *</string>
+    <string name="PhoneHint">Κινητό</string>
+    <string name="CityHint">Πόλη *</string>
+    <string name="AddressHint">Διεύθυνση *</string>
+    <string name="CreateNewClinic">Δημιουργία Νέου Φυσιοθεραπευτηρίου</string>
+    <string name="ServiceDescription">Περιγραφή Παροχής :</string>
+    <string name="SaveString">Αποθήκευση</string>
+    <string name="DurationHint">Διάρκεια (σε λεπτά) *</string>
+    <string name="DescriptionHint">Περιγραφή *</string>
 
+    <string-array name="doctoNameListExample">
+        <item>Γιώργος Παπαδόπουλος</item>
+        <item>Μαρία Παπανικολάου</item>
+        <item>Ιωάννης Δημητρίου</item>
+        <item>Μιχάλης Κατσουλάκης</item>
+        <item>Δήμητρα Κυριακοπούλου</item>
+        <item>Χρήστος Παπανδρέου</item>
+
+    </string-array>
+    <string-array name="doctorOfficeListExample">
+        <item>Φυσιοθεραπευτήριο Αίολος</item>
+        <item>Φυσιοθεραπευτήριο Optimum</item>
+        <item>Φυσιοθεραπευτήριο Fantastic</item>
+        <item>Φυσιοθεραπευτήριο Cool</item>
+        <item>Φυσιοθεραπευτήριο Cool</item>
+        <item>Φυσιοθεραπευτήριο Wow</item>
+
+    </string-array>
+    <string-array name="doctorAddressListExample">
+        <item>Αγίου Δημητρίου 45,Αττική, 23892</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823 </item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+
+    </string-array>
+    <string-array name="paroxesNameExample">
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη </item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+    </string-array>
+    <string-array name="paroxesIdExamle">
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+    </string-array>
+    <string-array name="paroxesCostExamle">
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+    </string-array>
+    <string-array name="paroxesDescriptionExamle">
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+    </string-array>
 
 </resources>

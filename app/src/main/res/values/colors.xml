@@ -15,4 +15,5 @@
     <color name="card_text_color">#49454F</color>
     <color name="request_green">#cee9dd</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="button_grey">#454749</color>
 </resources>
