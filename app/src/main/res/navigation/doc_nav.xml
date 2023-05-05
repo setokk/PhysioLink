@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/doc_nav"
+    app:startDestination="@id/doctorHomeFragment">
+    <fragment
+        android:id="@+id/doctorHomeFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorHomeFragment"
+        android:label="DoctorHomeFragment"
+        tools:layout="@layout/fragment_doctor_home" />
+    <fragment
+        android:id="@+id/doctorAppointmentsFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorAppointmentsFragment"
+        android:label="fragment_doctor_appointments"
+        tools:layout="@layout/fragment_doctor_appointments" />
+    <fragment
+        android:id="@+id/doctorPatientsFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorPatientsFragment"
+        android:label="fragment_doctor_patients"
+        tools:layout="@layout/fragment_doctor_patients" >
+        <action
+            android:id="@+id/action_doctorPatientsFragment_to_doctorNewPatientFragment"
+            app:destination="@id/doctorNewPatientFragment" />
+        <action
+            android:id="@+id/action_doctorPatientsFragment_to_doctorPatientHistoryFragment"
+            app:destination="@id/doctorPatientHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorServicesFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorServicesFragment"
+        android:label="fragment_doctor_services"
+        tools:layout="@layout/fragment_doctor_services" />
+    <fragment
+        android:id="@+id/doctorNewPatientFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorNewPatientFragment"
+        android:label="fragment_doctor_new_patient"
+        tools:layout="@layout/fragment_doctor_new_patient" >
+        <action
+            android:id="@+id/action_doctorNewPatientFragment_to_doctorPatientsFragment"
+            app:destination="@id/doctorPatientsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorPatientHistoryFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorPatientHistoryFragment"
+        android:label="fragment_doctor_patient_history"
+        tools:layout="@layout/fragment_doctor_patient_history" >
+        <action
+            android:id="@+id/action_doctorPatientHistoryFragment_to_doctorPatientsFragment"
+            app:destination="@id/doctorPatientsFragment" />
+    </fragment>
+</navigation>

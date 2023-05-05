@@ -1,18 +1,25 @@
 package com.mobile.physiolink;
 
-import static com.mobile.physiolink.model.validator.LoginInputValidator.validateUser;
+import static com.mobile.physiolink.service.validator.UserAuth.authenticateUser;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mobile.physiolink.model.user.User;
 import com.mobile.physiolink.databinding.ActivityLoginBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.api.API;
+import com.mobile.physiolink.service.validator.UserAuth;
 import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
 import com.mobile.physiolink.ui.PatientActivity;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity
@@ -26,7 +33,15 @@ public class LoginActivity extends AppCompatActivity
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btnLogin.setOnClickListener((view) -> validateCredentialsAndNavigate());
+        binding.btnLogin.setOnClickListener((view) ->
+        {
+            try
+            {
+                validateCredentialsAndNavigate();
+            }
+            catch (IOException | InterruptedException | JSONException ignored)
+            { Toast.makeText(this, "Προέκυψε ένα σφάλμα. Ελέγξτε την σύνδεση σας στο διαδίκτυο και δοκιμάστε ξανά!", Toast.LENGTH_SHORT).show(); }
+        });
     }
 
     /**
@@ -38,21 +53,28 @@ public class LoginActivity extends AppCompatActivity
      * of user logged in (if the attempt was successful).
      * <br><br>
      * If not successful, it displays a popup window with an error message.
-     * @see com.mobile.physiolink.model.validator.LoginInputValidator
+     * @see UserAuth
      */
-    private void validateCredentialsAndNavigate()
+    private void validateCredentialsAndNavigate() throws IOException, InterruptedException, JSONException
     {
         /* Get and sanitize credentials */
-        String username = Objects.requireNonNull(binding.editTextUsername.getText())
-                .toString()
-                .replaceAll(" ", ""); // Remove whitespaces
+        String username = Objects.requireNonNull(binding.editTextUsername.getText()).toString().trim();
+        String password = Objects.requireNonNull(binding.editTextPassword.getText()).toString();
 
-        String password = Objects.requireNonNull(binding.editTextPassword.getText())
-                .toString()
-                .replaceAll(" ", ""); // Remove whitespaces;
+        if (username.isEmpty() || password.isEmpty())
+        {
+            Toast.makeText(this, "Δεν επιτρέπονται κενά πεδία!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (username.contains(" ") || password.contains(" "))
+        {
+            Toast.makeText(this, "Δεν επιτρέπονται κενά στα πεδία!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         /* Validate credentials */
-        User user = validateUser(username, password);
+        User user = authenticateUser(username, password);
         if (user.isValid())
         {
             Intent intent;
@@ -63,10 +85,16 @@ public class LoginActivity extends AppCompatActivity
             else
                 intent = new Intent(this, PatientActivity.class);
 
-            /* Pass user to home activity */
-            intent.putExtra("user", user);
+            Toast.makeText(this, "Επιτυχής Σύνδεση!", Toast.LENGTH_SHORT).show();
+
+            /* Pass user to UserHolder static class */
+            UserHolder.setInstance(user);
             startActivity(intent);
             finish();
+        }
+        else
+        {
+            Toast.makeText(this, "Λάθος στοιχεία χρήστη", Toast.LENGTH_SHORT).show();
         }
     }
 }
