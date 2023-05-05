@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="90dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imageview1"
+                android:layout_width="70dp"
+                android:layout_height="65dp"
+                app:cardCornerRadius="60dp"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="70dp"
+                    android:layout_height="65dp"
+                    android:scaleType="centerCrop"></ImageView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/appointment_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                app:layout_constraintStart_toEndOf="@+id/imageview1"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="17.00 - 18.00"
+                android:textColor="@color/background_lime"
+                android:textSize="16dp"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/appointment_patient_text"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@+id/appointment_time_text"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/name_male_patient"
+                android:textColor="@color/card_text_color"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageview1"
+                app:layout_constraintTop_toBottomOf="@+id/appointment_time_text"
+                app:layout_constraintVertical_bias="0.051"></TextView>
+
+            <TextView
+                android:id="@+id/appointment_service_text"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@+id/appointment_patient_text"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/malaxi_service_text"
+                android:textColor="@color/button_purple"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageview1"
+                app:layout_constraintTop_toBottomOf="@+id/appointment_patient_text"
+                app:layout_constraintVertical_bias="0.0"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

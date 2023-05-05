@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_lime"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.doctor.DoctorPatientHistoryFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/patientHistoryInfoDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/button_purple">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/patientHistoryInfoBasicConstraintDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/patientHistoryProfilePicDoctor"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/boy"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/patientHistoryNameInfoConstraint"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/patientHistoryNameInfoConstraint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="15dp"
+                app:layout_constraintLeft_toRightOf="@id/patientHistoryProfilePicDoctor"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/patientHistoryNameTitleDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Όνομα:"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/patientHistoryNameDoctor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/patientHistoryNameDoctor"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/patientHistoryNameDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Εμμανουήλ"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/patientHistoryNameTitleDoctor"
+                    app:layout_constraintLeft_toRightOf="@+id/patientHistoryNameTitleDoctor"
+                    app:layout_constraintTop_toTopOf="@+id/patientHistoryNameTitleDoctor" />
+
+                <TextView
+                    android:id="@+id/patientHistorySurnameTitleDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Επίθετο:"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/patientHistorySurnameDoctor"
+                    app:layout_constraintLeft_toLeftOf="@id/patientHistoryNameTitleDoctor"
+                    app:layout_constraintRight_toLeftOf="@+id/patientHistorySurnameDoctor"
+                    app:layout_constraintTop_toBottomOf="@+id/patientHistoryNameDoctor" />
+
+                <TextView
+                    android:id="@+id/patientHistorySurnameDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="Ρουμελιώτης"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/patientHistorySurnameTitleDoctor"
+                    app:layout_constraintStart_toEndOf="@+id/patientHistorySurnameTitleDoctor"
+                    app:layout_constraintTop_toBottomOf="@+id/patientHistoryNameTitleDoctor" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/patientHistoryInfoDownBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/baseline_arrow_drop_down_24"
+                android:text="."
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/patientHistoryNameInfoConstraint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/patientHistoryNameInfoConstraint" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/patientHistoryMoreInfoDoctorConstraint"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                app:layout_constraintTop_toBottomOf="@id/patientHistoryProfilePicDoctor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/amkaTitlePatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="AMKA:"
+                    app:layout_constraintBottom_toBottomOf="@+id/amkaPatientHistoryDoctor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/amkaPatientHistoryDoctor"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/amkaPatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="5dp"
+                    android:text="0101995555"
+                    app:layout_constraintBottom_toBottomOf="@+id/amkaTitlePatientHistoryDoctor"
+                    app:layout_constraintStart_toEndOf="@+id/amkaTitlePatientHistoryDoctor"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/phoneTitlePatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="Κινητό Τηλέφωνο:"
+                    app:layout_constraintBottom_toBottomOf="@+id/phonePatientHistoryDoctor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/phonePatientHistoryDoctor"
+                    app:layout_constraintTop_toBottomOf="@+id/amkaTitlePatientHistoryDoctor" />
+
+                <TextView
+                    android:id="@+id/phonePatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="5dp"
+                    android:text="6912345678"
+                    app:layout_constraintBottom_toBottomOf="@+id/phoneTitlePatientHistoryDoctor"
+                    app:layout_constraintStart_toEndOf="@+id/phoneTitlePatientHistoryDoctor"
+                    app:layout_constraintTop_toTopOf="@+id/phoneTitlePatientHistoryDoctor" />
+
+                <TextView
+                    android:id="@+id/emailTitlePatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="Email:"
+                    app:layout_constraintBottom_toBottomOf="@+id/emailPatientHistoryDoctor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/emailPatientHistoryDoctor"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneTitlePatientHistoryDoctor" />
+
+                <TextView
+                    android:id="@+id/emailPatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="5dp"
+                    android:text="example@gmail.com"
+                    app:layout_constraintBottom_toBottomOf="@+id/emailTitlePatientHistoryDoctor"
+                    app:layout_constraintStart_toEndOf="@+id/emailTitlePatientHistoryDoctor"
+                    app:layout_constraintTop_toTopOf="@+id/emailTitlePatientHistoryDoctor" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/editInfoBtnPatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:drawableLeft="@drawable/baseline_edit_24"
+                    android:text="Επεξεργασία"
+                    android:textAllCaps="false"
+                    android:textColor="@color/input_grey"
+                    android:textSize="12sp"
+                    android:textStyle="italic|normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emailTitlePatientHistoryDoctor" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/servicesTitlePatientHistoryDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@id/patientHistoryInfoDoctor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/servicesListPatientHistoryDoctor"
+        android:text="Ιστορικό Συνεδριών:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/servicesListPatientHistoryDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/servicesTitlePatientHistoryDoctor"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
