@@ -93,7 +93,6 @@
         android:textColor="@color/white"
         android:textSize="16dp"
         android:fontFamily="@font/roboto_bold"
-        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toEndOf="@+id/profileImg"
