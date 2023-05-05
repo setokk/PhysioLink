@@ -70,7 +70,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImg"
         android:layout_width="103dp"
         android:layout_height="101dp"
@@ -79,7 +79,10 @@
         app:layout_constraintBottom_toTopOf="@+id/upcoming"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintVertical_bias="0.492"
+        app:civ_border_width="3dp"
+        app:civ_border_color="@color/button_purple"
+        />
 
     <TextView
         android:id="@+id/textView2"
@@ -88,7 +91,8 @@
         android:layout_marginTop="80dp"
         android:text="Kαλωσήρθες Εμμανουήλ"
         android:textColor="@color/white"
-        android:fontFamily="@font/roboto"
+        android:textSize="16dp"
+        android:fontFamily="@font/roboto_bold"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
