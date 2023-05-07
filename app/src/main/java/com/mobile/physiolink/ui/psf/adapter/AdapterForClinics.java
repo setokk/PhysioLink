@@ -1,4 +1,4 @@
-package com.mobile.physiolink.ui.psf;
+package com.mobile.physiolink.ui.psf.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 
-public class ClinicCustomBaseAdapter extends RecyclerView.Adapter<ClinicCustomBaseAdapter.MyViewHolder> {
-
+public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.MyViewHolder>
+{
 
     String listDoctorName[];
     String listDoctorOffice[];
@@ -23,7 +23,7 @@ public class ClinicCustomBaseAdapter extends RecyclerView.Adapter<ClinicCustomBa
 
 
 
-    public ClinicCustomBaseAdapter(Fragment PhisiotherpeftiriaFragment, String n1[], String n2[], String n3[]){
+    public AdapterForClinics(Fragment PhisiotherpeftiriaFragment, String n1[], String n2[], String n3[]){
         Context ct =PhisiotherpeftiriaFragment.getContext();
         listDoctorName=n1;
         listDoctorOffice=n2;

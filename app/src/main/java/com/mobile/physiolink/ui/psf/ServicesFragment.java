@@ -15,16 +15,15 @@ import android.widget.Button;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentServicesBinding;
-import com.mobile.physiolink.databinding.FragmentClinicBinding;
+import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.psf.adapter.AdapterForServices;
 
 
 public class ServicesFragment extends Fragment {
 
     private FragmentServicesBinding binding;
 
-    RecyclerView paroxesList;
     String k1[],k2[],k3[],k4[];
-
 
 
     @Override
@@ -46,28 +45,22 @@ public class ServicesFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        paroxesList = view.findViewById(R.id.customListViewParoxes);
 
         k1=getResources().getStringArray(R.array.paroxesNameExample);
         k2=getResources().getStringArray(R.array.paroxesIdExamle);
         k3=getResources().getStringArray(R.array.paroxesCostExamle);
         k4=getResources().getStringArray(R.array.paroxesDescriptionExamle);
 
-        MyItemDecoration itemDecoration = new MyItemDecoration(20); // 20px spacing
-        paroxesList.addItemDecoration(itemDecoration);
+        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
+        binding.customListViewParoxes.addItemDecoration(itemDecoration);
 
 
-        ServicesCustomBaseAdapter adapter = new ServicesCustomBaseAdapter(this,k1,k2,k3,k4);
-        paroxesList.setAdapter(adapter);
-        paroxesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        AdapterForServices adapter = new AdapterForServices(this,k1,k2,k3,k4);
+        binding.customListViewParoxes.setAdapter(adapter);
+        binding.customListViewParoxes.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        Button goToNewParoxes = view.findViewById(R.id.newParoxesButton);
-        goToNewParoxes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        binding.newParoxesButton.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
-                        .navigate(R.id.action_parohesFragment_to_createParoxesFragment);
-            }
-        });
+                .navigate(R.id.action_parohesFragment_to_createParoxesFragment));
     }
 }

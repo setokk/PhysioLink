@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorAppointmentRequestsBinding;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForRequests;
 
-    public class DoctorAppointmentRequestsFragment extends Fragment {
+public class DoctorAppointmentRequestsFragment extends Fragment {
 
     RecyclerView requestList;
 
@@ -45,7 +46,7 @@ import com.mobile.physiolink.databinding.FragmentDoctorAppointmentRequestsBindin
         s6 = getResources().getStringArray(R.array.requestListExampleProblem);
         s7 = getResources().getStringArray(R.array.requestListExampleRequestTime);
 
-        AdapterForRequestsList adapter = new AdapterForRequestsList(this,s1,s2,s3,s4,s5,s6,s7);
+        AdapterForRequests adapter = new AdapterForRequests(this,s1,s2,s3,s4,s5,s6,s7);
         requestList.setAdapter(adapter);
         requestList.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }

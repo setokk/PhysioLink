@@ -18,16 +18,16 @@ package com.mobile.physiolink.service.api;
  */
 public final class API
 {
-    public static final String IP = "192.168.1.3";
+    public static final String IP = "192.168.1.8";
     public static final String URL = "http://" + IP  + ":3000/physiolink/api";
 
     /* User auth related API endpoint */
     public static final String AUTH_USER = API.URL + "/auth/log-in";
 
     /* Provision related API endpoints */
-    public static final String CREATE_PROVISION = API.URL + "/provision/create";
-    public static final String EDIT_PROVISION = API.URL + "/provision/edit/";
-    public static final String GET_PROVISIONS = API.URL + "/provisions/get";
+    public static final String CREATE_SERVICE = API.URL + "/service/create";
+    public static final String EDIT_SERVICE = API.URL + "/service/edit/";
+    public static final String GET_SERVICES = API.URL + "/services/get";
 
     /* Doctor related API endpoints */
     public static final String CREATE_DOCTOR = API.URL + "/doctor/create";

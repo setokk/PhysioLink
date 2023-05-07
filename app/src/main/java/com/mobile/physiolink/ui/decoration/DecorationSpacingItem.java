@@ -1,15 +1,15 @@
-package com.mobile.physiolink.ui.psf;
+package com.mobile.physiolink.ui.decoration;
 
 import android.graphics.Rect;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyItemDecoration extends RecyclerView.ItemDecoration {
+public class DecorationSpacingItem extends RecyclerView.ItemDecoration {
 
     private int spacing;
 
-    public MyItemDecoration(int spacing) {
+    public DecorationSpacingItem(int spacing) {
         this.spacing = spacing;
     }
 

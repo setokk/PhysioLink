@@ -1,4 +1,4 @@
-package com.mobile.physiolink.ui.psf;
+package com.mobile.physiolink.ui.psf.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 
-public class ServicesCustomBaseAdapter extends RecyclerView.Adapter<ServicesCustomBaseAdapter.MyViewHolder> {
+public class AdapterForServices extends RecyclerView.Adapter<AdapterForServices.MyViewHolder> {
 
 
     String listParoxesName[];
@@ -22,7 +22,7 @@ public class ServicesCustomBaseAdapter extends RecyclerView.Adapter<ServicesCust
 
 
 
-    public ServicesCustomBaseAdapter(Fragment ParoxesFragment, String k1[], String k2[], String k3[], String k4[]){
+    public AdapterForServices(Fragment ParoxesFragment, String k1[], String k2[], String k3[], String k4[]){
         Context ct =ParoxesFragment.getContext();
         listParoxesName=k1;
         listParoxesId=k2;
