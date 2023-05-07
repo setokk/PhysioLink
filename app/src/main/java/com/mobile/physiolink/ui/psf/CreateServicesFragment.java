@@ -15,14 +15,12 @@ public class CreateServicesFragment extends Fragment {
 
     private FragmentCreateServicesBinding binding;
 
-    public CreateServicesFragment() {
-        // Required empty public constructor
-    }
+    public CreateServicesFragment() {}
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -30,7 +28,6 @@ public class CreateServicesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentCreateServicesBinding.inflate(inflater, container, false);
-
         return binding.getRoot();
     }
 }

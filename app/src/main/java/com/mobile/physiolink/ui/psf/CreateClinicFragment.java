@@ -16,7 +16,8 @@ public class CreateClinicFragment extends Fragment {
 
     private FragmentCreateClinicBinding binding;
 
-    public CreateClinicFragment() {
+    public CreateClinicFragment()
+    {
         // Required empty public constructor
     }
 
@@ -27,7 +28,8 @@ public class CreateClinicFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
         binding = FragmentCreateClinicBinding.inflate(inflater, container, false);
 

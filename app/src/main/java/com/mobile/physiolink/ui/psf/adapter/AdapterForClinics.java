@@ -14,40 +14,32 @@ import com.mobile.physiolink.R;
 
 public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.MyViewHolder>
 {
-
     String listDoctorName[];
     String listDoctorOffice[];
     String listDoctorAddress[];
 
-    //int images[];
-
-
-
-    public AdapterForClinics(Fragment PhisiotherpeftiriaFragment, String n1[], String n2[], String n3[]){
-        Context ct =PhisiotherpeftiriaFragment.getContext();
-        listDoctorName=n1;
-        listDoctorOffice=n2;
-        listDoctorAddress=n3;
-        //images=doctorImages;
-
-
+    public AdapterForClinics(String n1[], String n2[], String n3[])
+    {
+        listDoctorName = n1;
+        listDoctorOffice = n2;
+        listDoctorAddress = n3;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.item_doc,parent,false);
         return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
+    {
         holder.name.setText(listDoctorName[position]);
         holder.office.setText(listDoctorOffice[position]);
         holder.address.setText(listDoctorAddress[position]);
-       // holder.img.setImageResource(images[position]);
-
     }
 
     @Override
@@ -55,16 +47,15 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
         return listDoctorName.length;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder
+    {
         TextView name, office, address;
-        //ImageView img;
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView)
+        {
             super(itemView);
             name= itemView.findViewById(R.id.doctorName);
             office= itemView.findViewById(R.id.doctorOffice);
             address= itemView.findViewById(R.id.doctorAddress);
-            //img=itemView.findViewById(R.id.doctorImage);
-
         }
     }
 }

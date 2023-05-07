@@ -2,7 +2,6 @@
 package com.mobile.physiolink.ui.psf;
 
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.FragmentClinicBinding;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
@@ -56,7 +54,7 @@ public class ClinicFragment extends Fragment
         binding.customListView.addItemDecoration(itemDecoration);
 
 
-        AdapterForClinics myAdapter = new AdapterForClinics(this,n1,n2,n3);
+        AdapterForClinics myAdapter = new AdapterForClinics(n1,n2,n3);
         binding.customListView.setAdapter(myAdapter);
         binding.customListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
