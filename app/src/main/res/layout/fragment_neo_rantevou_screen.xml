@@ -8,27 +8,17 @@
     android:background="#0DAB8B"
     tools:context=".ui.Neo_Rantevou_Screen">
 
-    <View
-        android:id="@+id/view5"
-        android:layout_width="397dp"
-        android:layout_height="146dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/square_round_style"
-        android:elevation="20dp"
+    <include
+        android:id="@+id/doctorTab"
+        layout="@layout/doctor_tab"
+        android:layout_width="411dp"
+        android:layout_height="152dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="397dp"
-        android:layout_height="146dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/square_round_style"
-        android:elevation="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
 
     <TextView
         android:id="@+id/docBar"
@@ -67,30 +57,21 @@
         app:layout_constraintTop_toBottomOf="@+id/docBar"
         app:layout_constraintVertical_bias="0.019" />
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="397dp"
-        android:layout_height="146dp"
-        android:layout_marginTop="128dp"
-        android:background="@drawable/square_round_style"
-        android:elevation="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/docBar" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="12dp"
         android:clickable="false"
         android:fontFamily="sans-serif"
         android:text="Οι Γιατροί μου:"
         android:textColor="#FDFDFD"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.303" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

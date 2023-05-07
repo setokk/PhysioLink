@@ -9,10 +9,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.TextView;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentEpilogiImerominiasScreenBinding;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,6 +61,9 @@ public class Epilogi_Imerominias_Screen extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -75,12 +83,23 @@ public class Epilogi_Imerominias_Screen extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.datePicker.setOnClickListener(v -> {
-            MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker()
-                            .setTitleText("Select date")
-                            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-                            .build();
-            datePicker.show(getActivity().getSupportFragmentManager(), " ");
+//        binding.datePicker.setOnClickListener(v -> {
+//            MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker()
+//                            .setTitleText("Select date")
+//                            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+//                            .build();
+//            datePicker.show(getActivity().getSupportFragmentManager(), " ");
+//        });
+        CalendarView v = binding.calendarView;
+
+        v.setOnDateChangeListener((view1, year, month, dayOfMonth) -> {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            String selDate = sdf.format(new Date(dayOfMonth, month, year));
+            binding.datePicker.setText(selDate);
         });
+
+        TextView date = (TextView) binding.datePicker;
+        String debug = "test";
+        binding.datePicker.setText(debug);
     }
 }
