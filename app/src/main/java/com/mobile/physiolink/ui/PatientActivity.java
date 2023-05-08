@@ -4,17 +4,19 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mobile.physiolink.databinding.ActivityPatientBinding;
+import com.mobile.physiolink.databinding.FragmentEpilogiImerominiasScreenBinding;
 
 public class PatientActivity extends AppCompatActivity
 {
-    private ActivityPatientBinding binding;
+    //private ActivityPatientBinding binding;
+    private FragmentEpilogiImerominiasScreenBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceBundle)
     {
         super.onCreate(savedInstanceBundle);
-        binding = ActivityPatientBinding.inflate(getLayoutInflater());
+        binding = FragmentEpilogiImerominiasScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
     }
 }

@@ -19,9 +19,8 @@ import android.widget.Button;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorPatientHistoryBinding;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatientHistory;
-import com.mobile.physiolink.ui.doctor.decoration.DecorationDoctorItem;
+import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 
 public class DoctorPatientHistoryFragment extends Fragment {
 
@@ -79,7 +78,7 @@ public class DoctorPatientHistoryFragment extends Fragment {
         s2=getResources().getStringArray(R.array.servicesPatientHistoryListExampleDate);
         s3=getResources().getStringArray(R.array.servicesListExamplePrices);
 
-        DecorationDoctorItem itemDecoration = new DecorationDoctorItem(20); // 20px spacing
+        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
         servicesPatientHistoryList.addItemDecoration(itemDecoration);
 
         AdapterForPatientHistory myAdapter = new AdapterForPatientHistory(this.getContext(),s1,s2,s3);

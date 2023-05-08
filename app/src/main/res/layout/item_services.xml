@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/paroxiName"
+        android:id="@+id/serviceName"
         android:layout_width="168dp"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/paroxiId"
+        android:id="@+id/serviceId"
         android:layout_width="89dp"
         android:layout_height="38dp"
         android:layout_marginTop="15dp"
@@ -33,11 +33,11 @@
         android:textColor="@color/button_purple"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/paroxiDescriptio"
+        app:layout_constraintEnd_toEndOf="@+id/serviceDescription"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/paroxiDescriptio"
+        android:id="@+id/serviceDescription"
         android:layout_width="315dp"
         android:layout_height="55dp"
         android:layout_marginStart="16dp"
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/paroxiCost"
+        android:id="@+id/serviceCost"
         android:layout_width="67dp"
         android:layout_height="47dp"
         android:layout_marginTop="30dp"
@@ -55,7 +55,7 @@
         android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/paroxiDescriptio"
+        app:layout_constraintStart_toEndOf="@+id/serviceDescription"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 

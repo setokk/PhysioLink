@@ -58,7 +58,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/doctorOffice"
+            android:id="@+id/doctorClinic"
             android:layout_width="303dp"
             android:layout_height="25dp"
             android:layout_marginStart="7dp"

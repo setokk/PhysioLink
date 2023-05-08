@@ -16,4 +16,7 @@
     <color name="request_green">#cee9dd</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="button_grey">#454749</color>
+	<color name="top_bar_color">#B26750A4</color>
+    <color name="bottom_bar_color">#6750A4 </color>
+    <color name="history_view_data_secondary">#49454F</color>
 </resources>

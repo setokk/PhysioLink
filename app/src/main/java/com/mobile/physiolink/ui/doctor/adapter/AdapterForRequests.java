@@ -1,4 +1,4 @@
-package com.mobile.physiolink.ui.doctor;
+package com.mobile.physiolink.ui.doctor.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 
-public class AdapterForRequestsList extends RecyclerView.Adapter<AdapterForRequestsList.MyViewHolder> {
+public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.MyViewHolder> {
 
     String name[],surname[],amka[],date[],time[],problem[],requestTime[];
 
-    public AdapterForRequestsList(Fragment fragment, String s1[],String s2[],String s3[],String s4[],String s5[],
-                                  String s6[],String s7[]){
+    public AdapterForRequests(Fragment fragment, String s1[], String s2[], String s3[], String s4[], String s5[],
+                              String s6[], String s7[]){
         Context context = fragment.getContext();
         name=s1;
         surname=s2;

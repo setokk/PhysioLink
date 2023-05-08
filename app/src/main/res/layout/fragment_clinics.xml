@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_lime"
-    tools:context=".ui.psf.ClinicFragment" >
+    tools:context=".ui.psf.ClinicsFragment" >
 
 
     <androidx.appcompat.widget.SearchView
@@ -59,7 +59,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/newPfisiotherapeftirioButton"
+        android:id="@+id/newClinicButton"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
