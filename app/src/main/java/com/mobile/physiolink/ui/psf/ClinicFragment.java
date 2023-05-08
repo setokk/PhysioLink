@@ -50,12 +50,8 @@ public class ClinicFragment extends Fragment
         n2=getResources().getStringArray(R.array.doctorOfficeListExample);
         n3=getResources().getStringArray(R.array.doctorAddressListExample);
 
-        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
-        binding.customListView.addItemDecoration(itemDecoration);
-
-
-        AdapterForClinics myAdapter = new AdapterForClinics(n1,n2,n3);
-        binding.customListView.setAdapter(myAdapter);
+        binding.customListView.addItemDecoration(new DecorationSpacingItem(20));
+        binding.customListView.setAdapter(new AdapterForClinics(n1,n2,n3));
         binding.customListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         binding.newPfisiotherapeftirioButton.setOnClickListener(v ->

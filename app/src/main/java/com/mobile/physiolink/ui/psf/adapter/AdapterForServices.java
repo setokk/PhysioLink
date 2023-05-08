@@ -36,10 +36,10 @@ public class AdapterForServices extends RecyclerView.Adapter<AdapterForServices.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        holder.itemServicesBinding.paroxiName.setText(listParoxesName[position]);
-        holder.itemServicesBinding.paroxiId.setText(listParoxesId[position]);
-        holder.itemServicesBinding.paroxiCost.setText(listParoxesCost[position]);
-        holder.itemServicesBinding.paroxiDescriptio.setText(listParoxesDescription[position]);
+        holder.itemServicesBinding.serviceName.setText(listParoxesName[position]);
+        holder.itemServicesBinding.serviceId.setText(listParoxesId[position]);
+        holder.itemServicesBinding.serviceCost.setText(listParoxesCost[position]);
+        holder.itemServicesBinding.serviceDescription.setText(listParoxesDescription[position]);
     }
 
     @Override
