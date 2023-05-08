@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mobile.physiolink.R;
-import com.mobile.physiolink.databinding.ActivityPatientBinding;
 import com.mobile.physiolink.databinding.FragmentEpilogiImerominiasScreenBinding;
 
 public class PatientActivity extends AppCompatActivity

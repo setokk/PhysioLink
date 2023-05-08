@@ -170,6 +170,7 @@
     <string name="SaveString">Αποθήκευση</string>
     <string name="DurationHint">Διάρκεια (σε λεπτά) *</string>
     <string name="DescriptionHint">Περιγραφή *</string>
+    <string name="selectDateBarName">Επιλέξτε Ημερομήνια</string>
 
     <string-array name="doctoNameListExample">
         <item>Γιώργος Παπαδόπουλος</item>
