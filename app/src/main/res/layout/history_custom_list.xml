@@ -105,7 +105,7 @@
             app:layout_constraintEnd_toStartOf="@+id/text_date"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/history_forward_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
