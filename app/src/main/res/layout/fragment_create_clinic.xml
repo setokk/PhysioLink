@@ -8,15 +8,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:id="@+id/create_phisiotherapeftiria_fragment"
+        android:id="@+id/create_clinic_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/background_lime"
         tools:context=".ui.psf.CreateClinicFragment">
 
         <TextView
-            android:id="@+id/create_phisiotherapeftiria_title"
+            android:id="@+id/create_clinic_header"
             android:layout_width="0dp"
             android:layout_height="61dp"
             android:layout_marginTop="40dp"
@@ -31,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/stoixia_giatrou_textView"
+            android:id="@+id/doctor_info_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
@@ -42,10 +41,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_phisiotherapeftiria_title" />
+            app:layout_constraintTop_toBottomOf="@+id/create_clinic_header" />
 
         <TextView
-            android:id="@+id/stoixia_phisiotherapeftirioy_textView"
+            android:id="@+id/clinic_info_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -58,7 +57,7 @@
             app:layout_constraintTop_toBottomOf="@+id/phonenumber_input_layout" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
+            android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -75,10 +74,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addres_input_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/address_input_layout" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/docs_name_input_layout"
+            android:id="@+id/doc_name_input_layout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -92,10 +91,10 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stoixia_giatrou_textView">
+            app:layout_constraintTop_toBottomOf="@+id/doctor_info_header">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/docs_name_input"
+                android:id="@+id/doc_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
@@ -107,7 +106,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/docs_sname_input_layout"
+            android:id="@+id/doc_surname_input_layout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -123,10 +122,10 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/docs_name_input_layout">
+            app:layout_constraintTop_toBottomOf="@+id/doc_name_input_layout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/docs_sname_input"
+                android:id="@+id/doc_surname_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
@@ -153,7 +152,7 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/docs_sname_input_layout">
+            app:layout_constraintTop_toBottomOf="@+id/doc_surname_input_layout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/afm_input"
@@ -200,7 +199,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/clinics_name_input_layout"
+            android:id="@+id/clinic_name_input_layout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -214,10 +213,10 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stoixia_phisiotherapeftirioy_textView">
+            app:layout_constraintTop_toBottomOf="@+id/clinic_info_header">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/clinics_name_input"
+                android:id="@+id/clinic_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
@@ -245,7 +244,7 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clinics_name_input_layout">
+            app:layout_constraintTop_toBottomOf="@+id/clinic_name_input_layout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/city_input"
@@ -261,7 +260,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addres_input_layout"
+            android:id="@+id/address_input_layout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -279,7 +278,7 @@
             app:layout_constraintTop_toBottomOf="@+id/city_input_layout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/addres_input"
+                android:id="@+id/address_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_style"

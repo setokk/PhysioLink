@@ -8,14 +8,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/create_paroxes_fragment"
+        android:id="@+id/create_service_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background_lime"
         tools:context=".ui.psf.CreateServiceFragment">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ServiceDescriptionInputLayout"
+            android:id="@+id/serviceDescriptionInputLayout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -29,11 +29,11 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ServiceCostInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/serviceCostInputLayout"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ServiceDescriptionInput"
+                android:id="@+id/serviceDescriptionInput"
                 android:layout_width="300dp"
                 android:layout_height="150dp"
                 android:background="@drawable/round2_style"
@@ -48,7 +48,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/CreateServicesTitle"
+            android:id="@+id/createServicesHeader"
             android:layout_width="0dp"
             android:layout_height="61dp"
             android:layout_marginTop="40dp"
@@ -64,7 +64,7 @@
 
 
         <TextView
-            android:id="@+id/ServiceDetailsTextView"
+            android:id="@+id/serviceInfoHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -75,10 +75,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/CreateServicesTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/createServicesHeader" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ServiceNameInputLayout"
+            android:id="@+id/serviceNameInputLayout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -93,10 +93,10 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ServiceDetailsTextView">
+            app:layout_constraintTop_toBottomOf="@+id/serviceInfoHeader">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ServiceNameInput"
+                android:id="@+id/serviceNameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
@@ -109,7 +109,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ServiceIdInputLayout"
+            android:id="@+id/serviceIdInputLayout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -124,10 +124,10 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ServiceNameInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/serviceNameInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ServiceIdInput"
+                android:id="@+id/serviceIdInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
@@ -139,10 +139,8 @@
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ServiceDurationInputLayout"
+            android:id="@+id/serviceCostInputLayout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -157,41 +155,10 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ServiceIdInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/serviceIdInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ServiceDurationInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
-                android:backgroundTint="@color/white"
-                android:hint="@string/DurationHint"
-                android:inputType="number"
-                android:textColor="@color/black"
-                android:textColorHint="@color/input_grey"
-                android:textSize="16sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ServiceCostInputLayout"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="1dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:counterMaxLength="20"
-            app:endIconMode="clear_text"
-            app:helperText="Υποχρεωτικό *"
-            app:helperTextEnabled="true"
-            app:helperTextTextColor="@android:color/holo_red_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ServiceDurationInputLayout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ServiceCostInput"
+                android:id="@+id/serviceCostInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
@@ -204,7 +171,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/ServiceDescriptionTextView"
+            android:id="@+id/serviceDescriptionHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -214,10 +181,10 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ServiceCostInputLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/serviceCostInputLayout" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
+            android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -234,9 +201,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ServiceDescriptionInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/serviceDescriptionInputLayout"
             app:layout_constraintVertical_bias="0.0" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -38,7 +38,7 @@
             app:destination="@id/fragment_home_psf" />
         <action
             android:id="@+id/action_parohesFragment_to_createParoxesFragment"
-            app:destination="@id/create_service_fragment" />
+            app:destination="@id/fragment_create_service" />
     </fragment>
     <fragment
         android:id="@+id/fragment_create_clinic"
@@ -46,7 +46,7 @@
         android:label="Δημιουργία Φυσιοθεραπευτηρίου"
         tools:layout="@layout/fragment_create_clinic" />
     <fragment
-        android:id="@+id/create_service_fragment"
+        android:id="@+id/fragment_create_service"
         android:name="com.mobile.physiolink.ui.psf.CreateServiceFragment"
         android:label="Δημιουργία Παροχών"
         tools:layout="@layout/fragment_create_service" />
