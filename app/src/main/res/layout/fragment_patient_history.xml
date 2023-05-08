@@ -53,191 +53,24 @@
             app:layout_constraintBottom_toBottomOf="@+id/history_search"
             app:layout_constraintEnd_toEndOf="@+id/history_search"
             app:layout_constraintTop_toTopOf="@+id/history_search"
-            app:layout_constraintVertical_bias="0.52" />
+            app:layout_constraintVertical_bias="0.52" >
 
-        <ScrollView
-            android:id="@+id/scrollView2"
+        </SearchView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/history_recyclerview"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="13dp"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="13dp"
             app:layout_constraintBottom_toTopOf="@+id/financial_sum_bar"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/history_search">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <View
-                        android:id="@+id/history_view_1"
-                        android:layout_width="334dp"
-                        android:layout_height="100dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@drawable/square_round_style"
-                        app:layout_constraintBottom_toTopOf="@+id/history_view_2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <EditText
-                        android:id="@+id/text_Date_1"
-                        android:layout_width="157dp"
-                        android:layout_height="23dp"
-                        android:layout_marginStart="44dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="133dp"
-                        android:layout_marginBottom="82dp"
-                        android:background="@color/navbar_white"
-                        android:ems="10"
-                        android:fontFamily="@font/roboto"
-                        android:gravity="center_vertical"
-                        android:inputType="date"
-                        android:text="14/03/2023 "
-                        android:textColor="@color/bottom_bar_color"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/history_view_1"
-                        app:layout_constraintEnd_toEndOf="@+id/history_view_1"
-                        app:layout_constraintStart_toStartOf="@+id/history_view_1"
-                        app:layout_constraintTop_toTopOf="@+id/history_view_1"
-                        app:layout_constraintVertical_bias="0.486" />
-
-                    <EditText
-                        android:id="@+id/text_time_1"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="82dp"
-                        android:background="@color/navbar_white"
-                        android:ems="10"
-                        android:fontFamily="@font/roboto"
-                        android:gravity="center_vertical"
-                        android:inputType="time"
-                        android:text="15:00"
-                        android:textColor="@color/bottom_bar_color"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/history_view_1"
-                        app:layout_constraintEnd_toEndOf="@+id/text_Date_1"
-                        app:layout_constraintStart_toEndOf="@+id/text_Date_1"
-                        app:layout_constraintTop_toTopOf="@+id/history_view_1" />
-
-                    <TextView
-                        android:id="@+id/fusio_data_1a"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="9dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Φυσικοθεραπευτήριο &quot;Αίολος&quot;"
-                        android:textColor="@color/history_view_data_secondary"
-                        app:layout_constraintEnd_toEndOf="@+id/history_view_1"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/history_view_1"
-                        app:layout_constraintTop_toBottomOf="@+id/text_Date_1" />
-
-                    <TextView
-                        android:id="@+id/fusio_data_1b"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Γιατρός: Γιώργος Παπαδόπουλος"
-                        android:textColor="@color/history_view_data_secondary"
-                        app:layout_constraintEnd_toEndOf="@+id/history_view_1"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/history_view_1"
-                        app:layout_constraintTop_toBottomOf="@+id/fusio_data_1a" />
-
-                    <TextView
-                        android:id="@+id/fusio_data_1c"
-                        android:layout_width="276dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Βελονισμός"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/history_view_1"
-                        app:layout_constraintEnd_toEndOf="@+id/history_view_1"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/history_view_1"
-                        app:layout_constraintTop_toBottomOf="@+id/fusio_data_1b" />
-
-                    <TextView
-                        android:id="@+id/fusio_data_1d"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto"
-                        android:text="60€"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/history_view_1"
-                        app:layout_constraintEnd_toEndOf="@+id/fusio_data_1c" />
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="17dp"
-                        android:layout_marginEnd="9dp"
-                        android:layout_marginBottom="75dp"
-                        android:src="@drawable/calendar_icon_today"
-                        app:layout_constraintBottom_toBottomOf="@+id/history_view_1"
-                        app:layout_constraintEnd_toStartOf="@+id/text_Date_1"
-                        app:layout_constraintStart_toStartOf="@+id/history_view_1"
-                        app:layout_constraintTop_toTopOf="@+id/history_view_1" />
-
-                    <View
-                        android:id="@+id/history_view_2"
-                        android:layout_width="334dp"
-                        android:layout_height="112dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/square_round_style"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/history_view_1" />
-
-                    <View
-                        android:id="@+id/history_view_3"
-                        android:layout_width="334dp"
-                        android:layout_height="112dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/square_round_style"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/history_view_2" />
-
-                    <View
-                        android:id="@+id/history_view_4"
-                        android:layout_width="334dp"
-                        android:layout_height="112dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/square_round_style"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/history_view_3" />
-
-                    <View
-                        android:id="@+id/history_view_5"
-                        android:layout_width="334dp"
-                        android:layout_height="112dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@drawable/square_round_style"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/history_view_4" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
-        </ScrollView>
+            app:layout_constraintTop_toBottomOf="@+id/history_search"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/history_custom_list" />
 
         <TextView
             android:id="@+id/financial_sum_bar"
@@ -258,4 +91,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

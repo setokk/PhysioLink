@@ -3,6 +3,8 @@ package com.mobile.physiolink;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,10 @@ public class PatientHistory extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    String history_date[], history_time[], history_fysio[],history_doc[],history_service[], history_price[];
+
+    private RecyclerView recycler_history;
+    private HistoryRecyclerAdapter adapter;
     public PatientHistory() {
         // Required empty public constructor
     }
@@ -53,12 +59,30 @@ public class PatientHistory extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        history_date = getResources().getStringArray(R.array.servicesPatientHistoryListExampleDate);
+        history_time = getResources().getStringArray(R.array.requestListExampleTime);
+        history_fysio = getResources().getStringArray(R.array.doctorOfficeListExample);
+        history_doc = getResources().getStringArray(R.array.doctoNameListExample);
+        history_service = getResources().getStringArray(R.array.paroxesNameExample);
+        history_price =  getResources().getStringArray(R.array.paroxesCostExamle);
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_patient_history, container, false);
+
+
+        //adapt recycler view to fragment
+        View view = inflater.inflate(R.layout.fragment_patient_history,container,false);
+        recycler_history = view.findViewById(R.id.history_recyclerview);
+        recycler_history.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        adapter = new HistoryRecyclerAdapter(history_date,history_time,history_fysio,history_doc,history_service,history_price);
+        recycler_history.setAdapter(adapter);
+        return view;
+
     }
 }

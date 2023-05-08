@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PhysioLink</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -7,8 +8,236 @@
     <string name="input_password">Password</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
+    <string name="home_hello">Καλωσήρθες,</string>
+    <string name="doctor_appointments">Προσεχή Ραντεβού</string>
+    <string name="doctor_patients">Οι Ασθενείς μου</string>
+    <string name="doctor_provisions">Οι Παροχές μου</string>
+    <string name="doctor_requests">Νέα Αιτήματα</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="name_female_patient">Mαρία Δολεσίδου</string>
+    <string name="name_male_patient">Γιώργος Φασκέλας</string>
+    <string name="malaxi_service_text">Μάλαξη</string>
+    <string name="profil_label">Προφίλ</string>
+    <string name="settings_label">Ρυθμίσεις</string>
+
+    <!-- TODO: Diagrafi twn parakatw arrays, dimiourgithikan gia na fanei optika h lista twn asthenwn tou giatrou, na ginei diafrafi molis ginei h diasyndesi me ta dedomena ths bashs-->
+    <string-array name="patientListExampleName">
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+    </string-array>
+    <string-array name="patientListExampleSurnmaeame">
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+    </string-array>
+    <string-array name="patientListExampleAMKA">
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+    </string-array>
+    <string-array name="patientListExamplePhone">
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+        <item>6934567890</item>
+    </string-array>
+    <string-array name="servicesListExampleDescription">
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+        <item>Perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh perigrafh </item>
+    </string-array>
+
+    <string-array name="servicesPatientHistoryListExampleDate">
+        <item>10/08/23</item>
+        <item>10/07/23</item>
+        <item>10/06/23</item>
+        <item>10/05/23</item>
+        <item>10/04/23</item>
+        <item>10/03/23</item>
+        <item>10/02/23</item>
+        <item>10/01/23</item>
+    </string-array>
+
+    <string-array name="servicesListExamplePrices">
+        <item>40</item>
+        <item>60</item>
+        <item>55</item>
+        <item>35</item>
+        <item>40</item>
+        <item>40</item>
+        <item>50</item>
+        <item>55</item>
+    </string-array>
+
+    <!--  TODO: Delete the following data after database is ready -->
+    <string-array name="appointmentTime">
+        <item>18.00 - 19.00</item>
+        <item>19.00 - 20.00</item>
+        <item>18.00 - 17.00</item>
+        <item>15.00 - 17.00</item>
+        <item>18.30 - 19.00</item>
+        <item>18.00 - 17.00</item>
+        <item>16.00 - 17.00</item>
+        <item>15.00 - 15.30</item>
+    </string-array>
+
+    <string-array name="appointmentsService">
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+        <item>Μάλαξη</item>
+    </string-array>
+
+    <!-- TODO Diagrafi twn parakatw arrays otan ginei syndesi me tin vasi, dhmiourgithikan gia testing-->
+    <string-array name="requestListExampleName">
+        <item>Onoma</item>
+        <item>Onoma</item>
+        <item>Onoma</item>
+    </string-array>
+    <string-array name="requestListExampleSurname">
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+        <item>Epitheto</item>
+    </string-array>
+    <string-array name="requestListExampleAMKA">
+        <item>1234567890</item>
+        <item>1234567890</item>
+        <item>1234567890</item>
+    </string-array>
+    <string-array name="requestListExampleDate">
+        <item>04/04/2023</item>
+        <item>05/04/2023</item>
+        <item>06/04/2023</item>
+    </string-array>
+    <string-array name="requestListExampleTime">
+        <item>14:00</item>
+        <item>14:30</item>
+        <item>15:00</item>
+    </string-array>
+    <string-array name="requestListExampleProblem">
+        <item>Πόνος στο δεξί χέρι</item>
+        <item>Πόνος στην μέση</item>
+        <item>Πιάσιμο στον αυχένα</item>
+    </string-array>
+    <string-array name="requestListExampleRequestTime">
+        <item>10:00</item>
+        <item>10:30</item>
+        <item>19:00</item>
+    </string-array>
+    <string name="welcome_text">Καλωσήρθες!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="selectDateBarName">Όνομα</string>
-    <string name="selectDatePickText">Επιλογή ημερομηνίας</string>
+    <string name="codeString">Κωδικός *</string>
+    <string name="durationText">Διάρκεια (σε λεπτά)</string>
+    <string name="CreateNewService">Δημιουργία Νέας Παροχής</string>
+    <string name="ServiceDetails">Στοιχεία Παροχής:</string>
+    <string name="NameHint">Όνομα *</string>
+    <string name="LastNameHint">Επώνυμο *</string>
+    <string name="AfmHint">ΑΦΜ *</string>
+    <string name="PhoneHint">Κινητό</string>
+    <string name="CityHint">Πόλη *</string>
+    <string name="AddressHint">Διεύθυνση *</string>
+    <string name="CreateNewClinic">Δημιουργία Νέου Φυσιοθεραπευτηρίου</string>
+    <string name="ServiceDescription">Περιγραφή Παροχής :</string>
+    <string name="SaveString">Αποθήκευση</string>
+    <string name="DurationHint">Διάρκεια (σε λεπτά) *</string>
+    <string name="DescriptionHint">Περιγραφή *</string>
+
+    <string-array name="doctoNameListExample">
+        <item>Γιώργος Παπαδόπουλος</item>
+        <item>Μαρία Παπανικολάου</item>
+        <item>Ιωάννης Δημητρίου</item>
+        <item>Μιχάλης Κατσουλάκης</item>
+        <item>Δήμητρα Κυριακοπούλου</item>
+        <item>Χρήστος Παπανδρέου</item>
+
+    </string-array>
+    <string-array name="doctorOfficeListExample">
+        <item>Φυσιοθεραπευτήριο Αίολος</item>
+        <item>Φυσιοθεραπευτήριο Optimum</item>
+        <item>Φυσιοθεραπευτήριο Fantastic</item>
+        <item>Φυσιοθεραπευτήριο Cool</item>
+        <item>Φυσιοθεραπευτήριο Cool</item>
+        <item>Φυσιοθεραπευτήριο Wow</item>
+
+    </string-array>
+    <string-array name="doctorAddressListExample">
+        <item>Αγίου Δημητρίου 45,Αττική, 23892</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823 </item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+        <item>Κρατερού 13, Θεσσαλονίκη, 56823</item>
+
+    </string-array>
+    <string-array name="paroxesNameExample">
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη </item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+        <item>Αθλητική Μάλαξη</item>
+    </string-array>
+    <string-array name="paroxesIdExamle">
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+        <item>(ΘΜ001)</item>
+    </string-array>
+    <string-array name="paroxesCostExamle">
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+        <item>45€</item>
+    </string-array>
+    <string-array name="paroxesDescriptionExamle">
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+        <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
+    </string-array>
+
 </resources>
