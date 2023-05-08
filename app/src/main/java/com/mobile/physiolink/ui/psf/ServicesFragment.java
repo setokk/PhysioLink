@@ -53,7 +53,7 @@ public class ServicesFragment extends Fragment {
         binding.customListViewParoxes.addItemDecoration(itemDecoration);
 
 
-        AdapterForServices adapter = new AdapterForServices(this,k1,k2,k3,k4);
+        AdapterForServices adapter = new AdapterForServices(k1,k2,k3,k4);
         binding.customListViewParoxes.setAdapter(adapter);
         binding.customListViewParoxes.setLayoutManager(new LinearLayoutManager(this.getContext()));
 

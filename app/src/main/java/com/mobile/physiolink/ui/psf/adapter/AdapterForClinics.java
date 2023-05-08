@@ -1,16 +1,12 @@
 package com.mobile.physiolink.ui.psf.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobile.physiolink.R;
+import com.mobile.physiolink.databinding.ItemDocBinding;
 
 public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.MyViewHolder>
 {
@@ -29,17 +25,16 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.item_doc,parent,false);
-        return new MyViewHolder(itemView);
+        ItemDocBinding itemDocBinding = ItemDocBinding.inflate(LayoutInflater.from(parent.getContext()), parent,false);
+        return new MyViewHolder(itemDocBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        holder.name.setText(listDoctorName[position]);
-        holder.office.setText(listDoctorOffice[position]);
-        holder.address.setText(listDoctorAddress[position]);
+        holder.itemDocBinding.doctorName.setText(listDoctorName[position]);
+        holder.itemDocBinding.doctorOffice.setText(listDoctorOffice[position]);
+        holder.itemDocBinding.doctorAddress.setText(listDoctorAddress[position]);
     }
 
     @Override
@@ -49,13 +44,12 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder
     {
-        TextView name, office, address;
-        public MyViewHolder(@NonNull View itemView)
+        ItemDocBinding itemDocBinding;
+
+        public MyViewHolder(ItemDocBinding itemDocBinding)
         {
-            super(itemView);
-            name= itemView.findViewById(R.id.doctorName);
-            office= itemView.findViewById(R.id.doctorOffice);
-            address= itemView.findViewById(R.id.doctorAddress);
+            super(itemDocBinding.getRoot());
+            this.itemDocBinding = itemDocBinding;
         }
     }
 }

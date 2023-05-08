@@ -1,72 +1,61 @@
 package com.mobile.physiolink.ui.psf.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobile.physiolink.R;
+import com.mobile.physiolink.databinding.ItemServicesBinding;
 
-public class AdapterForServices extends RecyclerView.Adapter<AdapterForServices.MyViewHolder> {
-
-
+public class AdapterForServices extends RecyclerView.Adapter<AdapterForServices.MyViewHolder>
+{
     String listParoxesName[];
     String listParoxesId[];
     String listParoxesCost[];
     String listParoxesDescription[];
 
-
-
-    public AdapterForServices(Fragment ParoxesFragment, String k1[], String k2[], String k3[], String k4[]){
-        Context ct =ParoxesFragment.getContext();
-        listParoxesName=k1;
-        listParoxesId=k2;
-        listParoxesCost=k3;
-        listParoxesDescription=k4;
-
-
+    public AdapterForServices(String k1[], String k2[], String k3[], String k4[])
+    {
+        listParoxesName = k1;
+        listParoxesId = k2;
+        listParoxesCost = k3;
+        listParoxesDescription = k4;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.item_services,parent,false);
-        return new MyViewHolder(itemView);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
+        ItemServicesBinding itemServicesBinding = ItemServicesBinding.inflate(
+                LayoutInflater.from(parent.getContext()),
+                parent,false);
+        return new MyViewHolder(itemServicesBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.nameParoxes.setText(listParoxesName[position]);
-        holder.id.setText(listParoxesId[position]);
-        holder.cost.setText(listParoxesCost[position]);
-        holder.des.setText(listParoxesDescription[position]);
-
-
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
+    {
+        holder.itemServicesBinding.paroxiName.setText(listParoxesName[position]);
+        holder.itemServicesBinding.paroxiId.setText(listParoxesId[position]);
+        holder.itemServicesBinding.paroxiCost.setText(listParoxesCost[position]);
+        holder.itemServicesBinding.paroxiDescriptio.setText(listParoxesDescription[position]);
     }
 
     @Override
-    public int getItemCount() {
-
+    public int getItemCount()
+    {
         return listParoxesName.length;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nameParoxes, id, cost,des;
+    public class MyViewHolder extends RecyclerView.ViewHolder
+    {
+        ItemServicesBinding itemServicesBinding;
 
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            nameParoxes= itemView.findViewById(R.id.paroxiName);
-            id= itemView.findViewById(R.id.paroxiId);
-            cost= itemView.findViewById(R.id.paroxiCost);
-            des= itemView.findViewById(R.id.paroxiDescriptio);
-
-
+        public MyViewHolder(ItemServicesBinding itemServicesBinding)
+        {
+            super(itemServicesBinding.getRoot());
+            this.itemServicesBinding = itemServicesBinding;
         }
     }
 }
