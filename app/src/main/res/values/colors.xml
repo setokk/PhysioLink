@@ -12,4 +12,9 @@
     <color name="lighter_purple">#7960BD</color>
     <color name="navbar_white">#FFFBFE</color>
     <color name="input_grey">#999999</color>
+    <color name="top_bar_color">#B26750A4</color>
+    <color name="bottom_bar_color">#6750A4 </color>
+    <color name="history_view_data_secondary">#49454F</color>
+
+
 </resources>
