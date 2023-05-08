@@ -33,7 +33,7 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
         holder.itemDocBinding.doctorName.setText(listDoctorName[position]);
-        holder.itemDocBinding.doctorOffice.setText(listDoctorOffice[position]);
+        holder.itemDocBinding.doctorClinic.setText(listDoctorOffice[position]);
         holder.itemDocBinding.doctorAddress.setText(listDoctorAddress[position]);
     }
 
