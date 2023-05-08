@@ -8,14 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mobile.physiolink.databinding.FragmentCreateServicesBinding;
+import com.mobile.physiolink.databinding.FragmentCreateServiceBinding;
 
 
-public class CreateServicesFragment extends Fragment {
+public class CreateServiceFragment extends Fragment {
 
-    private FragmentCreateServicesBinding binding;
+    private FragmentCreateServiceBinding binding;
 
-    public CreateServicesFragment() {}
+    public CreateServiceFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -27,7 +27,7 @@ public class CreateServicesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentCreateServicesBinding.inflate(inflater, container, false);
+        binding = FragmentCreateServiceBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 }

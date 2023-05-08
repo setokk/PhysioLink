@@ -15,14 +15,14 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.mobile.physiolink.databinding.FragmentClinicBinding;
+import com.mobile.physiolink.databinding.FragmentClinicsBinding;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.psf.adapter.AdapterForClinics;
 
 
-public class ClinicFragment extends Fragment
+public class ClinicsFragment extends Fragment
 {
-    private FragmentClinicBinding binding;
+    private FragmentClinicsBinding binding;
 
     String n1[],n2[],n3[];
 
@@ -37,7 +37,7 @@ public class ClinicFragment extends Fragment
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        binding = FragmentClinicBinding.inflate(inflater, container, false);
+        binding = FragmentClinicsBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -54,7 +54,7 @@ public class ClinicFragment extends Fragment
         binding.customListView.setAdapter(new AdapterForClinics(n1,n2,n3));
         binding.customListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        binding.newPfisiotherapeftirioButton.setOnClickListener(v ->
+        binding.newClinicButton.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
                 .navigate(R.id.action_phisiotherpeftiriaFragment_to_createPhisiotherapeftiriaFragment));
     }

@@ -7,47 +7,47 @@
     <fragment
         android:id="@+id/fragment_home_psf"
         android:name="com.mobile.physiolink.ui.psf.PsfHomeFragment"
-        android:label="fragment_home_psf"
+        android:label="Αρχική"
         tools:layout="@layout/fragment_psf_home" >
         <action
             android:id="@+id/action_fragment_home_psf_to_phisiotherpeftiriaFragment"
-            app:destination="@id/phisiotherpeftiriaFragment" />
+            app:destination="@id/fragment_clinics" />
         <action
             android:id="@+id/action_fragment_home_psf_to_parohesFragment"
-            app:destination="@id/parohesFragment" />
+            app:destination="@id/fragment_services" />
     </fragment>
     <fragment
-        android:id="@+id/phisiotherpeftiriaFragment"
-        android:name="com.mobile.physiolink.ui.psf.ClinicFragment"
-        android:label="fragment_phisiotherpeftiria"
-        tools:layout="@layout/fragment_clinic" >
+        android:id="@+id/fragment_clinics"
+        android:name="com.mobile.physiolink.ui.psf.ClinicsFragment"
+        android:label="Φυσιοθεραπευτήρια"
+        tools:layout="@layout/fragment_clinics" >
         <action
             android:id="@+id/action_phisiotherpeftiriaFragment_to_fragment_home_psf"
             app:destination="@id/fragment_home_psf" />
         <action
             android:id="@+id/action_phisiotherpeftiriaFragment_to_createPhisiotherapeftiriaFragment"
-            app:destination="@id/createPhisiotherapeftiriaFragment" />
+            app:destination="@id/fragment_create_clinic" />
     </fragment>
     <fragment
-        android:id="@+id/parohesFragment"
+        android:id="@+id/fragment_services"
         android:name="com.mobile.physiolink.ui.psf.ServicesFragment"
-        android:label="fragment_parohes"
+        android:label="Παροχές"
         tools:layout="@layout/fragment_services" >
         <action
             android:id="@+id/action_parohesFragment_to_fragment_home_psf"
             app:destination="@id/fragment_home_psf" />
         <action
             android:id="@+id/action_parohesFragment_to_createParoxesFragment"
-            app:destination="@id/createParoxesFragment" />
+            app:destination="@id/create_service_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/createPhisiotherapeftiriaFragment"
+        android:id="@+id/fragment_create_clinic"
         android:name="com.mobile.physiolink.ui.psf.CreateClinicFragment"
-        android:label="fragment_create_phisioterapeftiria"
+        android:label="Δημιουργία Φυσιοθεραπευτηρίου"
         tools:layout="@layout/fragment_create_clinic" />
     <fragment
-        android:id="@+id/createParoxesFragment"
-        android:name="com.mobile.physiolink.ui.psf.CreateServicesFragment"
-        android:label="fragment_create_paroxes"
-        tools:layout="@layout/fragment_create_services" />
+        android:id="@+id/create_service_fragment"
+        android:name="com.mobile.physiolink.ui.psf.CreateServiceFragment"
+        android:label="Δημιουργία Παροχών"
+        tools:layout="@layout/fragment_create_service" />
 </navigation>

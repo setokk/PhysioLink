@@ -6,11 +6,11 @@
         android:icon="@drawable/baseline_home_24"
         android:title="@string/home_label" />
     <item
-        android:id="@+id/parohesFragment"
+        android:id="@+id/fragment_services"
         android:icon="@drawable/baseline_person_24"
         android:title="@string/profil_label" />
     <item
-        android:id="@+id/phisiotherpeftiriaFragment"
+        android:id="@+id/fragment_clinics"
         android:icon="@drawable/baseline_settings_24"
         android:title="@string/settings_label" />
 </menu>

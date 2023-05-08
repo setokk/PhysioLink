@@ -11,9 +11,8 @@ import android.view.ViewGroup;
 import com.mobile.physiolink.databinding.FragmentCreateClinicBinding;
 
 
-public class CreateClinicFragment extends Fragment {
-
-
+public class CreateClinicFragment extends Fragment
+{
     private FragmentCreateClinicBinding binding;
 
     public CreateClinicFragment()
@@ -32,7 +31,6 @@ public class CreateClinicFragment extends Fragment {
     {
         // Inflate the layout for this fragment
         binding = FragmentCreateClinicBinding.inflate(inflater, container, false);
-
         return binding.getRoot();
     }
 }
