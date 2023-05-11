@@ -1,9 +1,15 @@
 package com.mobile.physiolink.service.dao;
 
+import android.util.Log;
+
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.service.api.API;
+import com.mobile.physiolink.service.api.error.Error;
 import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.schemas.DoctorSchema;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -57,6 +63,27 @@ public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema, Doctor>
     @Override
     public Doctor get(Long id)
     {
-        return null;
+        try {
+            String response = RequestFacade.getRequest(API.GET_DOCTOR + id).body()
+                    .string();
+            JSONObject json = new JSONObject(response);
+            if (json.toString().contains(Error.RESOURCE_NOT_FOUND))
+                return new Doctor();
+
+            JSONObject doctor = json.getJSONObject("doctor");
+            return new Doctor(id,
+                    doctor.getString("username"), "doctor",
+                    doctor.getString("name"),
+                    doctor.getString("surname"),
+                    doctor.getString("email"),
+                    doctor.getString("phone_number"),
+                    doctor.getString("afm"),
+                    doctor.getString("address"),
+                    doctor.getString("physio_name"));
+
+        } catch (IOException | JSONException e) {
+            Log.i("ERROR", e.getMessage());
+            return new Doctor();
+        }
     }
 }

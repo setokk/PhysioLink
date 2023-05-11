@@ -1,8 +1,11 @@
 package com.mobile.physiolink.service.dao;
 
+import android.util.Log;
+
+import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.service.api.API;
-import com.mobile.physiolink.service.api.Error;
+import com.mobile.physiolink.service.api.error.Error;
 import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.schemas.PatientSchema;
 
@@ -63,7 +66,28 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema, Patient>
     @Override
     public Patient get(Long id)
     {
-        return null;
+        try {
+            String response = RequestFacade.getRequest(API.GET_PATIENT + id).body()
+                    .string();
+            JSONObject json = new JSONObject(response);
+            if (json.toString().contains(Error.RESOURCE_NOT_FOUND))
+                return new Patient();
+
+            JSONObject patient = json.getJSONObject("patient");
+            return new Patient(patient.getLong("id"),
+                    patient.getString("username"), "patient",
+                    patient.getString("name"),
+                    patient.getString("surname"),
+                    patient.getString("email"),
+                    patient.getString("phone_number"),
+                    patient.getString("amka"),
+                    patient.getString("address"),
+                    patient.getLong("doctor_id"));
+
+        } catch (IOException | JSONException e) {
+            Log.i("ERROR", e.getMessage());
+            return new Patient();
+        }
     }
 
     public Patient[] getPatientsOf(Long doctorId) throws IOException, JSONException
@@ -73,7 +97,7 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema, Patient>
 
         /* Check if server sent back that this doctor has no patients */
         JSONObject res = new JSONObject(response);
-        if (res.toString().contains(Error.PATIENTS_NOT_FOUND))
+        if (res.toString().contains(Error.RESOURCE_NOT_FOUND))
             return new Patient[0];
 
         /* Get JSON patients array and return a Patient array */

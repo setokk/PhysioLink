@@ -38,10 +38,7 @@ public class Patient extends User
         super(id, username, type);
     }
 
-    public Patient(String username)
-    {
-        super(username);
-    }
+    public Patient(){super();}
 
     public String getName()
     {

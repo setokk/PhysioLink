@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorHomeBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.dao.DoctorDAO;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 
@@ -63,5 +66,10 @@ public class DoctorHomeFragment extends Fragment
         AdapterForAppointments adapter = new AdapterForAppointments(this.getContext(),sN,sS,sT,sService,R.id.recyclerViewApp);
         appointmentList.setAdapter(adapter);
         appointmentList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        long id = UserHolder.doctor().getId();
+        Toast.makeText(getContext(),
+                DoctorDAO.getInstance().get(id).toString(),
+                Toast.LENGTH_LONG).show();
     }
 }

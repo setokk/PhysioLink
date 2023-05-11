@@ -1,15 +1,15 @@
 package com.mobile.physiolink.model.user;
 
-import static com.mobile.physiolink.service.validator.UserAuth.NOT_VALID;
+import com.mobile.physiolink.service.api.error.Error;
+import com.mobile.physiolink.service.api.error.ResourceNotFindable;
 
-import java.io.Serializable;
-
-public class User implements Serializable
+public class User implements ResourceNotFindable
 {
     private long id;
     private String username;
     private final String type;
 
+    public User() {this.username = Error.RESOURCE_NOT_FOUND; this.type = "";}
 
     /* Default Constructor */
     public User(long id,
@@ -21,12 +21,21 @@ public class User implements Serializable
         this.type = type;
     }
 
-    /* Constructor for Optional */
-    public User(String username)
+    /* Used when authenticating users (see UserAuth.java) */
+    public static User invalidUser()
     {
-        this.username = username;
-        this.type = "";
-        this.id = -1;
+        return new User(-1, Error.INVALID_CREDENTIALS, "");
+    }
+
+    public boolean isValid()
+    {
+        return !username.equals(Error.INVALID_CREDENTIALS);
+    }
+
+    @Override
+    public boolean isFound()
+    {
+        return !username.equals(Error.RESOURCE_NOT_FOUND);
     }
 
     public long getId()
@@ -37,11 +46,6 @@ public class User implements Serializable
     public String getUsername()
     {
         return username;
-    }
-
-    public boolean isValid()
-    {
-        return !username.equals(NOT_VALID);
     }
 
     public boolean isPSF()
