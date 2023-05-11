@@ -66,10 +66,5 @@ public class DoctorHomeFragment extends Fragment
         AdapterForAppointments adapter = new AdapterForAppointments(this.getContext(),sN,sS,sT,sService,R.id.recyclerViewApp);
         appointmentList.setAdapter(adapter);
         appointmentList.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
-        long id = UserHolder.doctor().getId();
-        Toast.makeText(getContext(),
-                DoctorDAO.getInstance().get(id).toString(),
-                Toast.LENGTH_LONG).show();
     }
 }

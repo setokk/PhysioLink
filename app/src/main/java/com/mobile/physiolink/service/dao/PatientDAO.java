@@ -71,7 +71,7 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema, Patient>
                     .string();
             JSONObject json = new JSONObject(response);
             if (json.toString().contains(Error.RESOURCE_NOT_FOUND))
-                return new Patient();
+                return new Patient(Error.RESOURCE_NOT_FOUND);
 
             JSONObject patient = json.getJSONObject("patient");
             return new Patient(patient.getLong("id"),
@@ -86,7 +86,7 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema, Patient>
 
         } catch (IOException | JSONException e) {
             Log.i("ERROR", e.getMessage());
-            return new Patient();
+            return new Patient(Error.RESOURCE_NOT_FOUND);
         }
     }
 

@@ -41,7 +41,7 @@ public class Doctor extends User
         super(id, username, type);
     }
 
-    public Doctor(){super();}
+    public Doctor(String state){ super(state); }
 
     public String getName()
     {

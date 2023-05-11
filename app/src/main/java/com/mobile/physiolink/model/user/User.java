@@ -9,7 +9,8 @@ public class User implements ResourceNotFindable
     private String username;
     private final String type;
 
-    public User() {this.username = Error.RESOURCE_NOT_FOUND; this.type = "";}
+    /* Used for returning invalid or empty objects */
+    public User(String state) {this.username = state; this.type = "";}
 
     /* Default Constructor */
     public User(long id,
@@ -19,12 +20,6 @@ public class User implements ResourceNotFindable
         this.id = id;
         this.username = username;
         this.type = type;
-    }
-
-    /* Used when authenticating users (see UserAuth.java) */
-    public static User invalidUser()
-    {
-        return new User(-1, Error.INVALID_CREDENTIALS, "");
     }
 
     public boolean isValid()

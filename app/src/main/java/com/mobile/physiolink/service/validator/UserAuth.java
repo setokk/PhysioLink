@@ -33,6 +33,7 @@ public class UserAuth
      */
     public static User authenticateUser(String username, String password) throws JSONException, IOException
     {
+        /* For Optional */
         User user = null;
 
         /* Prepare Map for body [key: "value"] */
@@ -47,7 +48,7 @@ public class UserAuth
                 .string();
         JSONObject json = new JSONObject(response);
 
-        if (validCredentials(json)) // If not valid, return null
+        if (validCredentials(json))
         {
             long id = json.getLong("id");
             String type = json.getString("role");
@@ -82,8 +83,9 @@ public class UserAuth
             }
         }
 
+        /* Return a valid user, or else return a user with username "Error.INVALID_CREDENTIALS" */
         return Optional.ofNullable(user)
-                .orElse(User.invalidUser());
+                .orElse(new User(Error.INVALID_CREDENTIALS));
     }
 
     private static boolean validCredentials(JSONObject json)
