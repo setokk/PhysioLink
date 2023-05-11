@@ -1,4 +1,4 @@
-package com.mobile.physiolink.service.schemas.dao;
+package com.mobile.physiolink.service.dao;
 
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.service.api.API;
