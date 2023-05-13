@@ -34,9 +34,4 @@ public class CreateClinicFragment extends Fragment
 
         return binding.getRoot();
     }
-
-    public boolean maxCharLimitCheck(int max){
-
-        return true;
-    }
 }
