@@ -37,8 +37,10 @@ public class CreateServiceFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentCreateServiceBinding.inflate(inflater, container, false);
+
+//        Θα ψάξω να δω αν μπορώ να το κάνω σε μια λούπα αυτό
         all_inputs_layouts.add(binding.serviceCostInputLayout);
-        all_inputs.add(binding.serviceIdInput);
+        all_inputs.add(binding.serviceCostInput);
 
         all_inputs_layouts.add(binding.serviceNameInputLayout);
         all_inputs.add(binding.serviceNameInput);
@@ -49,124 +51,46 @@ public class CreateServiceFragment extends Fragment {
         all_inputs_layouts.add(binding.serviceDescriptionInputLayout);
         all_inputs.add(binding.serviceDescriptionInput);
 
-        binding.serviceNameInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        for(int j =0; j<all_inputs.size(); j++) {
+            TextInputEditText current = all_inputs.get(j);
+            TextInputLayout current_layout = all_inputs_layouts.get(j);
+            current.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(binding.serviceNameInput.getText().length() > 30){
-                    binding.serviceNameInputLayout.setError("Έχετε υπερβεί το όριο των χαρακτήρων!");
-                    input_erros = true;
-                } else if (binding.serviceNameInput.getText().length() == 0) {
-                    binding.serviceNameInputLayout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
-                    input_erros = true;
-                } else{
-                    binding.serviceNameInputLayout.setError(null);
-                    input_erros = false;
                 }
-            }
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        binding.serviceIdInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(binding.serviceIdInput.getText().length() > 20){
-                    binding.serviceIdInputLayout.setError("Έχετε υπερβεί το όριο των χαρακτήρων!");
-                    input_erros = true;
-                }else if (binding.serviceIdInput.getText().length() == 0) {
-                    binding.serviceIdInputLayout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
-                    input_erros = true;
-                } else{
-                    binding.serviceIdInputLayout.setError(null);
-                    input_erros = false;
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if (current.getText().length() > current_layout.getCounterMaxLength()) {
+                        current_layout.setError("Έχετε υπερβεί το όριο των χαρακτήρων!");
+                        input_erros = true;
+                    } else if (current.getText().length() == 0) {
+                        current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
+                        input_erros = true;
+                    } else {
+                        current_layout.setError(null);
+                        input_erros = false;
+                    }
                 }
-            }
 
-            @Override
-            public void afterTextChanged(Editable editable) {
+                @Override
+                public void afterTextChanged(Editable editable) {
 
-            }
-        });
-
-        binding.serviceCostInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(binding.serviceCostInput.getText().length() > 10){
-                    binding.serviceCostInputLayout.setError("Έχετε υπερβεί το όριο των χαρακτήρων!");
-                    input_erros = true;
-                }else if (binding.serviceCostInput.getText().length() == 0) {
-                    binding.serviceCostInputLayout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
-                    input_erros = true;
-                }else{
-                    binding.serviceCostInputLayout.setError(null);
-                    input_erros = false;
                 }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        binding.serviceDescriptionInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(binding.serviceDescriptionInput.getText().length() > 70){
-                    binding.serviceDescriptionInputLayout.setError("Έχετε υπερβεί το όριο των χαρακτήρων!");
-                    input_erros = true;
-                }else if (binding.serviceDescriptionInput.getText().length() == 0) {
-                    binding.serviceDescriptionInputLayout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
-                    input_erros = true;
-                }else{
-                    binding.serviceDescriptionInputLayout.setError(null);
-                    input_erros = false;
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
+            });
+        }
         binding.saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for(int i = 0; i< all_inputs.size(); i++){
+                    if(all_inputs.get(i).getText().length() == 0){
+                        all_inputs_layouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
+                        input_erros = true;
+                    }
+                }
                 if(input_erros){
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα πεδία", Toast.LENGTH_SHORT).show();
-                } else{
-
-                    for(int i = 0; i< all_inputs.size(); i++){
-                        if(all_inputs.get(i).getText().length() == 0){
-                            Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα πεδία", Toast.LENGTH_SHORT).show();
-                            all_inputs_layouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
-                            input_erros = true;
-                        }
-                    }
                 }
             }
         });
