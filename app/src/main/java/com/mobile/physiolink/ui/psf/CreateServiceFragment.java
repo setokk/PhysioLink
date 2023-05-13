@@ -160,7 +160,7 @@ public class CreateServiceFragment extends Fragment {
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα πεδία", Toast.LENGTH_SHORT).show();
                 } else{
 
-                    for(int i = 0; i<= all_inputs.size(); i++){
+                    for(int i = 0; i< all_inputs.size(); i++){
                         if(all_inputs.get(i).getText().length() == 0){
                             Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα πεδία", Toast.LENGTH_SHORT).show();
                             all_inputs_layouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
