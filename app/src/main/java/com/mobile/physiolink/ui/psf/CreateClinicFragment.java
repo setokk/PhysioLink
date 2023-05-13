@@ -31,6 +31,12 @@ public class CreateClinicFragment extends Fragment
     {
         // Inflate the layout for this fragment
         binding = FragmentCreateClinicBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
+    }
+
+    public boolean maxCharLimitCheck(int max){
+
+        return true;
     }
 }

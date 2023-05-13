@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity
 
         if (username.isEmpty() || password.isEmpty())
         {
+            startActivity(new Intent(this, PSFActivity.class));
             Toast.makeText(this, "Δεν επιτρέπονται κενά πεδία!", Toast.LENGTH_SHORT).show();
             return;
         }
