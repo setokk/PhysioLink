@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.mobile.physiolink.ConfirmationPopUpFragment;
 import com.mobile.physiolink.databinding.FragmentCreateServiceBinding;
 
 import java.util.ArrayList;
@@ -91,6 +92,10 @@ public class CreateServiceFragment extends Fragment {
                 }
                 if(input_erros){
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα πεδία", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    ConfirmationPopUpFragment confirmation = new ConfirmationPopUpFragment();
+                    confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                 }
             }
         });
