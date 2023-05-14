@@ -15,25 +15,10 @@
         tools:context=".ui.psf.CreateClinicFragment">
 
         <TextView
-            android:id="@+id/create_clinic_header"
-            android:layout_width="0dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/lighter_purple"
-            android:gravity="center"
-            android:text="@string/CreateNewClinic"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/doctor_info_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="40dp"
             android:text="Στοιχεία Γιατρού:"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -41,7 +26,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_clinic_header" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/clinic_info_header"
@@ -70,7 +55,6 @@
             android:text="@string/SaveString"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
