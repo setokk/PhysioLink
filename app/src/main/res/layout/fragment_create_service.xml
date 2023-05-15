@@ -40,7 +40,7 @@
                 android:backgroundTint="@color/white"
                 android:gravity="top"
                 android:hint="@string/DescriptionHint"
-                android:inputType="textNoSuggestions"
+                android:inputType="textMultiLine|textNoSuggestions"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
