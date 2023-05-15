@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.mobile.physiolink.ConfirmationPopUpFragment;
+import com.mobile.physiolink.ConfirmationClinicPopUp;
 import com.mobile.physiolink.databinding.FragmentCreateClinicBinding;
 
 import java.util.ArrayList;
@@ -92,10 +92,7 @@ public class CreateClinicFragment extends Fragment
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                    if(current.getText().length() > current_layout.getCounterMaxLength()){
-                        current_layout.setError("Έχετε υπερβεί το όριο των χαρακτήρων!");
-                        input_erros = true;
-                    } else if (current.getText().length() == 0 && !current_layout.equals(binding.phonenumberInputLayout) && !current_layout.equals(binding.afmInputLayout)) {
+                    if (current.getText().length() == 0 && !current_layout.equals(binding.phonenumberInputLayout) && !current_layout.equals(binding.afmInputLayout)) {
                         current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         input_erros = true;
                     } else{
@@ -148,7 +145,7 @@ public class CreateClinicFragment extends Fragment
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    ConfirmationPopUpFragment confirmation = new ConfirmationPopUpFragment(
+                    ConfirmationClinicPopUp confirmation = new ConfirmationClinicPopUp(
                             binding.docUsernameInput.getText().toString(),
                             binding.docPasswardInput.getText().toString(),
                             binding.docNameInput.getText().toString(),

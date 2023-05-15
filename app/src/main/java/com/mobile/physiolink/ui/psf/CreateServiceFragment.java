@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.mobile.physiolink.ConfirmationPopUpFragment;
+import com.mobile.physiolink.ConfirmationServicePopUp;
 import com.mobile.physiolink.databinding.FragmentCreateServiceBinding;
 
 import java.util.ArrayList;
@@ -66,10 +66,7 @@ public class CreateServiceFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    if (current.getText().length() > current_layout.getCounterMaxLength()) {
-                        current_layout.setError("Έχετε υπερβεί το όριο των χαρακτήρων!");
-                        input_erros = true;
-                    } else if (current.getText().length() == 0) {
+                    if (current.getText().length() == 0) {
                         current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         input_erros = true;
                     } else {
@@ -100,7 +97,7 @@ public class CreateServiceFragment extends Fragment {
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    ConfirmationPopUpFragment confirmation = new ConfirmationPopUpFragment(
+                    ConfirmationServicePopUp confirmation = new ConfirmationServicePopUp(
                             binding.serviceNameInput.getText().toString(),
                             binding.serviceCostInput.getText().toString(),
                             binding.serviceIdInput.getText().toString(),
