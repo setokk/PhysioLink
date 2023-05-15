@@ -39,7 +39,9 @@ public class CreateServiceFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentCreateServiceBinding.inflate(inflater, container, false);
 
-//        Θα ψάξω να δω αν μπορώ να το κάνω σε μια λούπα αυτό
+//        Θα ψάξω να δω αν μπορώ να το κάνω σε μια λούπα αυτό.
+//        Μπαίνουν όλα τα input layouts και input edit text σε 2 διαφορετικές λίστες για
+//        να προσπελαύνονται εύκολα
         all_inputs_layouts.add(binding.serviceCostInputLayout);
         all_inputs.add(binding.serviceCostInput);
 
@@ -52,6 +54,7 @@ public class CreateServiceFragment extends Fragment {
         all_inputs_layouts.add(binding.serviceDescriptionInputLayout);
         all_inputs.add(binding.serviceDescriptionInput);
 
+//        Σε αυτή τη λούπα δημιουργήτε ένας onchange listener για κάθε στοιχείο της λίστας
         for(int j =0; j<all_inputs.size(); j++) {
             TextInputEditText current = all_inputs.get(j);
             TextInputLayout current_layout = all_inputs_layouts.get(j);
@@ -94,7 +97,11 @@ public class CreateServiceFragment extends Fragment {
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    ConfirmationPopUpFragment confirmation = new ConfirmationPopUpFragment();
+                    ConfirmationPopUpFragment confirmation = new ConfirmationPopUpFragment(
+                            binding.serviceNameInput.getText().toString(),
+                            binding.serviceCostInput.getText().toString(),
+                            binding.serviceIdInput.getText().toString(),
+                            binding.serviceDescriptionInput.getText().toString());
                     confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                 }
             }

@@ -28,6 +28,7 @@ public class CreateClinicFragment extends Fragment
     private ArrayList<TextInputEditText> all_inputs = new ArrayList<>();
 
 
+
     public CreateClinicFragment()
     {
         // Required empty public constructor
@@ -46,7 +47,9 @@ public class CreateClinicFragment extends Fragment
         binding = FragmentCreateClinicBinding.inflate(inflater, container, false);
 
 
-//        Θα ψάξω να δω αν μπορώ να το κάνω σε μια λούπα αυτό
+//        Θα ψάξω να δω αν μπορώ να το κάνω σε μια λούπα αυτό.
+//        Μπαίνουν όλα τα input layouts και input edit text σε 2 διαφορετικές λίστες για
+//        να προσπελαύνονται εύκολα
         all_inputs_layouts.add(binding.docUsernameInputLayout);
         all_inputs.add(binding.docUsernameInput);
 
@@ -74,6 +77,7 @@ public class CreateClinicFragment extends Fragment
         all_inputs_layouts.add(binding.addressInputLayout);
         all_inputs.add(binding.addressInput);
 
+//        Σε αυτή τη λούπα δημιουργήτε ένας onchange listener για κάθε στοιχείο της λίστας
         for(int i =0; i<all_inputs.size(); i++){
             TextInputEditText current = all_inputs.get(i);
             TextInputLayout current_layout = all_inputs_layouts.get(i);
@@ -117,7 +121,16 @@ public class CreateClinicFragment extends Fragment
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    ConfirmationPopUpFragment confirmation = new ConfirmationPopUpFragment();
+                    ConfirmationPopUpFragment confirmation = new ConfirmationPopUpFragment(
+                            binding.docUsernameInput.getText().toString(),
+                            binding.docPasswardInput.getText().toString(),
+                            binding.docNameInput.getText().toString(),
+                            binding.docSurnameInput.getText().toString(),
+                            binding.afmInput.getText().toString(),
+                            binding.phonenumberInput.getText().toString(),
+                            binding.clinicNameInput.getText().toString(),
+                            binding.cityInput.getText().toString(),
+                            binding.addressInput.getText().toString());
                     confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                 }
             }
