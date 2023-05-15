@@ -28,7 +28,6 @@
             app:errorEnabled="true"
             app:helperText="Υποχρεωτικό *"
             app:helperTextTextColor="@android:color/holo_red_light"
-            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/serviceCostInputLayout">

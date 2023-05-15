@@ -92,6 +92,9 @@ public class CreateServiceFragment extends Fragment {
                         all_inputs_layouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         input_erros = true;
                     }
+                    if(all_inputs.get(i).getText().length() > all_inputs_layouts.get(i).getCounterMaxLength()){
+                        input_erros = true;
+                    }
                 }
                 if(input_erros){
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();

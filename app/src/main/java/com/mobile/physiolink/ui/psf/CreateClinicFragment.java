@@ -91,6 +91,7 @@ public class CreateClinicFragment extends Fragment
 
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
                     if(current.getText().length() > current_layout.getCounterMaxLength()){
                         current_layout.setError("Έχετε υπερβεί το όριο των χαρακτήρων!");
                         input_erros = true;
@@ -137,6 +138,9 @@ public class CreateClinicFragment extends Fragment
                 for(int i = 0; i< all_inputs.size(); i++){
                     if(all_inputs.get(i).getText().length() == 0 && !all_inputs_layouts.get(i).equals(binding.phonenumberInputLayout)){
                         all_inputs_layouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
+                        input_erros = true;
+                    }
+                    if(all_inputs.get(i).getText().length() > all_inputs_layouts.get(i).getCounterMaxLength()){
                         input_erros = true;
                     }
                 }
