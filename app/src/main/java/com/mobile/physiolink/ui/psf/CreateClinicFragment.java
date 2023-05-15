@@ -24,6 +24,8 @@ public class CreateClinicFragment extends Fragment
     private FragmentCreateClinicBinding binding;
 
     private boolean input_erros;
+    private boolean afm_error;
+    private boolean phone_error;
     private ArrayList<TextInputLayout> all_inputs_layouts = new ArrayList<>();
     private ArrayList<TextInputEditText> all_inputs = new ArrayList<>();
 
@@ -92,12 +94,33 @@ public class CreateClinicFragment extends Fragment
                     if(current.getText().length() > current_layout.getCounterMaxLength()){
                         current_layout.setError("Έχετε υπερβεί το όριο των χαρακτήρων!");
                         input_erros = true;
-                    } else if (current.getText().length() == 0 && !current_layout.equals(binding.phonenumberInputLayout)) {
+                    } else if (current.getText().length() == 0 && !current_layout.equals(binding.phonenumberInputLayout) && !current_layout.equals(binding.afmInputLayout)) {
                         current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         input_erros = true;
                     } else{
                         current_layout.setError(null);
                         input_erros = false;
+                    }
+
+                    if(current_layout.equals(binding.phonenumberInputLayout)){
+                        if(current.getText().length() != 10 && current.getText().length() !=0){
+                            current_layout.setError("Ο αριθμός πρέπει να είναι δεκαψήφιος!");
+                            phone_error = true;
+                        }
+                        else{
+                            current_layout.setError(null);
+                            phone_error = false;
+                        }
+                    }
+                    else if(current_layout.equals(binding.afmInputLayout)){
+                        if(current.getText().length() != 9){
+                            current_layout.setError("Το ΑΦΜ πρέπει να έχει 9 ψηφία!");
+                            afm_error = true;
+                        }
+                        else{
+                            current_layout.setError(null);
+                            afm_error = false;
+                        }
                     }
                 }
 
@@ -117,8 +140,8 @@ public class CreateClinicFragment extends Fragment
                         input_erros = true;
                     }
                 }
-                if(input_erros){
-                    Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα πεδία", Toast.LENGTH_SHORT).show();
+                if(input_erros || phone_error || afm_error){
+                    Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     ConfirmationPopUpFragment confirmation = new ConfirmationPopUpFragment(

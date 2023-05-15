@@ -94,7 +94,7 @@ public class CreateServiceFragment extends Fragment {
                     }
                 }
                 if(input_erros){
-                    Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα πεδία", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     ConfirmationPopUpFragment confirmation = new ConfirmationPopUpFragment(
