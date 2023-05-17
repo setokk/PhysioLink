@@ -23,14 +23,14 @@
             android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:counterMaxLength="20"
+            app:counterMaxLength="70"
             app:endIconMode="clear_text"
+            app:errorEnabled="true"
             app:helperText="Υποχρεωτικό *"
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/serviceCostInputLayout"
-            app:hintEnabled="false">
+            app:layout_constraintTop_toBottomOf="@+id/serviceCostInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/serviceDescriptionInput"
@@ -40,27 +40,12 @@
                 android:backgroundTint="@color/white"
                 android:gravity="top"
                 android:hint="@string/DescriptionHint"
-                android:inputType="textNoSuggestions"
+                android:maxLength="70"
+                android:inputType="textMultiLine|textNoSuggestions"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/createServicesHeader"
-            android:layout_width="0dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/lighter_purple"
-            android:gravity="center"
-            android:text="@string/CreateNewService"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -75,7 +60,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createServicesHeader" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/serviceNameInputLayout"
@@ -90,6 +75,7 @@
             app:endIconMode="clear_text"
             app:helperTextEnabled="true"
             app:helperText="Υποχρεωτικό *"
+            app:errorEnabled="true"
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,6 +88,7 @@
                 android:background="@drawable/round_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/NameHint"
+                android:maxLength="20"
                 android:inputType="textNoSuggestions"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
@@ -120,6 +107,7 @@
             app:counterMaxLength="20"
             app:endIconMode="clear_text"
             app:helperText="Υποχρεωτικό *"
+            app:errorEnabled="true"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
@@ -133,6 +121,7 @@
                 android:background="@drawable/round_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/codeString"
+                android:maxLength="20"
                 android:inputType="textNoSuggestions"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
@@ -148,8 +137,9 @@
             android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:counterMaxLength="20"
+            app:counterMaxLength="7"
             app:endIconMode="clear_text"
+            app:errorEnabled="true"
             app:helperText="Υποχρεωτικό *"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@android:color/holo_red_light"
@@ -164,6 +154,7 @@
                 android:background="@drawable/round_style"
                 android:backgroundTint="@color/white"
                 android:hint="Τιμή*"
+                android:maxLength="7"
                 android:inputType="number"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
@@ -197,7 +188,6 @@
             android:text="@string/SaveString"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

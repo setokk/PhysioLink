@@ -1,5 +1,7 @@
 package com.mobile.physiolink.model.user;
 
+import com.mobile.physiolink.service.api.error.Error;
+
 public class Doctor extends User
 {
     private String name;
@@ -39,10 +41,7 @@ public class Doctor extends User
         super(id, username, type);
     }
 
-    public Doctor(String username)
-    {
-        super(username);
-    }
+    public Doctor(String state){ super(state); }
 
     public String getName()
     {
