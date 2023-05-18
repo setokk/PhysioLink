@@ -153,13 +153,43 @@
         app:layout_constraintTop_toBottomOf="@id/upcomingAppointmentTitle"
         tools:layout="@layout/fragment_no_upcoming_appointment" />
 
+     <TextView
+         android:id="@+id/patientHistoryTitlePatient"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"
+         android:layout_marginLeft="10dp"
+         android:text="Η τελευταία μου επίσκεψη:"
+         android:textStyle="italic"
+         android:textColor="@color/white"
+         android:textSize="16dp"
+         app:layout_constraintTop_toBottomOf="@+id/upcomingAppointmentFragmentContainer"
+         app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/patientHistoryLastItemPatient"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/patientHistoryTitlePatient"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/seeYourHistoryBtnPatient"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/seeYourHistoryBtnPatient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Δες όλο το ιστορικό σου"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:background="@color/low_opacity_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:drawableRight="@drawable/baseline_keyboard_arrow_right_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
