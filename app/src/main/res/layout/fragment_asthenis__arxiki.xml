@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileImg"
+            android:id="@+id/patientProfileImgPatient"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/boy"
@@ -34,7 +34,7 @@
             android:text="Συνδέθηκες ως:"
             android:textColor="@color/white"
             android:textSize="16dp"
-            app:layout_constraintStart_toEndOf="@+id/profileImg"
+            app:layout_constraintStart_toEndOf="@+id/patientProfileImgPatient"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -51,7 +51,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewApp"
+        android:id="@+id/patientHistoryLastItemPatient"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
