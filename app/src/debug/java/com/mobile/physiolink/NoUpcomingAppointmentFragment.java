@@ -4,24 +4,17 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mobile.physiolink.databinding.FragmentDoctorHomeBinding;
-import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
+import com.mobile.physiolink.databinding.FragmentNoUpcomingAppointmentBinding;
 
-public class NoUpcomingAppointmentFragment extends Fragment {
-
-    AppCompatButton noUpocomingAppointmentBtn;
-
-    private FragmentDoctorHomeBinding binding;
+public class NoUpcomingAppointmentFragment extends Fragment
+{
+    private FragmentNoUpcomingAppointmentBinding binding;
 
     public NoUpcomingAppointmentFragment()
     {
@@ -39,7 +32,7 @@ public class NoUpcomingAppointmentFragment extends Fragment {
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        binding = FragmentDoctorHomeBinding.inflate(inflater, container, false);
+        binding = FragmentNoUpcomingAppointmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -48,8 +41,7 @@ public class NoUpcomingAppointmentFragment extends Fragment {
                               @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        noUpocomingAppointmentBtn.findViewById(R.id.makeAppointmentBtnPatient);
-        noUpocomingAppointmentBtn.setText(getString(R.string.underlined_dynamic_text, "πατώντας εδώ!"));
+        binding.makeAppointmentBtnPatient.setText(getString(R.string.underlined_dynamic_text, "πατώντας εδώ!"));
 
     }
 }

@@ -3,20 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pat_nav"
-    app:startDestination="@id/asthenis_ArxikiFragment">
-
+    app:startDestination="@id/fragmentPatientHome">
     <fragment
-        android:id="@+id/asthenis_ArxikiFragment"
+        android:id="@+id/fragmentPatientHome"
         android:name="com.mobile.physiolink.ui.patient.PatientHomeFragment"
         android:label="fragment_asthenis__arxiki"
         tools:layout="@layout/fragment_patient_home" />
     <fragment
-        android:id="@+id/neo_Rantevou_Screen2"
+        android:id="@+id/fragmentPatientDoctor"
         android:name="com.mobile.physiolink.ui.patient.PatientDoctorFragment"
         android:label="fragment_neo_rantevou_screen"
         tools:layout="@layout/fragment_patient_doctor" />
     <fragment
-        android:id="@+id/epilogi_Imerominias_Screen"
+        android:id="@+id/fragmentRequestAppointment"
         android:name="com.mobile.physiolink.ui.patient.RequestAppointmentFragment"
         android:label="fragment_epilogi__imerominias__screen"
         tools:layout="@layout/fragment_request_appointment" />
