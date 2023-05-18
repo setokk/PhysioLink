@@ -14,7 +14,6 @@ import com.mobile.physiolink.databinding.FragmentEpilogiImerominiasScreenBinding
 
 public class PatientActivity extends AppCompatActivity
 {
-    //private ActivityPatientBinding binding;
     private ActivityPatientBinding binding;
     private AppBarConfiguration appBarConfiguration;
 
