@@ -240,4 +240,5 @@
         <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
     </string-array>
 
+    <string name="underlined_dynamic_text"><u>%s</u></string>
 </resources>

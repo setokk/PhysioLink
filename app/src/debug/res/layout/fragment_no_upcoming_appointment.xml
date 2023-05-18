@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:background="@drawable/square_round_style"
+    tools:context=".NoUpcomingAppointmentFragment">
+
+    <ImageView
+        android:id="@+id/noUpcomingAppointmentImg"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:src="@drawable/no_appointments_photo_1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/makeAppointmentTitle"/>
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Δεν έχεις ακόμα ραντεβού!"
+        android:textAlignment="center"
+        android:textColor="@color/button_purple"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/makeAppointmentTitle"
+        app:layout_constraintLeft_toRightOf="@+id/noUpcomingAppointmentImg"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/makeAppointmentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Κλείσε ραντεβού με τον γιατρό σου,"
+        android:textColor="@color/button_purple"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/makeAppointmentBtnPatient"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/makeAppointmentBtnPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:background="@color/transparent"
+        android:text="πατώντας εδώ!"
+        android:textColor="@color/button_purple"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
