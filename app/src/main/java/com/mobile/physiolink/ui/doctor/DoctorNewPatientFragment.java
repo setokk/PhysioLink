@@ -31,6 +31,8 @@ public class DoctorNewPatientFragment extends Fragment
     private boolean inputError;
     private boolean phoneError;
     private boolean AmkaError;
+
+    private boolean CodeError;
     private final ArrayList<TextInputLayout> allInputsLayouts = new ArrayList<>();
     private final ArrayList<TextInputEditText> allInputs = new ArrayList<>();
 
@@ -81,6 +83,9 @@ public class DoctorNewPatientFragment extends Fragment
         allInputsLayouts.add(binding.patientUsernameInputLayout);
         allInputs.add(binding.patientUsernameInput);
 
+        allInputsLayouts.add(binding.patientAddressInputLayout);
+        allInputs.add(binding.patientAddressInput);
+
         allInputsLayouts.add(binding.patientPasswordInputLayout);
         allInputs.add(binding.patientPasswordInput);
 
@@ -88,12 +93,12 @@ public class DoctorNewPatientFragment extends Fragment
             TextInputLayout currentInputLayout = allInputsLayouts.get(j);
             TextInputEditText currentInput = allInputs.get(j);
 
-            currentInput.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    currentInput.requestFocus();
-                }
-            });
+//            currentInput.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    currentInput.requestFocus();
+//                }
+//            });
 
             currentInput.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -131,7 +136,12 @@ public class DoctorNewPatientFragment extends Fragment
                         }
                     } else if (currentInputLayout.equals(binding.patientPasswordInputLayout)){
                         if(!(currentInput.getText().toString().contains("0") || currentInput.getText().toString().contains("1") || currentInput.getText().toString().contains("2") || currentInput.getText().toString().contains("3") || currentInput.getText().toString().contains("4") || currentInput.getText().toString().contains("5") || currentInput.getText().toString().contains("6") || currentInput.getText().toString().contains("7") || currentInput.getText().toString().contains("8") || currentInput.getText().toString().contains("9"))){
-                            currentInputLayout.setHelperText("Ο κωδικός σας δεν είναι αρκετά ισχυρός");
+                            currentInputLayout.setError("Ο κωδικός Πρέπει να περιέζει τουλάχιστον έναν αριθμό");
+                            CodeError = true;
+                        }
+                        else{
+                            CodeError = false;
+                            currentInputLayout.setError(null);
                         }
                     }
                 }
@@ -151,11 +161,8 @@ public class DoctorNewPatientFragment extends Fragment
                         allInputsLayouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         inputError = true;
                     }
-                    if(allInputs.get(i).getText().length() > allInputsLayouts.get(i).getCounterMaxLength()){
-                        inputError = true;
-                    }
                 }
-                if(inputError || phoneError || AmkaError){
+                if(inputError || phoneError || AmkaError || CodeError){
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{

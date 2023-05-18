@@ -42,7 +42,7 @@ public class ConfirmationPatientPopUp extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        Toast.makeText(getActivity(), "Εγινε αποθήκευση Παροχής!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Εγινε αποθήκευση Ασθενή!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Οχι", new DialogInterface.OnClickListener() {

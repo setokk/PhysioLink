@@ -59,15 +59,15 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientNameInput"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:maxLength="20"
-                android:inputType="textNoSuggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint="Όνομα *"
-                android:paddingLeft="30dp"
-                android:textColor="@color/input_grey"/>
+                android:hint="@string/NameHint"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -90,15 +90,15 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientSurnameInput"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:maxLength="20"
-                android:inputType="textNoSuggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint="Επώνυμο *"
-                android:paddingLeft="30dp"
-                android:textColor="@color/input_grey"/>
+                android:hint="@string/LastNameHint"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -110,7 +110,7 @@
             android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:counterMaxLength="20"
+            app:counterMaxLength="30"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:helperText="Υποχρεωτικό *"
@@ -121,15 +121,15 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientAddressInput"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:maxLength="30"
-                android:inputType="textNoSuggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint="Διεύθυνση *"
-                android:paddingLeft="30dp"
-                android:textColor="@color/input_grey"/>
+                android:hint="@string/AddressHint"
+                android:inputType="textNoSuggestions"
+                android:maxLength="30"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -141,7 +141,7 @@
             android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:counterMaxLength="20"
+            app:counterMaxLength="11"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:helperText="Υποχρεωτικό *"
@@ -152,15 +152,15 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientAmkaInput"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:maxLength="11"
-                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="ΑΜΚΑ *"
-                android:paddingLeft="30dp"
-                android:textColor="@color/input_grey"/>
+                android:inputType="number"
+                android:maxLength="11"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -172,24 +172,25 @@
             android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:counterMaxLength="20"
+            app:counterMaxLength="10"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientAmkaInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/patientAmkaInputLayout"
+            app:prefixText="+30 ">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientPhoneInput"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:maxLength="10"
-                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint="Κινητό Τηλέφωνο"
-                android:paddingLeft="30dp"
-                android:textColor="@color/input_grey"/>
+                android:hint="@string/PhoneHint"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -201,7 +202,7 @@
             android:layout_marginEnd="1dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:counterMaxLength="20"
+            app:counterMaxLength="30"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:helperText="Υποχρεωτικό *"
@@ -212,15 +213,15 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientEmailInput"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:maxLength="100"
-                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="Email *"
-                android:paddingLeft="30dp"
-                android:textColor="@color/input_grey"/>
+                android:inputType="textEmailAddress"
+                android:maxLength="30"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -256,21 +257,21 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientUsernameInput"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:maxLength="100"
-                android:inputType="textNoSuggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint="Username *"
-                android:paddingLeft="30dp"
-                android:textColor="@color/input_grey"/>
+                android:hint="@string/hint_username"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientPasswordInputLayout"
-            android:layout_width="294dp"
-            android:layout_height="75dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="1dp"
@@ -287,15 +288,15 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientPasswordInput"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:maxLength="100"
-                android:inputType="textNoSuggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint="Password *"
-                android:paddingLeft="30dp"
-                android:textColor="@color/input_grey" />
+                android:hint="@string/hint_password"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
