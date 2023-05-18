@@ -19,4 +19,9 @@
         android:name="com.mobile.physiolink.ui.patient.RequestAppointmentFragment"
         android:label="fragment_epilogi__imerominias__screen"
         tools:layout="@layout/fragment_request_appointment" />
+    <fragment
+        android:id="@+id/patientHistoryFragment"
+        android:name="com.mobile.physiolink.ui.patient.PatientHistoryFragment"
+        android:label="PatientHistoryFragment"
+        tools:layout="@layout/fragment_patient_history" />
 </navigation>
