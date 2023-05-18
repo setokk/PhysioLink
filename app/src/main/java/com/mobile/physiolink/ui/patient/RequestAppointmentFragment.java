@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mobile.physiolink.databinding.FragmentRequestAppointmentBinding;
+import com.mobile.physiolink.util.DateFormatter;
 
 public class RequestAppointmentFragment extends Fragment
 {
@@ -34,7 +35,7 @@ public class RequestAppointmentFragment extends Fragment
     {
         binding.calendarView.setOnDateChangeListener((view1, year, month, dayOfMonth) ->
         {
-            String date = (month + 1) + "/" + dayOfMonth + "/" + year;
+            String date = DateFormatter.formatToAlphanumeric(year, month + 1, dayOfMonth);
             binding.dateText.setText(date);
         });
     }

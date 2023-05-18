@@ -239,6 +239,16 @@
         <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
         <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
     </string-array>
+    <string-array name="timePatientHistory">
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+    </string-array>
 
     <string name="underlined_dynamic_text"><u>%s</u></string>
 </resources>
