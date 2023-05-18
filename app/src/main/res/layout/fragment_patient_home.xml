@@ -182,6 +182,7 @@
             android:id="@+id/seeYourHistoryBtnPatient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="Δες όλο το ιστορικό σου"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -189,7 +190,7 @@
             android:background="@color/low_opacity_white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:drawableRight="@drawable/baseline_keyboard_arrow_right_24" />
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
