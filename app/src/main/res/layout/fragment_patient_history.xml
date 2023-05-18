@@ -38,7 +38,7 @@
     </androidx.appcompat.widget.SearchView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/customListView"
+        android:id="@+id/history_recyclerview"
         android:layout_width="519dp"
         android:layout_height="724dp"
         android:layout_marginLeft="5dp"
