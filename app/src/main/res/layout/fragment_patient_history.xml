@@ -19,7 +19,6 @@
         android:textColor="@color/black"
         android:textColorHint="@color/input_grey"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/customListView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,26 +37,22 @@
     </androidx.appcompat.widget.SearchView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/history_recyclerview"
-        android:layout_width="519dp"
-        android:layout_height="724dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
+        android:id="@+id/historyRecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="637dp"
+        android:layout_marginTop="26dp"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchbar"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/searchbar">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="521dp"
         android:layout_height="82dp"
-        android:layout_marginBottom="1dp"
         android:background="@color/button_purple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
