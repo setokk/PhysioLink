@@ -30,18 +30,22 @@
             android:id="@+id/serviceDescriptionInput"
             android:layout_width="352dp"
             android:layout_height="155dp"
-            android:layout_marginTop="73dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="108dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/round2_style"
             android:backgroundTint="@color/white"
             android:gravity="top"
-            android:hint="@string/DescriptionHint"
+            android:hint="Περιγράψτε πως αισθάνεστε..."
+            p
             android:inputType="textMultiLine|textNoSuggestions"
             android:maxLength="70"
             android:textColor="@color/black"
             android:textColorHint="@color/input_grey"
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView"
-            tools:layout_editor_absoluteX="30dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -92,5 +96,28 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="119dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="99dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/round_style"
+            android:backgroundTint="@color/button_purple"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="20dp"
+            android:paddingBottom="10dp"
+            android:text="@string/SaveString"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/serviceDescriptionInput"
+            app:layout_constraintVertical_bias="0.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
