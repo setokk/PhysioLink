@@ -34,9 +34,6 @@ public class DoctorNewPatientFragment extends Fragment
     private final ArrayList<TextInputLayout> allInputsLayouts = new ArrayList<>();
     private final ArrayList<TextInputEditText> allInputs = new ArrayList<>();
 
-    private TextInputLayout currentInputLayout;
-    TextInputEditText currentInput;
-
     public DoctorNewPatientFragment()
     {
         // Required empty public constructor
@@ -87,9 +84,16 @@ public class DoctorNewPatientFragment extends Fragment
         allInputsLayouts.add(binding.patientPasswordInputLayout);
         allInputs.add(binding.patientPasswordInput);
 
-        for(int i =0; i<allInputsLayouts.size(); i++) {
-            currentInputLayout = allInputsLayouts.get(i);
-            currentInput = allInputs.get(i);
+        for(int j =0; j<allInputsLayouts.size(); j++) {
+            TextInputLayout currentInputLayout = allInputsLayouts.get(j);
+            TextInputEditText currentInput = allInputs.get(j);
+
+            currentInput.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    currentInput.requestFocus();
+                }
+            });
 
             currentInput.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -99,19 +103,21 @@ public class DoctorNewPatientFragment extends Fragment
 
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
                     if (currentInput.getText().length() == 0 && !currentInputLayout.equals(binding.patientPhoneInputLayout)) {
                         currentInputLayout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         inputError = true;
                     } else {
                         currentInputLayout.setError(null);
+                        currentInputLayout.setHelperText(null);
                         inputError = false;
                     }
 
                     if (currentInputLayout.equals(binding.patientPhoneInputLayout)) {
                         if (currentInput.getText().length() != 10 && currentInput.getText().length() != 0) {
-                            currentInputLayout.setError("Ο αριθμός πρέπει να είναι δεκαψήφιος!");
+                            currentInputLayout.setError("Ο αριθμός πρέπει να έχει 10 ψηφία!");
                             phoneError = true;
-                        } else {
+                        }else {
                             currentInputLayout.setError(null);
                             phoneError = false;
                         }
@@ -122,6 +128,10 @@ public class DoctorNewPatientFragment extends Fragment
                         } else {
                             currentInputLayout.setError(null);
                             AmkaError = false;
+                        }
+                    } else if (currentInputLayout.equals(binding.patientPasswordInputLayout)){
+                        if(!(currentInput.getText().toString().contains("0") || currentInput.getText().toString().contains("1") || currentInput.getText().toString().contains("2") || currentInput.getText().toString().contains("3") || currentInput.getText().toString().contains("4") || currentInput.getText().toString().contains("5") || currentInput.getText().toString().contains("6") || currentInput.getText().toString().contains("7") || currentInput.getText().toString().contains("8") || currentInput.getText().toString().contains("9"))){
+                            currentInputLayout.setHelperText("Ο κωδικός σας δεν είναι αρκετά ισχυρός");
                         }
                     }
                 }

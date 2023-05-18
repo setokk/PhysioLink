@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.model.user.User;
 import com.mobile.physiolink.databinding.ActivityLoginBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
