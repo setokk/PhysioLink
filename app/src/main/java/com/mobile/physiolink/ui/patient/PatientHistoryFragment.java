@@ -22,9 +22,13 @@ public class PatientHistoryFragment extends Fragment
     String[] history_date, history_time, history_fysio, history_doc,
             history_service, history_price;
     private HistoryRecyclerAdapter adapter;
+
     public PatientHistoryFragment() {
         // Required empty public constructor
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

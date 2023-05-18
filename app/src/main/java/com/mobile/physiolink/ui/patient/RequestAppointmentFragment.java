@@ -28,6 +28,8 @@ public class RequestAppointmentFragment extends Fragment
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         binding.calendarView.setOnDateChangeListener((view1, year, month, dayOfMonth) ->
