@@ -1,92 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0DAB8B"
-    tools:context=".ui.Epilogi_Imerominias_Screen">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/docBar2"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:background="#CC6750A4"
-        android:clickable="false"
-        android:contextClickable="false"
-        android:drawableLeft="@drawable/temp"
-        android:fontFamily="sans-serif"
-        android:gravity="center"
-        android:text="@string/selectDateBarName"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_lime"
+        tools:context=".ui.Epilogi_Imerominias_Screen">
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="342dp"
-        android:layout_height="302dp"
-        android:layout_marginBottom="188dp"
-        android:background="@drawable/square_round_style"
-        android:clickable="true"
-        android:contextClickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker"
-        app:layout_constraintVertical_bias="0.794" />
 
-    <EditText
-        android:id="@+id/datePicker"
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="249dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/square_round_style"
-        android:clickable="false"
-        android:editable="false"
-        android:ems="10"
-        android:focusable="false"
-        android:inputType="date"
-        android:text="01/01/1970"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/docBar2" />
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="31dp"
+            android:background="@drawable/calender_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-    <Spinner
-        android:id="@+id/timeSelect"
-        android:layout_width="223dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/square_round_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/serviceDescriptionInput"
+            android:layout_width="352dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="73dp"
+            android:background="@drawable/round2_style"
+            android:backgroundTint="@color/white"
+            android:gravity="top"
+            android:hint="@string/DescriptionHint"
+            android:inputType="textMultiLine|textNoSuggestions"
+            android:maxLength="70"
+            android:textColor="@color/black"
+            android:textColorHint="@color/input_grey"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView"
+            tools:layout_editor_absoluteX="30dp" />
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine2"
-        android:layout_width="341dp"
-        android:layout_height="103dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/square_round_style"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeSelect" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="343dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="34dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="11dp"
+                android:src="@drawable/calendar_icon_today"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="10dp"
+                android:text="00/00/00"
+
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView3" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="141dp"
+                android:text="Επιλέξτε Ημερομηνία"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
