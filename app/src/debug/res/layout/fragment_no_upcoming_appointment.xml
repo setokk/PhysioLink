@@ -8,7 +8,7 @@
     android:paddingBottom="10dp"
     android:paddingLeft="10dp"
     android:background="@drawable/square_round_style"
-    tools:context=".NoUpcomingAppointmentFragment">
+    tools:context=".ui.patient.NoUpcomingAppointmentFragment">
 
     <ImageView
         android:id="@+id/noUpcomingAppointmentImg"

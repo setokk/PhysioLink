@@ -1,4 +1,4 @@
-package com.mobile.physiolink;
+package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
 
@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentNoUpcomingAppointmentBinding;
 
 public class NoUpcomingAppointmentFragment extends Fragment
