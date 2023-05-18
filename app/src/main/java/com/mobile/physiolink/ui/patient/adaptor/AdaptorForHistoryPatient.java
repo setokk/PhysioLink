@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemPatientHistoryBinding;
 
 public class AdaptorForHistoryPatient extends RecyclerView.Adapter<AdaptorForHistoryPatient.MyViewHolder> {
@@ -16,17 +17,19 @@ public class AdaptorForHistoryPatient extends RecyclerView.Adapter<AdaptorForHis
     String service[];
     String price[];
 
+    private boolean displayAllItems;
+
 
 
     public AdaptorForHistoryPatient(String dateH[], String timeH[], String descriptionH[],
-                                    String serviceH[], String priceH[]){
+                                    String serviceH[], String priceH[], int recyclerViewId){
 
         date = dateH;
         time = timeH;
         description = descriptionH;
         service = serviceH;
         price = priceH;
-
+        this.displayAllItems= recyclerViewId== R.id.historyRecyclerview;
     }
 
     @NonNull
@@ -46,13 +49,15 @@ public class AdaptorForHistoryPatient extends RecyclerView.Adapter<AdaptorForHis
         holder.itemHistoryBinding.apointmentDescriptionPatientHistory.setText(description[position]);
         holder.itemHistoryBinding.servicePrisePatientHistory.setText(price[position]);
 
-
-
     }
 
     @Override
     public int getItemCount() {
-        return service.length;
+        if (displayAllItems) {
+            return service.length;
+        } else {
+            return Math.min(service.length, 1);
+        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder

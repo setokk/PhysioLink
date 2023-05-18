@@ -6,7 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +15,18 @@ import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHomeBinding;
+import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatientHistory;
+import com.mobile.physiolink.ui.patient.adaptor.AdaptorForHistoryPatient;
 
 
 public class PatientHomeFragment extends Fragment
 {
     boolean hasAppointment=true;
+
+    RecyclerView lastHistoryItem;
+    String h1[],h2[],h3[],h4[],h5[];
     Fragment AppointmentFragment = new UpcomingAppointmentFragment();
     Fragment NoAppointmentFragment= new NoUpcomingAppointmentFragment();
     private FragmentPatientHomeBinding binding;
@@ -54,6 +62,15 @@ public class PatientHomeFragment extends Fragment
             transaction.replace(R.id.upcomingAppointmentFragmentContainer, NoAppointmentFragment);
             transaction.commit();
         }
+
+        h1=getResources().getStringArray(R.array.appointmentsService);
+        h2=getResources().getStringArray(R.array.servicesPatientHistoryListExampleDate);
+        h3=getResources().getStringArray(R.array.timePatientHistory);
+        h4=getResources().getStringArray(R.array.servicesListExampleDescription);
+        h5=getResources().getStringArray(R.array.paroxesCostExamle);
+
+        binding.patientHistoryLastItemPatient.setAdapter(new AdaptorForHistoryPatient(h2,h3,h4,h1,h5,R.id.patientHistoryLastItemPatient));
+        binding.patientHistoryLastItemPatient.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
     }
 }
