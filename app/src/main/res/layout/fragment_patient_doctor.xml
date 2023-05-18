@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0DAB8B"
-    tools:context=".ui.Neo_Rantevou_Screen">
+    tools:context=".ui.patient.PatientDoctorFragment">
 
     <include
         android:id="@+id/doctorTab"

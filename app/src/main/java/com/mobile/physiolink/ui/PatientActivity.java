@@ -10,7 +10,6 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ActivityPatientBinding;
-import com.mobile.physiolink.databinding.FragmentEpilogiImerominiasScreenBinding;
 
 public class PatientActivity extends AppCompatActivity
 {
@@ -23,7 +22,6 @@ public class PatientActivity extends AppCompatActivity
         super.onCreate(savedInstanceBundle);
         binding = ActivityPatientBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
 
         /* Setup Navigation with top level destinations */
         NavController navController = Navigation.findNavController(this, R.id.containerPatient);
