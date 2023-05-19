@@ -4,7 +4,6 @@ import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.schemas.PatientSchema;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 import okhttp3.Callback;
