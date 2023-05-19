@@ -17,37 +17,38 @@
             android:id="@+id/calendarView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="31dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="31dp"
-            android:layout_marginBottom="108dp"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="130dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/calender_view"
-            app:layout_constraintBottom_toTopOf="@+id/serviceDescriptionInput"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/serviceDescriptionInput"
             android:layout_width="343dp"
             android:layout_height="155dp"
             android:layout_marginStart="128dp"
-            android:layout_marginTop="108dp"
+            android:layout_marginTop="31dp"
             android:layout_marginEnd="130dp"
             android:background="@drawable/round2_style"
             android:backgroundTint="@color/white"
             android:gravity="top"
             android:hint="Περιγράψτε πως αισθάνεστε..."
-            android:paddingStart="15dp"
-            android:paddingTop="12dp"
             android:inputType="textMultiLine|textNoSuggestions"
             android:maxLength="70"
+            android:paddingStart="15dp"
+            android:paddingTop="12dp"
             android:textColor="@color/black"
             android:textColorHint="@color/input_grey"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -58,6 +59,7 @@
             android:layout_marginEnd="130dp"
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -93,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="141dp"
+
                 android:text="Επιλέξτε Ημερομηνία"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -103,9 +106,9 @@
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="210dp"
+            android:layout_marginStart="204dp"
             android:layout_marginTop="30dp"
-            android:layout_marginEnd="198dp"
+            android:layout_marginEnd="204dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/round_style"
             android:backgroundTint="@color/button_purple"
@@ -119,6 +122,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/serviceDescriptionInput" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="343dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="130dp"
+
+            android:hint="Επιλέξτε Ώρα"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTime"
+                android:layout_width="343dp"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:clickable="true"
+                android:focusable="false"
+                android:inputType="none"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
