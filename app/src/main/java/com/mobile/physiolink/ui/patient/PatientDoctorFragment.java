@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.transition.AutoTransition;
@@ -63,6 +64,10 @@ public class PatientDoctorFragment extends Fragment
             }
         });
 
+        binding.patientDoctorMakeAppointmentBtn.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(),R.id.containerPatient)
+                        .navigate(R.id.action_fragmentPatientDoctor_to_fragmentRequestAppointment));
+
         s1=getResources().getStringArray(R.array.appointmentsService);
         s2=getResources().getStringArray(R.array.servicesListExampleDescription);
         s3=getResources().getStringArray(R.array.servicesListExamplePrices);
@@ -70,5 +75,7 @@ public class PatientDoctorFragment extends Fragment
         binding.doctorPatientServicesList.addItemDecoration(new DecorationSpacingItem(20));
         binding.doctorPatientServicesList.setAdapter(new AdapterForPatientDoctorServices(s1,s2,s3));
         binding.doctorPatientServicesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+
     }
 }

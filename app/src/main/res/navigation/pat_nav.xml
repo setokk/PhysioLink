@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_fragmentPatientHome_to_fragmentPatientDoctor"
             app:destination="@id/fragmentPatientDoctor" />
+        <action
+            android:id="@+id/action_fragmentPatientHome_to_patientHistoryFragment"
+            app:destination="@id/patientHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentPatientDoctor"
@@ -21,15 +24,26 @@
         <action
             android:id="@+id/action_fragmentPatientDoctor_to_fragmentPatientHome"
             app:destination="@id/fragmentPatientHome" />
+        <action
+            android:id="@+id/action_fragmentPatientDoctor_to_fragmentRequestAppointment"
+            app:destination="@id/fragmentRequestAppointment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentRequestAppointment"
         android:name="com.mobile.physiolink.ui.patient.RequestAppointmentFragment"
         android:label="fragment_epilogi__imerominias__screen"
-        tools:layout="@layout/fragment_request_appointment" />
+        tools:layout="@layout/fragment_request_appointment" >
+        <action
+            android:id="@+id/action_fragmentRequestAppointment_to_fragmentPatientDoctor"
+            app:destination="@id/fragmentPatientDoctor" />
+    </fragment>
     <fragment
         android:id="@+id/patientHistoryFragment"
         android:name="com.mobile.physiolink.ui.patient.PatientHistoryFragment"
         android:label="PatientHistoryFragment"
-        tools:layout="@layout/fragment_patient_history" />
+        tools:layout="@layout/fragment_patient_history" >
+        <action
+            android:id="@+id/action_patientHistoryFragment_to_fragmentPatientHome"
+            app:destination="@id/fragmentPatientHome" />
+    </fragment>
 </navigation>

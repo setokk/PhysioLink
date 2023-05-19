@@ -84,6 +84,10 @@ public class PatientHomeFragment extends Fragment
                 Navigation.findNavController(getActivity(), R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientHome_to_fragmentPatientDoctor));
 
+        binding.patientHistoryLastItemPatient.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(),R.id.containerPatient)
+                        .navigate(R.id.action_fragmentPatientHome_to_patientHistoryFragment));
+
     }
 }
 
