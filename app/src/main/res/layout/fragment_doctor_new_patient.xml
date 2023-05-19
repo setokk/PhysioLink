@@ -102,6 +102,37 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientCityInputLayout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientSurnameInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientCityInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint= "Πόλη *"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientAddressInputLayout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -117,7 +148,7 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientSurnameInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/patientCityInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientAddressInput"
@@ -128,6 +159,37 @@
                 android:hint="@string/AddressHint"
                 android:inputType="textNoSuggestions"
                 android:maxLength="30"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientPostalCodeInputLayout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="5"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientAddressInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientPostalCodeInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="Ταχυδρομικός κώδικας *"
+                android:inputType="number"
+                android:maxLength="20"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -148,7 +210,7 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientAddressInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/patientPostalCodeInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/patientAmkaInput"

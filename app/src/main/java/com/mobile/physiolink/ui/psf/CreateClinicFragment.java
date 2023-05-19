@@ -82,9 +82,9 @@ public class CreateClinicFragment extends Fragment
         all_inputs.add(binding.addressInput);
 
 //        Σε αυτή τη λούπα δημιουργήτε ένας onchange listener για κάθε στοιχείο της λίστας
-        for(int i =0; i<all_inputs.size(); i++){
-            TextInputEditText current = all_inputs.get(i);
-            TextInputLayout current_layout = all_inputs_layouts.get(i);
+        for(int j =0; j<all_inputs.size(); j++){
+            TextInputEditText current = all_inputs.get(j);
+            TextInputLayout current_layout = all_inputs_layouts.get(j);
 
 //            current.setOnClickListener(new View.OnClickListener() {
 //                @Override
