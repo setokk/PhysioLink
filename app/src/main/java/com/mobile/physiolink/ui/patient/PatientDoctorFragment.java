@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -14,11 +15,14 @@ import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientDoctorBinding;
+import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.patient.adapter.AdapterForPatientDoctorServices;
 
 public class PatientDoctorFragment extends Fragment
 {
     private FragmentPatientDoctorBinding binding;
 
+    String s1[],s2[],s3[];
 
     public PatientDoctorFragment() {
         // Required empty public constructor
@@ -59,5 +63,12 @@ public class PatientDoctorFragment extends Fragment
             }
         });
 
+        s1=getResources().getStringArray(R.array.appointmentsService);
+        s2=getResources().getStringArray(R.array.servicesListExampleDescription);
+        s3=getResources().getStringArray(R.array.servicesListExamplePrices);
+
+        binding.doctorPatientServicesList.addItemDecoration(new DecorationSpacingItem(20));
+        binding.doctorPatientServicesList.setAdapter(new AdapterForPatientDoctorServices(s1,s2,s3));
+        binding.doctorPatientServicesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 }
