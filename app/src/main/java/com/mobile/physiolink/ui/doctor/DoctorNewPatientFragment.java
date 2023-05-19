@@ -22,6 +22,9 @@ import com.mobile.physiolink.ConfirmationPatientPopUp;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorNewPatientBinding;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import java.util.ArrayList;
 
 public class DoctorNewPatientFragment extends Fragment
@@ -31,7 +34,6 @@ public class DoctorNewPatientFragment extends Fragment
     private boolean inputError;
     private boolean phoneError;
     private boolean AmkaError;
-
     private boolean CodeError;
     private final ArrayList<TextInputLayout> allInputsLayouts = new ArrayList<>();
     private final ArrayList<TextInputEditText> allInputs = new ArrayList<>();
@@ -93,6 +95,9 @@ public class DoctorNewPatientFragment extends Fragment
             TextInputLayout currentInputLayout = allInputsLayouts.get(j);
             TextInputEditText currentInput = allInputs.get(j);
 
+            String passwordPattern = "(?=.*\\d)(?=.*[\\{\\.\\}])";
+            Pattern regex = Pattern.compile(passwordPattern);
+
 //            currentInput.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
@@ -135,8 +140,9 @@ public class DoctorNewPatientFragment extends Fragment
                             AmkaError = false;
                         }
                     } else if (currentInputLayout.equals(binding.patientPasswordInputLayout)){
-                        if(!(currentInput.getText().toString().contains("0") || currentInput.getText().toString().contains("1") || currentInput.getText().toString().contains("2") || currentInput.getText().toString().contains("3") || currentInput.getText().toString().contains("4") || currentInput.getText().toString().contains("5") || currentInput.getText().toString().contains("6") || currentInput.getText().toString().contains("7") || currentInput.getText().toString().contains("8") || currentInput.getText().toString().contains("9"))){
-                            currentInputLayout.setError("Ο κωδικός Πρέπει να περιέζει τουλάχιστον έναν αριθμό");
+                        Matcher matcher = regex.matcher(binding.patientPasswordInput.getText().toString());
+                        if(!matcher.find()){
+                            currentInputLayout.setError("Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό και έναν ειδικό χαρακτήρα '{' ή '.'");
                             CodeError = true;
                         }
                         else{

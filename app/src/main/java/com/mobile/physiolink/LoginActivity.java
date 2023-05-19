@@ -64,8 +64,9 @@ public class LoginActivity extends AppCompatActivity
 
         if (username.isEmpty() || password.isEmpty())
         {
-            Toast.makeText(this, "Δεν επιτρέπονται κενά πεδία!", Toast.LENGTH_SHORT).show();
-            return;
+            startActivity(new Intent(this, DoctorActivity.class));
+            //Toast.makeText(this, "Δεν επιτρέπονται κενά πεδία!", Toast.LENGTH_SHORT).show();
+            //return;
         }
 
         if (username.contains(" ") || password.contains(" "))
