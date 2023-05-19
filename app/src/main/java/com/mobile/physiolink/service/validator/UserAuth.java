@@ -12,8 +12,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Optional;
+
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * @author Kote Kostandin (setokk) <br>
@@ -31,23 +33,25 @@ public class UserAuth
      * @param password the password input
      * @return {@link com.mobile.physiolink.model.user.User}
      */
-    public static User authenticateUser(String username, String password) throws JSONException, IOException
+    public static void sendAuthRequest(String username,
+                                       String password,
+                                       Callback callback)
     {
-        /* For Optional */
-        User user = null;
-
         /* Prepare Map for body [key: "value"] */
         HashMap<String, String> keyValues = new HashMap<>(2);
         keyValues.put("username", username);
         keyValues.put("password", password);
 
         /* Make POST request to auth api route */
+        RequestFacade.postRequest(API.AUTH_USER, keyValues, callback);
+    }
 
-        String response = Objects.requireNonNull(RequestFacade.postRequest(API.AUTH_USER, keyValues)
-                        .body())
-                .string();
-        JSONObject json = new JSONObject(response);
-
+    public static User prepareAndGetUser(Response response,
+                                         String username)
+            throws JSONException, IOException
+    {
+        User user = null;
+        JSONObject json = new JSONObject(response.body().string());
         if (validCredentials(json))
         {
             long id = json.getLong("id");
@@ -83,12 +87,12 @@ public class UserAuth
             }
         }
 
-        /* Return a valid user, or else return a user with username "Error.INVALID_CREDENTIALS" */
         return Optional.ofNullable(user)
                 .orElse(new User(Error.INVALID_CREDENTIALS));
     }
 
-    private static boolean validCredentials(JSONObject json)
+
+    public static boolean validCredentials(JSONObject json)
     {
         // message: "Invalid credentials" JSON response -> not valid credentials
         return !json.toString().contains(Error.INVALID_CREDENTIALS);
