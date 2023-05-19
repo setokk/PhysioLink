@@ -47,7 +47,22 @@ public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema>
     @Override
     public void update(Long id, DoctorSchema item, Callback callback)
     {
+        /* Prepare HashMap for [key: "value"] in POST request body */
+        HashMap<String, String> keyValues = new HashMap<>(9);
+        keyValues.put("id", String.valueOf(id));
+        keyValues.put("username", item.username);
+        keyValues.put("password", item.password);
+        keyValues.put("name", item.name);
+        keyValues.put("surname", item.surname);
+        keyValues.put("email", item.email);
+        keyValues.put("phone_number", item.phoneNumber);
+        keyValues.put("city", item.city);
+        keyValues.put("address", item.address);
+        keyValues.put("postal_code", item.postalCode);
+        keyValues.put("afm", item.afm);
+        keyValues.put("physio_name", item.physioName);
 
+        RequestFacade.postRequest(API.EDIT_DOCTOR, keyValues, callback);
     }
 
     @Override
@@ -60,5 +75,10 @@ public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema>
     public void get(Long id, Callback callback)
     {
         RequestFacade.getRequest(API.GET_DOCTOR + id, callback);
+    }
+
+    public void getAllDoctors(Callback callback)
+    {
+        RequestFacade.getRequest(API.GET_DOCTORS, callback);
     }
 }

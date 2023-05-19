@@ -49,7 +49,21 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema>
     @Override
     public void update(Long id, PatientSchema item, Callback callback)
     {
+        /* Prepare HashMap for [key: "value"] in POST request body */
+        HashMap<String, String> keyValues = new HashMap<>(9);
+        keyValues.put("id", String.valueOf(id));
+        keyValues.put("username", item.username);
+        keyValues.put("password", item.password);
+        keyValues.put("name", item.name);
+        keyValues.put("surname", item.surname);
+        keyValues.put("email", item.email);
+        keyValues.put("phone_number", item.phoneNumber);
+        keyValues.put("city", item.city);
+        keyValues.put("address", item.address);
+        keyValues.put("postal_code", item.postalCode);
+        keyValues.put("amka", item.amka);
 
+        RequestFacade.postRequest(API.EDIT_PATIENT, keyValues, callback);
     }
 
     @Override
