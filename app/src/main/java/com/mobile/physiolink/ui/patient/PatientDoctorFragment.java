@@ -2,6 +2,7 @@ package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -30,5 +31,13 @@ public class PatientDoctorFragment extends Fragment
         // Inflate the layout for this fragment
         binding = FragmentPatientDoctorBinding.inflate(inflater, container, false);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view,
+                              @Nullable Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
+
     }
 }
