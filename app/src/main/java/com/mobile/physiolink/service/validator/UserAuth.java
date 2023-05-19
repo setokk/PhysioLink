@@ -65,7 +65,9 @@ public class UserAuth
                 String surname = json.getString("surname");
                 String email = json.getString("email");
                 String phoneNumber = json.getString("phone_number");
+                String city = json.getString("city");
                 String address = json.getString("address");
+                String postalCode = json.getString("postal_code");
 
                 /* Uncommon fields */
                 if (user.isDoctor())
@@ -74,7 +76,7 @@ public class UserAuth
                     String physioName = json.getString("physio_name");
 
                     user = new Doctor(id, username, type, name, surname, email,
-                            phoneNumber, afm, address, physioName);
+                            phoneNumber, afm, city, address, postalCode, physioName);
                 }
                 else if (user.isPatient())
                 {
@@ -82,7 +84,7 @@ public class UserAuth
                     long doctor_id = Long.parseLong(json.getString("doctor_id"));
 
                     user = new Patient(id, username, type, name, surname, email,
-                            phoneNumber, amka, address, doctor_id);
+                            phoneNumber, amka, city, address, postalCode, doctor_id);
                 }
             }
         }
