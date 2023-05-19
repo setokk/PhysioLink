@@ -12,10 +12,12 @@ public class DoctorSchema extends UserSchema
                         String email,
                         String phoneNumber,
                         String afm,
+                        String city,
                         String address,
+                        String postalCode,
                         String physioName)
     {
-        super(username, password, name, surname, email, phoneNumber, address);
+        super(username, password, name, surname, email, phoneNumber, city, address, postalCode);
 
         this.afm = afm;
         this.physioName = physioName;

@@ -36,7 +36,9 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema>
         keyValues.put("surname", item.surname);
         keyValues.put("email", item.email);
         keyValues.put("phone_number", item.phoneNumber);
+        keyValues.put("city", item.city);
         keyValues.put("address", item.address);
+        keyValues.put("postal_code", item.postalCode);
         keyValues.put("amka", item.amka);
         /* We need the doctor id to associate the patient with the doctor [1 - N] relationship */
         keyValues.put("doctor_id", String.valueOf(item.doctorId));
@@ -59,27 +61,7 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema>
     @Override
     public void get(Long id, Callback callback)
     {
-            RequestFacade.getRequest(API.GET_PATIENT + id, callback);
-
-            /*JSONObject json = new JSONObject(response);
-            if (json.toString().contains(Error.RESOURCE_NOT_FOUND))
-                return new Patient(Error.RESOURCE_NOT_FOUND);
-
-            JSONObject patient = json.getJSONObject("patient");
-            return new Patient(patient.getLong("id"),
-                    patient.getString("username"), "patient",
-                    patient.getString("name"),
-                    patient.getString("surname"),
-                    patient.getString("email"),
-                    patient.getString("phone_number"),
-                    patient.getString("amka"),
-                    patient.getString("address"),
-                    patient.getLong("doctor_id"));
-
-        } catch (IOException | JSONException e) {
-            Log.i("ERROR", e.getMessage());
-            return new Patient(Error.RESOURCE_NOT_FOUND);
-        }*/
+        RequestFacade.getRequest(API.GET_PATIENT + id, callback);
     }
     public void getPatientsOf(Long doctorId, Callback callback)
     {

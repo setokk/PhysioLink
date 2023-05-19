@@ -35,7 +35,9 @@ public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema>
         keyValues.put("surname", item.surname);
         keyValues.put("email", item.email);
         keyValues.put("phone_number", item.phoneNumber);
+        keyValues.put("city", item.city);
         keyValues.put("address", item.address);
+        keyValues.put("postal_code", item.postalCode);
         keyValues.put("afm", item.afm);
         keyValues.put("physio_name", item.physioName);
 
@@ -57,25 +59,6 @@ public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema>
     @Override
     public void get(Long id, Callback callback)
     {
-            RequestFacade.getRequest(API.GET_DOCTOR + id, callback);
-            /*JSONObject json = new JSONObject(response);
-            if (json.toString().contains(Error.RESOURCE_NOT_FOUND))
-                return new Doctor(Error.RESOURCE_NOT_FOUND);
-
-            JSONObject doctor = json.getJSONObject("doctor");
-            return new Doctor(id,
-                    doctor.getString("username"), "doctor",
-                    doctor.getString("name"),
-                    doctor.getString("surname"),
-                    doctor.getString("email"),
-                    doctor.getString("phone_number"),
-                    doctor.getString("afm"),
-                    doctor.getString("address"),
-                    doctor.getString("physio_name"));
-
-        } catch (IOException | JSONException e) {
-            Log.i("ERROR", e.getMessage());
-            return new Doctor(Error.RESOURCE_NOT_FOUND);
-        }*/
+        RequestFacade.getRequest(API.GET_DOCTOR + id, callback);
     }
 }
