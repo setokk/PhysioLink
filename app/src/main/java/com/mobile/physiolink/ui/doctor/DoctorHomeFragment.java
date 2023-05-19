@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;;
 
@@ -66,5 +67,7 @@ public class DoctorHomeFragment extends Fragment
         AdapterForAppointments adapter = new AdapterForAppointments(this.getContext(),sN,sS,sT,sService,R.id.recyclerViewApp);
         appointmentList.setAdapter(adapter);
         appointmentList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        binding.appointRequestBtn.setOnClickListener(v -> Navigation.findNavController(getActivity(), com.google.android.material.R.id.container).navigate(R.id.doctorAppointmentRequestsFragment));
     }
 }

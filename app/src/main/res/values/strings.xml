@@ -143,7 +143,7 @@
         <item>15:00</item>
     </string-array>
     <string-array name="requestListExampleProblem">
-        <item>Πόνος στο δεξί χέρι</item>
+        <item>Πόνος στο δεξί χέρι και στο αριστερό πόδι</item>
         <item>Πόνος στην μέση</item>
         <item>Πιάσιμο στον αυχένα</item>
     </string-array>
@@ -171,6 +171,7 @@
     <string name="DurationHint">Διάρκεια (σε λεπτά) *</string>
     <string name="DescriptionHint">Περιγραφή *</string>
     <string name="selectDateBarName">Επιλέξτε Ημερομήνια</string>
+    <string name="doctor_no_new_requests">Δεν υπάρχουν νέα αιτήματα.</string>
 
     <string-array name="doctoNameListExample">
         <item>Γιώργος Παπαδόπουλος</item>
