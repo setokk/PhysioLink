@@ -1,20 +1,14 @@
 package com.mobile.physiolink.service.dao;
 
-import android.util.Log;
-
-import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.service.api.API;
-import com.mobile.physiolink.service.api.error.Error;
 import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.schemas.DoctorSchema;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.HashMap;
 
-public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema, Doctor>
+import okhttp3.Callback;
+
+public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema>
 {
     /* Singleton Pattern */
     private static DoctorDAO doctorDAO = null;
@@ -30,7 +24,7 @@ public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema, Doctor>
     }
 
     @Override
-    public void create(DoctorSchema item) throws IOException
+    public void create(DoctorSchema item, Callback callback)
     {
         /* Prepare HashMap for [key: "value"] in POST request body
          *  The id of the users auto-increments */
@@ -45,28 +39,26 @@ public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema, Doctor>
         keyValues.put("afm", item.afm);
         keyValues.put("physio_name", item.physioName);
 
-        RequestFacade.postRequest(API.CREATE_DOCTOR, keyValues);
+        RequestFacade.postRequest(API.CREATE_DOCTOR, keyValues, callback);
     }
 
     @Override
-    public void update(Long id, DoctorSchema item)
+    public void update(Long id, DoctorSchema item, Callback callback)
     {
 
     }
 
     @Override
-    public void delete(Long id)
+    public void delete(Long id, Callback callback)
     {
 
     }
 
     @Override
-    public Doctor get(Long id)
+    public void get(Long id, Callback callback)
     {
-        try {
-            String response = RequestFacade.getRequest(API.GET_DOCTOR + id).body()
-                    .string();
-            JSONObject json = new JSONObject(response);
+            RequestFacade.getRequest(API.GET_DOCTOR + id, callback);
+            /*JSONObject json = new JSONObject(response);
             if (json.toString().contains(Error.RESOURCE_NOT_FOUND))
                 return new Doctor(Error.RESOURCE_NOT_FOUND);
 
@@ -84,6 +76,6 @@ public class DoctorDAO implements InterfaceDAO<Long, DoctorSchema, Doctor>
         } catch (IOException | JSONException e) {
             Log.i("ERROR", e.getMessage());
             return new Doctor(Error.RESOURCE_NOT_FOUND);
-        }
+        }*/
     }
 }
