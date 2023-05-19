@@ -8,12 +8,20 @@
         android:id="@+id/fragmentPatientHome"
         android:name="com.mobile.physiolink.ui.patient.PatientHomeFragment"
         android:label="fragment_asthenis__arxiki"
-        tools:layout="@layout/fragment_patient_home" />
+        tools:layout="@layout/fragment_patient_home" >
+        <action
+            android:id="@+id/action_fragmentPatientHome_to_fragmentPatientDoctor"
+            app:destination="@id/fragmentPatientDoctor" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentPatientDoctor"
         android:name="com.mobile.physiolink.ui.patient.PatientDoctorFragment"
         android:label="fragment_neo_rantevou_screen"
-        tools:layout="@layout/fragment_patient_doctor" />
+        tools:layout="@layout/fragment_patient_doctor" >
+        <action
+            android:id="@+id/action_fragmentPatientDoctor_to_fragmentPatientHome"
+            app:destination="@id/fragmentPatientHome" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentRequestAppointment"
         android:name="com.mobile.physiolink.ui.patient.RequestAppointmentFragment"

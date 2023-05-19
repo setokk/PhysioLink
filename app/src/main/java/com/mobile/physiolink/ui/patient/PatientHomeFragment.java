@@ -4,11 +4,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +26,10 @@ public class PatientHomeFragment extends Fragment
 {
     boolean hasAppointment=true;
 
-    RecyclerView lastHistoryItem;
     String h1[],h2[],h3[],h4[],h5[];
     Fragment AppointmentFragment = new UpcomingAppointmentFragment();
     Fragment NoAppointmentFragment= new NoUpcomingAppointmentFragment();
+
     private FragmentPatientHomeBinding binding;
 
     public PatientHomeFragment() {
@@ -68,6 +72,17 @@ public class PatientHomeFragment extends Fragment
 
         binding.patientHistoryLastItemPatient.setAdapter(new AdapterForHistoryPatient(h2,h3,h4,h1,h5,R.id.patientHistoryLastItemPatient));
         binding.patientHistoryLastItemPatient.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        ConstraintLayout myDoctor= binding.doctorInfoBasicPatientConstraint;
+
+
+        binding.doctorInfoBasicPatientConstraint.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.containerPatient)
+                        .navigate(R.id.action_fragmentPatientHome_to_fragmentPatientDoctor));
+
+        binding.myDoctorPatientBtn.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.containerPatient)
+                        .navigate(R.id.action_fragmentPatientHome_to_fragmentPatientDoctor));
 
     }
 }
