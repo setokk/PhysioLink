@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_parohesFragment_to_createParoxesFragment"
             app:destination="@id/fragment_create_service" />
+        <action
+            android:id="@+id/action_fragment_services_to_serviceInformationFragment"
+            app:destination="@id/serviceInformationFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_create_clinic"
@@ -50,4 +53,9 @@
         android:name="com.mobile.physiolink.ui.psf.CreateServiceFragment"
         android:label="Δημιουργία Παροχών"
         tools:layout="@layout/fragment_create_service" />
+    <fragment
+        android:id="@+id/serviceInformationFragment"
+        android:name="com.mobile.physiolink.ServiceInformationFragment"
+        android:label="fragment_service_information"
+        tools:layout="@layout/fragment_service_information" />
 </navigation>
