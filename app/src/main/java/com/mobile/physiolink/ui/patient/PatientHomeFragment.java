@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHomeBinding;
-import com.mobile.physiolink.ui.patient.adaptor.AdapterForHistoryPatient;
+import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
 
 
 public class PatientHomeFragment extends Fragment

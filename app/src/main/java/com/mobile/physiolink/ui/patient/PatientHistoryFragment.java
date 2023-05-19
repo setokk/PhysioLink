@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHistoryBinding;
-import com.mobile.physiolink.ui.patient.adaptor.AdapterForHistoryPatient;
+import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
 
 public class PatientHistoryFragment extends Fragment
 {

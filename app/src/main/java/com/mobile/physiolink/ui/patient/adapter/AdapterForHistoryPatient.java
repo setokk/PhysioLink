@@ -1,4 +1,4 @@
-package com.mobile.physiolink.ui.patient.adaptor;
+package com.mobile.physiolink.ui.patient.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
