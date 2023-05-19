@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -14,8 +13,7 @@ import android.view.ViewGroup;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHistoryBinding;
-import com.mobile.physiolink.ui.patient.adaptor.AdaptorForHistoryPatient;
-import com.mobile.physiolink.ui.psf.adapter.AdapterForClinics;
+import com.mobile.physiolink.ui.patient.adaptor.AdapterForHistoryPatient;
 
 public class PatientHistoryFragment extends Fragment
 {
@@ -50,7 +48,7 @@ public class PatientHistoryFragment extends Fragment
         h5=getResources().getStringArray(R.array.paroxesCostExamle);
 
         binding.historyRecyclerview.addItemDecoration(new DecorationSpacingItem(20));
-        binding.historyRecyclerview.setAdapter(new AdaptorForHistoryPatient(h2,h3,h4,h1,h5,R.id.historyRecyclerview));
+        binding.historyRecyclerview.setAdapter(new AdapterForHistoryPatient(h2,h3,h4,h1,h5,R.id.historyRecyclerview));
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
     }

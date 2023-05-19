@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemPatientHistoryBinding;
 
-public class AdaptorForHistoryPatient extends RecyclerView.Adapter<AdaptorForHistoryPatient.MyViewHolder> {
+public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHistoryPatient.MyViewHolder> {
 
     String date[];
     String time[];
@@ -21,7 +21,7 @@ public class AdaptorForHistoryPatient extends RecyclerView.Adapter<AdaptorForHis
 
 
 
-    public AdaptorForHistoryPatient(String dateH[], String timeH[], String descriptionH[],
+    public AdapterForHistoryPatient(String dateH[], String timeH[], String descriptionH[],
                                     String serviceH[], String priceH[], int recyclerViewId){
 
         date = dateH;
@@ -30,24 +30,27 @@ public class AdaptorForHistoryPatient extends RecyclerView.Adapter<AdaptorForHis
         service = serviceH;
         price = priceH;
         this.displayAllItems= recyclerViewId== R.id.historyRecyclerview;
+
     }
 
     @NonNull
     @Override
-    public AdaptorForHistoryPatient.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public AdapterForHistoryPatient.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         ItemPatientHistoryBinding itemHistoryBinding = ItemPatientHistoryBinding.inflate(LayoutInflater.from(parent.getContext()), parent,false);
-        return new AdaptorForHistoryPatient.MyViewHolder(itemHistoryBinding);
+        return new AdapterForHistoryPatient.MyViewHolder(itemHistoryBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdaptorForHistoryPatient.MyViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull AdapterForHistoryPatient.MyViewHolder holder, int position)
     {
         holder.itemHistoryBinding.serviceNamePatientHistory.setText(service[position]);
         holder.itemHistoryBinding.apointmentDatePatientHistory.setText(date[position]);
         holder.itemHistoryBinding.apointmentTimePatientHistory.setText(time[position]);
         holder.itemHistoryBinding.apointmentDescriptionPatientHistory.setText(description[position]);
         holder.itemHistoryBinding.servicePrisePatientHistory.setText(price[position]);
+
+
 
     }
 

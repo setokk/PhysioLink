@@ -15,10 +15,7 @@ import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHomeBinding;
-import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatientHistory;
-import com.mobile.physiolink.ui.patient.adaptor.AdaptorForHistoryPatient;
+import com.mobile.physiolink.ui.patient.adaptor.AdapterForHistoryPatient;
 
 
 public class PatientHomeFragment extends Fragment
@@ -69,7 +66,7 @@ public class PatientHomeFragment extends Fragment
         h4=getResources().getStringArray(R.array.servicesListExampleDescription);
         h5=getResources().getStringArray(R.array.paroxesCostExamle);
 
-        binding.patientHistoryLastItemPatient.setAdapter(new AdaptorForHistoryPatient(h2,h3,h4,h1,h5,R.id.patientHistoryLastItemPatient));
+        binding.patientHistoryLastItemPatient.setAdapter(new AdapterForHistoryPatient(h2,h3,h4,h1,h5,R.id.patientHistoryLastItemPatient));
         binding.patientHistoryLastItemPatient.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
     }

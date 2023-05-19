@@ -38,6 +38,8 @@
             android:backgroundTint="@color/white"
             android:gravity="top"
             android:hint="Περιγράψτε πως αισθάνεστε..."
+            android:paddingStart="15dp"
+            android:paddingTop="12dp"
             android:inputType="textMultiLine|textNoSuggestions"
             android:maxLength="70"
             android:textColor="@color/black"
