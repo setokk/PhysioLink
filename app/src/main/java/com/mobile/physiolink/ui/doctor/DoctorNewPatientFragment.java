@@ -34,7 +34,8 @@ public class DoctorNewPatientFragment extends Fragment
     private boolean inputError;
     private boolean phoneError;
     private boolean AmkaError;
-    private boolean CodeError;
+    private boolean passwordError;
+    private boolean emailError;
     private final ArrayList<TextInputLayout> allInputsLayouts = new ArrayList<>();
     private final ArrayList<TextInputEditText> allInputs = new ArrayList<>();
 
@@ -96,7 +97,10 @@ public class DoctorNewPatientFragment extends Fragment
             TextInputEditText currentInput = allInputs.get(j);
 
             String passwordPattern = "(?=.*\\d)(?=.*[\\{\\.\\}])";
-            Pattern regex = Pattern.compile(passwordPattern);
+            Pattern PasswordRegex = Pattern.compile(passwordPattern);
+
+            String emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+            Pattern emailRegex = Pattern.compile(emailPattern);
 
 //            currentInput.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -140,15 +144,24 @@ public class DoctorNewPatientFragment extends Fragment
                             AmkaError = false;
                         }
                     } else if (currentInputLayout.equals(binding.patientPasswordInputLayout)){
-                        Matcher matcher = regex.matcher(binding.patientPasswordInput.getText().toString());
+                        Matcher matcher = PasswordRegex.matcher(binding.patientPasswordInput.getText().toString());
                         if(!matcher.find()){
                             currentInputLayout.setError("Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό και έναν ειδικό χαρακτήρα '{' ή '.'");
-                            CodeError = true;
-                        }
-                        else{
-                            CodeError = false;
+                            passwordError = true;
+                        } else{
+                            passwordError = false;
                             currentInputLayout.setError(null);
                         }
+                    } else if (currentInputLayout.equals(binding.patientEmailInputLayout)) {
+                        Matcher matcher = emailRegex.matcher(binding.patientEmailInput.getText().toString());
+                        if(!matcher.find()){
+                            currentInputLayout.setError("Μη έγκυρο email");
+                            emailError = true;
+                        }else{
+                            emailError = false;
+                            currentInputLayout.setError(null);
+                        }
+
                     }
                 }
 
@@ -168,7 +181,7 @@ public class DoctorNewPatientFragment extends Fragment
                         inputError = true;
                     }
                 }
-                if(inputError || phoneError || AmkaError || CodeError){
+                if(inputError || phoneError || AmkaError || passwordError){
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
