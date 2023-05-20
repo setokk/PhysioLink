@@ -240,5 +240,41 @@
         <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
         <item>Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητ..</item>
     </string-array>
+    <string-array name="timePatientHistory">
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+        <item>14:15</item>
+    </string-array>
 
+    <string-array name="greek_days">
+        <item>Κυρ</item>
+        <item>Δε</item>
+        <item>Tρ</item>
+        <item>Τετ</item>
+        <item>Πε</item>
+        <item>Παρ</item>
+        <item>Σαβ</item>
+    </string-array>
+
+    <string-array name="greek_months">
+        <item>Ιαν</item>
+        <item>Φεβ</item>
+        <item>Μαρ</item>
+        <item>Απρ</item>
+        <item>Μαϊ</item>
+        <item>Ιουν</item>
+        <item>Ιουλ</item>
+        <item>Αυγ</item>
+        <item>Σεπτ</item>
+        <item>Οκτ</item>
+        <item>Νοε</item>
+        <item>Δεκ</item>
+    </string-array>
+
+    <string name="underlined_dynamic_text"><u>%s</u></string>
 </resources>

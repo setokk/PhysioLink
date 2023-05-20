@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_lime"
+    tools:context=".ui.patient.PatientHomeFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/patientLoginInfoConstraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="@color/low_opacity_white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/patientProfileImgPatient"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/boy"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/connectedAsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="20dp"
+                android:text="Συνδέθηκες ως:"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/patientProfileImgPatient"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/patientNamePatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Μαρία Δολεσίδου"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                app:layout_constraintTop_toBottomOf="@+id/connectedAsTitle"
+                app:layout_constraintLeft_toLeftOf="@+id/connectedAsTitle"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/myDoctorTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingLeft="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/patientLoginInfoConstraint"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Ο Γιατρός μου:"
+            android:textSize="16dp"
+            android:textStyle="italic"
+            android:textColor="@color/white"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/doctorInfoBasicPatientConstraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/myDoctorTitle"
+            android:background="@drawable/square_round_style">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/doctorProfileImgPatient"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/boy"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/doctorNamePatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="15dp"
+                android:text="Γεώργιος Παπαδόπουλος"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/doctorProfileImgPatient"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/doctorPhysioNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Φυσιοθεραπευτήριο:"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/doctorNamePatient"
+                app:layout_constraintLeft_toLeftOf="@+id/doctorNamePatient"/>
+
+            <TextView
+                android:id="@+id/doctorPhysioNamePatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="Αίολος"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@id/doctorPhysioNameTitle"
+                app:layout_constraintTop_toTopOf="@id/doctorPhysioNameTitle"
+                app:layout_constraintBottom_toBottomOf="@id/doctorPhysioNameTitle"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myDoctorPatientBtn"
+                android:layout_width="55dp"
+                android:layout_height="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/baseline_keyboard_arrow_right_24"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/upcomingAppointmentTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Προσεχές Ραντεβού:"
+            android:textStyle="italic"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintTop_toBottomOf="@id/doctorInfoBasicPatientConstraint"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/upcomingAppointmentFragmentContainer"
+            android:name="com.mobile.physiolink.ui.patient.NoUpcomingAppointmentFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/upcomingAppointmentTitle"
+            tools:layout="@layout/fragment_no_upcoming_appointment" />
+
+        <TextView
+            android:id="@+id/patientHistoryTitlePatient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Η τελευταία μου επίσκεψη:"
+            android:textStyle="italic"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/upcomingAppointmentFragmentContainer"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/patientHistoryLastItemPatient"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/patientHistoryTitlePatient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/seeYourHistoryBtnPatient"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/seeYourHistoryBtnPatient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Δες όλο το ιστορικό σου"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:background="@color/low_opacity_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
