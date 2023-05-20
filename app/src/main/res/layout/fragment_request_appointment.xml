@@ -12,21 +12,22 @@
         android:background="@color/background_lime"
         tools:context=".ui.patient.RequestAppointmentFragment">
 
-
-        <CalendarView
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendarView"
-            android:layout_width="wrap_content"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
+            android:layout_marginStart="180dp"
             android:layout_marginTop="30dp"
-            android:layout_marginEnd="130dp"
+            android:layout_marginEnd="180dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/calender_view"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:mcv_selectionColor="@color/background_lime"
+            app:mcv_showOtherDates="all" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/serviceDescriptionInput"

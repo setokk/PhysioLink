@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,16 @@ import android.widget.ArrayAdapter;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentRequestAppointmentBinding;
 import com.mobile.physiolink.util.DateFormatter;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
+import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
+import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class RequestAppointmentFragment extends Fragment
@@ -26,6 +35,9 @@ public class RequestAppointmentFragment extends Fragment
     private ArrayAdapter<String> adapter;
 
     private FragmentRequestAppointmentBinding binding;
+
+    private ArrayWeekDayFormatter weekDayFormatter;
+    private MonthArrayTitleFormatter monthFormatter;
 
     public RequestAppointmentFragment() {
         // Required empty public constructor
@@ -40,7 +52,14 @@ public class RequestAppointmentFragment extends Fragment
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
+    public void onCreate(@Nullable Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        monthFormatter = new MonthArrayTitleFormatter(
+            getResources().getTextArray(R.array.greek_months));
+        weekDayFormatter = new ArrayWeekDayFormatter(
+            getResources().getTextArray(R.array.greek_days));
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
@@ -56,10 +75,29 @@ public class RequestAppointmentFragment extends Fragment
                 // Handle the selected option
             }
         });
-        binding.calendarView.setOnDateChangeListener((view1, year, month, dayOfMonth) ->
+
+        // Init
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.setTimeInMillis(currentDate.getTimeInMillis());
+        String today = DateFormatter.formatToAlphanumeric(currentDate.get(Calendar.YEAR),
+                currentDate.get(Calendar.MONTH) + 1,
+                        currentDate.get(Calendar.DAY_OF_MONTH));
+
+        binding.dateText.setText(today);
+        binding.calendarView.setTitleFormatter(monthFormatter);
+        binding.calendarView.setWeekDayFormatter(weekDayFormatter);
+
+        binding.calendarView.setOnDateChangedListener((widget, date, selected) ->
         {
-            String date = DateFormatter.formatToAlphanumeric(year, month + 1, dayOfMonth);
-            binding.dateText.setText(date);
+            String dateString = DateFormatter.formatToAlphanumeric(date.getYear(),
+                    date.getMonth(),
+                    date.getDay());
+            binding.dateText.setText(dateString);
+        });
+
+        binding.calendarView.setOnMonthChangedListener((widget, date) ->
+        {
+            Log.i("INFOFWOFOWWFOFWO", String.valueOf(date.getMonth()));
         });
     }
 
