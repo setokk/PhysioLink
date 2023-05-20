@@ -52,10 +52,11 @@ public class ServicesFragment extends Fragment {
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
         binding.customListViewParoxes.addItemDecoration(itemDecoration);
 
-
         AdapterForServices adapter = new AdapterForServices(k1,k2,k3,k4);
         binding.customListViewParoxes.setAdapter(adapter);
         binding.customListViewParoxes.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+
 
         binding.newParoxesButton.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
