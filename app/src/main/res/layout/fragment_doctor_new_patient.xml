@@ -15,29 +15,15 @@
         android:background="@color/background_lime"
         tools:context=".ui.doctor.DoctorNewPatientFragment">
 
-        <TextView
-            android:id="@+id/newPatientTitle"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/lighter_purple"
-            android:gravity="center"
-            android:text="Δημιουργία Νέου Ασθενή"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
         <ImageView
             android:id="@+id/patientDoctorPickProfilePic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newPatientTitle"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/profile_photo_picker" />
 
         <TextView
@@ -53,79 +39,252 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/patientDoctorPickProfilePic" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/patientNameInput"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientNameInputLayout"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:hint="Όνομα *"
-            android:paddingLeft="30dp"
-            android:textColor="@color/input_grey"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:helperText="Υποχρεωτικό *"
+            app:errorEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientInfoTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/patientInfoTitle">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/patientSurnameInput"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="17dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:hint="Επώνυμο *"
-            android:paddingLeft="30dp"
-            android:textColor="@color/input_grey"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientNameInput" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="@string/NameHint"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/patientAmkaInput"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientSurnameInputLayout"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:hint="ΑΜΚΑ *"
-            android:paddingLeft="30dp"
-            android:textColor="@color/input_grey"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientSurnameInput" />
+            app:layout_constraintTop_toBottomOf="@+id/patientNameInputLayout">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/patientPhoneInput"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="17dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:hint="Κινητό Τηλέφωνο *"
-            android:paddingLeft="30dp"
-            android:textColor="@color/input_grey"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientAmkaInput" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientSurnameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="@string/LastNameHint"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/patientEmailInput"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientCityInputLayout"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:hint="Email *"
-            android:paddingLeft="30dp"
-            android:textColor="@color/input_grey"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientPhoneInput" />
+            app:layout_constraintTop_toBottomOf="@+id/patientSurnameInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientCityInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint= "Πόλη *"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientAddressInputLayout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="30"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientCityInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientAddressInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="@string/AddressHint"
+                android:inputType="textNoSuggestions"
+                android:maxLength="30"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientPostalCodeInputLayout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="5"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientAddressInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientPostalCodeInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="Ταχυδρομικός κώδικας *"
+                android:inputType="number"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientAmkaInputLayout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="11"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientPostalCodeInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientAmkaInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="ΑΜΚΑ *"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientPhoneInputLayout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="10"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientAmkaInputLayout"
+            app:prefixText="+30 ">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientPhoneInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="@string/PhoneHint"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientEmailInputLayout"
+            android:layout_width="294dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="30"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientPhoneInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientEmailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="Email *"
+                android:inputType="textEmailAddress"
+                android:maxLength="30"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
@@ -138,35 +297,69 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientEmailInput" />
+            app:layout_constraintTop_toBottomOf="@+id/patientEmailInputLayout" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/patientUsernameInput"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientUsernameInputLayout"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:hint="Username *"
-            android:paddingLeft="30dp"
-            android:textColor="@color/input_grey"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:helperText="Υποχρεωτικό *"
+            app:errorEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientAccountInfoTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/patientAccountInfoTitle">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/patientPasswordInput"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientUsernameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="@string/hint_username"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/patientPasswordInputLayout"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:hint="Password *"
-            android:paddingLeft="30dp"
-            android:textColor="@color/input_grey"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientUsernameInput" />
+            app:layout_constraintTop_toBottomOf="@+id/patientUsernameInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/patientPasswordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="@string/hint_password"
+                android:inputType="textNoSuggestions"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/saveNewPatientBtn"
@@ -185,7 +378,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientPasswordInput" />
+            app:layout_constraintTop_toBottomOf="@+id/patientPasswordInputLayout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

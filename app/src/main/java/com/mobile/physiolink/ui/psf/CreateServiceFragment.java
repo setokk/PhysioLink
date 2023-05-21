@@ -23,8 +23,8 @@ public class CreateServiceFragment extends Fragment {
 
     private FragmentCreateServiceBinding binding;
     private boolean input_erros;
-    private ArrayList<TextInputLayout> all_inputs_layouts = new ArrayList<>();
-    private ArrayList<TextInputEditText> all_inputs = new ArrayList<>();
+    private final ArrayList<TextInputLayout> all_inputs_layouts = new ArrayList<>();
+    private final ArrayList<TextInputEditText> all_inputs = new ArrayList<>();
     public CreateServiceFragment() {}
 
     @Override
@@ -58,6 +58,13 @@ public class CreateServiceFragment extends Fragment {
         for(int j =0; j<all_inputs.size(); j++) {
             TextInputEditText current = all_inputs.get(j);
             TextInputLayout current_layout = all_inputs_layouts.get(j);
+
+//            current.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    current.requestFocus();
+//                }
+//            });
             current.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -71,6 +78,7 @@ public class CreateServiceFragment extends Fragment {
                         input_erros = true;
                     } else {
                         current_layout.setError(null);
+                        current_layout.setHelperText(null);
                         input_erros = false;
                     }
                 }

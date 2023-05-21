@@ -26,8 +26,10 @@ public class CreateClinicFragment extends Fragment
     private boolean input_erros;
     private boolean afm_error;
     private boolean phone_error;
-    private ArrayList<TextInputLayout> all_inputs_layouts = new ArrayList<>();
-    private ArrayList<TextInputEditText> all_inputs = new ArrayList<>();
+
+    private boolean code_error;
+    private final ArrayList<TextInputLayout> all_inputs_layouts = new ArrayList<>();
+    private final ArrayList<TextInputEditText> all_inputs = new ArrayList<>();
 
 
 
@@ -80,9 +82,16 @@ public class CreateClinicFragment extends Fragment
         all_inputs.add(binding.addressInput);
 
 //        Σε αυτή τη λούπα δημιουργήτε ένας onchange listener για κάθε στοιχείο της λίστας
-        for(int i =0; i<all_inputs.size(); i++){
-            TextInputEditText current = all_inputs.get(i);
-            TextInputLayout current_layout = all_inputs_layouts.get(i);
+        for(int j =0; j<all_inputs.size(); j++){
+            TextInputEditText current = all_inputs.get(j);
+            TextInputLayout current_layout = all_inputs_layouts.get(j);
+
+//            current.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    current.requestFocus();
+//                }
+//            });
             current.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -92,36 +101,41 @@ public class CreateClinicFragment extends Fragment
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                    if (current.getText().length() == 0 && !current_layout.equals(binding.phonenumberInputLayout) && !current_layout.equals(binding.afmInputLayout)) {
+                    if (current.getText().length() == 0 && !current_layout.equals(binding.phonenumberInputLayout)) {
                         current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         input_erros = true;
-                    } else{
+                    } else {
                         current_layout.setError(null);
+                        current_layout.setHelperText(null);
                         input_erros = false;
                     }
 
-                    if(current_layout.equals(binding.phonenumberInputLayout)){
-                        if(current.getText().length() != 10 && current.getText().length() !=0){
-                            current_layout.setError("Ο αριθμός πρέπει να είναι δεκαψήφιος!");
+                    if (current_layout.equals(binding.phonenumberInputLayout)) {
+                        if (current.getText().length() != 10 && current.getText().length() != 0) {
+                            current_layout.setError("Ο αριθμός πρέπει να έχει 10 ψηφία!");
                             phone_error = true;
-                        }
-                        else{
+                        } else {
                             current_layout.setError(null);
                             phone_error = false;
                         }
-                    }
-                    else if(current_layout.equals(binding.afmInputLayout)){
-                        if(current.getText().length() != 9){
+                    } else if (current_layout.equals(binding.afmInputLayout)) {
+                        if (current.getText().length() != 9) {
                             current_layout.setError("Το ΑΦΜ πρέπει να έχει 9 ψηφία!");
                             afm_error = true;
-                        }
-                        else{
+                        } else {
                             current_layout.setError(null);
                             afm_error = false;
                         }
+                    } else if (current_layout.equals(binding.docPasswardInputLayout)) {
+                        if (!(current.getText().toString().contains("0") || current.getText().toString().contains("1") || current.getText().toString().contains("2") || current.getText().toString().contains("3") || current.getText().toString().contains("4") || current.getText().toString().contains("5") || current.getText().toString().contains("6") || current.getText().toString().contains("7") || current.getText().toString().contains("8") || current.getText().toString().contains("9"))) {
+                            current_layout.setError("Ο κωδικός Πρέπει να περιέζει τουλάχιστον έναν αριθμό");
+                            code_error = true;
+                        } else {
+                            code_error = false;
+                            current_layout.setError(null);
+                        }
                     }
                 }
-
                 @Override
                 public void afterTextChanged(Editable editable) {
 
@@ -137,11 +151,8 @@ public class CreateClinicFragment extends Fragment
                         all_inputs_layouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         input_erros = true;
                     }
-                    if(all_inputs.get(i).getText().length() > all_inputs_layouts.get(i).getCounterMaxLength()){
-                        input_erros = true;
-                    }
                 }
-                if(input_erros || phone_error || afm_error){
+                if(input_erros || phone_error || afm_error || code_error){
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
