@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/create_clinic_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/background_lime"
         tools:context=".ui.psf.CreateClinicFragment">
 
@@ -18,7 +18,7 @@
             android:id="@+id/doctor_info_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="80dp"
             android:text="Στοιχεία Γιατρού:"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -61,6 +61,70 @@
             app:layout_constraintTop_toBottomOf="@+id/address_input_layout" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/doc_username_input_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:counterMaxLength="20"
+            app:errorEnabled="true"
+            app:endIconMode="clear_text"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/doctor_info_header">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/doc_username_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="@string/hint_username"
+                android:maxLength="20"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/doc_passward_input_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="1dp"
+            app:counterMaxLength="20"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:helperText="Υποχρεωτικό *"
+            app:errorEnabled="true"
+            app:endIconMode="clear_text"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/doc_username_input_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/doc_passward_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round2_style"
+                android:backgroundTint="@color/white"
+                android:hint="@string/hint_password"
+                android:maxLength="20"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/doc_name_input_layout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -82,7 +146,7 @@
                 android:id="@+id/doc_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/NameHint"
                 android:maxLength="20"
@@ -115,7 +179,7 @@
                 android:id="@+id/doc_surname_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/LastNameHint"
                 android:maxLength="20"
@@ -147,7 +211,7 @@
                 android:id="@+id/afm_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/AfmHint"
                 android:maxLength="9"
@@ -180,7 +244,7 @@
                 android:id="@+id/phonenumber_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/PhoneHint"
                 android:maxLength="10"
@@ -212,7 +276,7 @@
                 android:id="@+id/clinic_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/NameHint"
                 android:maxLength="20"
@@ -245,7 +309,7 @@
                 android:id="@+id/city_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/CityHint"
                 android:maxLength="20"
@@ -279,7 +343,7 @@
                 android:id="@+id/address_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/AddressHint"
                 android:maxLength="20"
@@ -288,71 +352,6 @@
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/doc_username_input_layout"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="1dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:counterMaxLength="20"
-            app:errorEnabled="true"
-            app:endIconMode="clear_text"
-            app:helperText="Υποχρεωτικό *"
-            app:helperTextEnabled="true"
-            app:helperTextTextColor="@android:color/holo_red_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_info_header">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/doc_username_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
-                android:backgroundTint="@color/white"
-                android:hint="@string/hint_username"
-                android:maxLength="20"
-                android:inputType="textNoSuggestions"
-                android:textColor="@color/black"
-                android:textColorHint="@color/input_grey" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/doc_passward_input_layout"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="1dp"
-            app:counterMaxLength="20"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:helperText="Υποχρεωτικό *"
-            app:errorEnabled="true"
-            app:endIconMode="clear_text"
-            app:helperTextEnabled="true"
-            app:helperTextTextColor="@android:color/holo_red_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doc_username_input_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/doc_passward_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
-                android:backgroundTint="@color/white"
-                android:hint="@string/hint_password"
-                android:maxLength="20"
-                android:inputType="textNoSuggestions"
-                android:textColor="@color/black"
-                android:textColorHint="@color/input_grey" />
-        </com.google.android.material.textfield.TextInputLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

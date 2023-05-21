@@ -2,7 +2,7 @@
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/create_service_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/background_lime"
         tools:context=".ui.psf.CreateServiceFragment">
 
@@ -52,7 +52,7 @@
             android:id="@+id/serviceInfoHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="80dp"
             android:text="@string/ServiceDetails"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -85,7 +85,7 @@
                 android:id="@+id/serviceNameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/NameHint"
                 android:maxLength="20"
@@ -118,7 +118,7 @@
                 android:id="@+id/serviceIdInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/codeString"
                 android:maxLength="20"
@@ -151,7 +151,7 @@
                 android:id="@+id/serviceCostInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_style"
+                android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="Τιμή*"
                 android:maxLength="7"
