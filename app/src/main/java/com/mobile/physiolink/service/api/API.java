@@ -26,6 +26,7 @@ public final class API
 
     /* Provision related API endpoints */
     public static final String CREATE_SERVICE = API.URL + "/service/create";
+    public static final String GET_SERVICE = "/service/get/";
     public static final String EDIT_SERVICE = API.URL + "/service/edit/";
     public static final String GET_SERVICES = API.URL + "/services/get";
 
