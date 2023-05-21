@@ -43,4 +43,13 @@ public final class API
     public static final String GET_PATIENTS_OF = API.URL + "/patients/of/";
 
     public static final String GET_UNAVAILABLE_HOURS = API.URL + "/unavailable-hours/get";
+
+    public static final String GET_CONFIRMED_APPOINTMENTS = API.URL + "/appointments/confirmed";
+    public static final String GET_CONFIRMED_LATEST_APPOINTMENTS = API.URL + "/appointments/confirmed/latest";
+    public static final String GET_PENDING_APPOINTMENTS = API.URL + "/appointments/pending/";
+
+    public static final String REQUEST_APPOINTMENT = API.URL + "/appointment/request";
+    public static final String ACCEPT_APPOINTMENT = API.URL + "/appointment/accept";
+    public static final String ACCEPT_PAYMENT = API.URL + "/appointment/payment/accept";
+    public static final String DECLINE_PAYMENT = API.URL + "/appointment/decline";
 }
