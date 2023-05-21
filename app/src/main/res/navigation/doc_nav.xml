@@ -49,4 +49,8 @@
             android:id="@+id/action_doctorPatientHistoryFragment_to_doctorPatientsFragment"
             app:destination="@id/doctorPatientsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/doctorAppointmentRequestsFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorAppointmentRequestsFragment"
+        android:label="DoctorAppointmentRequestsFragment" />
 </navigation>

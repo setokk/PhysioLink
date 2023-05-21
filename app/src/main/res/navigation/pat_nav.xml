@@ -3,26 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pat_nav"
-    app:startDestination="@id/asthenis_ArxikiFragment">
-
+    app:startDestination="@id/fragmentPatientHome">
     <fragment
-        android:id="@+id/asthenis_ArxikiFragment"
-        android:name="com.mobile.physiolink.Asthenis_ArxikiFragment"
+        android:id="@+id/fragmentPatientHome"
+        android:name="com.mobile.physiolink.ui.patient.PatientHomeFragment"
         android:label="fragment_asthenis__arxiki"
-        tools:layout="@layout/fragment_asthenis__arxiki" />
+        tools:layout="@layout/fragment_patient_home" >
+        <action
+            android:id="@+id/action_fragmentPatientHome_to_fragmentPatientDoctor"
+            app:destination="@id/fragmentPatientDoctor" />
+        <action
+            android:id="@+id/action_fragmentPatientHome_to_patientHistoryFragment"
+            app:destination="@id/patientHistoryFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/neo_Rantevou_Screen2"
-        android:name="com.mobile.physiolink.ui.Neo_Rantevou_Screen"
+        android:id="@+id/fragmentPatientDoctor"
+        android:name="com.mobile.physiolink.ui.patient.PatientDoctorFragment"
         android:label="fragment_neo_rantevou_screen"
-        tools:layout="@layout/fragment_neo_rantevou_screen" />
+        tools:layout="@layout/fragment_patient_doctor" >
+        <action
+            android:id="@+id/action_fragmentPatientDoctor_to_fragmentPatientHome"
+            app:destination="@id/fragmentPatientHome" />
+        <action
+            android:id="@+id/action_fragmentPatientDoctor_to_fragmentRequestAppointment"
+            app:destination="@id/fragmentRequestAppointment" />
+    </fragment>
     <fragment
-        android:id="@+id/prosexoi_RandevouFragment"
-        android:name="com.mobile.physiolink.Prosexoi_RandevouFragment"
-        android:label="fragment_prosexoi__randevou"
-        tools:layout="@layout/fragment_prosexoi__randevou" />
-    <fragment
-        android:id="@+id/epilogi_Imerominias_Screen"
-        android:name="com.mobile.physiolink.ui.Epilogi_Imerominias_Screen"
+        android:id="@+id/fragmentRequestAppointment"
+        android:name="com.mobile.physiolink.ui.patient.RequestAppointmentFragment"
         android:label="fragment_epilogi__imerominias__screen"
-        tools:layout="@layout/fragment_epilogi__imerominias__screen" />
+        tools:layout="@layout/fragment_request_appointment" >
+        <action
+            android:id="@+id/action_fragmentRequestAppointment_to_fragmentPatientDoctor"
+            app:destination="@id/fragmentPatientDoctor" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientHistoryFragment"
+        android:name="com.mobile.physiolink.ui.patient.PatientHistoryFragment"
+        android:label="PatientHistoryFragment"
+        tools:layout="@layout/fragment_patient_history" >
+        <action
+            android:id="@+id/action_patientHistoryFragment_to_fragmentPatientHome"
+            app:destination="@id/fragmentPatientHome" />
+    </fragment>
 </navigation>

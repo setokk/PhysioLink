@@ -7,7 +7,9 @@ public class UserSchema
     public final String name;
     public final String surname;
     public final String email;
+    public final String city;
     public final String address;
+    public final String postalCode;
     public final String phoneNumber;
 
     public UserSchema(String username,
@@ -16,7 +18,9 @@ public class UserSchema
                       String surname,
                       String email,
                       String phoneNumber,
-                      String address)
+                      String city,
+                      String address,
+                      String postalCode)
     {
         this.username = username;
         this.password = password;
@@ -24,6 +28,8 @@ public class UserSchema
         this.surname = surname;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.city = city;
         this.address = address;
+        this.postalCode = postalCode;
     }
 }

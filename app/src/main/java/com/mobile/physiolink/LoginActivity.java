@@ -1,22 +1,15 @@
 package com.mobile.physiolink;
 
-import static com.mobile.physiolink.service.validator.UserAuth.authenticateUser;
+import static com.mobile.physiolink.service.validator.UserAuth.sendAuthRequest;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mobile.physiolink.model.user.Doctor;
-import com.mobile.physiolink.model.user.User;
+import com.mobile.physiolink.async.LoginCallback;
 import com.mobile.physiolink.databinding.ActivityLoginBinding;
-import com.mobile.physiolink.model.user.singleton.UserHolder;
-import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.validator.UserAuth;
-import com.mobile.physiolink.ui.DoctorActivity;
-import com.mobile.physiolink.ui.PSFActivity;
-import com.mobile.physiolink.ui.PatientActivity;
 
 import org.json.JSONException;
 
@@ -75,27 +68,6 @@ public class LoginActivity extends AppCompatActivity
         }
 
         /* Validate credentials */
-        User user = authenticateUser(username, password);
-        if (user.isValid())
-        {
-            Intent intent;
-            if (user.isPSF())
-                intent = new Intent(this, PSFActivity.class);
-            else if (user.isDoctor())
-                intent = new Intent(this, DoctorActivity.class);
-            else
-                intent = new Intent(this, PatientActivity.class);
-
-            Toast.makeText(this, "Επιτυχής Σύνδεση!", Toast.LENGTH_SHORT).show();
-
-            /* Pass user to UserHolder static class */
-            UserHolder.setInstance(user);
-            startActivity(intent);
-            finish();
-        }
-        else
-        {
-            Toast.makeText(this, "Λάθος στοιχεία χρήστη", Toast.LENGTH_SHORT).show();
-        }
+        sendAuthRequest(username, password, new LoginCallback(this, username));
     }
 }

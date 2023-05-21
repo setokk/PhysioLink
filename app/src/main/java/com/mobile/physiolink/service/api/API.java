@@ -41,4 +41,6 @@ public final class API
     public static final String GET_PATIENT = API.URL + "/patient/get/";
     public static final String GET_PATIENTS = API.URL + "/patients/get";
     public static final String GET_PATIENTS_OF = API.URL + "/patients/of/";
+
+    public static final String GET_UNAVAILABLE_HOURS = API.URL + "/unavailable-hours/get";
 }

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/square_round_style"
+    tools:context=".ui.patient.UpcomingAppointmentFragment">
+
+    <ImageView
+        android:id="@+id/calendarImgPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/calendar_icon_today"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/appointmentDatePatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="01/01/2001"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/calendarImgPatient"
+        app:layout_constraintTop_toTopOf="@id/calendarImgPatient"
+        app:layout_constraintBottom_toBottomOf="@id/calendarImgPatient"/>
+
+    <TextView
+        android:id="@+id/appointmentTimePatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="14:30"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@+id/appointmentDatePatient"
+        app:layout_constraintTop_toTopOf="@+id/appointmentDatePatient"
+        app:layout_constraintBottom_toBottomOf="@+id/appointmentDatePatient"/>
+
+    <ImageView
+        android:id="@+id/locationImgPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/baseline_location_on_24"
+        app:layout_constraintTop_toBottomOf="@id/calendarImgPatient"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/appointmentAdressPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Αγίου Δημητρίου 45,"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toRightOf="@id/locationImgPatient"
+        app:layout_constraintTop_toTopOf="@id/locationImgPatient"
+        app:layout_constraintBottom_toBottomOf="@id/locationImgPatient"/>
+
+    <TextView
+        android:id="@+id/appointmentCityPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="Αττική,"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toRightOf="@id/appointmentAdressPatient"
+        app:layout_constraintTop_toTopOf="@id/appointmentAdressPatient"
+        app:layout_constraintBottom_toBottomOf="@id/appointmentAdressPatient"/>
+
+    <TextView
+        android:id="@+id/appointmentPostalCodePatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="51789"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toRightOf="@id/appointmentCityPatient"
+        app:layout_constraintTop_toTopOf="@id/appointmentCityPatient"
+        app:layout_constraintBottom_toBottomOf="@id/appointmentCityPatient"/>
+
+    <TextView
+        android:id="@+id/appointmentCommentsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Τα σχόλια σας:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/locationImgPatient" />
+
+    <TextView
+        android:id="@+id/appointmentCommentsPatient"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="Ο Μητσοκάτης γαμιέται και θέλω μασάζ να ηρεμήσω"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/appointmentCommentsTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/appointmentInfoBtnPatient"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appointmentInfoBtnPatient"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:background="@drawable/baseline_keyboard_arrow_right_24"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/appointmentCommentsPatient"
+        app:layout_constraintTop_toTopOf="@id/appointmentCommentsPatient"
+        app:layout_constraintBottom_toBottomOf="@id/appointmentCommentsPatient"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,22 +1,14 @@
 package com.mobile.physiolink.service.dao;
 
-import android.util.Log;
-
-import com.mobile.physiolink.model.user.Doctor;
-import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.service.api.API;
-import com.mobile.physiolink.service.api.error.Error;
 import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.schemas.PatientSchema;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.HashMap;
 
-public class PatientDAO implements InterfaceDAO<Long, PatientSchema, Patient>
+import okhttp3.Callback;
+
+public class PatientDAO implements InterfaceDAO<Long, PatientSchema>
 {
     /* Singleton Pattern */
     private static PatientDAO patientDAO = null;
@@ -32,7 +24,7 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema, Patient>
     }
 
     @Override
-    public void create(PatientSchema item) throws IOException
+    public void create(PatientSchema item, Callback callback)
     {
         /* Prepare HashMap for [key: "value"] in POST request body
          *  The id of the users auto-increments */
@@ -43,64 +35,56 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema, Patient>
         keyValues.put("surname", item.surname);
         keyValues.put("email", item.email);
         keyValues.put("phone_number", item.phoneNumber);
+        keyValues.put("city", item.city);
         keyValues.put("address", item.address);
+        keyValues.put("postal_code", item.postalCode);
         keyValues.put("amka", item.amka);
         /* We need the doctor id to associate the patient with the doctor [1 - N] relationship */
         keyValues.put("doctor_id", String.valueOf(item.doctorId));
 
-        RequestFacade.postRequest(API.CREATE_PATIENT, keyValues);
+        RequestFacade.postRequest(API.CREATE_PATIENT, keyValues, callback);
     }
 
     @Override
-    public void update(Long id, PatientSchema item)
+    public void update(Long id, PatientSchema item, Callback callback)
+    {
+        /* Prepare HashMap for [key: "value"] in POST request body */
+        HashMap<String, String> keyValues = new HashMap<>(9);
+        keyValues.put("id", String.valueOf(id));
+        keyValues.put("username", item.username);
+        keyValues.put("password", item.password);
+        keyValues.put("name", item.name);
+        keyValues.put("surname", item.surname);
+        keyValues.put("email", item.email);
+        keyValues.put("phone_number", item.phoneNumber);
+        keyValues.put("city", item.city);
+        keyValues.put("address", item.address);
+        keyValues.put("postal_code", item.postalCode);
+        keyValues.put("amka", item.amka);
+
+        RequestFacade.postRequest(API.EDIT_PATIENT, keyValues, callback);
+    }
+
+    @Override
+    public void delete(Long id, Callback callback)
     {
 
     }
 
     @Override
-    public void delete(Long id)
+    public void get(Long id, Callback callback)
     {
-
+        RequestFacade.getRequest(API.GET_PATIENT + id, callback);
     }
-
-    @Override
-    public Patient get(Long id)
+    public void getPatientsOf(Long doctorId, Callback callback)
     {
-        try {
-            String response = RequestFacade.getRequest(API.GET_PATIENT + id).body()
-                    .string();
-            JSONObject json = new JSONObject(response);
-            if (json.toString().contains(Error.RESOURCE_NOT_FOUND))
-                return new Patient(Error.RESOURCE_NOT_FOUND);
-
-            JSONObject patient = json.getJSONObject("patient");
-            return new Patient(patient.getLong("id"),
-                    patient.getString("username"), "patient",
-                    patient.getString("name"),
-                    patient.getString("surname"),
-                    patient.getString("email"),
-                    patient.getString("phone_number"),
-                    patient.getString("amka"),
-                    patient.getString("address"),
-                    patient.getLong("doctor_id"));
-
-        } catch (IOException | JSONException e) {
-            Log.i("ERROR", e.getMessage());
-            return new Patient(Error.RESOURCE_NOT_FOUND);
-        }
-    }
-
-    public Patient[] getPatientsOf(Long doctorId) throws IOException, JSONException
-    {
-        String response = RequestFacade.getRequest(API.GET_PATIENTS_OF + doctorId)
-                .body().string();
-
+        RequestFacade.getRequest(API.GET_PATIENTS_OF + doctorId, callback);
         /* Check if server sent back that this doctor has no patients */
-        JSONObject res = new JSONObject(response);
+        /*JSONObject res = new JSONObject(response);
         if (res.toString().contains(Error.RESOURCE_NOT_FOUND))
             return new Patient[0];
 
-        /* Get JSON patients array and return a Patient array */
+        *//* Get JSON patients array and return a Patient array *//*
         JSONArray array = res.getJSONArray("patients");
         Patient[] patients = new Patient[array.length()];
         for (int i = 0; i < array.length(); i++)
@@ -118,6 +102,6 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema, Patient>
                     doctorId);
         }
 
-        return patients;
+        return patients;*/
     }
 }

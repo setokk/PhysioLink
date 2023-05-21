@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -17,7 +18,7 @@ public class RequestFacade
 {
     private static StrictMode.ThreadPolicy policy = null; // Singleton
 
-    public static Response getRequest(String URL) throws IOException
+    public static void getRequest(String URL, Callback callback)
     {
         configThreadPolicy();
 
@@ -30,12 +31,12 @@ public class RequestFacade
                 .get()
                 .build();
 
-        Response response = client.newCall(request).execute();
-
-        return response;
+        client.newCall(request).enqueue(callback);
     }
 
-    public static Response postRequest(String URL, HashMap<String, String> keyValues) throws IOException
+    public static void postRequest(String URL,
+                                   HashMap<String, String> keyValues,
+                                   Callback callback)
     {
         configThreadPolicy();
 
@@ -55,9 +56,7 @@ public class RequestFacade
                 .post(formBody)
                 .build();
 
-        Response response = client.newCall(request).execute();
-
-        return response;
+        client.newCall(request).enqueue(callback);
     }
 
     private static void configThreadPolicy()
