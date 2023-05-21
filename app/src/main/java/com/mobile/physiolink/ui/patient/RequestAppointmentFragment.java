@@ -87,7 +87,7 @@ public class RequestAppointmentFragment extends Fragment
             }
         });
 
-        // Init
+        // Initialize calendar
         Calendar currentDate = Calendar.getInstance();
         currentDate.setTimeInMillis(currentDate.getTimeInMillis());
         String today = DateFormatter.formatToAlphanumeric(currentDate.get(Calendar.YEAR),
@@ -112,7 +112,10 @@ public class RequestAppointmentFragment extends Fragment
 
         binding.calendarView.setOnMonthChangedListener((widget, date) ->
         {
-            Log.i("INFOFWOFOWWFOFWO", String.valueOf(date.getMonth()));
+            if (date.getYear() != currentDate.get(Calendar.YEAR) ||
+                date.getMonth() < currentDate.get(Calendar.MONTH) + 1)
+                return;
+
             appointmentViewmodel.loadAvailableHours(date.getMonth(),
                     date.getYear(),
                     UserHolder.patient().getDoctorId());

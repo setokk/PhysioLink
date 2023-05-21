@@ -2,9 +2,11 @@ package com.mobile.physiolink.model.user.availability;
 
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AvailableHoursManager
@@ -28,13 +30,20 @@ public class AvailableHoursManager
         dateToHoursMap = new HashMap<>(maxDays);
         for (int day = 1; day <= maxDays; ++day)
         {
+            String monthPrefix = "";
+            String dayPrefix = "";
+            if (day <= 9)
+                dayPrefix = "0";
+            if (month <= 9)
+                monthPrefix = "0";
+
             calendar.set(Calendar.DAY_OF_MONTH, day);
             if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY)
-                dateToHoursMap.put(year + "-" + month + "-" + day, availableHoursWeekend);
+                dateToHoursMap.put(year + "-" + monthPrefix + month + "-" + dayPrefix + day, availableHoursWeekend);
             else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
-                dateToHoursMap.put(year + "-" + month + "-" + day, new String[0]);
+                dateToHoursMap.put(year + "-" + monthPrefix + month + "-" + dayPrefix + day, new String[0]);
             else
-                dateToHoursMap.put(year + "-" + month + "-" + day, availableHours);
+                dateToHoursMap.put(year + "-" + monthPrefix + month + "-" + dayPrefix + day, availableHours);
         }
     }
 
@@ -55,7 +64,10 @@ public class AvailableHoursManager
 
     public void setAvailableHoursOfDate(String date, String[] hours)
     {
-        dateToHoursMap.put(date, hours);
+        List<String> previousHours = new ArrayList<>(Arrays.asList(dateToHoursMap.get(date)));
+        previousHours.removeAll(Arrays.asList(hours)); // Difference
+
+        dateToHoursMap.put(date, previousHours.toArray(new String[0]));
     }
 
     @Override

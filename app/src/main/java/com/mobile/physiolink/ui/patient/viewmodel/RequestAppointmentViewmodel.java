@@ -37,7 +37,7 @@ public class RequestAppointmentViewmodel extends ViewModel
         HashMap<String, String> keyValues = new HashMap<>(2);
         keyValues.put("month", String.valueOf(month));
         keyValues.put("doctor_id", String.valueOf(doctorId));
-        RequestFacade.postRequest(API.GET_AVAILABLE_HOURS, keyValues, new Callback() {
+        RequestFacade.postRequest(API.GET_UNAVAILABLE_HOURS, keyValues, new Callback() {
             @Override
             public void onFailure(Call call, IOException e)
             {
@@ -65,7 +65,7 @@ public class RequestAppointmentViewmodel extends ViewModel
                         String[] takenHours = new String[startHours.length()];
                         for (int j = 0; j < takenHours.length; ++j)
                             takenHours[j] = startHours.getString(j)
-                                            + " - " +
+                                            + "-" +
                                             endHours.getString(j);
 
                         hoursManager.setAvailableHoursOfDate(element.getString("date"),
