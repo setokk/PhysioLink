@@ -52,4 +52,5 @@ public final class API
     public static final String ACCEPT_APPOINTMENT = API.URL + "/appointment/accept";
     public static final String ACCEPT_PAYMENT = API.URL + "/appointment/payment/accept";
     public static final String DECLINE_PAYMENT = API.URL + "/appointment/decline";
+    public static final String PATIENT_UPCOMING_APPOINTMENT = API.URL + "/appointment/patient/upcoming";
 }
