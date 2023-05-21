@@ -84,9 +84,6 @@ public class RequestAppointmentFragment extends Fragment
         // Initialize calendar
         Calendar currentDate = Calendar.getInstance();
         currentDate.setTimeInMillis(currentDate.getTimeInMillis());
-        String today = DateFormatter.formatToAlphanumeric(currentDate.get(Calendar.YEAR),
-                currentDate.get(Calendar.MONTH) + 1,
-                        currentDate.get(Calendar.DAY_OF_MONTH));
 
         appointmentViewmodel.loadAvailableHours(currentDate.get(Calendar.MONTH) + 1,
                 currentDate.get(Calendar.YEAR),
