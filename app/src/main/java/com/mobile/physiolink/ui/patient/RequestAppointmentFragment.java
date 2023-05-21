@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,16 +19,11 @@ import com.mobile.physiolink.databinding.FragmentRequestAppointmentBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.patient.viewmodel.RequestAppointmentViewmodel;
 import com.mobile.physiolink.util.DateFormatter;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
-import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class RequestAppointmentFragment extends Fragment
@@ -98,7 +92,8 @@ public class RequestAppointmentFragment extends Fragment
                 currentDate.get(Calendar.YEAR),
                 UserHolder.patient().getDoctorId());
 
-        binding.dateText.setText(today);
+        binding.dateText.setText("Καμία επιλεγμένη");
+
         binding.calendarView.setTitleFormatter(monthFormatter);
         binding.calendarView.setWeekDayFormatter(weekDayFormatter);
 
