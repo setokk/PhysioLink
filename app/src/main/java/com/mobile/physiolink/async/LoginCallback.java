@@ -43,7 +43,7 @@ public class LoginCallback implements Callback
     }
 
     @Override
-    public void onResponse(Call call, Response response) throws IOException
+    public void onResponse(Call call, Response response)
     {
         loginActivity.runOnUiThread(() ->
         {
@@ -76,7 +76,7 @@ public class LoginCallback implements Callback
             catch (JSONException | IOException e)
             {
                 Toast.makeText(loginActivity,
-                        "Προέκυψε ένα σφάλμα δικτύου. Προσπαθήστε ξανά αργότερα!", Toast.LENGTH_SHORT).show();
+                        e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -252,13 +252,13 @@
     </string-array>
 
     <string-array name="greek_days">
-        <item>Κυρ</item>
         <item>Δε</item>
         <item>Tρ</item>
         <item>Τετ</item>
         <item>Πε</item>
         <item>Παρ</item>
         <item>Σαβ</item>
+        <item>Κυρ</item>
     </string-array>
 
     <string-array name="greek_months">

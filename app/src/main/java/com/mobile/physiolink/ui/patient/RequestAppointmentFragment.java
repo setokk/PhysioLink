@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
@@ -16,6 +17,8 @@ import android.widget.ArrayAdapter;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentRequestAppointmentBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.ui.patient.viewmodel.RequestAppointmentViewmodel;
 import com.mobile.physiolink.util.DateFormatter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -33,6 +36,7 @@ public class RequestAppointmentFragment extends Fragment
 {
     private List<String> dropdownData;
     private ArrayAdapter<String> adapter;
+    private RequestAppointmentViewmodel appointmentViewmodel;
 
     private FragmentRequestAppointmentBinding binding;
 
@@ -47,6 +51,13 @@ public class RequestAppointmentFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         binding = FragmentRequestAppointmentBinding.inflate(inflater, container, false);
+
+        appointmentViewmodel = new ViewModelProvider(this).get(RequestAppointmentViewmodel.class);
+        appointmentViewmodel.getAvailableHours().observe(getViewLifecycleOwner(), hours ->
+        {
+            //adapter.setData()
+            Log.i("YESYSEYSEYSEYSEYSE", hours.toString());
+        });
 
         return binding.getRoot();
     }
@@ -83,6 +94,10 @@ public class RequestAppointmentFragment extends Fragment
                 currentDate.get(Calendar.MONTH) + 1,
                         currentDate.get(Calendar.DAY_OF_MONTH));
 
+        appointmentViewmodel.loadAvailableHours(currentDate.get(Calendar.MONTH) + 1,
+                currentDate.get(Calendar.YEAR),
+                UserHolder.patient().getDoctorId());
+
         binding.dateText.setText(today);
         binding.calendarView.setTitleFormatter(monthFormatter);
         binding.calendarView.setWeekDayFormatter(weekDayFormatter);
@@ -98,6 +113,9 @@ public class RequestAppointmentFragment extends Fragment
         binding.calendarView.setOnMonthChangedListener((widget, date) ->
         {
             Log.i("INFOFWOFOWWFOFWO", String.valueOf(date.getMonth()));
+            appointmentViewmodel.loadAvailableHours(date.getMonth(),
+                    date.getYear(),
+                    UserHolder.patient().getDoctorId());
         });
     }
 
