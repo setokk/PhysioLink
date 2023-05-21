@@ -1,4 +1,4 @@
-package com.mobile.physiolink.model.user.availability;
+package com.mobile.physiolink.model.availability;
 
 import android.util.Log;
 

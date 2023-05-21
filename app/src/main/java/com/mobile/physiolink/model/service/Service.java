@@ -1,4 +1,4 @@
-package com.mobile.physiolink.model.user.service;
+package com.mobile.physiolink.model.service;
 
 import com.mobile.physiolink.service.api.error.Error;
 import com.mobile.physiolink.service.api.error.ResourceNotFindable;

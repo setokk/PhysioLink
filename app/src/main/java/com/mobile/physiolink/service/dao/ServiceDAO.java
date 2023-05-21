@@ -1,6 +1,6 @@
 package com.mobile.physiolink.service.dao;
 
-import com.mobile.physiolink.model.user.service.Service;
+import com.mobile.physiolink.model.service.Service;
 import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
 

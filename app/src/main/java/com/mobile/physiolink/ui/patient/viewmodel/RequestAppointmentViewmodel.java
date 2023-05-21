@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.mobile.physiolink.model.user.availability.AvailableHoursManager;
+import com.mobile.physiolink.model.availability.AvailableHoursManager;
 import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.api.error.Error;
