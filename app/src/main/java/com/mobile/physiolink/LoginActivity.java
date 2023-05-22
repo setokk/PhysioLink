@@ -2,6 +2,7 @@ package com.mobile.physiolink;
 
 import static com.mobile.physiolink.service.validator.UserAuth.sendAuthRequest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mobile.physiolink.async.LoginCallback;
 import com.mobile.physiolink.databinding.ActivityLoginBinding;
 import com.mobile.physiolink.service.validator.UserAuth;
+import com.mobile.physiolink.ui.PSFActivity;
 
 import org.json.JSONException;
 
@@ -57,6 +59,7 @@ public class LoginActivity extends AppCompatActivity
 
         if (username.isEmpty() || password.isEmpty())
         {
+            startActivity(new Intent(this, PSFActivity.class));
             Toast.makeText(this, "Δεν επιτρέπονται κενά πεδία!", Toast.LENGTH_SHORT).show();
             return;
         }
