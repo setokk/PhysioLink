@@ -62,10 +62,10 @@ public class AvailableHoursManager
         return dateToHoursMap.get(date);
     }
 
-    public void setAvailableHoursOfDate(String date, String[] hours)
+    public void setAvailableHoursOfDate(String date, String[] takenHours)
     {
         List<String> previousHours = new ArrayList<>(Arrays.asList(dateToHoursMap.get(date)));
-        previousHours.removeAll(Arrays.asList(hours)); // Difference
+        previousHours.removeAll(Arrays.asList(takenHours)); // Difference
 
         dateToHoursMap.put(date, previousHours.toArray(new String[0]));
     }
