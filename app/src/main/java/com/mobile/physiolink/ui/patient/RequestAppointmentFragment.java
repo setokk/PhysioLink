@@ -90,7 +90,9 @@ public class RequestAppointmentFragment extends Fragment
                 currentDate.get(Calendar.YEAR),
                 UserHolder.patient().getDoctorId());
 
-        binding.dateText.setText("Καμία επιλεγμένη");
+        binding.dateText.setText(DateFormatter.formatToAlphanumeric(currentDate.get(Calendar.YEAR),
+                currentDate.get(Calendar.MONTH) + 1,
+                currentDate.get(Calendar.DAY_OF_MONTH)));
 
         binding.calendarView.setTitleFormatter(monthFormatter);
         binding.calendarView.setWeekDayFormatter(weekDayFormatter);
