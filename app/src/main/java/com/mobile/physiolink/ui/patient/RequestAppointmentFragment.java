@@ -33,14 +33,19 @@ import java.util.List;
 
 public class RequestAppointmentFragment extends Fragment
 {
-    private String dropdownData[]={"15:00-16:00", "16:00-17:00", "17:00-18:00","18:00-19:00","19:00-20:00","20:00-21:00","22:00-23:00","23:00-24:00"};
     private RequestAppointmentViewModel appointmentViewmodel;
+    private AdapterForAppointmentHour adapter;
 
     private FragmentRequestAppointmentBinding binding;
+
     private ItemListTimeBinding itemListTimeBinding;
 
     private ArrayWeekDayFormatter weekDayFormatter;
     private MonthArrayTitleFormatter monthFormatter;
+
+    private Calendar currentDate;
+    private int month;
+
 
     public RequestAppointmentFragment() {
         // Required empty public constructor
@@ -51,11 +56,28 @@ public class RequestAppointmentFragment extends Fragment
     {
         binding = FragmentRequestAppointmentBinding.inflate(inflater, container, false);
 
+        currentDate = Calendar.getInstance();
+        currentDate.setTimeInMillis(currentDate.getTimeInMillis());
+
+        String monthPrefix = "";
+        String dayPrefix = "";
+        int year = currentDate.get(Calendar.YEAR);
+        int month = currentDate.get(Calendar.MONTH) + 1;
+        int day = currentDate.get(Calendar.DAY_OF_MONTH);
+        if (day <= 9)
+            dayPrefix = "0";
+        if (month <= 9)
+            monthPrefix = "0";
+
+        String initialDate = year + "-" +
+                monthPrefix + month + "-" +
+                dayPrefix + day;
+
         appointmentViewmodel = new ViewModelProvider(this).get(RequestAppointmentViewModel.class);
         appointmentViewmodel.getAvailableHours().observe(getViewLifecycleOwner(), hours ->
         {
-            //adapter.setData()
-            Log.i("YESYSEYSEYSEYSEYSE", hours.toString());
+            if (currentDate.get(Calendar.MONTH) + 1 == month)
+                adapter.setHours(hours.getAvailableHoursOfDate(initialDate));
         });
 
         return binding.getRoot();
@@ -73,27 +95,25 @@ public class RequestAppointmentFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
-        AdapterForAppointmentHour adapter =new AdapterForAppointmentHour(dropdownData);
+        adapter = new AdapterForAppointmentHour(new String[]{"420:00"});
         binding.availableAppointmentHoursList.setAdapter(adapter);
         binding.availableAppointmentHoursList.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        binding.hourBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(binding.availableAppointmentHoursList.getVisibility()==View.GONE){
-                    TransitionManager.beginDelayedTransition(binding.chooseAppointmentHourCardView,new AutoTransition());
-                    binding.availableAppointmentHoursList.setVisibility(View.VISIBLE);
-                }
-                else{
-                    TransitionManager.beginDelayedTransition(binding.chooseAppointmentHourCardView,new AutoTransition());
-                    binding.availableAppointmentHoursList.setVisibility(View.GONE);
-                }
+        binding.hourBtn.setOnClickListener(view1 ->
+        {
+            if(binding.availableAppointmentHoursList.getVisibility()==View.GONE){
+                TransitionManager.beginDelayedTransition(binding.chooseAppointmentHourCardView,new AutoTransition());
+                binding.availableAppointmentHoursList.setVisibility(View.VISIBLE);
+            }
+            else{
+                TransitionManager.beginDelayedTransition(binding.chooseAppointmentHourCardView,new AutoTransition());
+                binding.availableAppointmentHoursList.setVisibility(View.GONE);
             }
         });
 
         binding.availableAppointmentHoursList.addOnItemTouchListener(
                 new RecyclerItemClickListener(this.getContext(), binding.availableAppointmentHoursList ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                            String text=dropdownData[position].toString();
+                            String text = adapter.getHours()[position];
                             binding.hourBtn.setText(text);
                             binding.availableAppointmentHoursList.setVisibility(View.GONE);
                     }
@@ -105,9 +125,6 @@ public class RequestAppointmentFragment extends Fragment
 
 
         // Initialize calendar
-        Calendar currentDate = Calendar.getInstance();
-        currentDate.setTimeInMillis(currentDate.getTimeInMillis());
-
         appointmentViewmodel.loadAvailableHours(currentDate.get(Calendar.MONTH) + 1,
                 currentDate.get(Calendar.YEAR),
                 UserHolder.patient().getDoctorId());
@@ -124,6 +141,21 @@ public class RequestAppointmentFragment extends Fragment
             String dateString = DateFormatter.formatToAlphanumeric(date.getYear(),
                     date.getMonth(),
                     date.getDay());
+
+            String monthPrefix = "";
+            String dayPrefix = "";
+            int year = date.getYear();
+            int month = date.getMonth();
+            int day = date.getDay();
+            if (day <= 9)
+                dayPrefix = "0";
+            if (month <= 9)
+                monthPrefix = "0";
+
+            String selectedDate = year + "-" +
+                    monthPrefix + month + "-" +
+                    dayPrefix + day;
+            adapter.setHours(appointmentViewmodel.getAvailableHoursOfDate(selectedDate));
             binding.dateText.setText(dateString);
         });
 
@@ -138,6 +170,7 @@ public class RequestAppointmentFragment extends Fragment
 
         binding.calendarView.setOnMonthChangedListener((widget, date) ->
         {
+            this.month = date.getMonth();
             appointmentViewmodel.loadAvailableHours(date.getMonth(),
                     date.getYear(),
                     UserHolder.patient().getDoctorId());

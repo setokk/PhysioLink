@@ -6,17 +6,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textfield.TextInputEditText;
-import com.mobile.physiolink.databinding.FragmentRequestAppointmentBinding;
 import com.mobile.physiolink.databinding.ItemListTimeBinding;
 
 public class AdapterForAppointmentHour extends RecyclerView.Adapter<AdapterForAppointmentHour.MyViewHolder> {
 
-    String hours[];
+    String[] hours;
 
-    public AdapterForAppointmentHour(String hourList[]){
+    public AdapterForAppointmentHour(String[] hourList) {
         this.hours=hourList;
     }
+
+    public void setHours(String[] hours) {
+        this.hours = hours;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public AdapterForAppointmentHour.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,6 +36,11 @@ public class AdapterForAppointmentHour extends RecyclerView.Adapter<AdapterForAp
     @Override
     public int getItemCount() {
         return hours.length;
+    }
+
+    public String[] getHours()
+    {
+        return hours;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder
