@@ -45,10 +45,10 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
     public void onBindViewHolder(@NonNull AdapterForHistoryPatient.MyViewHolder holder, int position)
     {
         holder.itemHistoryBinding.serviceNamePatientHistory.setText(service[position]);
-        holder.itemHistoryBinding.apointmentDatePatientHistory.setText(date[position]);
-        holder.itemHistoryBinding.apointmentTimePatientHistory.setText(time[position]);
-        holder.itemHistoryBinding.apointmentDescriptionPatientHistory.setText(description[position]);
-        holder.itemHistoryBinding.servicePrisePatientHistory.setText(price[position]);
+        holder.itemHistoryBinding.appointmentDatePatientHistory.setText(date[position]);
+        holder.itemHistoryBinding.appointmentTimePatientHistory.setText(time[position]);
+        holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setText(description[position]);
+        holder.itemHistoryBinding.servicePricePatientHistory.setText(price[position]);
 
 
 
