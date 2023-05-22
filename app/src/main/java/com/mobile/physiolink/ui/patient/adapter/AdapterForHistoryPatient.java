@@ -50,8 +50,6 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
         holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setText(description[position]);
         holder.itemHistoryBinding.servicePricePatientHistory.setText(price[position]);
 
-
-
     }
 
     @Override
