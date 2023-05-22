@@ -114,10 +114,6 @@ public class RequestAppointmentFragment extends Fragment
 
         binding.calendarView.setOnMonthChangedListener((widget, date) ->
         {
-            if (date.getYear() != currentDate.get(Calendar.YEAR) ||
-                date.getMonth() < currentDate.get(Calendar.MONTH) + 1)
-                return;
-
             appointmentViewmodel.loadAvailableHours(date.getMonth(),
                     date.getYear(),
                     UserHolder.patient().getDoctorId());
