@@ -17,8 +17,9 @@ import android.widget.ArrayAdapter;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentRequestAppointmentBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
-import com.mobile.physiolink.ui.patient.viewmodel.RequestAppointmentViewmodel;
+import com.mobile.physiolink.ui.patient.viewmodel.RequestAppointmentViewModel;
 import com.mobile.physiolink.util.DateFormatter;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 
@@ -30,7 +31,7 @@ public class RequestAppointmentFragment extends Fragment
 {
     private List<String> dropdownData;
     private ArrayAdapter<String> adapter;
-    private RequestAppointmentViewmodel appointmentViewmodel;
+    private RequestAppointmentViewModel appointmentViewmodel;
 
     private FragmentRequestAppointmentBinding binding;
 
@@ -46,7 +47,7 @@ public class RequestAppointmentFragment extends Fragment
     {
         binding = FragmentRequestAppointmentBinding.inflate(inflater, container, false);
 
-        appointmentViewmodel = new ViewModelProvider(this).get(RequestAppointmentViewmodel.class);
+        appointmentViewmodel = new ViewModelProvider(this).get(RequestAppointmentViewModel.class);
         appointmentViewmodel.getAvailableHours().observe(getViewLifecycleOwner(), hours ->
         {
             //adapter.setData()
@@ -101,6 +102,12 @@ public class RequestAppointmentFragment extends Fragment
                     date.getDay());
             binding.dateText.setText(dateString);
         });
+
+        binding.calendarView.state().edit()
+                        .setMinimumDate(CalendarDay.from(currentDate.get(Calendar.YEAR),
+                                currentDate.get(Calendar.MONTH) + 1,
+                                currentDate.get(Calendar.DAY_OF_MONTH)))
+                                .commit();
 
         binding.calendarView.setOnMonthChangedListener((widget, date) ->
         {
