@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_phisiotherpeftiriaFragment_to_createPhisiotherapeftiriaFragment"
             app:destination="@id/fragment_create_clinic" />
+        <action
+            android:id="@+id/action_fragment_clinics_to_doctorInformationFragment"
+            app:destination="@id/doctorInformationFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_services"
@@ -55,7 +58,12 @@
         tools:layout="@layout/fragment_create_service" />
     <fragment
         android:id="@+id/serviceInformationFragment"
-        android:name="com.mobile.physiolink.ServiceInformationFragment"
+        android:name="com.mobile.physiolink.ui.psf.ServiceInformationFragment"
         android:label="fragment_service_information"
         tools:layout="@layout/fragment_service_information" />
+    <fragment
+        android:id="@+id/doctorInformationFragment"
+        android:name="com.mobile.physiolink.ui.psf.DoctorInformationFragment"
+        android:label="fragment_doctor_information"
+        tools:layout="@layout/fragment_doctor_information" />
 </navigation>

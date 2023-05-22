@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_lime"
-        tools:context=".ServiceInformationFragment">
+        tools:context=".ui.psf.ServiceInformationFragment">
 
         <TextView
             android:id="@+id/service_information_textview"

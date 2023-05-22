@@ -1,4 +1,4 @@
-package com.mobile.physiolink;
+package com.mobile.physiolink.ui.psf;
 
 import android.os.Bundle;
 
