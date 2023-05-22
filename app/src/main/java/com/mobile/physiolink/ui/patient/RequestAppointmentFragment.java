@@ -108,6 +108,9 @@ public class RequestAppointmentFragment extends Fragment
                                 currentDate.get(Calendar.MONTH) + 1,
                                 currentDate.get(Calendar.DAY_OF_MONTH)))
                                 .commit();
+        binding.calendarView.setSelectedDate(CalendarDay.from(currentDate.get(Calendar.YEAR),
+                currentDate.get(Calendar.MONTH) + 1,
+                currentDate.get(Calendar.DAY_OF_MONTH)));
 
         binding.calendarView.setOnMonthChangedListener((widget, date) ->
         {
