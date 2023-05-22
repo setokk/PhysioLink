@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_fragmentPatientHome_to_patientHistoryFragment"
             app:destination="@id/patientHistoryFragment" />
+        <action
+            android:id="@+id/action_fragmentPatientHome_to_fragmentRequestAppointment"
+            app:destination="@id/fragmentRequestAppointment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentPatientDoctor"

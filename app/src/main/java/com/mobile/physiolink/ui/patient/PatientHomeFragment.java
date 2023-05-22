@@ -4,15 +4,11 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +20,7 @@ import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
 
 public class PatientHomeFragment extends Fragment
 {
-    boolean hasAppointment=true;
+    boolean hasAppointment=false;
 
     String h1[],h2[],h3[],h4[],h5[];
     Fragment AppointmentFragment = new UpcomingAppointmentFragment();
@@ -73,8 +69,6 @@ public class PatientHomeFragment extends Fragment
         binding.patientHistoryLastItemPatient.setAdapter(new AdapterForHistoryPatient(h2,h3,h4,h1,h5,R.id.patientHistoryLastItemPatient));
         binding.patientHistoryLastItemPatient.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        ConstraintLayout myDoctor= binding.doctorInfoBasicPatientConstraint;
-
 
         binding.doctorInfoBasicPatientConstraint.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.containerPatient)
@@ -83,6 +77,10 @@ public class PatientHomeFragment extends Fragment
         binding.myDoctorPatientBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientHome_to_fragmentPatientDoctor));
+
+        binding.seeYourHistoryBtnPatient.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(),R.id.containerPatient)
+                        .navigate(R.id.action_fragmentPatientHome_to_patientHistoryFragment));
 
     }
 }
