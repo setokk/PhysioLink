@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,14 @@ public class NoUpcomingAppointmentFragment extends Fragment
                               @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        binding.makeAppointmentBtnPatient.setText(getString(R.string.underlined_dynamic_text, "πατώντας εδώ!"));
+
+        String text = "πατώντας εδώ!";
+        SpannableString spannableString = new SpannableString(text);
+        spannableString.setSpan(new UnderlineSpan(), 0, text.length(), 0);
+        binding.makeAppointmentBtnPatient.setText(spannableString);
+
+        binding.makeAppointmentBtnPatient.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(),R.id.containerPatient)
+                        .navigate(R.id.action_fragmentPatientHome_to_fragmentRequestAppointment));
     }
 }

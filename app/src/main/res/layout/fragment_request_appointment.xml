@@ -99,12 +99,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:paddingLeft="10dp"
-                    android:hint="Επιλέξτε Ώρα"
+                    android:hint=" Επιλέξτε Ώρα"
                     android:background="@color/white"
                     android:gravity="left|center"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:drawableLeft="@drawable/baseline_access_time_24"/>
 
 
                 <androidx.recyclerview.widget.RecyclerView
