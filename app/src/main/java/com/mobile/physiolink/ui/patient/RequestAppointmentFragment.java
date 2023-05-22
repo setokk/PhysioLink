@@ -6,17 +6,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentRequestAppointmentBinding;
+import com.mobile.physiolink.databinding.ItemListTimeBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.ui.patient.adapter.AdapterForAppointmentHour;
 import com.mobile.physiolink.ui.patient.viewmodel.RequestAppointmentViewModel;
 import com.mobile.physiolink.util.DateFormatter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -29,11 +33,11 @@ import java.util.List;
 
 public class RequestAppointmentFragment extends Fragment
 {
-    private List<String> dropdownData;
-    private ArrayAdapter<String> adapter;
+    private String dropdownData[]={"15:00-16:00", "16:00-17:00", "17:00-18:00","18:00-19:00","19:00-20:00","20:00-21:00","22:00-23:00","23:00-24:00"};
     private RequestAppointmentViewModel appointmentViewmodel;
 
     private FragmentRequestAppointmentBinding binding;
+    private ItemListTimeBinding itemListTimeBinding;
 
     private ArrayWeekDayFormatter weekDayFormatter;
     private MonthArrayTitleFormatter monthFormatter;
@@ -69,18 +73,36 @@ public class RequestAppointmentFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
-        dropdownData = Arrays.asList("15:00-16:00", "16:00-17:00", "17:00-18:00","18:00-19:00","19:00-20:00","20:00-21:00","22:00-23:00","23:00-24:00");
-        adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, dropdownData);
-        binding.autoCompleteTime.setAdapter(adapter);
-
-        // Handle item selection
-        binding.autoCompleteTime.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        AdapterForAppointmentHour adapter =new AdapterForAppointmentHour(dropdownData);
+        binding.availableAppointmentHoursList.setAdapter(adapter);
+        binding.availableAppointmentHoursList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        binding.hourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = adapter.getItem(position);
-                // Handle the selected option
+            public void onClick(View view) {
+                if(binding.availableAppointmentHoursList.getVisibility()==View.GONE){
+                    TransitionManager.beginDelayedTransition(binding.chooseAppointmentHourCardView,new AutoTransition());
+                    binding.availableAppointmentHoursList.setVisibility(View.VISIBLE);
+                }
+                else{
+                    TransitionManager.beginDelayedTransition(binding.chooseAppointmentHourCardView,new AutoTransition());
+                    binding.availableAppointmentHoursList.setVisibility(View.GONE);
+                }
             }
         });
+
+        binding.availableAppointmentHoursList.addOnItemTouchListener(
+                new RecyclerItemClickListener(this.getContext(), binding.availableAppointmentHoursList ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                            String text=dropdownData[position].toString();
+                            binding.hourBtn.setText(text);
+                            binding.availableAppointmentHoursList.setVisibility(View.GONE);
+                    }
+                    @Override public void onLongItemClick(View view, int position) {
+
+                    }
+                })
+        );
+
 
         // Initialize calendar
         Calendar currentDate = Calendar.getInstance();
