@@ -62,24 +62,18 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
         holder.itemHistoryBinding.servicePricePatientHistory.setText(price[position]);
 
         boolean isItemExpanded = isExpanded[position];
-        boolean isMultiline = holder.itemHistoryBinding.appointmentDescriptionPatientHistory.getLineCount() > 1;
         boolean hasContent = holder.itemHistoryBinding.appointmentDescriptionPatientHistory.length() > 0;
 
-        holder.itemHistoryBinding.appointmentPatientHistoryArrow.setVisibility(isMultiline ? View.VISIBLE : View.GONE);
         holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setText(hasContent ? description[position] : "-");
 
         // Set the initial state based on the expanded flag
-        if (isItemExpanded) {
-            holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setMaxLines(Integer.MAX_VALUE);
-            holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setEllipsize(null);
-            holder.itemHistoryBinding.appointmentPatientHistoryArrow.setImageResource(R.drawable.baseline_arrow_drop_up_purple);
-        } else {
-            holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setMaxLines(1);
-            holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setEllipsize(TextUtils.TruncateAt.END);
-            holder.itemHistoryBinding.appointmentPatientHistoryArrow.setImageResource(R.drawable.baseline_arrow_drop_down_purple);
-        }
-
-
+            if (isItemExpanded) {
+                holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setMaxLines(Integer.MAX_VALUE);
+                holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setEllipsize(null);
+            } else {
+                holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setMaxLines(1);
+                holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setEllipsize(TextUtils.TruncateAt.END);
+            }
 
     }
 
@@ -100,20 +94,17 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
     public class MyViewHolder extends RecyclerView.ViewHolder
     {
         ItemPatientHistoryBinding itemHistoryBinding;
-        ImageView appointmentDownArrowPatient;
-
         public MyViewHolder(ItemPatientHistoryBinding itemHistoryBinding)
         {
             super(itemHistoryBinding.getRoot());
             this.itemHistoryBinding= itemHistoryBinding;
 
-            this.appointmentDownArrowPatient = itemHistoryBinding.appointmentPatientHistoryArrow;
 
             // Set click listener on the entire item view
             itemHistoryBinding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    toggleExpansion(getAdapterPosition());
+                    toggleExpansion(getBindingAdapterPosition());
                 }
             });
         }

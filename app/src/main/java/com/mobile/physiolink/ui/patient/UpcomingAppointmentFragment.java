@@ -2,7 +2,6 @@ package com.mobile.physiolink.ui.patient;
 
 import static android.icu.text.ListFormatter.Type.AND;
 
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
-import com.mobile.physiolink.databinding.FragmentNoUpcomingAppointmentBinding;
 import com.mobile.physiolink.databinding.FragmentUpcomingAppointmentBinding;
 
 public class UpcomingAppointmentFragment extends Fragment {
@@ -62,9 +60,7 @@ public class UpcomingAppointmentFragment extends Fragment {
         binding.appointmentPatientConstraint.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
                 if(isMultiline){
-
                     if(binding.appointmentCommentsPatient.getMaxLines() == 1){
                         binding.appointmentCommentsPatient.setMaxLines(Integer.MAX_VALUE);
                         binding.appointmentCommentsPatient.setEllipsize(null);

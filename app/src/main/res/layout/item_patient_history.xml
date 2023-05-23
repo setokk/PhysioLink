@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/appointmentHistoryPatient"
     android:layout_width="match_parent"
     android:paddingTop="5dp"
-    android:paddingBottom="5dp"
+    android:paddingBottom="10dp"
     android:layout_height="wrap_content"
     android:background="@drawable/list_item_style"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -65,40 +64,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentDatePatientHistory" />
 
+        <TextView
+            android:id="@+id/appointmentDescriptionPatientHistoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Το σχόλιο σας:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/serviceNamePatientHistory"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
         <TextView
             android:id="@+id/appointmentDescriptionPatientHistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Σχόλια: Πόνοι στο σβέρκο κα.hjikosijduiohjeoijeoheoheoeukakakakakakakakakakakakaka"
+            android:text="Πόνοι στο σβέρκο κα.hjikosijduiohjeoijeoheoheoeukakakakakakakakakakakakaka"
             android:textColor="@color/button_grey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:maxLines="1"
             android:ellipsize="end"
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/serviceNamePatientHistory" />
-
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appointmentDescriptionPatientHistoryTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/appointmentPatientHistoryArrow"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="28dp"
-
-        android:src="@drawable/baseline_arrow_drop_down_purple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/servicePricePatientHistory" />
 
     <TextView
         android:id="@+id/servicePricePatientHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="30dp"
         android:text="40€"
         android:textColor="@color/button_purple"
         android:textSize="25sp"
