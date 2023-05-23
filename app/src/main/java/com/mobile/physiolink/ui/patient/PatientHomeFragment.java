@@ -20,7 +20,7 @@ import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
 
 public class PatientHomeFragment extends Fragment
 {
-    boolean hasAppointment=false;
+    boolean hasAppointment=true;
 
     String h1[],h2[],h3[],h4[],h5[];
     Fragment AppointmentFragment = new UpcomingAppointmentFragment();
