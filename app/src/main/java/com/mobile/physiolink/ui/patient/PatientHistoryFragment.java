@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,8 @@ public class PatientHistoryFragment extends Fragment
         binding.historyRecyclerview.addItemDecoration(new DecorationSpacingItem(20));
         binding.historyRecyclerview.setAdapter(new AdapterForHistoryPatient(h2,h3,h4,h1,h5,R.id.historyRecyclerview));
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+
 
     }
 }
