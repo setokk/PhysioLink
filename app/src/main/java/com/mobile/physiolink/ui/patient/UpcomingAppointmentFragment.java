@@ -1,5 +1,7 @@
 package com.mobile.physiolink.ui.patient;
 
+import static android.icu.text.ListFormatter.Type.AND;
+
 import android.os.Build;
 import android.os.Bundle;
 
@@ -46,20 +48,34 @@ public class UpcomingAppointmentFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
 
+        boolean isMultiline = binding.appointmentCommentsPatient.getLineCount() > 1;
+        boolean hasContent = binding.appointmentCommentsPatient.length() > 0;
+
+        //checks if the lines are not more than 1 and makes the arrow disappear, if there is no content it just shows "-"
+        if(!isMultiline){
+            binding.appointmentDownArrowPatient.setVisibility(View.GONE);
+            if(!hasContent){
+                binding.appointmentCommentsPatient.setText("-");
+            }
+        }
 
         binding.appointmentPatientConstraint.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                        if(binding.appointmentCommentsPatient.getMaxLines() == 1){
-                            binding.appointmentCommentsPatient.setMaxLines(Integer.MAX_VALUE);
-                            binding.appointmentCommentsPatient.setEllipsize(null);
-                            binding.appointmentDownArrowPatient.setImageResource(R.drawable.baseline_arrow_drop_up_purple);
-                        }
-                        else {
-                            binding.appointmentCommentsPatient.setMaxLines(1);
-                            binding.appointmentCommentsPatient.setEllipsize(TextUtils.TruncateAt.END);
-                            binding.appointmentDownArrowPatient.setImageResource(R.drawable.baseline_arrow_drop_down_purple);
-                        }
+
+                if(isMultiline){
+
+                    if(binding.appointmentCommentsPatient.getMaxLines() == 1){
+                        binding.appointmentCommentsPatient.setMaxLines(Integer.MAX_VALUE);
+                        binding.appointmentCommentsPatient.setEllipsize(null);
+                        binding.appointmentDownArrowPatient.setImageResource(R.drawable.baseline_arrow_drop_up_purple);
+                    }
+                    else {
+                        binding.appointmentCommentsPatient.setMaxLines(1);
+                        binding.appointmentCommentsPatient.setEllipsize(TextUtils.TruncateAt.END);
+                        binding.appointmentDownArrowPatient.setImageResource(R.drawable.baseline_arrow_drop_down_purple);
+                    }
+                }
             }
         });
     }
