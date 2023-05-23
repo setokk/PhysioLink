@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/appointmentPatientConstraint"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,6 +9,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/square_round_style"
     tools:context=".ui.patient.UpcomingAppointmentFragment">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Σε εκκρεμότητα"
+        android:textColor="@color/design_default_color_error"
+        android:textStyle="bold|italic"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
         android:id="@+id/calendarImgPatient"
@@ -107,21 +119,24 @@
         android:id="@+id/appointmentCommentsPatient"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:layout_marginLeft="5dp"
         android:text="Ο Μητσοκάτης γαμιέται και θέλω μασάζ να ηρεμήσω"
         android:textSize="16sp"
         android:textColor="@color/black"
+        android:singleLine="true"
+        android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@id/appointmentCommentsTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/appointmentInfoBtnPatient"/>
+        app:layout_constraintRight_toLeftOf="@+id/appointmentDownArrowPatient"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appointmentInfoBtnPatient"
-        android:layout_width="60dp"
+
+    <ImageView
+        android:id="@+id/appointmentDownArrowPatient"
+        android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/baseline_keyboard_arrow_right_24"
+        android:src="@drawable/baseline_arrow_drop_down_purple"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/appointmentCommentsPatient"
         app:layout_constraintTop_toTopOf="@id/appointmentCommentsPatient"
