@@ -2,6 +2,8 @@ package com.mobile.physiolink.model.availability;
 
 import android.util.Log;
 
+import com.mobile.physiolink.util.DateFormatter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -60,14 +62,7 @@ public class AvailableHoursManager
 
     public String[] getAvailableHoursOfDate(int year, int month, int day)
     {
-        String monthPrefix = "";
-        String dayPrefix = "";
-        if (day <= 9)
-            dayPrefix = "0";
-        if (month <= 9)
-            monthPrefix = "0";
-
-        String date = year + "-" + monthPrefix + month + "-" + dayPrefix + day;
+        String date = DateFormatter.fixDatePrefixes(year, month, day);
         return Optional.ofNullable(dateToHoursMap.get(date))
                         .orElse(new String[0]);
     }
