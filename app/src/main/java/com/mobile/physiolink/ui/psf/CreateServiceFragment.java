@@ -66,29 +66,29 @@ public class CreateServiceFragment extends Fragment {
 //                }
 //            });
             current.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (current.getText().length() == 0) {
+                    current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
+                    input_erros = true;
+                } else {
+                    current_layout.setError(null);
+                    current_layout.setHelperText(null);
+                    input_erros = false;
                 }
+            }
 
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    if (current.getText().length() == 0) {
-                        current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
-                        input_erros = true;
-                    } else {
-                        current_layout.setError(null);
-                        current_layout.setHelperText(null);
-                        input_erros = false;
-                    }
-                }
+            @Override
+            public void afterTextChanged(Editable editable) {
 
-                @Override
-                public void afterTextChanged(Editable editable) {
-
-                }
-            });
-        }
+            }
+        });
+    }
         binding.saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,7 +109,8 @@ public class CreateServiceFragment extends Fragment {
                             binding.serviceNameInput.getText().toString(),
                             binding.serviceCostInput.getText().toString(),
                             binding.serviceIdInput.getText().toString(),
-                            binding.serviceDescriptionInput.getText().toString());
+                            binding.serviceDescriptionInput.getText().toString(),
+                            false);
                     confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                 }
             }
