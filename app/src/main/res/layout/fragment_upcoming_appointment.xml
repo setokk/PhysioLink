@@ -16,7 +16,7 @@
         android:text="Σε εκκρεμότητα"
         android:textColor="@color/design_default_color_error"
         android:textStyle="bold|italic"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -37,7 +37,7 @@
         android:text="01/01/2001"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/calendarImgPatient"
         app:layout_constraintTop_toTopOf="@id/calendarImgPatient"
         app:layout_constraintBottom_toBottomOf="@id/calendarImgPatient"/>
@@ -46,11 +46,11 @@
         android:id="@+id/appointmentTimePatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="6dp"
         android:text="14:30"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@+id/appointmentDatePatient"
         app:layout_constraintTop_toTopOf="@+id/appointmentDatePatient"
         app:layout_constraintBottom_toBottomOf="@+id/appointmentDatePatient"/>
@@ -107,13 +107,14 @@
         android:id="@+id/appointmentCommentsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Τα σχόλια σας:"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/locationImgPatient" />
+        app:layout_constraintTop_toBottomOf="@id/locationImgPatient"
+        app:layout_constraintBottom_toTopOf="@id/appointmentCommentsPatient"/>
 
     <TextView
         android:id="@+id/appointmentCommentsPatient"
@@ -124,9 +125,8 @@
         android:text="Ο Μητσοκάτης γαμιέται και θέλω μασάζ να ηρεμήσω"
         android:textSize="16sp"
         android:textColor="@color/black"
-        android:singleLine="true"
+        android:maxLines="1"
         android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@id/appointmentCommentsTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/appointmentDownArrowPatient"/>

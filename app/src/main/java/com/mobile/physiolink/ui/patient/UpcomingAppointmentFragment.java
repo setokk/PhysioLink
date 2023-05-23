@@ -46,30 +46,20 @@ public class UpcomingAppointmentFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
 
-        if (binding.appointmentCommentsPatient.getLineCount()<=1){
-            binding.appointmentDownArrowPatient.setVisibility(View.GONE);
-            if(binding.appointmentCommentsPatient.getLineCount()==0){
-                binding.appointmentCommentsPatient.setText("-");
-            }
-        }
+
         binding.appointmentPatientConstraint.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                if(binding.appointmentCommentsPatient.getLineCount()>1){
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                        if(binding.appointmentCommentsPatient.isSingleLine()==true){
-                            binding.appointmentCommentsPatient.setSingleLine(false);
+                        if(binding.appointmentCommentsPatient.getMaxLines() == 1){
+                            binding.appointmentCommentsPatient.setMaxLines(Integer.MAX_VALUE);
                             binding.appointmentCommentsPatient.setEllipsize(null);
-                            binding.appointmentDownArrowPatient.setBackgroundResource(R.drawable.baseline_arrow_drop_up_purple);
+                            binding.appointmentDownArrowPatient.setImageResource(R.drawable.baseline_arrow_drop_up_purple);
                         }
-                        else{
-                            binding.appointmentCommentsPatient.setSingleLine(true);
+                        else {
+                            binding.appointmentCommentsPatient.setMaxLines(1);
                             binding.appointmentCommentsPatient.setEllipsize(TextUtils.TruncateAt.END);
-                            binding.appointmentDownArrowPatient.setBackgroundResource(R.drawable.baseline_arrow_drop_down_purple);
+                            binding.appointmentDownArrowPatient.setImageResource(R.drawable.baseline_arrow_drop_down_purple);
                         }
-                    }
-
-                }
             }
         });
     }
