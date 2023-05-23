@@ -44,8 +44,8 @@ public class RequestAppointmentFragment extends Fragment
     private MonthArrayTitleFormatter monthFormatter;
 
     private Calendar currentDate;
-    private int month;
 
+    private boolean reopened = false;
 
     public RequestAppointmentFragment() {
         // Required empty public constructor
@@ -59,25 +59,18 @@ public class RequestAppointmentFragment extends Fragment
         currentDate = Calendar.getInstance();
         currentDate.setTimeInMillis(currentDate.getTimeInMillis());
 
-        String monthPrefix = "";
-        String dayPrefix = "";
         int year = currentDate.get(Calendar.YEAR);
         int month = currentDate.get(Calendar.MONTH) + 1;
         int day = currentDate.get(Calendar.DAY_OF_MONTH);
-        if (day <= 9)
-            dayPrefix = "0";
-        if (month <= 9)
-            monthPrefix = "0";
-
-        String initialDate = year + "-" +
-                monthPrefix + month + "-" +
-                dayPrefix + day;
 
         appointmentViewmodel = new ViewModelProvider(this).get(RequestAppointmentViewModel.class);
         appointmentViewmodel.getAvailableHours().observe(getViewLifecycleOwner(), hours ->
         {
-            if (currentDate.get(Calendar.MONTH) + 1 == month)
-                adapter.setHours(hours.getAvailableHoursOfDate(initialDate));
+            if (!reopened)
+            {
+                adapter.setHours(hours.getAvailableHoursOfDate(year, month, day));
+                reopened = true;
+            }
         });
 
         return binding.getRoot();
@@ -95,7 +88,7 @@ public class RequestAppointmentFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
-        adapter = new AdapterForAppointmentHour(new String[]{"420:00"});
+        adapter = new AdapterForAppointmentHour(new String[0]);
         binding.availableAppointmentHoursList.setAdapter(adapter);
         binding.availableAppointmentHoursList.setLayoutManager(new LinearLayoutManager(this.getContext()));
         binding.hourBtn.setOnClickListener(view1 ->
@@ -123,12 +116,22 @@ public class RequestAppointmentFragment extends Fragment
                 })
         );
 
+        initializeCalendar();
 
-        // Initialize calendar
+        // Load hours of current month
         appointmentViewmodel.loadAvailableHours(currentDate.get(Calendar.MONTH) + 1,
                 currentDate.get(Calendar.YEAR),
                 UserHolder.patient().getDoctorId());
+    }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    public void initializeCalendar()
+    {
         binding.dateText.setText(DateFormatter.formatToAlphanumeric(currentDate.get(Calendar.YEAR),
                 currentDate.get(Calendar.MONTH) + 1,
                 currentDate.get(Calendar.DAY_OF_MONTH)));
@@ -138,48 +141,44 @@ public class RequestAppointmentFragment extends Fragment
 
         binding.calendarView.setOnDateChangedListener((widget, date, selected) ->
         {
-            String dateString = DateFormatter.formatToAlphanumeric(date.getYear(),
-                    date.getMonth(),
-                    date.getDay());
+            // Clear selection date text
+            binding.hourBtn.setText("");
 
-            String monthPrefix = "";
-            String dayPrefix = "";
             int year = date.getYear();
             int month = date.getMonth();
             int day = date.getDay();
-            if (day <= 9)
-                dayPrefix = "0";
-            if (month <= 9)
-                monthPrefix = "0";
 
-            String selectedDate = year + "-" +
-                    monthPrefix + month + "-" +
-                    dayPrefix + day;
-            adapter.setHours(appointmentViewmodel.getAvailableHoursOfDate(selectedDate));
-            binding.dateText.setText(dateString);
+            adapter.setHours(appointmentViewmodel.getAvailableHoursOfDate(year, month, day));
+            binding.dateText.setText(DateFormatter.formatToAlphanumeric(year, month, day));
         });
 
+        // Set minimum date to the current date
         binding.calendarView.state().edit()
-                        .setMinimumDate(CalendarDay.from(currentDate.get(Calendar.YEAR),
-                                currentDate.get(Calendar.MONTH) + 1,
-                                currentDate.get(Calendar.DAY_OF_MONTH)))
-                                .commit();
+                .setMinimumDate(CalendarDay.from(currentDate.get(Calendar.YEAR),
+                        currentDate.get(Calendar.MONTH) + 1,
+                        currentDate.get(Calendar.DAY_OF_MONTH)))
+                .commit();
+
+        // Select the date
         binding.calendarView.setSelectedDate(CalendarDay.from(currentDate.get(Calendar.YEAR),
                 currentDate.get(Calendar.MONTH) + 1,
                 currentDate.get(Calendar.DAY_OF_MONTH)));
 
+        binding.calendarView.setAllowClickDaysOutsideCurrentMonth(false);
+
         binding.calendarView.setOnMonthChangedListener((widget, date) ->
         {
-            this.month = date.getMonth();
+            // Clear selection date text
+            binding.hourBtn.setText("");
+            binding.calendarView.clearSelection();
+
+            Calendar maxCalendar = Calendar.getInstance();
+            maxCalendar.set(Calendar.YEAR, date.getYear());
+            maxCalendar.set(Calendar.MONTH, date.getMonth() - 1);
+
             appointmentViewmodel.loadAvailableHours(date.getMonth(),
                     date.getYear(),
                     UserHolder.patient().getDoctorId());
         });
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
     }
 }

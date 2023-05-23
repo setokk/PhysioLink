@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class AvailableHoursManager
 {
@@ -57,9 +58,18 @@ public class AvailableHoursManager
         return dateToHoursMap;
     }
 
-    public String[] getAvailableHoursOfDate(String date)
+    public String[] getAvailableHoursOfDate(int year, int month, int day)
     {
-        return dateToHoursMap.get(date);
+        String monthPrefix = "";
+        String dayPrefix = "";
+        if (day <= 9)
+            dayPrefix = "0";
+        if (month <= 9)
+            monthPrefix = "0";
+
+        String date = year + "-" + monthPrefix + month + "-" + dayPrefix + day;
+        return Optional.ofNullable(dateToHoursMap.get(date))
+                        .orElse(new String[0]);
     }
 
     public void setAvailableHoursOfDate(String date, String[] takenHours)
