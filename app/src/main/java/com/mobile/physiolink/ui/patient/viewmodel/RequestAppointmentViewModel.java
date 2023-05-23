@@ -32,10 +32,10 @@ public class RequestAppointmentViewModel extends ViewModel
         return dateToAvailableHours;
     }
 
-    public String[] getAvailableHoursOfDate(String date)
+    public String[] getAvailableHoursOfDate(int year, int month, int day)
     {
         return dateToAvailableHours.getValue()
-                .getAvailableHoursOfDate(date);
+                .getAvailableHoursOfDate(year, month, day);
     }
 
     public void loadAvailableHours(int month, int year, long doctorId)
