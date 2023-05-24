@@ -30,7 +30,8 @@
         <activity android:name=".ui.DoctorActivity"
             android:label="@string/home_label"/>
         <activity android:name=".ui.PatientActivity"
-            android:label="@string/home_label"/>
+            android:label="@string/home_label"
+            android:windowSoftInputMode="adjustNothing"/>
     </application>
 
 </manifest>

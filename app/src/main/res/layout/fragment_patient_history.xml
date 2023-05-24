@@ -14,26 +14,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/search_background"
-        android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/input_grey"
+        app:queryHint="Αναζήτηση..."
+        android:focusedByDefault="false"
+        app:iconifiedByDefault="false"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <EditText
-            android:id="@+id/search_src_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Αναζήτηση"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:textColorHint="@color/input_grey"
-            android:textSize="16sp" />
-
-    </androidx.appcompat.widget.SearchView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/historyRecyclerview"
@@ -51,7 +40,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sumCostHistoryConstraint"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
         android:background="@color/button_purple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -62,13 +52,14 @@
             android:id="@+id/titleSumCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:text="Συνολικά Έξοδα:"
             android:textColor="@color/white"
-            android:textSize="24dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toStartOf="@id/sumCost"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
             android:id="@+id/sumCost"
@@ -77,10 +68,11 @@
             android:layout_marginLeft="5dp"
             android:text="670€"
             android:textColor="@color/white"
-            android:textSize="24dp"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/titleSumCost"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/titleSumCost"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
