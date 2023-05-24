@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.mobile.physiolink.ConfirmationServicePopUp;
 import com.mobile.physiolink.databinding.FragmentCreateServiceBinding;
+import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
 import java.util.ArrayList;
 
@@ -105,12 +105,21 @@ public class CreateServiceFragment extends Fragment {
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    ConfirmationServicePopUp confirmation = new ConfirmationServicePopUp(
-                            binding.serviceNameInput.getText().toString(),
-                            binding.serviceCostInput.getText().toString(),
-                            binding.serviceIdInput.getText().toString(),
-                            binding.serviceDescriptionInput.getText().toString(),
-                            false);
+                    ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
+                            "Είστε σίγουρος για την επιλογή σας;",
+                            "Ναι", "Οχι");
+                    confirmation.setPositiveOnClick((dialog, which) ->
+                    {
+                        // TODO: API CALL
+                        Toast.makeText(getActivity(), "Εγινε αποθήκευση Παροχής!",
+                                Toast.LENGTH_SHORT).show();
+                    });
+                    confirmation.setNegativeOnClick(((dialog, which) ->
+                    {
+                        Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
+                                Toast.LENGTH_SHORT).show();
+                    }));
+
                     confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                 }
             }

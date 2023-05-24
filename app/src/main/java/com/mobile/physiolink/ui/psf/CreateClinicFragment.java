@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.mobile.physiolink.ConfirmationClinicPopUp;
 import com.mobile.physiolink.databinding.FragmentCreateClinicBinding;
+import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -162,16 +162,21 @@ public class CreateClinicFragment extends Fragment
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    ConfirmationClinicPopUp confirmation = new ConfirmationClinicPopUp(
-                            binding.docUsernameInput.getText().toString(),
-                            binding.docPasswardInput.getText().toString(),
-                            binding.docNameInput.getText().toString(),
-                            binding.docSurnameInput.getText().toString(),
-                            binding.afmInput.getText().toString(),
-                            binding.phonenumberInput.getText().toString(),
-                            binding.clinicNameInput.getText().toString(),
-                            binding.cityInput.getText().toString(),
-                            binding.addressInput.getText().toString());
+                    ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
+                            "Είστε σίγουρος για την επιλογή σας;",
+                            "Ναι", "Οχι");
+                    confirmation.setPositiveOnClick((dialog, which) ->
+                    {
+                        // TODO: API CALL
+                        Toast.makeText(getActivity(), "Εγινε αποθήκευση Φυσιοθεραπευτηρίου!",
+                                Toast.LENGTH_SHORT).show();
+                    });
+                    confirmation.setNegativeOnClick(((dialog, which) ->
+                    {
+                        Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
+                                Toast.LENGTH_SHORT).show();
+                    }));
+
                     confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                 }
             }
