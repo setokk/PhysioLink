@@ -44,12 +44,12 @@
         android:id="@+id/patientDoctorServicePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="40"
         android:textSize="20sp"
         android:textColor="@color/button_purple"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/patientDoctorServiceInfoConstraint"
         app:layout_constraintRight_toLeftOf="@id/patientDoctorServiceCurrencySymbol"/>
     <TextView

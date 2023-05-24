@@ -99,7 +99,6 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
             super(itemHistoryBinding.getRoot());
             this.itemHistoryBinding= itemHistoryBinding;
 
-
             // Set click listener on the entire item view
             itemHistoryBinding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
