@@ -64,7 +64,7 @@
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/NameHint"
-                android:inputType="textNoSuggestions"
+                android:inputType="textPersonName"
                 android:maxLength="20"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey" />
@@ -95,7 +95,7 @@
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/LastNameHint"
-                android:inputType="textNoSuggestions"
+                android:inputType="textPersonName"
                 android:maxLength="20"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey" />
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint= "Πόλη *"
+                android:hint="Πόλη *"
                 android:inputType="textNoSuggestions"
                 android:maxLength="20"
                 android:textColor="@color/black"
@@ -189,7 +189,7 @@
                 android:backgroundTint="@color/white"
                 android:hint="Ταχυδρομικός κώδικας *"
                 android:inputType="number"
-                android:maxLength="20"
+                android:maxLength="5"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -237,6 +237,9 @@
             app:counterMaxLength="10"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/patientAmkaInputLayout"

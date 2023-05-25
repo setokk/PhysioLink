@@ -149,8 +149,8 @@
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/NameHint"
+                android:inputType="textPersonName"
                 android:maxLength="20"
-                android:inputType="textNoSuggestions"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -182,8 +182,8 @@
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/LastNameHint"
+                android:inputType="textPersonName"
                 android:maxLength="20"
-                android:inputType="textNoSuggestions"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
@@ -233,8 +233,9 @@
             app:counterMaxLength="10"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
             app:helperTextEnabled="true"
-            app:helperTextTextColor="?attr/colorError"
+            app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/afm_input_layout"
@@ -247,8 +248,8 @@
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/PhoneHint"
-                android:maxLength="10"
                 android:inputType="number"
+                android:maxLength="10"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
@@ -279,8 +280,8 @@
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/NameHint"
-                android:maxLength="20"
                 android:inputType="textNoSuggestions"
+                android:maxLength="20"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
@@ -312,8 +313,8 @@
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/CityHint"
-                android:maxLength="20"
                 android:inputType="textNoSuggestions"
+                android:maxLength="20"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
@@ -346,8 +347,8 @@
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/AddressHint"
-                android:maxLength="20"
                 android:inputType="textNoSuggestions"
+                android:maxLength="20"
                 android:textColor="@color/black"
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />

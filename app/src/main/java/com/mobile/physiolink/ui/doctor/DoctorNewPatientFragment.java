@@ -125,7 +125,7 @@ public class DoctorNewPatientFragment extends Fragment
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                    if (currentInput.getText().length() == 0 && !currentInputLayout.equals(binding.patientPhoneInputLayout)) {
+                    if (currentInput.getText().length() == 0) {
                         currentInputLayout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         inputError = true;
                     } else {
@@ -197,7 +197,7 @@ public class DoctorNewPatientFragment extends Fragment
             @Override
             public void onClick(View view) {
                 for(int i = 0; i< allInputs.size(); i++){
-                    if(allInputs.get(i).getText().length() == 0 && !allInputsLayouts.get(i).equals(binding.patientPhoneInputLayout)){
+                    if(allInputs.get(i).getText().length() == 0){
                         allInputsLayouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         inputError = true;
                     }
