@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -39,7 +40,6 @@ public class ServiceInformationFragment extends Fragment {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -47,6 +47,7 @@ public class ServiceInformationFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentServiceInformationBinding.inflate(inflater, container, false);
+
 
         all_inputs.add(binding.nameInput);
         all_inputs_layouts.add(binding.nameInputLayout);
@@ -107,11 +108,6 @@ public class ServiceInformationFragment extends Fragment {
 
                 }
                 else{
-                    edit = false;
-                    binding.editButton.setText("Επεξεργασία");
-                    for(int i = 0; i < all_inputs.size(); i++){
-                        all_inputs.get(i).setEnabled(false);
-                    }
 
                     for(int i = 0; i< all_inputs.size(); i++){
                         if(all_inputs.get(i).getText().length() == 0){
@@ -130,21 +126,34 @@ public class ServiceInformationFragment extends Fragment {
                             // TODO: API CALL
                             Toast.makeText(getActivity(), "Έγινε αποθήκευση των αλλαγών!",
                                     Toast.LENGTH_SHORT).show();
+
+                            for(int i = 0; i < all_inputs.size(); i++){
+                                all_inputs.get(i).setEnabled(false);
+                            }
+
+                            edit = false;
+                            binding.editButton.setText("Επεξεργασία");
                         });
                         confirmation.setNegativeOnClick(((dialog, which) ->
                         {
                             Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
                                     Toast.LENGTH_SHORT).show();
+
+                            for(int i = 0; i < all_inputs.size(); i++){
+                                all_inputs.get(i).setEnabled(false);
+                            }
+
+                            edit = false;
+                            binding.editButton.setText("Επεξεργασία");
+
+                            binding.nameInput.setText(prev_name);
+                            binding.codeInput.setText(prev_code);
+                            binding.priceInput.setText(prev_price);
+                            binding.descriptionInput.setText(prev_description);
                         }));
 
                         confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                     }
-//                    if(!confirmation.isReady()){
-//                        binding.nameInput.setText(prev_name);
-//                        binding.codeInput.setText(prev_code);
-//                        binding.price.setText(prev_price);
-//                        binding.descriptionInput.setText(prev_description);
-//                    }
                 }
             }
         });

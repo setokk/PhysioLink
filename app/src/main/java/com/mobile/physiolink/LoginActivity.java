@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mobile.physiolink.async.LoginCallback;
 import com.mobile.physiolink.databinding.ActivityLoginBinding;
 import com.mobile.physiolink.service.validator.UserAuth;
+import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
 
 import org.json.JSONException;
