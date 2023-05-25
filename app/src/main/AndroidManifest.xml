@@ -26,10 +26,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.PSFActivity"
+                  android:windowSoftInputMode="adjustPan"
                   android:label="@string/home_label"/>
         <activity android:name=".ui.DoctorActivity"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/home_label"/>
         <activity android:name=".ui.PatientActivity"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/home_label"/>
     </application>
 
