@@ -1,205 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.psf.ServiceInformationFragment">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/background_lime"
+    tools:context=".ui.psf.ServiceInformationFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_lime"
-        tools:context=".ui.psf.ServiceInformationFragment">
+    <TextView
+        android:id="@+id/service_information_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Στοιχεία Παροχής"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/service_information_textview"
-            android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Τιμή:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="@+id/price_input_layout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/price_input_layout"
+        app:layout_constraintTop_toTopOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:text="Όνομα:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/name_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/service_information_textview" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_input_layout"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="45dp"
+        android:textAlignment="gravity"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:counterMaxLength="20"
+        app:endIconMode="none"
+        app:layout_constraintEnd_toStartOf="@+id/price_input_layout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_input"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Στοιχεία Παροχής"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Τιμή:"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/name"
-            app:layout_constraintEnd_toEndOf="@+id/price_input_layout"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/name"
-            app:layout_constraintStart_toStartOf="@+id/price_input_layout"
-            app:layout_constraintTop_toTopOf="@+id/name" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:text="Όνομα:"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/name_input_layout"
-            app:layout_constraintTop_toBottomOf="@+id/service_information_textview" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name_input_layout"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="45dp"
+            android:background="@drawable/round2_style"
+            android:backgroundTint="@color/white"
+            android:enabled="false"
+            android:gravity="center"
+            android:inputType="textNoSuggestions|textAutoComplete"
+            android:maxLength="20"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="Aθλητική Μάλαξη"
             android:textAlignment="gravity"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintEnd_toStartOf="@+id/price_input_layout"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name">
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name_input"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/round2_style"
-                android:backgroundTint="@color/white"
-                android:enabled="false"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp"
-                android:text="Aθλητική Μάλαξη"
-                android:textAlignment="gravity"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/price_input_layout"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:counterMaxLength="7"
+        app:endIconMode="none"
+        app:layout_constraintBottom_toBottomOf="@+id/name_input_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/name_input_layout"
+        app:layout_constraintTop_toTopOf="@+id/name_input_layout"
+        app:prefixTextAppearance="@style/TextAppearance.AppCompat.Body1">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/price_input_layout"
-            android:layout_width="80dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/price_input"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/name_input_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/name_input_layout"
-            app:layout_constraintTop_toTopOf="@+id/name_input_layout">
+            android:background="@drawable/round2_style"
+            android:backgroundTint="@color/white"
+            android:enabled="false"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="7"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="45$"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/price_input"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/round2_style"
-                android:backgroundTint="@color/white"
-                android:enabled="false"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp"
-                android:text="45$"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/code_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="35dp"
+        android:text="Κωδικός:"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/name_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/name_input_layout" />
 
-        <TextView
-            android:id="@+id/code_textview"
-            android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/code_input_layout"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:counterMaxLength="10"
+        app:endIconMode="none"
+        app:layout_constraintBottom_toBottomOf="@+id/code_textview"
+        app:layout_constraintStart_toEndOf="@+id/code_textview"
+        app:layout_constraintTop_toTopOf="@+id/code_textview">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/code_input"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="35dp"
-            android:text="Κωδικός:"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/name_input_layout"
-            app:layout_constraintTop_toBottomOf="@+id/name_input_layout" />
+            android:background="@drawable/round2_style"
+            android:backgroundTint="@color/white"
+            android:enabled="false"
+            android:gravity="center"
+            android:inputType="textNoSuggestions"
+            android:maxLength="10"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="ΘΜ001"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/code_input_layout"
-            android:layout_width="100dp"
+    <TextView
+        android:id="@+id/description_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="60dp"
+        android:paddingLeft="20dp"
+        android:text="Περιγραφή:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/code_textview" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/description_input_layout"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="180dp"
+        android:paddingHorizontal="15dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:counterMaxLength="1000"
+        app:endIconMode="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/description_textview"
+        app:layout_constraintTop_toBottomOf="@+id/description_textview">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/description_input"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/code_textview"
-            app:layout_constraintStart_toEndOf="@+id/code_textview"
-            app:layout_constraintTop_toTopOf="@+id/code_textview">
+            android:background="@drawable/round2_style"
+            android:backgroundTint="@color/white"
+            android:enabled="false"
+            android:inputType="textMultiLine|textAutoComplete"
+            android:maxLength="1000"
+            android:paddingTop="10dp"
+            android:text="Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητικής μάλαξης που έχουν καθιερωθεί είναι τέσσερα: (α) συντήρησης, (β) προετοιμασίας, (γ) αποκατάστασης, και (δ) μέσο-αγωνιστική. Οι τεχνικές που χρησιμοποιούνται στην αθλητική μάλαξη είναι ιδιαίτερα αποτελεσματικές στη διαχείριση οξέων και χρόνιων τραυματισμών, στη μείωση της έντασης του μυϊκού σπασμού και της αίσθησης του πόνου στους τραυματισμένους-υπερφορτισμένους μυς, καθώς και στην επούλωση και τη δημιουργία νέων, ισχυρών και ελαστικών ιστών"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/code_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round2_style"
-                android:backgroundTint="@color/white"
-                android:enabled="false"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp"
-                android:text="ΘΜ001"
-                android:textColor="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edit_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="650dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_style"
+        android:backgroundTint="@color/button_purple"
+        android:text="Επεξεργασία"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/description_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="60dp"
-            android:paddingLeft="20dp"
-            android:text="Περιγραφή:"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/code_textview" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/description_input_layout"
-            android:layout_width="400dp"
-            android:layout_height="300dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="180dp"
-            android:paddingHorizontal="15dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/description_textview"
-            app:layout_constraintTop_toBottomOf="@+id/description_textview">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/description_input"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/round2_style"
-                android:backgroundTint="@color/white"
-                android:enabled="false"
-                android:paddingTop="10dp"
-                android:text="Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητικής μάλαξης που έχουν καθιερωθεί είναι τέσσερα: (α) συντήρησης, (β) προετοιμασίας, (γ) αποκατάστασης, και (δ) μέσο-αγωνιστική. Οι τεχνικές που χρησιμοποιούνται στην αθλητική μάλαξη είναι ιδιαίτερα αποτελεσματικές στη διαχείριση οξέων και χρόνιων τραυματισμών, στη μείωση της έντασης του μυϊκού σπασμού και της αίσθησης του πόνου στους τραυματισμένους-υπερφορτισμένους μυς, καθώς και στην επούλωση και τη δημιουργία νέων, ισχυρών και ελαστικών ιστών"
-                android:textColor="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/edit_button"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="650dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/button_purple"
-            android:text="Επεξεργασία"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

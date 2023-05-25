@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.mobile.physiolink.ConfirmationServicePopUp;
 import com.mobile.physiolink.databinding.FragmentCreateServiceBinding;
+import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
 import java.util.ArrayList;
 
@@ -66,29 +66,29 @@ public class CreateServiceFragment extends Fragment {
 //                }
 //            });
             current.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (current.getText().length() == 0) {
+                    current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
+                    input_erros = true;
+                } else {
+                    current_layout.setError(null);
+                    current_layout.setHelperText(null);
+                    input_erros = false;
                 }
+            }
 
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    if (current.getText().length() == 0) {
-                        current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
-                        input_erros = true;
-                    } else {
-                        current_layout.setError(null);
-                        current_layout.setHelperText(null);
-                        input_erros = false;
-                    }
-                }
+            @Override
+            public void afterTextChanged(Editable editable) {
 
-                @Override
-                public void afterTextChanged(Editable editable) {
-
-                }
-            });
-        }
+            }
+        });
+    }
         binding.saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,11 +105,21 @@ public class CreateServiceFragment extends Fragment {
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    ConfirmationServicePopUp confirmation = new ConfirmationServicePopUp(
-                            binding.serviceNameInput.getText().toString(),
-                            binding.serviceCostInput.getText().toString(),
-                            binding.serviceIdInput.getText().toString(),
-                            binding.serviceDescriptionInput.getText().toString());
+                    ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
+                            "Είστε σίγουρος για την επιλογή σας;",
+                            "Ναι", "Οχι");
+                    confirmation.setPositiveOnClick((dialog, which) ->
+                    {
+                        // TODO: API CALL
+                        Toast.makeText(getActivity(), "Εγινε αποθήκευση Παροχής!",
+                                Toast.LENGTH_SHORT).show();
+                    });
+                    confirmation.setNegativeOnClick(((dialog, which) ->
+                    {
+                        Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
+                                Toast.LENGTH_SHORT).show();
+                    }));
+
                     confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                 }
             }

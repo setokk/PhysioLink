@@ -13,10 +13,12 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.mobile.physiolink.ConfirmationClinicPopUp;
 import com.mobile.physiolink.databinding.FragmentCreateClinicBinding;
+import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class CreateClinicFragment extends Fragment
@@ -86,6 +88,9 @@ public class CreateClinicFragment extends Fragment
             TextInputEditText current = all_inputs.get(j);
             TextInputLayout current_layout = all_inputs_layouts.get(j);
 
+            String passwordPattern = "(?=.*\\d)(?=.*[\\{\\.\\}])";
+            Pattern PasswordRegex = Pattern.compile(passwordPattern);
+
 //            current.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
@@ -101,7 +106,7 @@ public class CreateClinicFragment extends Fragment
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                    if (current.getText().length() == 0 && !current_layout.equals(binding.phonenumberInputLayout)) {
+                    if (current.getText().length() == 0) {
                         current_layout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         input_erros = true;
                     } else {
@@ -127,10 +132,11 @@ public class CreateClinicFragment extends Fragment
                             afm_error = false;
                         }
                     } else if (current_layout.equals(binding.docPasswardInputLayout)) {
-                        if (!(current.getText().toString().contains("0") || current.getText().toString().contains("1") || current.getText().toString().contains("2") || current.getText().toString().contains("3") || current.getText().toString().contains("4") || current.getText().toString().contains("5") || current.getText().toString().contains("6") || current.getText().toString().contains("7") || current.getText().toString().contains("8") || current.getText().toString().contains("9"))) {
-                            current_layout.setError("Ο κωδικός Πρέπει να περιέζει τουλάχιστον έναν αριθμό");
+                        Matcher matcher = PasswordRegex.matcher(binding.docPasswardInput.getText().toString());
+                        if(!matcher.find()){
+                            current_layout.setError("Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό και έναν ειδικό χαρακτήρα '{' ή '.'");
                             code_error = true;
-                        } else {
+                        } else{
                             code_error = false;
                             current_layout.setError(null);
                         }
@@ -147,7 +153,7 @@ public class CreateClinicFragment extends Fragment
             @Override
             public void onClick(View view) {
                 for(int i = 0; i< all_inputs.size(); i++){
-                    if(all_inputs.get(i).getText().length() == 0 && !all_inputs_layouts.get(i).equals(binding.phonenumberInputLayout)){
+                    if(all_inputs.get(i).getText().length() == 0 ){
                         all_inputs_layouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         input_erros = true;
                     }
@@ -156,16 +162,21 @@ public class CreateClinicFragment extends Fragment
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    ConfirmationClinicPopUp confirmation = new ConfirmationClinicPopUp(
-                            binding.docUsernameInput.getText().toString(),
-                            binding.docPasswardInput.getText().toString(),
-                            binding.docNameInput.getText().toString(),
-                            binding.docSurnameInput.getText().toString(),
-                            binding.afmInput.getText().toString(),
-                            binding.phonenumberInput.getText().toString(),
-                            binding.clinicNameInput.getText().toString(),
-                            binding.cityInput.getText().toString(),
-                            binding.addressInput.getText().toString());
+                    ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
+                            "Είστε σίγουρος για την επιλογή σας;",
+                            "Ναι", "Οχι");
+                    confirmation.setPositiveOnClick((dialog, which) ->
+                    {
+                        // TODO: API CALL
+                        Toast.makeText(getActivity(), "Εγινε αποθήκευση Φυσιοθεραπευτηρίου!",
+                                Toast.LENGTH_SHORT).show();
+                    });
+                    confirmation.setNegativeOnClick(((dialog, which) ->
+                    {
+                        Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
+                                Toast.LENGTH_SHORT).show();
+                    }));
+
                     confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                 }
             }

@@ -18,9 +18,9 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.mobile.physiolink.ConfirmationPatientPopUp;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorNewPatientBinding;
+import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -125,7 +125,7 @@ public class DoctorNewPatientFragment extends Fragment
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                    if (currentInput.getText().length() == 0 && !currentInputLayout.equals(binding.patientPhoneInputLayout)) {
+                    if (currentInput.getText().length() == 0) {
                         currentInputLayout.setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         inputError = true;
                     } else {
@@ -197,7 +197,7 @@ public class DoctorNewPatientFragment extends Fragment
             @Override
             public void onClick(View view) {
                 for(int i = 0; i< allInputs.size(); i++){
-                    if(allInputs.get(i).getText().length() == 0 && !allInputsLayouts.get(i).equals(binding.patientPhoneInputLayout)){
+                    if(allInputs.get(i).getText().length() == 0){
                         allInputsLayouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
                         inputError = true;
                     }
@@ -206,15 +206,21 @@ public class DoctorNewPatientFragment extends Fragment
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    ConfirmationPatientPopUp confirmation = new ConfirmationPatientPopUp(
-                            binding.patientNameInput.getText().toString(),
-                            binding.patientSurnameInput.getText().toString(),
-                            binding.patientAddressInput.getText().toString(),
-                            binding.patientAmkaInput.getText().toString(),
-                            binding.patientPhoneInput.getText().toString(),
-                            binding.patientEmailInput.getText().toString(),
-                            binding.patientUsernameInput.getText().toString(),
-                            binding.patientPasswordInput.getText().toString());
+                    ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
+                            "Είστε σίγουρος για την επιλογή σας;",
+                            "Ναι", "Οχι");
+                    confirmation.setPositiveOnClick((dialog, which) ->
+                    {
+                        // TODO: API CALL
+                        Toast.makeText(getActivity(), "Εγινε αποθήκευση Ασθενή!",
+                                Toast.LENGTH_SHORT).show();
+                    });
+                    confirmation.setNegativeOnClick(((dialog, which) ->
+                    {
+                        Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
+                                Toast.LENGTH_SHORT).show();
+                    }));
+
                     confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
                 }
             }

@@ -60,6 +60,6 @@ public class ServicesFragment extends Fragment {
 
         binding.newParoxesButton.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
-                .navigate(R.id.action_fragment_services_to_serviceInformationFragment));
+                .navigate(R.id.action_parohesFragment_to_createParoxesFragment));
     }
 }
