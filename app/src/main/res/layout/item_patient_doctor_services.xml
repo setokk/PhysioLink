@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="wrap_content"
+    android:paddingVertical="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/list_item_style">
 
@@ -23,7 +24,6 @@
             android:text="Onoma"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/patientDoctorServiceDescription"/>
@@ -34,21 +34,22 @@
             android:layout_height="wrap_content"
             android:text="Perigrafh perifragh perigrafh perigrafh perigrafh perifragh perigrafh perigrafh.. "
             android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientDoctorServiceName" />
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
         android:id="@+id/patientDoctorServicePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="40"
         android:textSize="20sp"
         android:textColor="@color/button_purple"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/patientDoctorServiceInfoConstraint"
         app:layout_constraintRight_toLeftOf="@id/patientDoctorServiceCurrencySymbol"/>
     <TextView

@@ -20,7 +20,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class RequestAppointmentViewmodel extends ViewModel
+public class RequestAppointmentViewModel extends ViewModel
 {
     private MutableLiveData<AvailableHoursManager> dateToAvailableHours;
 
@@ -32,10 +32,17 @@ public class RequestAppointmentViewmodel extends ViewModel
         return dateToAvailableHours;
     }
 
+    public String[] getAvailableHoursOfDate(int year, int month, int day)
+    {
+        return dateToAvailableHours.getValue()
+                .getAvailableHoursOfDate(year, month, day);
+    }
+
     public void loadAvailableHours(int month, int year, long doctorId)
     {
         HashMap<String, String> keyValues = new HashMap<>(2);
         keyValues.put("month", String.valueOf(month));
+        keyValues.put("year", String.valueOf(year));
         keyValues.put("doctor_id", String.valueOf(doctorId));
         RequestFacade.postRequest(API.GET_UNAVAILABLE_HOURS, keyValues, new Callback() {
             @Override

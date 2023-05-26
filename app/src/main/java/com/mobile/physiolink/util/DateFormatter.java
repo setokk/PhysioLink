@@ -15,4 +15,16 @@ public final class DateFormatter
     {
         return alphanumeric.format(LocalDate.of(year, month, day));
     }
+
+    public static String fixDatePrefixes(int year, int month, int day)
+    {
+        String monthPrefix = "";
+        String dayPrefix = "";
+        if (day <= 9)
+            dayPrefix = "0";
+        if (month <= 9)
+            monthPrefix = "0";
+
+        return year + "-" + monthPrefix + month + "-" + dayPrefix + day;
+    }
 }

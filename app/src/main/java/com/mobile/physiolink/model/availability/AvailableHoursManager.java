@@ -2,12 +2,15 @@ package com.mobile.physiolink.model.availability;
 
 import android.util.Log;
 
+import com.mobile.physiolink.util.DateFormatter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class AvailableHoursManager
 {
@@ -57,15 +60,17 @@ public class AvailableHoursManager
         return dateToHoursMap;
     }
 
-    public String[] getAvailableHoursOfDate(String date)
+    public String[] getAvailableHoursOfDate(int year, int month, int day)
     {
-        return dateToHoursMap.get(date);
+        String date = DateFormatter.fixDatePrefixes(year, month, day);
+        return Optional.ofNullable(dateToHoursMap.get(date))
+                        .orElse(new String[0]);
     }
 
-    public void setAvailableHoursOfDate(String date, String[] hours)
+    public void setAvailableHoursOfDate(String date, String[] takenHours)
     {
         List<String> previousHours = new ArrayList<>(Arrays.asList(dateToHoursMap.get(date)));
-        previousHours.removeAll(Arrays.asList(hours)); // Difference
+        previousHours.removeAll(Arrays.asList(takenHours)); // Difference
 
         dateToHoursMap.put(date, previousHours.toArray(new String[0]));
     }
