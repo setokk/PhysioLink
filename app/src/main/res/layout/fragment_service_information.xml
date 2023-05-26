@@ -214,9 +214,11 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/round_style"
         android:backgroundTint="@color/button_purple"
+        android:drawableLeft="@drawable/baseline_edit_24"
+        android:paddingHorizontal="13dp"
         android:text="Επεξεργασία"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

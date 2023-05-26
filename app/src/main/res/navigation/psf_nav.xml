@@ -50,20 +50,36 @@
         android:id="@+id/fragment_create_clinic"
         android:name="com.mobile.physiolink.ui.psf.CreateClinicFragment"
         android:label="Δημιουργία Φυσιοθεραπευτηρίου"
-        tools:layout="@layout/fragment_create_clinic" />
+        tools:layout="@layout/fragment_create_clinic" >
+        <action
+            android:id="@+id/action_fragment_create_clinic_to_fragment_clinics"
+            app:destination="@id/fragment_clinics" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_create_service"
         android:name="com.mobile.physiolink.ui.psf.CreateServiceFragment"
         android:label="Δημιουργία Παροχών"
-        tools:layout="@layout/fragment_create_service" />
+        tools:layout="@layout/fragment_create_service" >
+        <action
+            android:id="@+id/action_fragment_create_service_to_fragment_services"
+            app:destination="@id/fragment_services" />
+    </fragment>
     <fragment
         android:id="@+id/serviceInformationFragment"
         android:name="com.mobile.physiolink.ui.psf.ServiceInformationFragment"
         android:label="fragment_service_information"
-        tools:layout="@layout/fragment_service_information" />
+        tools:layout="@layout/fragment_service_information" >
+        <action
+            android:id="@+id/action_serviceInformationFragment_to_fragment_services"
+            app:destination="@id/fragment_services" />
+    </fragment>
     <fragment
         android:id="@+id/doctorInformationFragment"
         android:name="com.mobile.physiolink.ui.psf.DoctorInformationFragment"
         android:label="fragment_doctor_information"
-        tools:layout="@layout/fragment_doctor_information" />
+        tools:layout="@layout/fragment_doctor_information" >
+        <action
+            android:id="@+id/action_doctorInformationFragment_to_fragment_clinics"
+            app:destination="@id/fragment_clinics" />
+    </fragment>
 </navigation>
