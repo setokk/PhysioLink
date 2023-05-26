@@ -29,7 +29,6 @@ public class PatientDoctorFragment extends Fragment
     private PatientDoctorViewModel viewModel;
     private AdapterForPatientDoctorServices adapter;
 
-    String s1[],s2[],s3[];
 
     public PatientDoctorFragment() {
         // Required empty public constructor
@@ -86,10 +85,6 @@ public class PatientDoctorFragment extends Fragment
         binding.patientDoctorMakeAppointmentBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(),R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientDoctor_to_fragmentRequestAppointment));
-
-        s1=getResources().getStringArray(R.array.appointmentsService);
-        s2=getResources().getStringArray(R.array.servicesListExampleDescription);
-        s3=getResources().getStringArray(R.array.servicesListExamplePrices);
 
         binding.doctorPatientServicesList.addItemDecoration(new DecorationSpacingItem(20));
 

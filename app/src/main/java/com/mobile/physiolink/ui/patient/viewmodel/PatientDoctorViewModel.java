@@ -58,6 +58,10 @@ public class PatientDoctorViewModel extends ViewModel {
         });
     }
 
+    public void loadServices(){
+
+    }
+
     public MutableLiveData<Doctor> getDoctor() {
         if (doctor == null)
             doctor = new MutableLiveData<>();
