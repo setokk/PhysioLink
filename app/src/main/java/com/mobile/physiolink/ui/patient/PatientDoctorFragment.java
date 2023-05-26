@@ -54,6 +54,11 @@ public class PatientDoctorFragment extends Fragment
             binding.physioPCPatient.setText(doctor.getPostalCode());
             binding.physioNamePatient.setText(doctor.getPhysioName());
         });
+
+        viewModel.getServices().observe(getViewLifecycleOwner(), services ->
+        {
+            adapter.setServices(services);
+        });
         // Inflate the layout for this fragment
         binding = FragmentPatientDoctorBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -66,6 +71,7 @@ public class PatientDoctorFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
 
         viewModel.loadDoctor(UserHolder.patient().getDoctorId());
+        viewModel.loadServices(UserHolder.patient().getDoctorId());
         binding.doctorPatientDownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

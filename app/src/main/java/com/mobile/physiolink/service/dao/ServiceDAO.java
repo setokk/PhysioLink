@@ -26,7 +26,7 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
         keyValues.put("id", item.getId());
         keyValues.put("title", item.getTitle());
         keyValues.put("description", item.getDescription());
-        keyValues.put("price", item.getPrice());
+        keyValues.put("price", String.valueOf(item.getPrice()));
 
         RequestFacade.postRequest(API.CREATE_SERVICE, keyValues, callback);
     }
@@ -37,7 +37,7 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
         HashMap<String, String> keyValues = new HashMap<>(3);
         keyValues.put("title", item.getTitle());
         keyValues.put("description", item.getDescription());
-        keyValues.put("price", item.getPrice());
+        keyValues.put("price", String.valueOf(item.getPrice()));
 
         RequestFacade.postRequest(API.EDIT_SERVICE, keyValues, callback);
     }
