@@ -28,10 +28,7 @@ public class PatientHomeFragment extends Fragment
     private AdapterForHistoryPatient adapter;
     private PatientHomeViewModel viewmodel;
 
-    private boolean hasAppointment = true;
-
-    private Fragment AppointmentFragment = new UpcomingAppointmentFragment();
-    private Fragment NoAppointmentFragment= new NoUpcomingAppointmentFragment();
+    private Fragment AppointmentFragment;
 
     public PatientHomeFragment() {
         // Required empty public constructor
@@ -53,16 +50,11 @@ public class PatientHomeFragment extends Fragment
         });
         viewmodel.getUpcomingAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
-            if (hasAppointment)
+            if (appoint.isFound())
             {
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                AppointmentFragment = new UpcomingAppointmentFragment(appoint);
                 transaction.replace(R.id.upcomingAppointmentFragmentContainer, AppointmentFragment);
-                transaction.commit();
-            }
-            else
-            {
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                transaction.replace(R.id.upcomingAppointmentFragmentContainer, NoAppointmentFragment);
                 transaction.commit();
             }
         });
@@ -76,7 +68,6 @@ public class PatientHomeFragment extends Fragment
         });
 
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view,
@@ -87,6 +78,9 @@ public class PatientHomeFragment extends Fragment
         this.adapter = new AdapterForHistoryPatient();
         binding.patientHistoryLastItemPatient.setAdapter(adapter);
         binding.patientHistoryLastItemPatient.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        binding.patientNamePatient.setText(String.format("%s %s",
+                UserHolder.patient().getName(), UserHolder.patient().getSurname()));
 
         /* Load data */
         viewmodel.loadDoctor(UserHolder.patient().getDoctorId());

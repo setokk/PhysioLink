@@ -1,6 +1,9 @@
 package com.mobile.physiolink.model.appointment;
 
-public class Appointment
+import com.mobile.physiolink.service.api.error.Error;
+import com.mobile.physiolink.service.api.error.ResourceNotFindable;
+
+public class Appointment implements ResourceNotFindable
 {
     private long id;
     private long doctorId;
@@ -31,6 +34,16 @@ public class Appointment
         date = "";
         hour = "";
         message = "";
+    }
+
+    public Appointment(String state)
+    {
+        this.date = state;
+    }
+
+    @Override
+    public boolean isFound() {
+        return !date.equals(Error.RESOURCE_NOT_FOUND);
     }
 
     public long getId() {

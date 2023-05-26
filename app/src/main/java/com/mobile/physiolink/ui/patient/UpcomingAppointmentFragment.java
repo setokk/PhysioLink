@@ -13,14 +13,18 @@ import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentUpcomingAppointmentBinding;
+import com.mobile.physiolink.model.appointment.Appointment;
 
 public class UpcomingAppointmentFragment extends Fragment {
 
     private FragmentUpcomingAppointmentBinding binding;
 
-    public UpcomingAppointmentFragment()
+    private Appointment appointment;
+
+    public UpcomingAppointmentFragment(Appointment appointment)
     {
         // Required empty public constructor
+        this.appointment = appointment;
     }
 
     @Override
@@ -40,26 +44,38 @@ public class UpcomingAppointmentFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view,
-                              @Nullable Bundle savedInstanceState)
-    {
+                              @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        boolean hasContent = binding.appointmentCommentsPatient.length() > 0;
+        binding.appointmentDatePatient.setText(String.format("%s, ", appointment.getDate()
+                .replace('-', '/')));
 
-        if(!hasContent){
+//        String pmAm;
+//        double hour = Double.parseDouble(appointment.getHour());
+//        if (hour < 12)
+//            pmAm = "πμ";
+//        else
+//            pmAm = "μμ";
+        binding.appointmentTimePatient.setText(appointment.getHour());
+        binding.appointmentAdressPatient.setText(String.format("%s,", appointment.getDocAddress()));
+        binding.appointmentCityPatient.setText(String.format("%s,", appointment.getDocCity()));
+        binding.appointmentPostalCodePatient.setText(appointment.getDocPostalCode());
+        binding.appointmentCommentsPatient.setText(appointment.getMessage());
+
+        boolean hasContent = binding.appointmentCommentsPatient.length() > 0;
+        if (!hasContent) {
             binding.appointmentCommentsPatient.setText("-");
         }
 
-        binding.appointmentPatientConstraint.setOnClickListener(new View.OnClickListener(){
+        binding.appointmentPatientConstraint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    if(binding.appointmentCommentsPatient.getMaxLines() == 1){
-                        binding.appointmentCommentsPatient.setMaxLines(Integer.MAX_VALUE);
-                    }
-                    else {
-                        binding.appointmentCommentsPatient.setMaxLines(1);
-                        binding.appointmentCommentsPatient.setEllipsize(TextUtils.TruncateAt.END);
-                    }
+                if (binding.appointmentCommentsPatient.getMaxLines() == 1) {
+                    binding.appointmentCommentsPatient.setMaxLines(Integer.MAX_VALUE);
+                } else {
+                    binding.appointmentCommentsPatient.setMaxLines(1);
+                    binding.appointmentCommentsPatient.setEllipsize(TextUtils.TruncateAt.END);
+                }
             }
         });
     }

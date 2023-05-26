@@ -78,9 +78,10 @@ public class PatientHomeViewModel extends ViewModel
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String res = response.body().string();
-                if (res.contains(Error.RESOURCE_NOT_FOUND))
+                if (res.contains(Error.RESOURCE_NOT_FOUND)) {
+                    upcomingAppointment.postValue(new Appointment(Error.RESOURCE_NOT_FOUND));
                     return;
-
+                }
                 try
                 {
                     JSONObject jsonUpcoming = new JSONObject(res).getJSONObject("appointment");
