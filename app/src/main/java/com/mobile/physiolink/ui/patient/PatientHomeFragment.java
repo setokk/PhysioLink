@@ -100,9 +100,7 @@ public class PatientHomeFragment extends Fragment
                 Navigation.findNavController(getActivity(),R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientHome_to_patientHistoryFragment));
 
-        binding.patientLoginInfoConstraint.setOnClickListener(v ->
-                Navigation.findNavController(getActivity(),R.id.containerPatient)
-                        .navigate(R.id.action_fragmentPatientHome_to_fragmentPatientProfile));
+
 
 
 
