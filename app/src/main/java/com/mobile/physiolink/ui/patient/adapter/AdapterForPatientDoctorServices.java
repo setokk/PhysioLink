@@ -9,37 +9,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemPatientDoctorServicesBinding;
+import com.mobile.physiolink.model.service.Service;
 
 import java.util.Arrays;
 
 public class AdapterForPatientDoctorServices extends RecyclerView.Adapter<AdapterForPatientDoctorServices.MyViewHolder>{
 
-    String service[];
-    String description[];
-    String price[];
+    private Service[] services;
     private Boolean[] isExpanded;
 
-    public AdapterForPatientDoctorServices(String s1[], String s2[], String s3[]){
-        this.service=s1;
-        this.description=s2;
-        this.price=s3;
-
-        isExpanded = new Boolean[service.length];
+    public AdapterForPatientDoctorServices()
+    {
+        this.services = new Service[0];
+        isExpanded = new Boolean[0];
         Arrays.fill(isExpanded, false);
     }
 
-    public void setService(String service[]){
-        this.service=service;
-        notifyDataSetChanged();
-    }
-
-    public void setPrice(String price[]){
-        this.price=price;
-        notifyDataSetChanged();
-    }
-
-    public void setDescription(String descr[]){
-        this.description=descr;
+    public void setServices(Service[] services)
+    {
+        this.services = services;
+        isExpanded = new Boolean[services.length];
+        Arrays.fill(isExpanded, false);
         notifyDataSetChanged();
     }
 
@@ -52,14 +42,13 @@ public class AdapterForPatientDoctorServices extends RecyclerView.Adapter<Adapte
 
     @Override
     public void onBindViewHolder(@NonNull AdapterForPatientDoctorServices.MyViewHolder holder, int position) {
-        holder.itemDoctorServicesBinding.patientDoctorServiceName.setText(service[position]);
-        holder.itemDoctorServicesBinding.patientDoctorServiceDescription.setText(description[position]);
-        holder.itemDoctorServicesBinding.patientDoctorServicePrice.setText(price[position]);
+        holder.itemDoctorServicesBinding.patientDoctorServiceName.setText("");
+        holder.itemDoctorServicesBinding.patientDoctorServiceDescription.setText("");
+        holder.itemDoctorServicesBinding.patientDoctorServicePrice.setText("");
 
         boolean isItemExpanded = isExpanded[position];
         boolean hasContent = holder.itemDoctorServicesBinding.patientDoctorServiceDescription.length() > 0;
 
-        holder.itemDoctorServicesBinding.patientDoctorServiceDescription.setText(hasContent ? description[position] : "-");
         if(isItemExpanded){
             holder.itemDoctorServicesBinding.patientDoctorServiceDescription.setMaxLines(Integer.MAX_VALUE);
             holder.itemDoctorServicesBinding.patientDoctorServiceDescription.setEllipsize(null);
@@ -72,7 +61,7 @@ public class AdapterForPatientDoctorServices extends RecyclerView.Adapter<Adapte
 
     @Override
     public int getItemCount() {
-        return service.length;
+        return services.length;
     }
 
     private void toggleExpansion(int position) {

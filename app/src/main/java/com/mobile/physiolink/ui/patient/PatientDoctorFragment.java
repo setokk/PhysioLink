@@ -92,7 +92,9 @@ public class PatientDoctorFragment extends Fragment
         s3=getResources().getStringArray(R.array.servicesListExamplePrices);
 
         binding.doctorPatientServicesList.addItemDecoration(new DecorationSpacingItem(20));
-        binding.doctorPatientServicesList.setAdapter(new AdapterForPatientDoctorServices(s1,s2,s3));
+
+        adapter = new AdapterForPatientDoctorServices();
+        binding.doctorPatientServicesList.setAdapter(adapter);
         binding.doctorPatientServicesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
 
