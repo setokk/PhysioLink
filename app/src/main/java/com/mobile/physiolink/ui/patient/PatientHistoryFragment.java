@@ -49,10 +49,7 @@ public class PatientHistoryFragment extends Fragment
         h5=getResources().getStringArray(R.array.paroxesCostExamle);
 
         binding.historyRecyclerview.addItemDecoration(new DecorationSpacingItem(20));
-        binding.historyRecyclerview.setAdapter(new AdapterForHistoryPatient(h2,h3,h4,h1,h5,R.id.historyRecyclerview));
+        binding.historyRecyclerview.setAdapter(new AdapterForHistoryPatient());
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
-
-
     }
 }

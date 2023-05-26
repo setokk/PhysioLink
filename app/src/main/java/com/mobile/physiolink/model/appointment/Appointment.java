@@ -2,8 +2,6 @@ package com.mobile.physiolink.model.appointment;
 
 public class Appointment
 {
-    private Appointment appointment;
-
     private long id;
     private long doctorId;
     private long patientId;
@@ -30,166 +28,144 @@ public class Appointment
 
     public Appointment()
     {
-        appointment = new Appointment();
         date = "";
         hour = "";
         message = "";
-    }
-
-    public Appointment build() {
-        return appointment;
     }
 
     public long getId() {
         return id;
     }
 
-    public Appointment setId(long id) {
-        appointment.setId(id);
-        return this;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getDoctorId() {
         return doctorId;
     }
 
-    public Appointment setDoctorId(long doctorId) {
-        appointment.setDoctorId(doctorId);
-        return this;
+    public void setDoctorId(long doctorId) {
+        this.doctorId = doctorId;
     }
 
     public long getPatientId() {
         return patientId;
     }
 
-    public Appointment setPatientId(long patientId) {
-        appointment.setPatientId(patientId);
-        return this;
+    public void setPatientId(long patientId) {
+        this.patientId = patientId;
     }
 
     public String getDate() {
         return date;
     }
 
-    public Appointment setDate(String date) {
-        appointment.setDate(date);
-        return this;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getHour() {
         return hour;
     }
 
-    public Appointment setHour(String hour) {
-        appointment.setHour(hour);
-        return this;
+    public void setHour(String hour) {
+        this.hour = hour;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public Appointment setMessage(String message) {
-        appointment.setMessage(message);
-        return this;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getDocName() {
         return docName;
     }
 
-    public Appointment setDocName(String docName) {
-        appointment.setDocName(docName);
-        return this;
+    public void setDocName(String docName) {
+        this.docName = docName;
     }
 
     public String getDocSurname() {
         return docSurname;
     }
 
-    public Appointment setDocSurname(String docSurname) {
-        appointment.setDocSurname(docSurname);
-        return this;
+    public void setDocSurname(String docSurname) {
+        this.docSurname = docSurname;
     }
 
     public String getDocAddress() {
         return docAddress;
     }
 
-    public Appointment setDocAddress(String docAddress) {
-        appointment.setDocAddress(docAddress);
-        return this;
+    public void setDocAddress(String docAddress) {
+        this.docAddress = docAddress;
     }
 
     public String getDocCity() {
         return docCity;
     }
 
-    public Appointment setDocCity(String docCity) {
-        appointment.setDocCity(docCity);
-        return this;
+    public void setDocCity(String docCity) {
+        this.docCity = docCity;
     }
 
     public String getDocPostalCode() {
         return docPostalCode;
     }
 
-    public Appointment setDocPostalCode(String docPostalCode) {
-        appointment.setDocPostalCode(docPostalCode);
-        return this;
+    public void setDocPostalCode(String docPostalCode) {
+        this.docPostalCode = docPostalCode;
     }
 
     public String getPatName() {
         return patName;
     }
 
-    public Appointment setPatName(String patName) {
-        appointment.setPatName(patName);
-        return this;
+    public void setPatName(String patName) {
+        this.patName = patName;
     }
 
     public String getPatSurname() {
         return patSurname;
     }
 
-    public Appointment setPatSurname(String patSurname) {
-        appointment.setPatSurname(patSurname);
-        return this;
+    public void setPatSurname(String patSurname) {
+        this.patSurname = patSurname;
     }
 
     public String getPatAmka() {
         return patAmka;
     }
 
-    public Appointment setPatAmka(String patAmka) {
-        appointment.setPatAmka(patAmka);
-        return this;
+    public void setPatAmka(String patAmka) {
+        this.patAmka = patAmka;
     }
 
     public String getServiceTitle() {
         return serviceTitle;
     }
 
-    public Appointment setServiceTitle(String serviceTitle) {
-        appointment.setServiceTitle(serviceTitle);
-        return this;
+    public void setServiceTitle(String serviceTitle) {
+        this.serviceTitle = serviceTitle;
     }
 
     public String getServiceDescription() {
         return serviceDescription;
     }
 
-    public Appointment setServiceDescription(String serviceDescription) {
-        appointment.setServiceDescription(serviceDescription);
-        return this;
+    public void setServiceDescription(String serviceDescription) {
+        this.serviceDescription = serviceDescription;
     }
 
     public double getServicePrice() {
         return servicePrice;
     }
 
-    public Appointment setServicePrice(double servicePrice) {
-        appointment.setServicePrice(servicePrice);
-        return this;
+    public void setServicePrice(double servicePrice) {
+        this.servicePrice = servicePrice;
     }
 }

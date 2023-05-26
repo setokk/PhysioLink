@@ -11,36 +11,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemPatientHistoryBinding;
+import com.mobile.physiolink.model.appointment.Appointment;
 
 import java.util.Arrays;
 
-public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHistoryPatient.MyViewHolder> {
+public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHistoryPatient.MyViewHolder>
+{
+    private Appointment[] appointments = new Appointment[0];
 
-    String date[];
-    String time[];
-    String description[];
-    String service[];
-    String price[];
+    private boolean[] isExpanded;
 
-    private boolean displayAllItems;
+    public AdapterForHistoryPatient()
+    {
+        isExpanded = new boolean[0];
+    }
 
-    private Boolean[] isExpanded;
+    public void setAppointments(Appointment[] appointments)
+    {
+        this.appointments = appointments;
 
-
-
-    public AdapterForHistoryPatient(String dateH[], String timeH[], String descriptionH[],
-                                    String serviceH[], String priceH[], int recyclerViewId){
-
-        date = dateH;
-        time = timeH;
-        description = descriptionH;
-        service = serviceH;
-        price = priceH;
-        this.displayAllItems= recyclerViewId== R.id.historyRecyclerview;
-
-        isExpanded = new Boolean[date.length];
+        isExpanded = new boolean[appointments.length];
         Arrays.fill(isExpanded, false);
 
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -55,16 +48,30 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
     @Override
     public void onBindViewHolder(@NonNull AdapterForHistoryPatient.MyViewHolder holder, int position)
     {
-        holder.itemHistoryBinding.serviceNamePatientHistory.setText(service[position]);
-        holder.itemHistoryBinding.appointmentDatePatientHistory.setText(date[position]);
-        holder.itemHistoryBinding.appointmentTimePatientHistory.setText(time[position]);
-        holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setText(description[position]);
-        holder.itemHistoryBinding.servicePricePatientHistory.setText(price[position]);
+        holder.itemHistoryBinding.serviceNamePatientHistory
+                .setText(appointments[position].getServiceTitle());
+        holder.itemHistoryBinding.appointmentDatePatientHistory
+                .setText(appointments[position].getDate());
+
+        String pmAm;
+        double hour = Double.parseDouble(appointments[position].getHour());
+        if (hour < 12)
+            pmAm = "πμ";
+        else
+            pmAm = "μμ";
+
+        holder.itemHistoryBinding.appointmentTimePatientHistory
+                .setText(String.format("%s:00 " + pmAm, appointments[position].getHour()));
+        holder.itemHistoryBinding.appointmentDescriptionPatientHistory
+                .setText(appointments[position].getServiceDescription());
+        holder.itemHistoryBinding.servicePricePatientHistory
+                .setText(String.format("%s€", appointments[position].getServicePrice()));
 
         boolean isItemExpanded = isExpanded[position];
         boolean hasContent = holder.itemHistoryBinding.appointmentDescriptionPatientHistory.length() > 0;
 
-        holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setText(hasContent ? description[position] : "-");
+        holder.itemHistoryBinding.appointmentDescriptionPatientHistory
+                .setText(hasContent ? appointments[position].getServiceDescription() : "-");
 
         // Set the initial state based on the expanded flag
             if (isItemExpanded) {
@@ -74,7 +81,6 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
                 holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setMaxLines(1);
                 holder.itemHistoryBinding.appointmentDescriptionPatientHistory.setEllipsize(TextUtils.TruncateAt.END);
             }
-
     }
 
     private void toggleExpansion(int position) {
@@ -84,11 +90,7 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
 
     @Override
     public int getItemCount() {
-        if (displayAllItems) {
-            return service.length;
-        } else {
-            return Math.min(service.length, 1);
-        }
+        return appointments.length;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder
@@ -97,15 +99,11 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
         public MyViewHolder(ItemPatientHistoryBinding itemHistoryBinding)
         {
             super(itemHistoryBinding.getRoot());
-            this.itemHistoryBinding= itemHistoryBinding;
+            this.itemHistoryBinding = itemHistoryBinding;
 
             // Set click listener on the entire item view
-            itemHistoryBinding.getRoot().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    toggleExpansion(getBindingAdapterPosition());
-                }
-            });
+            itemHistoryBinding.getRoot().setOnClickListener(view ->
+                    toggleExpansion(getBindingAdapterPosition()));
         }
     }
 }
