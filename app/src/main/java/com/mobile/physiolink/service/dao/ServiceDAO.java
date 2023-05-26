@@ -52,4 +52,9 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
     {
         RequestFacade.getRequest(API.GET_SERVICE + id, callback);
     }
+
+    public void getDoctorServices(long doctorId, Callback callback)
+    {
+        RequestFacade.getRequest(API.GET_SERVICES_OF + doctorId, callback);
+    }
 }

@@ -19,7 +19,7 @@ import okhttp3.Response;
 
 public class PatientDoctorViewModel extends ViewModel {
     private MutableLiveData<Doctor> doctor;
-    private MutableLiveData<Service> service;
+    private MutableLiveData<Service[]> services;
 
     public void loadDoctor(long doctorId){
         DoctorDAO.getInstance().get(doctorId, new Callback() {
@@ -64,9 +64,10 @@ public class PatientDoctorViewModel extends ViewModel {
         return doctor;
     }
 
-    public MutableLiveData<Service> getService(){
-        if(service == null)
-            service = new MutableLiveData<>();
-        return service;
+    public MutableLiveData<Service[]> getServices()
+    {
+        if(services == null)
+            services = new MutableLiveData<>();
+        return services;
     }
 }
