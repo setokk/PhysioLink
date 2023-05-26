@@ -23,6 +23,11 @@ public class Appointment
     private String patSurname;
     private String patAmka;
 
+    // Extra Service fields
+    private String serviceTitle;
+    private String serviceDescription;
+    private double servicePrice;
+
     public Appointment()
     {
         appointment = new Appointment();
@@ -158,6 +163,33 @@ public class Appointment
 
     public Appointment setPatAmka(String patAmka) {
         appointment.setPatAmka(patAmka);
+        return this;
+    }
+
+    public String getServiceTitle() {
+        return serviceTitle;
+    }
+
+    public Appointment setServiceTitle(String serviceTitle) {
+        appointment.setServiceTitle(serviceTitle);
+        return this;
+    }
+
+    public String getServiceDescription() {
+        return serviceDescription;
+    }
+
+    public Appointment setServiceDescription(String serviceDescription) {
+        appointment.setServiceDescription(serviceDescription);
+        return this;
+    }
+
+    public double getServicePrice() {
+        return servicePrice;
+    }
+
+    public Appointment setServicePrice(double servicePrice) {
+        appointment.setServicePrice(servicePrice);
         return this;
     }
 }
