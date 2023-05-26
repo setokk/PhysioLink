@@ -30,7 +30,7 @@
         <activity android:name=".ui.DoctorActivity"
             android:label="@string/home_label"/>
         <activity android:name=".ui.PatientActivity"
-            android:windowSoftInputMode="adjustNothing"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/home_label"/>
     </application>
 
