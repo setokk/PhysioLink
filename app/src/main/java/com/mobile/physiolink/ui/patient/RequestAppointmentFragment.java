@@ -172,7 +172,7 @@ public class RequestAppointmentFragment extends Fragment
 
                         if (res.contains(Error.RESOURCE_EXISTS))
                         {
-                            Toast.makeText(getActivity(), "Η ώρα για ραντεβού υπάρχει ήδη. Επιλέξτε άλλη ώρα και δοκιμάστε ξανά!",
+                            Toast.makeText(getActivity(), "Έχετε κάνει ήδη αίτημα για ραντεβού! Μπορείτε να ξανακάνετε αίτημα μόλις περάσει η ημερομήνια του ραντεβού.",
                                     Toast.LENGTH_LONG).show();
                             return;
                         }
