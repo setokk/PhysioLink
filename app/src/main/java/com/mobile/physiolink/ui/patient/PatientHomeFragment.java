@@ -1,6 +1,9 @@
 package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,10 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHomeBinding;
@@ -100,6 +99,12 @@ public class PatientHomeFragment extends Fragment
         binding.seeYourHistoryBtnPatient.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(),R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientHome_to_patientHistoryFragment));
+
+        binding.patientLoginInfoConstraint.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(),R.id.containerPatient)
+                        .navigate(R.id.action_fragmentPatientHome_to_fragmentPatientProfile));
+
+
 
     }
 }
