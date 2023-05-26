@@ -11,6 +11,14 @@ import okhttp3.Callback;
 
 public class ServiceDAO implements InterfaceDAO<String, Service>
 {
+    private static ServiceDAO serviceDAO = null;
+    private ServiceDAO() {}
+
+    public static ServiceDAO getInstance(){
+        if(serviceDAO == null)
+            serviceDAO = new ServiceDAO();
+        return serviceDAO;
+    }
     @Override
     public void create(Service item, Callback callback) throws IOException
     {

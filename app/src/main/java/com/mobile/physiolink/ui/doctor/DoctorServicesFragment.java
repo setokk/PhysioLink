@@ -52,7 +52,7 @@ public class DoctorServicesFragment extends Fragment
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
         servicesList.addItemDecoration(itemDecoration);
 
-        AdapterForDoctorServices myAdapter = new AdapterForDoctorServices(this.getContext(),s1,s2,s3);
+        AdapterForDoctorServices myAdapter = new AdapterForDoctorServices(s1,s2,s3,R.id.servicesListDoctor);
         servicesList.setAdapter(myAdapter);
         servicesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
