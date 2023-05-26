@@ -18,8 +18,8 @@ package com.mobile.physiolink.service.api;
  */
 public final class API
 {
-    public static final String IP = "192.168.1.2";
-    public static final String URL = "http://" + IP  + ":3000/physiolink/api";
+    public static final String IP = "http://physiolink.chibo.uk";
+    public static final String URL = IP + "/physiolink/api";
 
     /* User auth related API endpoint */
     public static final String AUTH_USER = API.URL + "/auth/log-in";
@@ -43,15 +43,19 @@ public final class API
     public static final String GET_PATIENTS = API.URL + "/patients/get";
     public static final String GET_PATIENTS_OF = API.URL + "/patients/of/";
 
+    // For Doctors
     public static final String GET_UNAVAILABLE_HOURS = API.URL + "/unavailable-hours/get";
 
     public static final String GET_CONFIRMED_APPOINTMENTS = API.URL + "/appointments/confirmed";
     public static final String GET_CONFIRMED_LATEST_APPOINTMENTS = API.URL + "/appointments/confirmed/latest";
     public static final String GET_PENDING_APPOINTMENTS = API.URL + "/appointments/pending/";
 
+    public static final String GET_PATIENT_HISTORY_APPOINTMENTS = API.URL + "/appointments/patient/history/";
+    public static final String GET_PATIENT_LATEST_COMPLETED_APPOINTMENT = API.URL + "/appointment/patient/previous?";
+    public static final String GET_PATIENT_UPCOMING_APPOINTMENT = API.URL + "/appointment/patient/upcoming?";
+
     public static final String REQUEST_APPOINTMENT = API.URL + "/appointment/request";
     public static final String ACCEPT_APPOINTMENT = API.URL + "/appointment/accept";
     public static final String ACCEPT_PAYMENT = API.URL + "/appointment/payment/accept";
-    public static final String DECLINE_PAYMENT = API.URL + "/appointment/decline";
-    public static final String PATIENT_UPCOMING_APPOINTMENT = API.URL + "/appointment/patient/upcoming";
+    public static final String DECLINE_PAYMENT = API.URL + "/appointment/decline";;
 }
