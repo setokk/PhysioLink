@@ -22,12 +22,12 @@ import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForPatientDoctorServices;
 import com.mobile.physiolink.ui.patient.viewmodel.PatientDoctorViewModel;
-import com.mobile.physiolink.ui.patient.viewmodel.PatientHomeViewModel;
 
 public class PatientDoctorFragment extends Fragment
 {
     private FragmentPatientDoctorBinding binding;
     private PatientDoctorViewModel viewModel;
+    private AdapterForPatientDoctorServices adapter;
 
     String s1[],s2[],s3[];
 

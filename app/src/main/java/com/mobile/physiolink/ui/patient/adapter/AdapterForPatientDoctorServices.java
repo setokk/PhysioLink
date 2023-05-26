@@ -28,6 +28,21 @@ public class AdapterForPatientDoctorServices extends RecyclerView.Adapter<Adapte
         Arrays.fill(isExpanded, false);
     }
 
+    public void setService(String service[]){
+        this.service=service;
+        notifyDataSetChanged();
+    }
+
+    public void setPrice(String price[]){
+        this.price=price;
+        notifyDataSetChanged();
+    }
+
+    public void setDescription(String descr[]){
+        this.description=descr;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public AdapterForPatientDoctorServices.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
