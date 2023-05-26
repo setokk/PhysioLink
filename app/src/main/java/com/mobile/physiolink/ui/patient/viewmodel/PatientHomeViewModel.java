@@ -1,6 +1,7 @@
 package com.mobile.physiolink.ui.patient.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.Doctor;
@@ -18,7 +19,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class PatientHomeViewModel
+public class PatientHomeViewModel extends ViewModel
 {
     private MutableLiveData<Doctor> doctor;
     private MutableLiveData<Appointment> upcomingAppointment;
@@ -75,14 +76,48 @@ public class PatientHomeViewModel
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                String res = response.body().string();
+                if (res.contains(Error.RESOURCE_NOT_FOUND))
+                    return;
 
+                try
+                {
+                    JSONObject jsonUpcoming = new JSONObject(res).getJSONObject("appointment");
+                    Appointment appointment = new Appointment()
+                            .setDate(jsonUpcoming.getString("date"))
+                            .setHour(jsonUpcoming.getString("hour") + ":00")
+                            .setDocCity(jsonUpcoming.getString("city"))
+                            .setDocAddress(jsonUpcoming.getString("address"))
+                            .setDocPostalCode(jsonUpcoming.getString("postal_code"))
+                            .setMessage(jsonUpcoming.getString("message"))
+                            .build();
+                    upcomingAppointment.postValue(appointment);
+                } catch (JSONException e)
+                {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
 
     public void loadLatestCompletedAppointment(long doctorId, long patientId)
     {
+        RequestFacade.getRequest(API.GET_PATIENT_LATEST_COMPLETED_APPOINTMENT +
+                "doctor_id=" + doctorId +
+                "&patient_id=" + patientId, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                call.cancel();
+            }
 
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String res = response.body().string();
+                if (res.contains(Error.RESOURCE_NOT_FOUND))
+                    return;
+
+            }
+        });
     }
 
     public MutableLiveData<Doctor> getDoctor() {

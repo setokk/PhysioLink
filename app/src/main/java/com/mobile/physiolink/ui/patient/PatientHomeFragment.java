@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -15,7 +16,9 @@ import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHomeBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
+import com.mobile.physiolink.ui.patient.viewmodel.PatientHomeViewModel;
 
 
 public class PatientHomeFragment extends Fragment
@@ -27,6 +30,7 @@ public class PatientHomeFragment extends Fragment
     Fragment NoAppointmentFragment= new NoUpcomingAppointmentFragment();
 
     private FragmentPatientHomeBinding binding;
+    private PatientHomeViewModel viewmodel;
 
     public PatientHomeFragment() {
         // Required empty public constructor
@@ -39,6 +43,16 @@ public class PatientHomeFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+        viewmodel = new ViewModelProvider(this).get(PatientHomeViewModel.class);
+        viewmodel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
+        {
+            System.out.println(doctor);
+        });
+        viewmodel.getLatestCompletedAppointment().observe(getViewLifecycleOwner(), appoint ->
+        {
+            System.out.println();
+        });
+
         binding = FragmentPatientHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
@@ -59,6 +73,10 @@ public class PatientHomeFragment extends Fragment
             transaction.replace(R.id.upcomingAppointmentFragmentContainer, NoAppointmentFragment);
             transaction.commit();
         }
+
+        viewmodel.loadDoctor(UserHolder.patient().getDoctorId());
+        viewmodel.loadLatestCompletedAppointment(UserHolder.patient().getDoctorId(),
+                UserHolder.patient().getId());
 
         h1=getResources().getStringArray(R.array.appointmentsService);
         h2=getResources().getStringArray(R.array.servicesPatientHistoryListExampleDate);

@@ -18,7 +18,7 @@ package com.mobile.physiolink.service.api;
  */
 public final class API
 {
-    public static final String IP = "http://192.168.1.10:3000";
+    public static final String IP = "http://physiolink.chibo.uk";
     public static final String URL = IP + "/physiolink/api";
 
     /* User auth related API endpoint */
