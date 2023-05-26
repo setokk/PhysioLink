@@ -3,6 +3,7 @@ package com.mobile.physiolink.ui.psf;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentCreateServiceBinding;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
@@ -113,6 +115,8 @@ public class CreateServiceFragment extends Fragment {
                         // TODO: API CALL
                         Toast.makeText(getActivity(), "Εγινε αποθήκευση Παροχής!",
                                 Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                                .navigate(R.id.action_fragment_create_service_to_fragment_services);
                     });
                     confirmation.setNegativeOnClick(((dialog, which) ->
                     {
