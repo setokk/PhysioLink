@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.mobile.physiolink.model.appointment.Appointment;
+import com.mobile.physiolink.model.appointment.AppointmentBuilder;
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
@@ -77,13 +78,14 @@ public class PatientHomeViewModel extends ViewModel
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String res = response.body().string();
-                if (res.contains(Error.RESOURCE_NOT_FOUND))
+                if (res.contains(Error.RESOURCE_NOT_FOUND)) {
+                    upcomingAppointment.postValue(new Appointment(Error.RESOURCE_NOT_FOUND));
                     return;
-
+                }
                 try
                 {
                     JSONObject jsonUpcoming = new JSONObject(res).getJSONObject("appointment");
-                    Appointment appointment = new Appointment()
+                    Appointment appointment = new AppointmentBuilder()
                             .setDate(jsonUpcoming.getString("date"))
                             .setHour(jsonUpcoming.getString("hour") + ":00")
                             .setDocCity(jsonUpcoming.getString("city"))
@@ -116,6 +118,21 @@ public class PatientHomeViewModel extends ViewModel
                 if (res.contains(Error.RESOURCE_NOT_FOUND))
                     return;
 
+                try
+                {
+                    JSONObject jsonAppointment = new JSONObject(res).getJSONObject("appointment");
+                    Appointment appointment = new AppointmentBuilder()
+                            .setDate(jsonAppointment.getString("date"))
+                            .setHour(jsonAppointment.getString("hour"))
+                            .setServicePrice(jsonAppointment.getDouble("service_price"))
+                            .setMessage(jsonAppointment.getString("service_title")) // TODO: CHANGE TITLE
+                            .build();
+                    latestCompletedAppointment.postValue(appointment);
+                }
+                catch (JSONException e)
+                {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }

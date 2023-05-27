@@ -11,6 +11,14 @@ import okhttp3.Callback;
 
 public class ServiceDAO implements InterfaceDAO<String, Service>
 {
+    private static ServiceDAO serviceDAO = null;
+    private ServiceDAO() {}
+
+    public static ServiceDAO getInstance(){
+        if(serviceDAO == null)
+            serviceDAO = new ServiceDAO();
+        return serviceDAO;
+    }
     @Override
     public void create(Service item, Callback callback) throws IOException
     {
@@ -18,7 +26,7 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
         keyValues.put("id", item.getId());
         keyValues.put("title", item.getTitle());
         keyValues.put("description", item.getDescription());
-        keyValues.put("price", item.getPrice());
+        keyValues.put("price", String.valueOf(item.getPrice()));
 
         RequestFacade.postRequest(API.CREATE_SERVICE, keyValues, callback);
     }
@@ -29,7 +37,7 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
         HashMap<String, String> keyValues = new HashMap<>(3);
         keyValues.put("title", item.getTitle());
         keyValues.put("description", item.getDescription());
-        keyValues.put("price", item.getPrice());
+        keyValues.put("price", String.valueOf(item.getPrice()));
 
         RequestFacade.postRequest(API.EDIT_SERVICE, keyValues, callback);
     }
@@ -43,5 +51,10 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
     public void get(String id, Callback callback)
     {
         RequestFacade.getRequest(API.GET_SERVICE + id, callback);
+    }
+
+    public void getDoctorServices(long doctorId, Callback callback)
+    {
+        RequestFacade.getRequest(API.GET_SERVICES_OF + doctorId, callback);
     }
 }

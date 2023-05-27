@@ -29,6 +29,7 @@ public final class API
     public static final String GET_SERVICE = "/service/get/";
     public static final String EDIT_SERVICE = API.URL + "/service/edit/";
     public static final String GET_SERVICES = API.URL + "/services/get";
+    public static final String GET_SERVICES_OF = API.URL + "/services/of/";
 
     /* Doctor related API endpoints */
     public static final String CREATE_DOCTOR = API.URL + "/doctor/create";

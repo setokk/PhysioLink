@@ -1,6 +1,9 @@
 package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,12 +13,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHomeBinding;
+import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
 import com.mobile.physiolink.ui.patient.viewmodel.PatientHomeViewModel;
@@ -23,14 +23,11 @@ import com.mobile.physiolink.ui.patient.viewmodel.PatientHomeViewModel;
 
 public class PatientHomeFragment extends Fragment
 {
-    boolean hasAppointment=true;
-
-    String h1[],h2[],h3[],h4[],h5[];
-    Fragment AppointmentFragment = new UpcomingAppointmentFragment();
-    Fragment NoAppointmentFragment= new NoUpcomingAppointmentFragment();
-
     private FragmentPatientHomeBinding binding;
+    private AdapterForHistoryPatient adapter;
     private PatientHomeViewModel viewmodel;
+
+    private Fragment AppointmentFragment;
 
     public PatientHomeFragment() {
         // Required empty public constructor
@@ -43,19 +40,33 @@ public class PatientHomeFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+        binding = FragmentPatientHomeBinding.inflate(inflater, container, false);
+
         viewmodel = new ViewModelProvider(this).get(PatientHomeViewModel.class);
         viewmodel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
         {
             System.out.println(doctor);
         });
+        viewmodel.getUpcomingAppointment().observe(getViewLifecycleOwner(), appoint ->
+        {
+            if (appoint.isFound())
+            {
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                AppointmentFragment = new UpcomingAppointmentFragment(appoint);
+                transaction.replace(R.id.upcomingAppointmentFragmentContainer, AppointmentFragment);
+                transaction.commit();
+            }
+        });
         viewmodel.getLatestCompletedAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
-            System.out.println();
+            System.out.println(appoint.getDate() + "-" + appoint.getHour());
+
+            Appointment[] appointments = new Appointment[1];
+            appointments[0] = appoint;
+            adapter.setAppointments(appointments);
         });
 
-        binding = FragmentPatientHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view,
@@ -63,30 +74,19 @@ public class PatientHomeFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        if(hasAppointment){
-            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            transaction.replace(R.id.upcomingAppointmentFragmentContainer, AppointmentFragment);
-            transaction.commit();
-        }
-        else{
-            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            transaction.replace(R.id.upcomingAppointmentFragmentContainer, NoAppointmentFragment);
-            transaction.commit();
-        }
-
-        viewmodel.loadDoctor(UserHolder.patient().getDoctorId());
-        viewmodel.loadLatestCompletedAppointment(UserHolder.patient().getDoctorId(),
-                UserHolder.patient().getId());
-
-        h1=getResources().getStringArray(R.array.appointmentsService);
-        h2=getResources().getStringArray(R.array.servicesPatientHistoryListExampleDate);
-        h3=getResources().getStringArray(R.array.timePatientHistory);
-        h4=getResources().getStringArray(R.array.servicesListExampleDescription);
-        h5=getResources().getStringArray(R.array.paroxesCostExamle);
-
-        binding.patientHistoryLastItemPatient.setAdapter(new AdapterForHistoryPatient(h2,h3,h4,h1,h5,R.id.patientHistoryLastItemPatient));
+        this.adapter = new AdapterForHistoryPatient();
+        binding.patientHistoryLastItemPatient.setAdapter(adapter);
         binding.patientHistoryLastItemPatient.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
+        binding.patientNamePatient.setText(String.format("%s %s",
+                UserHolder.patient().getName(), UserHolder.patient().getSurname()));
+
+        /* Load data */
+        viewmodel.loadDoctor(UserHolder.patient().getDoctorId());
+        viewmodel.loadUpcomingAppointment(UserHolder.patient().getDoctorId(),
+                UserHolder.patient().getId());
+        viewmodel.loadLatestCompletedAppointment(UserHolder.patient().getDoctorId(),
+                UserHolder.patient().getId());
 
         binding.doctorInfoBasicPatientConstraint.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.containerPatient)
@@ -99,6 +99,10 @@ public class PatientHomeFragment extends Fragment
         binding.seeYourHistoryBtnPatient.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(),R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientHome_to_patientHistoryFragment));
+
+
+
+
 
     }
 }
