@@ -8,7 +8,17 @@
         android:id="@+id/doctorHomeFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorHomeFragment"
         android:label="DoctorHomeFragment"
-        tools:layout="@layout/fragment_doctor_home" />
+        tools:layout="@layout/fragment_doctor_home">
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_doctorProfileFragment"
+            app:destination="@+id/doctorProfileFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/doctorProfileFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorProfileFragment"
+        android:label="Προφίλ"
+        tools:layout="@layout/fragment_doctor_profile"/>
+
     <fragment
         android:id="@+id/doctorAppointmentsFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorAppointmentsFragment"

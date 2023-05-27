@@ -1,6 +1,9 @@
 package com.mobile.physiolink.ui.doctor;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,16 +12,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorHomeBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorHomeViewModel;
 
 
@@ -79,5 +77,9 @@ public class DoctorHomeFragment extends Fragment
         binding.appointRequestBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)
                         .navigate(R.id.doctorAppointmentRequestsFragment));
+        binding.profileImg.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.container)
+                        .navigate(R.id.action_doctorHomeFragment_to_doctorProfileFragment));
+
     }
 }
