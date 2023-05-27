@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorPatientsBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.ui.doctor.DoctorPatientsFragmentDirections;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatients;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorPatientsViewModel;
@@ -42,11 +43,10 @@ public class DoctorPatientsFragment extends Fragment
         adapter = new AdapterForPatients();
         adapter.setOnItemClickListener(patient ->
         {
-            DoctorPatientsFragmentDirections.ActionDoctorPatientsFragmentToDoctorPatientHistoryFragment
+            com.mobile.physiolink.ui.doctor.DoctorPatientsFragmentDirections.ActionDoctorPatientsFragmentToDoctorPatientHistoryFragment
                     action = DoctorPatientsFragmentDirections
                     .actionDoctorPatientsFragmentToDoctorPatientHistoryFragment(patient.getId());
-            Navigation.findNavController(getActivity(), R.id.container)
-                    .navigate(action);
+            Navigation.findNavController(getActivity(), R.id.container).navigate(action);
         });
 
         viewModel = new ViewModelProvider(this).get(DoctorPatientsViewModel.class);
