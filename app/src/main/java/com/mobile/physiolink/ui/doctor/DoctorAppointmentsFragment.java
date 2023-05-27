@@ -20,8 +20,7 @@ import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 public class DoctorAppointmentsFragment extends Fragment
 {
     private FragmentDoctorAppointmentsBinding binding;
-    RecyclerView appointmentList;
-    String[] sN, sS, sT, sService;
+    private AdapterForAppointments adapter;
 
     public DoctorAppointmentsFragment() {
         // Required empty public constructor
@@ -38,6 +37,9 @@ public class DoctorAppointmentsFragment extends Fragment
     {
         // Inflate the layout for this fragment
         binding = FragmentDoctorAppointmentsBinding.inflate(inflater, container, false);
+
+        adapter = new AdapterForAppointments();
+
         return binding.getRoot();
     }
 
@@ -46,17 +48,10 @@ public class DoctorAppointmentsFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        appointmentList = view.findViewById(R.id.appointmentsListAllDoctor);
-        sN = getResources().getStringArray(R.array.patientListExampleName);
-        sS = getResources().getStringArray(R.array.patientListExampleSurnmaeame);
-        sT = getResources().getStringArray(R.array.appointmentTime);
-        sService = getResources().getStringArray(R.array.appointmentsService);
-
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
-        appointmentList.addItemDecoration(itemDecoration);
+        binding.appointmentsListAllDoctor.addItemDecoration(itemDecoration);
 
-        AdapterForAppointments adapter = new AdapterForAppointments(this.getContext(),sN,sS,sT,sService,R.id.appointmentsListAllDoctor);
-        appointmentList.setAdapter(adapter);
-        appointmentList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        binding.appointmentsListAllDoctor.setAdapter(adapter);
+        binding.appointmentsListAllDoctor.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 }

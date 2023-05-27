@@ -20,9 +20,8 @@ import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 
 public class DoctorPatientsFragment extends Fragment
 {
-    RecyclerView patientList;
-    String s1[],s2[],s3[],s4[];
     private FragmentDoctorPatientsBinding binding;
+    private AdapterForPatients adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -36,6 +35,9 @@ public class DoctorPatientsFragment extends Fragment
     {
         // Inflate the layout for this fragment
         binding = FragmentDoctorPatientsBinding.inflate(inflater, container, false);
+
+        adapter = new AdapterForPatients();
+
         return binding.getRoot();
     }
 
@@ -43,19 +45,12 @@ public class DoctorPatientsFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        patientList = view.findViewById(R.id.patientsListDoctor);
-
-        s1=getResources().getStringArray(R.array.patientListExampleName);
-        s2=getResources().getStringArray(R.array.patientListExampleSurnmaeame);
-        s3=getResources().getStringArray(R.array.patientListExampleAMKA);
-        s4=getResources().getStringArray(R.array.patientListExamplePhone);
 
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
-        patientList.addItemDecoration(itemDecoration);
+        binding.patientsListDoctor.addItemDecoration(itemDecoration);
 
-        AdapterForPatients myAdapter = new AdapterForPatients(this.getContext(),s1,s2,s3,s4);
-        patientList.setAdapter(myAdapter);
-        patientList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        binding.patientsListDoctor.setAdapter(adapter);
+        binding.patientsListDoctor.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         binding.newPatientBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)
@@ -64,7 +59,5 @@ public class DoctorPatientsFragment extends Fragment
         binding.tempHistoryBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)
                         .navigate(R.id.action_doctorPatientsFragment_to_doctorPatientHistoryFragment));
-
-
     }
 }

@@ -1,11 +1,7 @@
 package com.mobile.physiolink.ui.doctor.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemDoctorAppointmentBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
-import com.mobile.physiolink.ui.doctor.DoctorHomeFragment;
 import com.mobile.physiolink.util.TimeFormatter;
 
 public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder>
@@ -23,6 +18,11 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
     public AdapterForAppointments()
     {
         appointments = new Appointment[0];
+    }
+
+    public void setAppointments(Appointment[] appointments)
+    {
+        this.appointments = appointments;
     }
 
     @NonNull
