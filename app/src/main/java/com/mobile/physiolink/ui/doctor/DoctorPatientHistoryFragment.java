@@ -4,33 +4,24 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorPatientHistoryBinding;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatientHistory;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 
-public class DoctorPatientHistoryFragment extends Fragment {
-
+public class DoctorPatientHistoryFragment extends Fragment
+{
     private FragmentDoctorPatientHistoryBinding binding;
-
-    ConstraintLayout morePatientInfoView;
-    Button arrowBtn;
-    CardView patientInfo;
-    RecyclerView servicesPatientHistoryList;
-    String s1[],s2[],s3[];
+    private AdapterForPatientHistory adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -44,6 +35,9 @@ public class DoctorPatientHistoryFragment extends Fragment {
     {
         // Inflate the layout for this fragment
         binding = FragmentDoctorPatientHistoryBinding.inflate(inflater, container, false);
+
+        adapter = new AdapterForPatientHistory();
+
         return binding.getRoot();
     }
 
@@ -52,38 +46,31 @@ public class DoctorPatientHistoryFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
 
-        morePatientInfoView=view.findViewById(R.id.patientHistoryMoreInfoDoctorConstraint);
-        arrowBtn=view.findViewById(R.id.patientHistoryInfoDownBtn);
-        patientInfo=view.findViewById(R.id.patientHistoryInfoDoctor);
-
-        arrowBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(morePatientInfoView.getVisibility()==View.GONE){
-                    TransitionManager.beginDelayedTransition(patientInfo, new AutoTransition());
-                    morePatientInfoView.setVisibility(View.VISIBLE);
-                    arrowBtn.setBackgroundResource(R.drawable.baseline_arrow_drop_up_24);
-                }
-                else{
-                    TransitionManager.beginDelayedTransition(patientInfo, new AutoTransition());
-                    morePatientInfoView.setVisibility(View.GONE);
-                    arrowBtn.setBackgroundResource(R.drawable.baseline_arrow_drop_down_24);
-                }
+        binding.patientHistoryInfoDownBtn.setOnClickListener(view1 ->
+        {
+            if(binding.patientHistoryMoreInfoDoctorConstraint.getVisibility()==View.GONE)
+            {
+                TransitionManager.beginDelayedTransition(binding.patientHistoryInfoDoctor,
+                        new AutoTransition());
+                binding.patientHistoryMoreInfoDoctorConstraint.setVisibility(View.VISIBLE);
+                binding.patientHistoryInfoDownBtn
+                        .setBackgroundResource(R.drawable.baseline_arrow_drop_up_24);
+            }
+            else
+            {
+                TransitionManager.beginDelayedTransition(binding.patientHistoryInfoDoctor,
+                        new AutoTransition());
+                binding.patientHistoryMoreInfoDoctorConstraint.setVisibility(View.GONE);
+                binding.patientHistoryInfoDownBtn
+                        .setBackgroundResource(R.drawable.baseline_arrow_drop_down_24);
             }
         });
 
-        servicesPatientHistoryList = view.findViewById(R.id.servicesListPatientHistoryDoctor);
-
-        s1=getResources().getStringArray(R.array.patientListExampleName);
-        s2=getResources().getStringArray(R.array.servicesPatientHistoryListExampleDate);
-        s3=getResources().getStringArray(R.array.servicesListExamplePrices);
-
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
-        servicesPatientHistoryList.addItemDecoration(itemDecoration);
+        binding.servicesListPatientHistoryDoctor.addItemDecoration(itemDecoration);
 
-        AdapterForPatientHistory myAdapter = new AdapterForPatientHistory(this.getContext(),s1,s2,s3);
-        servicesPatientHistoryList.setAdapter(myAdapter);
-        servicesPatientHistoryList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        binding.servicesListPatientHistoryDoctor.setAdapter(adapter);
+        binding.servicesListPatientHistoryDoctor.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
     }
 

@@ -11,66 +11,55 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
+import com.mobile.physiolink.databinding.ItemDoctorAppointmentBinding;
+import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.ui.doctor.DoctorHomeFragment;
+import com.mobile.physiolink.util.TimeFormatter;
 
-public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder> {
+public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder>
+{
+    private Appointment[] appointments;
 
-    String d1[], d2[], d3[], d4[];
-    private boolean displayAllItems;
-
-    public AdapterForAppointments(Context ct, String[] d1, String[] d2, String[] d3, String[] d4, int recyclerViewId) {
-
-        Context context = ct;
-        this.d1 = d1;
-        this.d2 = d2;
-        this.d3 = d3;
-        this.d4 = d4;
-        this.displayAllItems= recyclerViewId==R.id.appointmentsListAllDoctor;
+    public AdapterForAppointments()
+    {
+        appointments = new Appointment[0];
     }
 
     @NonNull
     @Override
     public AdapterForAppointments.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_doctor_appointment,parent,false);
-        return new MyViewHolder(view);
+        ItemDoctorAppointmentBinding binding = ItemDoctorAppointmentBinding
+                .inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new MyViewHolder(binding);
     }
 
     @Override
     public int getItemCount() {
-        if (displayAllItems) {
-            return d1.length;
-        } else {
-            return Math.min(d1.length, 3);
-        }
+        return appointments.length;
     }
-
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterForAppointments.MyViewHolder holder, int position) {
-
-
-        holder.tvName.setText(d1[position]);
-        holder.tvTime.setText(d2[position]);
-        holder.tvService.setText(d3[position]);
-        holder.imageview.setImageResource(R.drawable.boy);
-        //holder.tvSurname.setText(d4[position]);
-
+    public void onBindViewHolder(@NonNull AdapterForAppointments.MyViewHolder holder, int position)
+    {
+        holder.binding.appointmentPatientText
+                .setText(new StringBuilder()
+                        .append(appointments[position].getPatName())
+                        .append(" ")
+                        .append(appointments[position].getPatSurname()).toString());
+        holder.binding.appointmentTimeText
+                .setText(TimeFormatter.formatToPM_AM(appointments[position].getHour()));
+        holder.binding.appointmentServiceText.setText(appointments[position].getServiceTitle());
+        holder.binding.profileImage.setImageResource(R.drawable.boy);
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder
+    {
+        ItemDoctorAppointmentBinding binding;
 
-        ImageView imageview;
-        TextView tvName, tvSurname, tvTime, tvService;
-
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            imageview = itemView.findViewById(R.id.profile_image);
-            tvName = itemView.findViewById(R.id.appointment_patient_text);
-            tvTime = itemView.findViewById(R.id.appointment_time_text);
-            tvService = itemView.findViewById(R.id.appointment_service_text);
+        public MyViewHolder(ItemDoctorAppointmentBinding binding)
+        {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }
