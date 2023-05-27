@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,14 +16,16 @@ import android.view.ViewGroup;
 import com.mobile.physiolink.R;
 
 import com.mobile.physiolink.databinding.FragmentDoctorServicesBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.viewmodel.DoctorServicesViewModel;
 
 public class DoctorServicesFragment extends Fragment
 {
-    RecyclerView servicesList;
-    String s1[],s2[],s3[];
     private FragmentDoctorServicesBinding binding;
+    private DoctorServicesViewModel viewModel;
+    private AdapterForDoctorServices adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -36,6 +39,14 @@ public class DoctorServicesFragment extends Fragment
     {
         // Inflate the layout for this fragment
         binding = FragmentDoctorServicesBinding.inflate(inflater, container, false);
+
+        adapter = new AdapterForDoctorServices();
+        viewModel = new ViewModelProvider(this).get(DoctorServicesViewModel.class);
+        viewModel.getDoctorServices().observe(getViewLifecycleOwner(), services ->
+        {
+            adapter.setServices(services);
+        });
+
         return binding.getRoot();
     }
 
@@ -43,17 +54,13 @@ public class DoctorServicesFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        servicesList = view.findViewById(R.id.servicesListDoctor);
-
-        s1=getResources().getStringArray(R.array.patientListExampleName);
-        s2=getResources().getStringArray(R.array.servicesListExampleDescription);
-        s3=getResources().getStringArray(R.array.servicesListExamplePrices);
 
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
-        servicesList.addItemDecoration(itemDecoration);
+        binding.servicesListDoctor.addItemDecoration(itemDecoration);
 
-        AdapterForDoctorServices myAdapter = new AdapterForDoctorServices(s1,s2,s3,R.id.servicesListDoctor);
-        servicesList.setAdapter(myAdapter);
-        servicesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        binding.servicesListDoctor.setAdapter(adapter);
+        binding.servicesListDoctor.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        viewModel.loadDoctorServices(UserHolder.doctor().getId());
     }
 }
