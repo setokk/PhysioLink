@@ -200,6 +200,85 @@
                     app:layout_constraintBottom_toBottomOf="@+id/emailTitlePatientHistoryDoctor"
                     app:layout_constraintStart_toEndOf="@+id/emailTitlePatientHistoryDoctor"
                     app:layout_constraintTop_toTopOf="@+id/emailTitlePatientHistoryDoctor" />
+                <TextView
+                    android:id="@+id/cityTitlePatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="Πόλη:"
+                    app:layout_constraintBottom_toBottomOf="@+id/cityPatientHistoryDoctor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/cityPatientHistoryDoctor"
+                    app:layout_constraintTop_toBottomOf="@+id/emailTitlePatientHistoryDoctor"
+                    />
+                <TextView
+                    android:id="@+id/cityPatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="5dp"
+                    android:text="Θεσσαλονικη"
+                    app:layout_constraintBottom_toBottomOf="@+id/cityTitlePatientHistoryDoctor"
+                    app:layout_constraintStart_toEndOf="@+id/cityTitlePatientHistoryDoctor"
+                    app:layout_constraintTop_toTopOf="@+id/cityTitlePatientHistoryDoctor"/>
+                <TextView
+                    android:id="@+id/postalCodeTitlePatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:text="ΤΚ:"
+                    app:layout_constraintBottom_toBottomOf="@+id/cityPatientHistoryDoctor"
+                    app:layout_constraintStart_toEndOf="@+id/cityPatientHistoryDoctor"
+                    app:layout_constraintTop_toTopOf="@+id/cityTitlePatientHistoryDoctor"/>
+
+                <TextView
+                    android:id="@+id/postalCodePatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="5dp"
+                    android:text="56000"
+                    app:layout_constraintBottom_toBottomOf="@+id/cityTitlePatientHistoryDoctor"
+                    app:layout_constraintStart_toEndOf="@+id/postalCodeTitlePatientHistoryDoctor"
+                    app:layout_constraintTop_toTopOf="@+id/cityTitlePatientHistoryDoctor"/>
+                <TextView
+                    android:id="@+id/addressTitlePatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="Διεύθυνση:"
+                    app:layout_constraintBottom_toBottomOf="@+id/addressPatientHistoryDoctor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/addressPatientHistoryDoctor"
+                    app:layout_constraintTop_toBottomOf="@+id/cityTitlePatientHistoryDoctor"/>
+                <TextView
+                    android:id="@+id/addressPatientHistoryDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="5dp"
+                    android:text="Αγ. Θαναση 6"
+                    app:layout_constraintBottom_toBottomOf="@+id/addressTitlePatientHistoryDoctor"
+                    app:layout_constraintStart_toEndOf="@+id/addressTitlePatientHistoryDoctor"
+                    app:layout_constraintTop_toTopOf="@+id/addressTitlePatientHistoryDoctor"/>
+
+
+
+                
+
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/editInfoBtnPatientHistoryDoctor"
@@ -214,7 +293,7 @@
                     android:textStyle="italic|normal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/emailTitlePatientHistoryDoctor" />
+                    app:layout_constraintTop_toBottomOf="@id/addressTitlePatientHistoryDoctor" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

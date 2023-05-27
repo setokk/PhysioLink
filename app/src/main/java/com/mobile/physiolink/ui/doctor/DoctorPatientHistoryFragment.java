@@ -1,6 +1,11 @@
 package com.mobile.physiolink.ui.doctor;
 
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,16 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorPatientHistoryBinding;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatientHistory;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatientHistory;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorPatientHistoryViewModel;
 
 public class DoctorPatientHistoryFragment extends Fragment
@@ -44,16 +44,21 @@ public class DoctorPatientHistoryFragment extends Fragment
         viewModel = new ViewModelProvider(this).get(DoctorPatientHistoryViewModel.class);
         viewModel.getSelectedPatient().observe(getViewLifecycleOwner(), patient ->
         {
-            binding.patientHistoryNameDoctor
-                    .setText(patient.getName());
-            binding.patientHistorySurnameDoctor
-                    .setText(patient.getSurname());
-            binding.emailPatientHistoryDoctor
-                    .setText(patient.getEmail());
-            binding.phonePatientHistoryDoctor
-                    .setText(patient.getPhoneNumber());
-            binding.amkaPatientHistoryDoctor
-                    .setText(patient.getAmka());
+            binding.patientHistoryNameDoctor.setText(String.format("%s %s",
+                    UserHolder.patient().getName(), UserHolder.patient().getSurname()));
+            binding.phonePatientHistoryDoctor.setText(String.format("%s ",
+                    UserHolder.patient().getPhoneNumber()));
+            binding.emailPatientHistoryDoctor.setText(String.format("%s ",
+                    UserHolder.patient().getEmail()));
+            binding.amkaPatientHistoryDoctor.setText(String.format("%s ",
+                    UserHolder.patient().getAmka()));
+            binding.cityPatientHistoryDoctor.setText(String.format("%s ",
+                    UserHolder.patient().getCity()));
+            binding.postalCodePatientHistoryDoctor.setText(String.format("%s ",
+                    UserHolder.patient().getPostalCode()));
+            binding.addressPatientHistoryDoctor.setText(String.format("%s ",
+                    UserHolder.patient().getAddress()));
+
         });
 
         return binding.getRoot();
@@ -63,6 +68,7 @@ public class DoctorPatientHistoryFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+
 
         binding.patientHistoryInfoDownBtn.setOnClickListener(view1 ->
         {
