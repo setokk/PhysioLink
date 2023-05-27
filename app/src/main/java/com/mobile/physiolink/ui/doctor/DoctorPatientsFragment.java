@@ -5,9 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +15,15 @@ import android.view.ViewGroup;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorPatientsBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatients;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.viewmodel.DoctorPatientsViewModel;
 
 public class DoctorPatientsFragment extends Fragment
 {
     private FragmentDoctorPatientsBinding binding;
+    private DoctorPatientsViewModel viewModel;
     private AdapterForPatients adapter;
 
     @Override
@@ -38,6 +41,12 @@ public class DoctorPatientsFragment extends Fragment
 
         adapter = new AdapterForPatients();
 
+        viewModel = new ViewModelProvider(this).get(DoctorPatientsViewModel.class);
+        viewModel.getDoctorPatients().observe(getViewLifecycleOwner(), patients ->
+        {
+            adapter.setPatients(patients);
+        });
+
         return binding.getRoot();
     }
 
@@ -51,6 +60,8 @@ public class DoctorPatientsFragment extends Fragment
 
         binding.patientsListDoctor.setAdapter(adapter);
         binding.patientsListDoctor.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        viewModel.loadDoctorPatients(UserHolder.doctor().getId());
 
         binding.newPatientBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)
