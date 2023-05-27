@@ -90,7 +90,7 @@ public class CreateClinicFragment extends Fragment
             TextInputEditText current = all_inputs.get(j);
             TextInputLayout current_layout = all_inputs_layouts.get(j);
 
-            String passwordPattern = "(?=.*\\d)(?=.*[\\{\\.\\}])";
+            String passwordPattern = "(?=.*\\d)";
             Pattern PasswordRegex = Pattern.compile(passwordPattern);
 
 //            current.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +136,7 @@ public class CreateClinicFragment extends Fragment
                     } else if (current_layout.equals(binding.docPasswardInputLayout)) {
                         Matcher matcher = PasswordRegex.matcher(binding.docPasswardInput.getText().toString());
                         if(!matcher.find()){
-                            current_layout.setError("Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό και έναν ειδικό χαρακτήρα '{' ή '.'");
+                            current_layout.setError("Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό!");
                             code_error = true;
                         } else{
                             code_error = false;
