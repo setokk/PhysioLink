@@ -45,6 +45,9 @@
         android:name="com.mobile.physiolink.ui.doctor.DoctorPatientHistoryFragment"
         android:label="fragment_doctor_patient_history"
         tools:layout="@layout/fragment_doctor_patient_history" >
+        <argument
+            android:name="patient_id"
+            app:argType="long"/>
         <action
             android:id="@+id/action_doctorPatientHistoryFragment_to_doctorPatientsFragment"
             app:destination="@id/doctorPatientsFragment" />

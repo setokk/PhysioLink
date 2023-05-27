@@ -1,5 +1,5 @@
 package com.mobile.physiolink.ui.doctor;
-// TODO: Na ginei katallhlh allagh tou arxeiou molis ginei h diasyndesh me ta dedomena ths bashs
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -40,6 +40,14 @@ public class DoctorPatientsFragment extends Fragment
         binding = FragmentDoctorPatientsBinding.inflate(inflater, container, false);
 
         adapter = new AdapterForPatients();
+        adapter.setOnItemClickListener(patient ->
+        {
+            DoctorPatientsFragmentDirections.ActionDoctorPatientsFragmentToDoctorPatientHistoryFragment
+                    action = DoctorPatientsFragmentDirections
+                    .actionDoctorPatientsFragmentToDoctorPatientHistoryFragment(patient.getId());
+            Navigation.findNavController(getActivity(), R.id.container)
+                    .navigate(action);
+        });
 
         viewModel = new ViewModelProvider(this).get(DoctorPatientsViewModel.class);
         viewModel.getDoctorPatients().observe(getViewLifecycleOwner(), patients ->
@@ -66,9 +74,5 @@ public class DoctorPatientsFragment extends Fragment
         binding.newPatientBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)
                         .navigate(R.id.action_doctorPatientsFragment_to_doctorNewPatientFragment));
-
-        binding.tempHistoryBtn.setOnClickListener(v ->
-                Navigation.findNavController(getActivity(), R.id.container)
-                        .navigate(R.id.action_doctorPatientsFragment_to_doctorPatientHistoryFragment));
     }
 }

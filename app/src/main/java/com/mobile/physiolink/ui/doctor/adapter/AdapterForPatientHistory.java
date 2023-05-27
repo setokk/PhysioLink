@@ -1,15 +1,11 @@
 package com.mobile.physiolink.ui.doctor.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemDoctorPatientHistoryServicesBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
 
