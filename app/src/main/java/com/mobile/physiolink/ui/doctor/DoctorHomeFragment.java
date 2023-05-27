@@ -5,22 +5,27 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorHomeBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.viewmodel.DoctorHomeViewModel;
 
 
 public class DoctorHomeFragment extends Fragment
 {
     private FragmentDoctorHomeBinding binding;
+    private DoctorHomeViewModel viewModel;
     private AdapterForAppointments adapter;
 
     public DoctorHomeFragment()
@@ -42,6 +47,17 @@ public class DoctorHomeFragment extends Fragment
         binding = FragmentDoctorHomeBinding.inflate(inflater, container, false);
 
         adapter = new AdapterForAppointments();
+        viewModel = new ViewModelProvider(this).get(DoctorHomeViewModel.class);
+        viewModel.getLatestAppointments().observe(getViewLifecycleOwner(), appointments ->
+        {
+            if (appointments.length == 0)
+            {
+                // TODO: Dynamic showing of not having appointments
+                return;
+            }
+
+            adapter.setAppointments(appointments);
+        });
 
         return binding.getRoot();
     }
@@ -57,6 +73,8 @@ public class DoctorHomeFragment extends Fragment
 
         binding.recyclerViewApp.setAdapter(adapter);
         binding.recyclerViewApp.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        viewModel.loadTodaysLatestAppointments(UserHolder.doctor().getId());
 
         binding.appointRequestBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)

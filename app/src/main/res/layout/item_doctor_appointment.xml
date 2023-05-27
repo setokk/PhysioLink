@@ -68,13 +68,13 @@
                 app:layout_constraintVertical_bias="0.051"></TextView>
 
             <TextView
-                android:id="@+id/appointment_service_text"
+                android:id="@+id/appointment_completed_status"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_below="@+id/appointment_patient_text"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/roboto"
-                android:text="@string/malaxi_service_text"
+                android:text=""
                 android:textColor="@color/button_purple"
                 android:textSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
