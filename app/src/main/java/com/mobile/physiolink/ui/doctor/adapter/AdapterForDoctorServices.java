@@ -64,7 +64,7 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
             holder.itemDoctorServicesBinding.serviceDescriptionDoctor.setMaxLines(Integer.MAX_VALUE);
             holder.itemDoctorServicesBinding.serviceDescriptionDoctor.setEllipsize(null);
         } else {
-            holder.itemDoctorServicesBinding.serviceDescriptionDoctor.setMaxLines(1);
+            holder.itemDoctorServicesBinding.serviceDescriptionDoctor.setMaxLines(2);
             holder.itemDoctorServicesBinding.serviceDescriptionDoctor.setEllipsize(TextUtils.TruncateAt.END);
         }
     }

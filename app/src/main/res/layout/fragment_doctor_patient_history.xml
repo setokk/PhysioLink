@@ -104,7 +104,6 @@
                 android:layout_height="50dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/baseline_arrow_drop_down_24"
-                android:text="."
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/patientHistoryNameInfoConstraint"
                 app:layout_constraintEnd_toEndOf="parent"

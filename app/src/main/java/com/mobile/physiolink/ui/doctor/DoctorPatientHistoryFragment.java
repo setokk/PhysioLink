@@ -45,19 +45,19 @@ public class DoctorPatientHistoryFragment extends Fragment
         viewModel.getSelectedPatient().observe(getViewLifecycleOwner(), patient ->
         {
             binding.patientHistoryNameDoctor.setText(String.format("%s %s",
-                    UserHolder.patient().getName(), UserHolder.patient().getSurname()));
+                    patient.getName(), patient.getSurname()));
             binding.phonePatientHistoryDoctor.setText(String.format("%s ",
-                    UserHolder.patient().getPhoneNumber()));
+                    patient.getPhoneNumber()));
             binding.emailPatientHistoryDoctor.setText(String.format("%s ",
-                    UserHolder.patient().getEmail()));
+                    patient.getEmail()));
             binding.amkaPatientHistoryDoctor.setText(String.format("%s ",
-                    UserHolder.patient().getAmka()));
+                    patient.getAmka()));
             binding.cityPatientHistoryDoctor.setText(String.format("%s ",
-                    UserHolder.patient().getCity()));
+                    patient.getCity()));
             binding.postalCodePatientHistoryDoctor.setText(String.format("%s ",
-                    UserHolder.patient().getPostalCode()));
+                    patient.getPostalCode()));
             binding.addressPatientHistoryDoctor.setText(String.format("%s ",
-                    UserHolder.patient().getAddress()));
+                    patient.getAddress()));
 
         });
 
