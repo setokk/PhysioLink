@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mobile.physiolink.R;
 
@@ -21,9 +22,9 @@ import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorServicesViewModel;
+import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
-public class DoctorServicesFragment extends Fragment
-{
+public class DoctorServicesFragment extends Fragment{
     private FragmentDoctorServicesBinding binding;
     private DoctorServicesViewModel viewModel;
     private AdapterForDoctorServices adapter;
@@ -48,6 +49,24 @@ public class DoctorServicesFragment extends Fragment
             adapter.setServices(services);
         });
 
+        adapter.setOnLongItemClickListener(service ->{
+            ConfirmationPopUp confirmation = new ConfirmationPopUp("Διαγραφή Παροχής",
+                    "Είστε σίγουρος πως θέλετε να διαγράψετε αυτή την παροχή;",
+                    "Ναι", "Όχι");
+            confirmation.setPositiveOnClick((dialog, which) ->
+            {
+                // TODO: API CALL
+                Toast.makeText(getActivity(), "Έγινε επιτυχώς η διαγραφή!",
+                        Toast.LENGTH_SHORT).show();
+            });
+            confirmation.setNegativeOnClick(((dialog, which) ->
+            {
+                Toast.makeText(getActivity(), "Δεν έγινε η διαγραφή!",
+                        Toast.LENGTH_SHORT).show();
+            }));
+
+            confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
+        });
         return binding.getRoot();
     }
 
@@ -69,4 +88,5 @@ public class DoctorServicesFragment extends Fragment
 
         viewModel.loadDoctorServices(UserHolder.doctor().getId());
     }
+
 }
