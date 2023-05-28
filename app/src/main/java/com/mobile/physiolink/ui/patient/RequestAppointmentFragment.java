@@ -2,11 +2,14 @@ package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.transition.AutoTransition;
@@ -97,6 +100,7 @@ public class RequestAppointmentFragment extends Fragment
             getResources().getTextArray(R.array.greek_months));
         weekDayFormatter = new ArrayWeekDayFormatter(
             getResources().getTextArray(R.array.greek_days));
+
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)

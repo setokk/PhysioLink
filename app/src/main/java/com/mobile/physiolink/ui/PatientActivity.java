@@ -31,19 +31,27 @@ public class PatientActivity extends AppCompatActivity
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigationPatient, navController, false);
 
-        /* Pop backstack after every navigation bar click */
+        /* Pop backstack after every navigation bar click
         binding.bottomNavigationPatient.setOnItemSelectedListener((item) ->
         {
             navController.popBackStack();
             navController.navigate(item.getItemId());
             return true;
         });
-
-        /* Hide the back button from the header */
+        */
+        /* Hide the back button from the header
         navController.addOnDestinationChangedListener((oNavController, navDestination, bundle) ->
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         });
+        */
+    }
 
+    @Override
+    public boolean onSupportNavigateUp()
+    {
+        NavController navController = Navigation.findNavController(this, R.id.containerPatient);
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 }
