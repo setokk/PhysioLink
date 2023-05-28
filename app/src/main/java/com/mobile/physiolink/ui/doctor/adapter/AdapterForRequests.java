@@ -3,17 +3,15 @@ package com.mobile.physiolink.ui.doctor.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.mobile.physiolink.R;
+
 import com.mobile.physiolink.databinding.ItemDoctorRequestBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.ui.doctor.OnButtonClickListener;
-import com.mobile.physiolink.util.TimeFormatter;
+import com.mobile.physiolink.util.date.TimeFormatter;
 
 public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.MyViewHolder>
         implements OnButtonClickListener

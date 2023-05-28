@@ -1,4 +1,4 @@
-package com.mobile.physiolink.util;
+package com.mobile.physiolink.util.image;
 
 import com.mobile.physiolink.R;
 

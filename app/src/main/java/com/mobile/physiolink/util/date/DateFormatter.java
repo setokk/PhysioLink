@@ -1,4 +1,4 @@
-package com.mobile.physiolink.util;
+package com.mobile.physiolink.util.date;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

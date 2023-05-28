@@ -1,4 +1,4 @@
-package com.mobile.physiolink.util;
+package com.mobile.physiolink.util.date;
 
 public class TimeFormatter
 {

@@ -18,7 +18,7 @@ import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorHomeViewModel;
-import com.mobile.physiolink.util.ProfileImageProvider;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 
 public class DoctorHomeFragment extends Fragment
