@@ -41,14 +41,14 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
     @Override
     public void onBindViewHolder(@NonNull AdapterForAppointments.MyViewHolder holder, int position)
     {
-        holder.binding.appointmentPatientText
+        holder.binding.appointmentNameDoctorPatient
                 .setText(new StringBuilder()
                         .append(appointments[position].getPatName())
                         .append(" ")
                         .append(appointments[position].getPatSurname()).toString());
-        holder.binding.appointmentTimeText
+        holder.binding.appointmentTimeDoctorPatient
                 .setText(TimeFormatter.formatToPM_AM(appointments[position].getHour()));
-        holder.binding.profileImage.setImageResource(R.drawable.boy);
+        holder.binding.patientImageDoctorAppointment.setImageResource(R.drawable.boy);
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder
