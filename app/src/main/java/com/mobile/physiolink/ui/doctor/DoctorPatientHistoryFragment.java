@@ -44,20 +44,14 @@ public class DoctorPatientHistoryFragment extends Fragment
         viewModel = new ViewModelProvider(this).get(DoctorPatientHistoryViewModel.class);
         viewModel.getSelectedPatient().observe(getViewLifecycleOwner(), patient ->
         {
-            binding.patientHistoryNameDoctor.setText(String.format("%s %s",
-                    patient.getName(), patient.getSurname()));
-            binding.phonePatientHistoryDoctor.setText(String.format("%s ",
-                    patient.getPhoneNumber()));
-            binding.emailPatientHistoryDoctor.setText(String.format("%s ",
-                    patient.getEmail()));
-            binding.amkaPatientHistoryDoctor.setText(String.format("%s ",
-                    patient.getAmka()));
-            binding.cityPatientHistoryDoctor.setText(String.format("%s ",
-                    patient.getCity()));
-            binding.postalCodePatientHistoryDoctor.setText(String.format("%s ",
-                    patient.getPostalCode()));
-            binding.addressPatientHistoryDoctor.setText(String.format("%s ",
-                    patient.getAddress()));
+            binding.patientHistoryNameDoctor.setText(patient.getName());
+            binding.patientHistorySurnameDoctor.setText(patient.getSurname());
+            binding.phonePatientHistoryDoctor.setText(patient.getPhoneNumber());
+            binding.emailPatientHistoryDoctor.setText(patient.getEmail());
+            binding.amkaPatientHistoryDoctor.setText(patient.getAmka());
+            binding.cityPatientHistoryDoctor.setText(patient.getCity());
+            binding.postalCodePatientHistoryDoctor.setText(patient.getPostalCode());
+            binding.addressPatientHistoryDoctor.setText(patient.getAddress());
 
         });
 
