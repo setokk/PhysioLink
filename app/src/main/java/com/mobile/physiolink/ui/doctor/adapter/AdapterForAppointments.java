@@ -23,6 +23,7 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
     public void setAppointments(Appointment[] appointments)
     {
         this.appointments = appointments;
+        notifyDataSetChanged();
     }
 
     @NonNull
