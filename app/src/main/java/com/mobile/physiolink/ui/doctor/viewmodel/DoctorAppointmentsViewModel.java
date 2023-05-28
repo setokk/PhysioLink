@@ -56,12 +56,12 @@ public class DoctorAppointmentsViewModel extends ViewModel {
                     Appointment[] appointments = new Appointment[jsonAppointments.length()];
 
                     for (int i = 0; i < jsonAppointments.length(); ++i)
-                    {   //TODO: GET HOUR FROM DB AND REMOVE GETTING PHONE NUMBER
+                    {
                         JSONObject element = jsonAppointments.getJSONObject(i);
                         appointments[i] = new AppointmentBuilder()
                                 .setId(element.getLong("appointment_id"))
                                 .setDate(date.replace('-', '/'))
-                                .setHour("8")
+                                .setHour(element.getString("hour"))
                                 .setPatName(element.getString("patient_name"))
                                 .setPatSurname(element.getString("patient_surname"))
                                 .setPatAmka(element.getString("amka"))

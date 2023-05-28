@@ -44,16 +44,16 @@ public class DoctorRequestsViewModel extends ViewModel
                     Appointment[] appointments = new Appointment[jsonAppointments.length()];
 
                     for (int i = 0; i < jsonAppointments.length(); ++i)
-                    { //TODO: CHANGE DB
+                    {
                         JSONObject element = jsonAppointments.getJSONObject(i);
                         appointments[i] = new AppointmentBuilder()
                                 .setId(element.getLong("appointment_id"))
-                                .setDate("x/x/x")
-                                .setHour("8")
+                                .setDate(element.getString("date"))
+                                .setHour(element.getString("hour"))
                                 .setPatName(element.getString("patient_name"))
                                 .setPatSurname(element.getString("patient_surname"))
                                 .setPatAmka(element.getString("amka"))
-                                .setMessage("")
+                                .setMessage(element.getString("message"))
                                 .build();
                     }
                     requestAppointments.postValue(appointments);
