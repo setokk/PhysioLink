@@ -54,6 +54,10 @@ public class DoctorPatientHistoryFragment extends Fragment
             binding.addressPatientHistoryDoctor.setText(patient.getAddress());
 
         });
+        viewModel.getHistoryAppointments().observe(getViewLifecycleOwner(), appointments ->
+        {
+            adapter.setAppointments(appointments);
+        });
 
         return binding.getRoot();
     }
@@ -92,6 +96,7 @@ public class DoctorPatientHistoryFragment extends Fragment
 
         long patientId = DoctorPatientHistoryFragmentArgs.fromBundle(getArguments()).getPatientId();
         viewModel.loadPatient(patientId);
+        viewModel.loadPatientHistoryAppointments(patientId);
     }
 
 

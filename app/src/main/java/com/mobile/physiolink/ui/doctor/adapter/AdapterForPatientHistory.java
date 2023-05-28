@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorPatientHistoryServicesBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
+import com.mobile.physiolink.util.TimeFormatter;
 
 public class AdapterForPatientHistory extends RecyclerView.Adapter<AdapterForPatientHistory.MyViewHolder>
 {
@@ -39,7 +40,11 @@ public class AdapterForPatientHistory extends RecyclerView.Adapter<AdapterForPat
         holder.binding.servicePatientHistoryNameDoctor
                 .setText(appointments[position].getServiceTitle());
         holder.binding.servicePatientHistoryDateDoctor
-                .setText(appointments[position].getDate().replace('-', '/'));
+                .setText(new StringBuilder()
+                        .append(appointments[position].getDate().replace('-', '/'))
+                        .append(", ")
+                        .append(TimeFormatter.formatToPM_AM(appointments[position].getHour()))
+                        .toString());
         holder.binding.servicePatientHistoryPriceDoctor
                 .setText(String.valueOf(appointments[position].getServicePrice()));
     }
