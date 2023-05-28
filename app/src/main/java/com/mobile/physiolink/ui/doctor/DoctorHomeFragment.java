@@ -18,6 +18,7 @@ import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorHomeViewModel;
+import com.mobile.physiolink.util.ProfileImageProvider;
 
 
 public class DoctorHomeFragment extends Fragment
@@ -65,6 +66,9 @@ public class DoctorHomeFragment extends Fragment
                               @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.profileImg.setImageResource(ProfileImageProvider
+                .getProfileImage(UserHolder.doctor().getName()));
 
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
         binding.recyclerViewApp.addItemDecoration(itemDecoration);
