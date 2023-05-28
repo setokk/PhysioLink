@@ -23,28 +23,21 @@ import okhttp3.Response;
 
 public class DoctorAppointmentsViewModel extends ViewModel {
 
-    private MutableLiveData<Appointment[]> doctorAppointment;
+    private MutableLiveData<Appointment[]> doctorAppointments;
 
-    public MutableLiveData<Appointment[]> getDoctorAppointment()
+    public MutableLiveData<Appointment[]> getDoctorAppointments()
     {
-        if (doctorAppointment == null)
-            doctorAppointment = new MutableLiveData<>();
+        if (doctorAppointments == null)
+            doctorAppointments = new MutableLiveData<>();
 
-        return doctorAppointment;
+        return doctorAppointments;
     }
 
-    public void loadDoctorAppointments(long doctorId)
+    public void loadDoctorAppointments(long doctorId, String date)
     {
-        Calendar currentCalendar = Calendar.getInstance();
-        currentCalendar.setTimeInMillis(currentCalendar.getTimeInMillis());
-
-        String currentDate = currentCalendar.get(Calendar.YEAR) + "-" +
-                (currentCalendar.get(Calendar.MONTH) + 1) + "-" +
-                currentCalendar.get(Calendar.DAY_OF_MONTH);
-        System.out.println(currentDate);
-        RequestFacade.getRequest(API.GET_CONFIRMED_APPOINTMENTS+
+        RequestFacade.getRequest(API.GET_CONFIRMED_APPOINTMENTS +
                 "?doctor_id=" + doctorId +
-                "&date=" , new Callback()
+                "&date=" + date, new Callback()
         {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -60,24 +53,21 @@ public class DoctorAppointmentsViewModel extends ViewModel {
                 try
                 {
                     JSONArray jsonAppointments = new JSONObject(res).getJSONArray("appointments");
-
-
-                    int length = jsonAppointments.length();
-                    Appointment[] appointments = new Appointment[length];
+                    Appointment[] appointments = new Appointment[jsonAppointments.length()];
 
                     for (int i = 0; i < jsonAppointments.length(); ++i)
-                    {//TODO: GET DATE AND HOUR FROM DB
+                    {   //TODO: GET HOUR FROM DB AND REMOVE GETTING PHONE NUMBER
                         JSONObject element = jsonAppointments.getJSONObject(i);
                         appointments[i] = new AppointmentBuilder()
                                 .setId(element.getLong("appointment_id"))
-                                .setDate("x/x/x")
+                                .setDate(date.replace('-', '/'))
                                 .setHour("8")
                                 .setPatName(element.getString("patient_name"))
                                 .setPatSurname(element.getString("patient_surname"))
                                 .setPatAmka(element.getString("amka"))
                                 .build();
                     }
-                    doctorAppointment.postValue(appointments);
+                    doctorAppointments.postValue(appointments);
                 }
                 catch (JSONException e)
                 {
