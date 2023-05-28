@@ -11,6 +11,6 @@ public class TimeFormatter
         else
             pmAm = "μμ";
 
-        return hour + " " + pmAm;
+        return hour + ":00 " + pmAm;
     }
 }

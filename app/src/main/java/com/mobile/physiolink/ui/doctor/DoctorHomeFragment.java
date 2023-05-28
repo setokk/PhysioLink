@@ -80,6 +80,9 @@ public class DoctorHomeFragment extends Fragment
         binding.profileImg.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)
                         .navigate(R.id.action_doctorHomeFragment_to_doctorProfileFragment));
+        binding.all.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.container)
+                        .navigate(R.id.action_doctorHomeFragment_to_doctorAppointmentsFragment));
 
     }
 }

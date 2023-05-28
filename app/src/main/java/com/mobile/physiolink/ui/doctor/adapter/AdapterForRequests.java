@@ -68,6 +68,19 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
         return appointments.length;
     }
 
+    // Function used to remove items from the requestList when a request is either accepted or rejected
+    public void remove(int position)
+    {
+        Appointment[] newAppointments = new Appointment[appointments.length-1];
+        for(int i=0; i<position; i++){
+            newAppointments[i]=appointments[i];
+        }
+        for(int i=position+1; i<appointments.length; i++){
+            newAppointments[i-1]=appointments[i];
+        }
+        appointments = newAppointments;
+    }
+
     // TODO: handle what happens when each button is pressed
     @Override
     public void onButtonClicked(int position,int id)
@@ -81,6 +94,7 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
             System.out.println("reject button pressed");
         }
 
+        remove(position);
         notifyItemRemoved(position);
     }
 
