@@ -48,7 +48,6 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
                         .append(appointments[position].getPatSurname()).toString());
         holder.binding.appointmentTimeText
                 .setText(TimeFormatter.formatToPM_AM(appointments[position].getHour()));
-        holder.binding.appointmentCompletedStatus.setText("Πληρωμή μη ολοκληρωμένη");//TODO: DB
         holder.binding.profileImage.setImageResource(R.drawable.boy);
     }
 

@@ -1,21 +1,14 @@
 package com.mobile.physiolink.ui.doctor.adapter;
-// TODO Na ginei katallhlh allagh tou arxeiou molis ginei h diasyndesh me ta dedomena ths bashs
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemDoctorServicesBinding;
-import com.mobile.physiolink.databinding.ItemPatientHistoryBinding;
 import com.mobile.physiolink.model.service.Service;
-import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
 
 import java.util.Arrays;
 

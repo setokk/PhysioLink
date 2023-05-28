@@ -60,12 +60,12 @@ public class DoctorHomeViewModel extends ViewModel
                     Appointment[] appointments = new Appointment[length];
 
                     for (int i = 0; i < length; ++i)
-                    {//TODO: GET DATE AND HOUR FROM DB
+                    {
                         JSONObject element = jsonAppointments.getJSONObject(i);
                         appointments[i] = new AppointmentBuilder()
                                 .setId(element.getLong("appointment_id"))
                                 .setDate(currentDate.replace('-', '/'))
-                                .setHour("8")
+                                .setHour(element.getString("hour"))
                                 .setPatName(element.getString("patient_name"))
                                 .setPatSurname(element.getString("patient_surname"))
                                 .setPatAmka(element.getString("amka"))
