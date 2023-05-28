@@ -8,15 +8,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.mobile.physiolink.databinding.FragmentDoctorAppointmentRequestsBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForRequests;
+import com.mobile.physiolink.ui.doctor.viewmodel.DoctorRequestsViewModel;
 
 public class DoctorAppointmentRequestsFragment extends Fragment
 {
     private FragmentDoctorAppointmentRequestsBinding binding;
+    private DoctorRequestsViewModel viewModel;
     private AdapterForRequests adapter;
 
     @Override
@@ -27,6 +31,16 @@ public class DoctorAppointmentRequestsFragment extends Fragment
         binding = FragmentDoctorAppointmentRequestsBinding.inflate(inflater,container,false);
 
         adapter = new AdapterForRequests();
+        viewModel = new ViewModelProvider(this).get(DoctorRequestsViewModel.class);
+        viewModel.getRequestAppointments().observe(getViewLifecycleOwner(), appointments ->
+        {
+            if (appointments.length == 0)
+                binding.noRequestsTextView.setVisibility(View.VISIBLE);
+            else
+                binding.noRequestsTextView.setVisibility(View.GONE);
+
+            adapter.setAppointments(appointments);
+        });
 
         return binding.getRoot();
     }
@@ -41,14 +55,6 @@ public class DoctorAppointmentRequestsFragment extends Fragment
         binding.requestListDoctor.setAdapter(adapter);
         binding.requestListDoctor.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        // TODO: DO IN OBSERVE
-        if (true)
-        {
-            binding.noRequestsTextView.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            binding.noRequestsTextView.setVisibility(View.GONE);
-        }
+        viewModel.loadRequestAppointments(UserHolder.doctor().getId());
     }
 }
