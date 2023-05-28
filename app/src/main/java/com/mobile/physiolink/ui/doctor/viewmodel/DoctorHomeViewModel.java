@@ -8,7 +8,6 @@ import com.mobile.physiolink.model.appointment.AppointmentBuilder;
 import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.api.error.Error;
-import com.mobile.physiolink.util.DateFormatter;
 
 import org.json.JSONArray;
 import org.json.JSONException;

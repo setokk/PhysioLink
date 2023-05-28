@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemDoctorAppointmentBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
-import com.mobile.physiolink.util.TimeFormatter;
+import com.mobile.physiolink.util.date.TimeFormatter;
 
 public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder>
 {

@@ -11,11 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.physiolink.R;
@@ -27,16 +25,14 @@ import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.api.error.Error;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForAppointmentHour;
 import com.mobile.physiolink.ui.patient.viewmodel.RequestAppointmentViewModel;
-import com.mobile.physiolink.util.DateFormatter;
+import com.mobile.physiolink.util.date.DateFormatter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
