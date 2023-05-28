@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,6 +61,11 @@ public class DoctorServicesFragment extends Fragment
 
         binding.servicesListDoctor.setAdapter(adapter);
         binding.servicesListDoctor.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        binding.addServiceBtn.setOnClickListener( v ->{
+            Navigation.findNavController(getActivity(), R.id.container)
+                    .navigate(R.id.action_doctorServicesFragment_to_doctorAddServiceFragment);
+        });
 
         viewModel.loadDoctorServices(UserHolder.doctor().getId());
     }
