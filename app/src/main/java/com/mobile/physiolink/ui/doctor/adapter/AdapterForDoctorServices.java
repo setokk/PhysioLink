@@ -2,6 +2,7 @@ package com.mobile.physiolink.ui.doctor.adapter;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorServicesBinding;
 import com.mobile.physiolink.model.service.Service;
+import com.mobile.physiolink.model.user.Patient;
+import com.mobile.physiolink.ui.doctor.OnItemClickListener;
+import com.mobile.physiolink.ui.doctor.OnLongItemClickListener;
 
 import java.util.Arrays;
 
@@ -17,6 +21,7 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
     private Service[] services;
 
     private boolean[] isExpanded;
+    private OnLongItemClickListener<Service> listener;
 
     public AdapterForDoctorServices()
     {
@@ -24,6 +29,9 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
         isExpanded = new boolean[services.length];
     }
 
+    public void setOnLongItemClickListener(OnLongItemClickListener<Service> listener){
+        this.listener=listener;
+    }
     public void setServices(Service[] services)
     {
         this.services = services;
@@ -67,13 +75,13 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
         notifyItemChanged(position);
     }
 
+
     @Override
     public int getItemCount() {
         return services.length;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder
-    {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         ItemDoctorServicesBinding itemDoctorServicesBinding;
 
         public MyViewHolder(ItemDoctorServicesBinding itemDoctorServicesBinding) {
@@ -84,6 +92,17 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
             itemDoctorServicesBinding.getRoot().setOnClickListener(view ->
                     toggleExpansion(getBindingAdapterPosition()));
 
+            itemDoctorServicesBinding.getRoot().setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int position = getAbsoluteAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null)
+                    {
+                        listener.onLongItemClick(services[position]);
+                    }
+                    return true;
+                }
+            });
         }
     }
 }
