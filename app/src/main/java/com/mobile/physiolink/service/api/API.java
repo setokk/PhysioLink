@@ -37,6 +37,7 @@ public final class API
     public static final String GET_DOCTOR = API.URL + "/doctor/get/";
     public static final String GET_DOCTORS = API.URL + "/doctors/get";
 
+
     /* Patient related API endpoints */
     public static final String CREATE_PATIENT = API.URL + "/patient/create";
     public static final String EDIT_PATIENT = API.URL + "/patient/edit/";
@@ -58,5 +59,7 @@ public final class API
     public static final String REQUEST_APPOINTMENT = API.URL + "/appointment/request";
     public static final String ACCEPT_APPOINTMENT = API.URL + "/appointment/accept";
     public static final String ACCEPT_PAYMENT = API.URL + "/appointment/payment/accept";
-    public static final String DECLINE_PAYMENT = API.URL + "/appointment/decline";;
+    public static final String DECLINE_PAYMENT = API.URL + "/appointment/decline";
+    public static final String GET_EXCLUDED_DOCTOR_SERVICES = API.URL + "/services/not/of/";
+    public static final String DELETE_DOCTOR_SERVICE = API.URL + "/service/delete";
 }
