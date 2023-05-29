@@ -13,6 +13,8 @@ import java.util.Optional;
 public class AvailableHoursManager
 {
     private HashMap<String, String[]> dateToHoursMap;
+    public static final int MAX_SATURDAY = 4;
+    public static final int MAX_WEEK_DAYS = 8;
 
     private static final String[] availableHours = new String[] {"9:00-10:00",
         "10:00-11:00", "11:00-12:00", "12:00-13:00", "13:00-14:00", "14:00-15:00",
