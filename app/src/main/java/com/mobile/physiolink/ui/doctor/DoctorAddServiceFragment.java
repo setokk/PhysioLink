@@ -2,10 +2,13 @@ package com.mobile.physiolink.ui.doctor;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorAddServiceBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
@@ -36,6 +40,17 @@ public class DoctorAddServiceFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        /* On back button pressed, Go back to services fragment */
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.container);
+                navController.navigate(R.id.action_doctorAddServiceFragment_to_doctorServicesFragment);
+            }
+        });
     }
 
 
