@@ -15,18 +15,35 @@
         <action
             android:id="@+id/action_doctorHomeFragment_to_doctorAppointmentsFragment"
             app:destination="@id/doctorAppointmentsFragment" />
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_doctorServicesFragment"
+            app:destination="@id/doctorServicesFragment" />
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_doctorPatientsFragment"
+            app:destination="@id/doctorPatientsFragment" />
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_doctorAppointmentRequestsFragment"
+            app:destination="@id/doctorAppointmentRequestsFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorProfileFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorProfileFragment"
         android:label="Προφίλ"
-        tools:layout="@layout/fragment_doctor_profile"/>
+        tools:layout="@layout/fragment_doctor_profile">
+        <action
+            android:id="@+id/action_doctorProfileFragment_to_doctorHomeFragment"
+            app:destination="@id/doctorHomeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/doctorAppointmentsFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorAppointmentsFragment"
         android:label="fragment_doctor_appointments"
-        tools:layout="@layout/fragment_doctor_appointments" />
+        tools:layout="@layout/fragment_doctor_appointments" >
+        <action
+            android:id="@+id/action_doctorAppointmentsFragment_to_doctorHomeFragment"
+            app:destination="@id/doctorHomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/doctorPatientsFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorPatientsFragment"
@@ -38,6 +55,9 @@
         <action
             android:id="@+id/action_doctorPatientsFragment_to_doctorPatientHistoryFragment"
             app:destination="@id/doctorPatientHistoryFragment" />
+        <action
+            android:id="@+id/action_doctorPatientsFragment_to_doctorHomeFragment"
+            app:destination="@id/doctorHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorServicesFragment"
@@ -47,6 +67,9 @@
         <action
             android:id="@+id/action_doctorServicesFragment_to_doctorAddServiceFragment"
             app:destination="@id/doctorAddServiceFragment" />
+        <action
+            android:id="@+id/action_doctorServicesFragment_to_doctorHomeFragment"
+            app:destination="@id/doctorHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorNewPatientFragment"
@@ -72,7 +95,11 @@
     <fragment
         android:id="@+id/doctorAppointmentRequestsFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorAppointmentRequestsFragment"
-        android:label="DoctorAppointmentRequestsFragment" />
+        android:label="DoctorAppointmentRequestsFragment" >
+        <action
+            android:id="@+id/action_doctorAppointmentRequestsFragment_to_doctorHomeFragment"
+            app:destination="@id/doctorHomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/doctorAddServiceFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorAddServiceFragment"
@@ -80,6 +107,9 @@
         tools:layout="@layout/fragment_doctor_add_service" >
         <action
             android:id="@+id/action_doctorAddServiceFragment_to_doctorServicesFragment"
+            app:destination="@id/doctorServicesFragment" />
+        <action
+            android:id="@+id/action_doctorAddServiceFragment_to_doctorServicesFragment2"
             app:destination="@id/doctorServicesFragment" />
     </fragment>
 </navigation>
