@@ -113,6 +113,7 @@ public class NotificationService extends Service {
                                 .setSmallIcon(R.drawable.notification_icon)
                                 .setContentTitle(element.getString("title"))
                                 .setContentText(element.getString("message"))
+                                .setVibrate(new long[]{0, 1000})
                                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                                 .setPriority(NotificationCompat.PRIORITY_HIGH);
                         builder.setContentIntent(pendingIntent);
