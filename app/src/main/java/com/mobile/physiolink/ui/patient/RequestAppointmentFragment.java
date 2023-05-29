@@ -175,6 +175,8 @@ public class RequestAppointmentFragment extends Fragment
                         Toast.makeText(getActivity(), "Το αίτημα για ραντεβού ολοκληρώθηκε επιτυχώς!",
                                 Toast.LENGTH_SHORT).show();
 
+                        binding.calendarView.clearSelection();
+
                         // Reload everything
                         appointmentViewmodel.loadAvailableHours(selectedDate.getMonthValue(),
                                 selectedDate.getYear(),
