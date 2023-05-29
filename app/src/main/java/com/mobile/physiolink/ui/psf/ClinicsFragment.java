@@ -39,12 +39,15 @@ public class ClinicsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        viewModel = new ViewModelProvider(this).get(ClinicsViewModel.class);
-        viewModel.getDoctors().observe(getViewLifecycleOwner(), doctors -> {
-            adapter.setDoctors(doctors);
-        });
         // Inflate the layout for this fragment
         binding = FragmentClinicsBinding.inflate(inflater, container, false);
+
+        viewModel = new ViewModelProvider(this).get(ClinicsViewModel.class);
+        viewModel.getDoctors().observe(getViewLifecycleOwner(), doctors ->
+        {
+            adapter.setDoctors(doctors);
+        });
+
         return binding.getRoot();
     }
 
@@ -52,10 +55,10 @@ public class ClinicsFragment extends Fragment
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        adapter = new AdapterForClinics();
 
-        binding.customListView.addItemDecoration(new DecorationSpacingItem(20));
+        adapter = new AdapterForClinics();
         binding.customListView.setAdapter(adapter);
+        binding.customListView.addItemDecoration(new DecorationSpacingItem(20));
         binding.customListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         binding.newClinicButton.setOnClickListener(v ->

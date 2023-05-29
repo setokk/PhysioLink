@@ -18,6 +18,12 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
         doctors = new Doctor[0];
     }
 
+    public void setDoctors(Doctor[] doctors)
+    {
+        this.doctors = doctors;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -29,7 +35,11 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        holder.itemDocBinding.doctorName.setText(doctors[position].getName());
+        holder.itemDocBinding.doctorName.setText(new StringBuilder()
+                .append(doctors[position].getName())
+                .append(" ")
+                .append(doctors[position].getSurname())
+                .toString());
         holder.itemDocBinding.doctorClinic.setText(doctors[position].getPhysioName());
         holder.itemDocBinding.doctorAddress.setText(doctors[position].getAddress());
     }
@@ -48,10 +58,5 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
             super(itemDocBinding.getRoot());
             this.itemDocBinding = itemDocBinding;
         }
-    }
-
-    public void setDoctors(Doctor[] doctors) {
-        this.doctors = doctors;
-        notifyDataSetChanged();
     }
 }

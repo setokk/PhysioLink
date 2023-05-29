@@ -53,6 +53,7 @@ public class ClinicsViewModel extends ViewModel {
                                                    element.getString("postal_code"),
                                                    element.getString("physio_name"));
                     }
+                    doctors.postValue(newDoctors);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
