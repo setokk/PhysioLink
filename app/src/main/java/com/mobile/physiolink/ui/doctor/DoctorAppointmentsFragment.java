@@ -5,23 +5,31 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorAppointmentsBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.viewmodel.DoctorAppointmentsViewModel;
+import com.mobile.physiolink.util.date.DateFormatter;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 public class DoctorAppointmentsFragment extends Fragment
 {
     private FragmentDoctorAppointmentsBinding binding;
-    RecyclerView appointmentList;
-    String[] sN, sS, sT, sService;
+    private DoctorAppointmentsViewModel viewModel;
+    private AdapterForAppointments adapter;
+
+    private LocalDate currDate;
 
     public DoctorAppointmentsFragment() {
         // Required empty public constructor
@@ -38,6 +46,14 @@ public class DoctorAppointmentsFragment extends Fragment
     {
         // Inflate the layout for this fragment
         binding = FragmentDoctorAppointmentsBinding.inflate(inflater, container, false);
+
+        adapter = new AdapterForAppointments();
+        viewModel = new ViewModelProvider(this).get(DoctorAppointmentsViewModel.class);
+        viewModel.getDoctorAppointments().observe(getViewLifecycleOwner(), appointments ->
+        {
+            adapter.setAppointments(appointments);
+        });
+
         return binding.getRoot();
     }
 
@@ -46,17 +62,103 @@ public class DoctorAppointmentsFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        appointmentList = view.findViewById(R.id.appointmentsListAllDoctor);
-        sN = getResources().getStringArray(R.array.patientListExampleName);
-        sS = getResources().getStringArray(R.array.patientListExampleSurnmaeame);
-        sT = getResources().getStringArray(R.array.appointmentTime);
-        sService = getResources().getStringArray(R.array.appointmentsService);
-
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
-        appointmentList.addItemDecoration(itemDecoration);
+        binding.appointmentsListAllDoctor.addItemDecoration(itemDecoration);
 
-        AdapterForAppointments adapter = new AdapterForAppointments(this.getContext(),sN,sS,sT,sService,R.id.appointmentsListAllDoctor);
-        appointmentList.setAdapter(adapter);
-        appointmentList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        binding.appointmentsListAllDoctor.setAdapter(adapter);
+        binding.appointmentsListAllDoctor.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        setupWeekSwitchButtons();
+        setupDaySwitchButtons();
+
+        currDate = LocalDate.now();
+        String date = DateFormatter.formatToDate(currDate.getYear(),
+                currDate.getMonthValue(),
+                currDate.getDayOfMonth());
+
+        updateSelectedDateText();
+        viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), date);
+    }
+
+    private void setupWeekSwitchButtons()
+    {
+        binding.leftArrowDoctorAppointment.setOnClickListener(v ->
+        {
+            currDate = currDate.minusWeeks(1);
+            updateSelectedDateText();
+            viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), getFormattedDate());
+        });
+        binding.rightArrowDoctorAppointment.setOnClickListener(v ->
+        {
+            currDate = currDate.plusWeeks(1);
+            updateSelectedDateText();
+            viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), getFormattedDate());
+        });
+    }
+
+    private void setupDaySwitchButtons()
+    {
+        binding.mondayButton.setOnClickListener(v ->
+        {
+            currDate = currDate.with(DayOfWeek.MONDAY);
+            updateSelectedDateText();
+            viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), getFormattedDate());
+        });
+
+        binding.mondayButton.setOnClickListener(v ->
+        {
+            currDate = currDate.with(DayOfWeek.MONDAY);
+            updateSelectedDateText();
+            viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), getFormattedDate());
+        });
+
+        binding.tuesdayButton.setOnClickListener(v ->
+        {
+            currDate = currDate.with(DayOfWeek.TUESDAY);
+            updateSelectedDateText();
+            viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), getFormattedDate());
+        });
+
+        binding.wednsdayButton.setOnClickListener(v ->
+        {
+            currDate = currDate.with(DayOfWeek.WEDNESDAY);
+            updateSelectedDateText();
+            viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), getFormattedDate());
+        });
+
+        binding.thursdayButton.setOnClickListener(v ->
+        {
+            currDate = currDate.with(DayOfWeek.THURSDAY);
+            updateSelectedDateText();
+            viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), getFormattedDate());
+        });
+
+        binding.fridayButton.setOnClickListener(v ->
+        {
+            currDate = currDate.with(DayOfWeek.FRIDAY);
+            updateSelectedDateText();
+            viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), getFormattedDate());
+        });
+
+        binding.saturdayButton.setOnClickListener(v ->
+        {
+            currDate = currDate.with(DayOfWeek.SATURDAY);
+            updateSelectedDateText();
+            viewModel.loadDoctorAppointments(UserHolder.doctor().getId(), getFormattedDate());
+        });
+    }
+
+    private String getFormattedDate()
+    {
+        return DateFormatter.formatToDate(currDate.getYear(),
+                currDate.getMonthValue(),
+                currDate.getDayOfMonth());
+    }
+
+    private void updateSelectedDateText()
+    {
+        binding.celectedDateDoctorAppointments.setText(
+                DateFormatter.formatToAlphanumeric(currDate.getYear(),
+                        currDate.getMonthValue(), currDate.getDayOfMonth()));
     }
 }

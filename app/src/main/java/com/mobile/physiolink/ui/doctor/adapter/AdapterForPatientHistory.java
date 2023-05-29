@@ -1,52 +1,65 @@
 package com.mobile.physiolink.ui.doctor.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobile.physiolink.R;
+import com.mobile.physiolink.databinding.ItemDoctorPatientHistoryServicesBinding;
+import com.mobile.physiolink.model.appointment.Appointment;
+import com.mobile.physiolink.util.date.TimeFormatter;
 
-public class AdapterForPatientHistory extends RecyclerView.Adapter<AdapterForPatientHistory.MyViewHolder> {
+public class AdapterForPatientHistory extends RecyclerView.Adapter<AdapterForPatientHistory.MyViewHolder>
+{
+    private Appointment[] appointments;
 
-    String data1[],data2[],data3[];
+    public AdapterForPatientHistory()
+    {
+        appointments = new Appointment[0];
+    }
 
-    public AdapterForPatientHistory(Context ct, String s1[], String s2[], String s3[]){
-        Context context = ct;
-        data1=s1;
-        data2=s2;
-        data3=s3;
+    public void setAppointments(Appointment[] appointments)
+    {
+        this.appointments = appointments;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public AdapterForPatientHistory.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.item_doctor_patient_history_services,parent,false);
-        return new AdapterForPatientHistory.MyViewHolder(itemView);
+    public AdapterForPatientHistory.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
+        ItemDoctorPatientHistoryServicesBinding binding = ItemDoctorPatientHistoryServicesBinding
+                .inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new AdapterForPatientHistory.MyViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterForPatientHistory.MyViewHolder holder, int position) {
-        holder.onoma.setText(data1[position]);
-        holder.date.setText(data2[position]);
-        holder.timh.setText(data3[position]);
+    public void onBindViewHolder(@NonNull AdapterForPatientHistory.MyViewHolder holder, int position)
+    {
+        holder.binding.servicePatientHistoryNameDoctor
+                .setText(appointments[position].getServiceTitle());
+        holder.binding.servicePatientHistoryDateDoctor
+                .setText(new StringBuilder()
+                        .append(appointments[position].getDate().replace('-', '/'))
+                        .append(", ")
+                        .append(TimeFormatter.formatToPM_AM(appointments[position].getHour()))
+                        .toString());
+        holder.binding.servicePatientHistoryPriceDoctor
+                .setText(String.valueOf(appointments[position].getServicePrice()));
     }
 
     @Override
-    public int getItemCount() { return data1.length; }
+    public int getItemCount() { return appointments.length; }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView onoma, date, timh;
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            onoma= itemView.findViewById(R.id.servicePatientHistoryNameDoctor);
-            date= itemView.findViewById(R.id.servicePatientHistoryDateDoctor);
-            timh= itemView.findViewById(R.id.servicePatientHistoryPriceDoctor);
+    public class MyViewHolder extends RecyclerView.ViewHolder
+    {
+        ItemDoctorPatientHistoryServicesBinding binding;
+
+        public MyViewHolder(ItemDoctorPatientHistoryServicesBinding binding)
+        {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

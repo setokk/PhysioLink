@@ -10,21 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorServicesBinding;
 import com.mobile.physiolink.model.service.Service;
-import com.mobile.physiolink.model.user.Patient;
-import com.mobile.physiolink.ui.doctor.OnItemClickListener;
 import com.mobile.physiolink.ui.doctor.OnLongItemClickListener;
 
 import java.util.Arrays;
 
-public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoctorServices.MyViewHolder>
-{
+public class AdapterForNewDoctorServices extends RecyclerView.Adapter<AdapterForNewDoctorServices.MyViewHolder> {
+
     private Service[] services;
 
     private boolean[] isExpanded;
     private OnLongItemClickListener<Service> listener;
 
-    public AdapterForDoctorServices()
-    {
+
+    public AdapterForNewDoctorServices(){
         services = new Service[0];
         isExpanded = new boolean[services.length];
     }
@@ -42,15 +40,15 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
 
     @NonNull
     @Override
-    public AdapterForDoctorServices.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterForNewDoctorServices.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemDoctorServicesBinding itemDoctorServicesBinding = ItemDoctorServicesBinding
                 .inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new AdapterForDoctorServices.MyViewHolder(itemDoctorServicesBinding);
+        return new AdapterForNewDoctorServices.MyViewHolder(itemDoctorServicesBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterForDoctorServices.MyViewHolder holder, int position)
-    {
+    public void onBindViewHolder(@NonNull AdapterForNewDoctorServices.MyViewHolder holder, int position) {
+
         holder.itemDoctorServicesBinding.serviceNameDoctor
                 .setText(services[position].getTitle());
         holder.itemDoctorServicesBinding.serviceDescriptionDoctor
@@ -70,21 +68,19 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
         }
     }
 
+    @Override
+    public int getItemCount() { return services.length; }
+
     private void toggleExpansion(int position) {
         isExpanded[position] = !isExpanded[position];
         notifyItemChanged(position);
     }
 
+    public class MyViewHolder extends RecyclerView.ViewHolder{
 
-    @Override
-    public int getItemCount() {
-        return services.length;
-    }
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
         ItemDoctorServicesBinding itemDoctorServicesBinding;
 
-        public MyViewHolder(ItemDoctorServicesBinding itemDoctorServicesBinding) {
+        public MyViewHolder(ItemDoctorServicesBinding itemDoctorServicesBinding){
             super(itemDoctorServicesBinding.getRoot());
             this.itemDoctorServicesBinding = itemDoctorServicesBinding;
 
@@ -104,5 +100,7 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
                 }
             });
         }
+
+
     }
 }

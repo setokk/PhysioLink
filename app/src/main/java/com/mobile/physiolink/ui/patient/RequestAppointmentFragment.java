@@ -2,20 +2,21 @@ package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.physiolink.R;
@@ -27,16 +28,15 @@ import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.api.error.Error;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForAppointmentHour;
 import com.mobile.physiolink.ui.patient.viewmodel.RequestAppointmentViewModel;
-import com.mobile.physiolink.util.DateFormatter;
+import com.mobile.physiolink.util.date.DateFormatter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -54,8 +54,7 @@ public class RequestAppointmentFragment extends Fragment
     private ArrayWeekDayFormatter weekDayFormatter;
     private MonthArrayTitleFormatter monthFormatter;
 
-    private Calendar currentDate;
-    private Calendar selectedDate;
+    private LocalDate selectedDate;
 
     private boolean reopened = false;
 
@@ -68,24 +67,16 @@ public class RequestAppointmentFragment extends Fragment
     {
         binding = FragmentRequestAppointmentBinding.inflate(inflater, container, false);
 
-        currentDate = Calendar.getInstance();
-        currentDate.setTimeInMillis(currentDate.getTimeInMillis());
-
-        int year = currentDate.get(Calendar.YEAR);
-        int month = currentDate.get(Calendar.MONTH) + 1;
-        int day = currentDate.get(Calendar.DAY_OF_MONTH);
-
-        selectedDate = Calendar.getInstance();
-        selectedDate.set(Calendar.YEAR, year);
-        selectedDate.set(Calendar.MONTH, month - 1);
-        selectedDate.set(Calendar.DAY_OF_MONTH, day);
+        selectedDate = LocalDate.now();
 
         appointmentViewmodel = new ViewModelProvider(this).get(RequestAppointmentViewModel.class);
         appointmentViewmodel.getAvailableHours().observe(getViewLifecycleOwner(), hours ->
         {
             if (!reopened)
             {
-                adapter.setHours(hours.getAvailableHoursOfDate(year, month, day));
+                adapter.setHours(hours.getAvailableHoursOfDate(
+                        selectedDate.getYear(), selectedDate.getMonthValue(),
+                        selectedDate.getDayOfMonth()));
                 reopened = true;
             }
         });
@@ -101,6 +92,7 @@ public class RequestAppointmentFragment extends Fragment
             getResources().getTextArray(R.array.greek_months));
         weekDayFormatter = new ArrayWeekDayFormatter(
             getResources().getTextArray(R.array.greek_days));
+
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
@@ -136,8 +128,8 @@ public class RequestAppointmentFragment extends Fragment
         initializeCalendar();
 
         // Load hours of current month
-        appointmentViewmodel.loadAvailableHours(currentDate.get(Calendar.MONTH) + 1,
-                currentDate.get(Calendar.YEAR),
+        appointmentViewmodel.loadAvailableHours(selectedDate.getMonthValue(),
+                selectedDate.getYear(),
                 UserHolder.patient().getDoctorId());
 
         // Send appointment request
@@ -168,7 +160,10 @@ public class RequestAppointmentFragment extends Fragment
                     {
                         String res = "";
                         try { res = response.body().string(); }
-                        catch (IOException e) { }
+                        catch (IOException e) {
+                            Toast.makeText(getActivity(), "Προέκυψε σφάλμα. Δοκιμάστε ξανά αργότερα",
+                                    Toast.LENGTH_LONG).show();
+                        }
 
                         if (res.contains(Error.RESOURCE_EXISTS))
                         {
@@ -179,20 +174,23 @@ public class RequestAppointmentFragment extends Fragment
 
                         Toast.makeText(getActivity(), "Το αίτημα για ραντεβού ολοκληρώθηκε επιτυχώς!",
                                 Toast.LENGTH_SHORT).show();
-                    });
 
-                    // Reload everything
-                    appointmentViewmodel.loadAvailableHours(selectedDate.get(Calendar.YEAR),
-                            selectedDate.get(Calendar.MONTH) + 1,
-                            UserHolder.patient().getDoctorId());
+                        binding.calendarView.clearSelection();
+
+                        // Reload everything
+                        appointmentViewmodel.loadAvailableHours(selectedDate.getMonthValue(),
+                                selectedDate.getYear(),
+                                UserHolder.patient().getDoctorId());
+                    });
                 }
             };
 
             HashMap<String, String> keyValues = new HashMap<>();
             keyValues.put("patient_id", UserHolder.patient().getId() + "");
             keyValues.put("doctor_id", UserHolder.patient().getDoctorId() + "");
-            keyValues.put("date", DateFormatter.fixDatePrefixes(selectedDate.get(Calendar.YEAR),
-                    selectedDate.get(Calendar.MONTH) + 1, selectedDate.get(Calendar.DAY_OF_MONTH)));
+            keyValues.put("date", DateFormatter.fixDatePrefixes(selectedDate.getYear(),
+                    selectedDate.getMonthValue(),
+                    selectedDate.getDayOfMonth()));
             keyValues.put("hour", (String) binding.hourBtn.getText().subSequence(0,2));
             keyValues.put("patient_name", UserHolder.patient().getName());
             keyValues.put("patient_surname", UserHolder.patient().getSurname());
@@ -211,9 +209,9 @@ public class RequestAppointmentFragment extends Fragment
 
     public void initializeCalendar()
     {
-        binding.dateText.setText(DateFormatter.formatToAlphanumeric(currentDate.get(Calendar.YEAR),
-                currentDate.get(Calendar.MONTH) + 1,
-                currentDate.get(Calendar.DAY_OF_MONTH)));
+        binding.dateText.setText(DateFormatter.formatToAlphanumeric(selectedDate.getYear(),
+                selectedDate.getMonthValue(),
+                selectedDate.getDayOfMonth()));
 
         binding.calendarView.setTitleFormatter(monthFormatter);
         binding.calendarView.setWeekDayFormatter(weekDayFormatter);
@@ -226,10 +224,7 @@ public class RequestAppointmentFragment extends Fragment
             int year = date.getYear();
             int month = date.getMonth();
             int day = date.getDay();
-
-            selectedDate.set(Calendar.YEAR, year);
-            selectedDate.set(Calendar.MONTH, month - 1);
-            selectedDate.set(Calendar.DAY_OF_MONTH, day);
+            selectedDate = LocalDate.of(year, month, day);
 
             adapter.setHours(appointmentViewmodel.getAvailableHoursOfDate(year, month, day));
             binding.dateText.setText(DateFormatter.formatToAlphanumeric(year, month, day));
@@ -237,15 +232,15 @@ public class RequestAppointmentFragment extends Fragment
 
         // Set minimum date to the current date
         binding.calendarView.state().edit()
-                .setMinimumDate(CalendarDay.from(currentDate.get(Calendar.YEAR),
-                        currentDate.get(Calendar.MONTH) + 1,
-                        currentDate.get(Calendar.DAY_OF_MONTH)))
+                .setMinimumDate(CalendarDay.from(selectedDate.getYear(),
+                        selectedDate.getMonthValue(),
+                        selectedDate.getDayOfMonth()))
                 .commit();
 
         // Select the date
-        binding.calendarView.setSelectedDate(CalendarDay.from(currentDate.get(Calendar.YEAR),
-                currentDate.get(Calendar.MONTH) + 1,
-                currentDate.get(Calendar.DAY_OF_MONTH)));
+        binding.calendarView.setSelectedDate(CalendarDay.from(selectedDate.getYear(),
+                selectedDate.getMonthValue(),
+                selectedDate.getDayOfMonth()));
 
         binding.calendarView.setAllowClickDaysOutsideCurrentMonth(false);
 

@@ -1,6 +1,7 @@
 package com.mobile.physiolink.ui.doctor.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.service.api.error.Error;
@@ -16,7 +17,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DoctorPatientsViewModel
+public class DoctorPatientsViewModel extends ViewModel
 {
     private MutableLiveData<Patient[]> doctorPatients;
 
@@ -50,9 +51,20 @@ public class DoctorPatientsViewModel
                     Patient[] patients = new Patient[jsonPatients.length()];
                     for (int i = 0; i < jsonPatients.length(); ++i)
                     {
-
+                        JSONObject element = jsonPatients.getJSONObject(i);
+                        patients[i] = new Patient(element.getLong("id"),
+                                element.getString("username"),
+                                "patient", element.getString("name"),
+                                element.getString("surname"),
+                                element.getString("email"),
+                                element.getString("phone_number"),
+                                element.getString("amka"),
+                                element.getString("city"),
+                                element.getString("address"),
+                                element.getString("postal_code"),
+                                doctorId);
                     }
-
+                    doctorPatients.postValue(patients);
                 } catch (JSONException e)
                 {
                     throw new RuntimeException(e);

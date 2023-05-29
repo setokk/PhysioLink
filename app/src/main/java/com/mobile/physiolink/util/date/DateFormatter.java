@@ -1,4 +1,4 @@
-package com.mobile.physiolink.util;
+package com.mobile.physiolink.util.date;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -14,6 +14,11 @@ public final class DateFormatter
     public static String formatToAlphanumeric(int year, int month, int day)
     {
         return alphanumeric.format(LocalDate.of(year, month, day));
+    }
+
+    public static String formatToDate(int year, int month, int day)
+    {
+        return year + "-" + month + "-" + day;
     }
 
     public static String fixDatePrefixes(int year, int month, int day)

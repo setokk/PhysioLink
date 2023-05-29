@@ -51,5 +51,6 @@ public class PatientHistoryFragment extends Fragment
         binding.historyRecyclerview.addItemDecoration(new DecorationSpacingItem(20));
         binding.historyRecyclerview.setAdapter(new AdapterForHistoryPatient());
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
     }
 }

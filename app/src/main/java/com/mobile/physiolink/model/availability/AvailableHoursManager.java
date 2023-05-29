@@ -1,8 +1,6 @@
 package com.mobile.physiolink.model.availability;
 
-import android.util.Log;
-
-import com.mobile.physiolink.util.DateFormatter;
+import com.mobile.physiolink.util.date.DateFormatter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

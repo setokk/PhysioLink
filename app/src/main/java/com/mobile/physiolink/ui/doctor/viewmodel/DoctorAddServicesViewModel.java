@@ -4,8 +4,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.mobile.physiolink.model.service.Service;
+import com.mobile.physiolink.service.api.API;
+import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.service.api.error.Error;
-import com.mobile.physiolink.service.dao.ServiceDAO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,14 +18,12 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DoctorServicesViewModel extends ViewModel
-{
-    private MutableLiveData<Service[]> doctorServices;
+public class DoctorAddServicesViewModel extends ViewModel {
 
-    public void loadDoctorServices(long doctorId)
-    {
-        ServiceDAO.getInstance().getDoctorServices(doctorId, new Callback()
-        {
+    private MutableLiveData<Service[]> newDoctorServices;
+
+    public void loadNewDoctorServices(long doctorId){
+        RequestFacade.getRequest(API.GET_EXCLUDED_DOCTOR_SERVICES + doctorId , new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 call.cancel();
@@ -49,7 +48,7 @@ public class DoctorServicesViewModel extends ViewModel
                                 element.getString("description"),
                                 element.getDouble("price"));
                     }
-                    doctorServices.postValue(services);
+                    newDoctorServices.postValue(services);
                 } catch (JSONException e)
                 {
                     throw new RuntimeException(e);
@@ -59,11 +58,11 @@ public class DoctorServicesViewModel extends ViewModel
         });
     }
 
-    public MutableLiveData<Service[]> getDoctorServices()
+    public MutableLiveData<Service[]> getNewDoctorServices()
     {
-        if (doctorServices == null)
-            doctorServices = new MutableLiveData<>();
+        if (newDoctorServices == null)
+            newDoctorServices = new MutableLiveData<>();
 
-        return doctorServices;
+        return newDoctorServices;
     }
 }

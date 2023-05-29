@@ -1,32 +1,31 @@
 package com.mobile.physiolink.ui.doctor;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorHomeBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
-import com.mobile.physiolink.service.dao.DoctorDAO;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
+import com.mobile.physiolink.ui.doctor.viewmodel.DoctorHomeViewModel;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 
 public class DoctorHomeFragment extends Fragment
 {
-    RecyclerView appointmentList;
-    String[] sN, sS, sT, sService;
-
     private FragmentDoctorHomeBinding binding;
+    private DoctorHomeViewModel viewModel;
+    private AdapterForAppointments adapter;
 
     public DoctorHomeFragment()
     {
@@ -45,6 +44,20 @@ public class DoctorHomeFragment extends Fragment
     {
         // Inflate the layout for this fragment
         binding = FragmentDoctorHomeBinding.inflate(inflater, container, false);
+
+        adapter = new AdapterForAppointments();
+        viewModel = new ViewModelProvider(this).get(DoctorHomeViewModel.class);
+        viewModel.getLatestAppointments().observe(getViewLifecycleOwner(), appointments ->
+        {
+            if (appointments.length == 0)
+            {
+                // TODO: Dynamic showing of not having appointments
+                return;
+            }
+
+            adapter.setAppointments(appointments);
+        });
+
         return binding.getRoot();
     }
 
@@ -54,19 +67,26 @@ public class DoctorHomeFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        appointmentList = view.findViewById(R.id.recyclerViewApp);
-        sN = getResources().getStringArray(R.array.patientListExampleName);
-        sS = getResources().getStringArray(R.array.patientListExampleSurnmaeame);
-        sT = getResources().getStringArray(R.array.appointmentTime);
-        sService = getResources().getStringArray(R.array.appointmentsService);
+        binding.profileImg.setImageResource(ProfileImageProvider
+                .getProfileImage(UserHolder.doctor().getName()));
 
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
-        appointmentList.addItemDecoration(itemDecoration);
+        binding.recyclerViewApp.addItemDecoration(itemDecoration);
 
-        AdapterForAppointments adapter = new AdapterForAppointments(this.getContext(),sN,sS,sT,sService,R.id.recyclerViewApp);
-        appointmentList.setAdapter(adapter);
-        appointmentList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        binding.recyclerViewApp.setAdapter(adapter);
+        binding.recyclerViewApp.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        binding.appointRequestBtn.setOnClickListener(v -> Navigation.findNavController(getActivity(), com.google.android.material.R.id.container).navigate(R.id.doctorAppointmentRequestsFragment));
+        viewModel.loadTodaysLatestAppointments(UserHolder.doctor().getId());
+
+        binding.appointRequestBtn.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.container)
+                        .navigate(R.id.doctorAppointmentRequestsFragment));
+        binding.profileImg.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.container)
+                        .navigate(R.id.action_doctorHomeFragment_to_doctorProfileFragment));
+        binding.all.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.container)
+                        .navigate(R.id.action_doctorHomeFragment_to_doctorAppointmentsFragment));
+
     }
 }

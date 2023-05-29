@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/michalis" />
+        app:srcCompat="@drawable/michalis"/>
 
     <ImageButton
         android:id="@+id/psf_imageButton_2"
