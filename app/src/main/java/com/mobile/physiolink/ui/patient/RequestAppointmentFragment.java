@@ -59,8 +59,6 @@ public class RequestAppointmentFragment extends Fragment
 
     private FragmentRequestAppointmentBinding binding;
 
-    private ItemListTimeBinding itemListTimeBinding;
-
     private ArrayWeekDayFormatter weekDayFormatter;
     private MonthArrayTitleFormatter monthFormatter;
 
