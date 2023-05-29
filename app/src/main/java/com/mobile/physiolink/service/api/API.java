@@ -62,4 +62,6 @@ public final class API
     public static final String DECLINE_PAYMENT = API.URL + "/appointment/decline";
     public static final String GET_EXCLUDED_DOCTOR_SERVICES = API.URL + "/services/not/of/";
     public static final String DELETE_DOCTOR_SERVICE = API.URL + "/service/delete";
+
+    public static final String GET_NOTIFICATIONS = API.URL + "/notifications/of/";
 }
