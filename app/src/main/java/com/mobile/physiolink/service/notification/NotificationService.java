@@ -100,6 +100,7 @@ public class NotificationService extends Service {
                         intent = new Intent(getApplicationContext(), DoctorActivity.class);
                     else
                         intent = new Intent(getApplicationContext(), PatientActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
                             0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -112,7 +113,8 @@ public class NotificationService extends Service {
                                 .setSmallIcon(R.drawable.notification_icon)
                                 .setContentTitle(element.getString("title"))
                                 .setContentText(element.getString("message"))
-                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                                .setPriority(NotificationCompat.PRIORITY_HIGH);
                         builder.setContentIntent(pendingIntent);
                         checkPermissionsAndNotify(builder);
                     }
