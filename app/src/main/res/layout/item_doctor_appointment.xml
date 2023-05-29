@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_style"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/patientImageDoctorAppointment"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appointmentInformationConstraint"
-        android:layout_width="241dp"
-        android:layout_height="144dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="90dp"
+        app:layout_constraintLeft_toRightOf="@+id/patientImageDoctorAppointment"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
-        app:layout_constraintStart_toEndOf="@+id/patientImageDoctorAppointment"
-        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/appointmentDateDoctorPatient"
+            android:id="@+id/appointmentTimeDoctorPatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:text="00/00/00"
-            android:textColor="@color/black"
-            android:textSize="18dp"
+            android:layout_marginTop="10dp"
+            android:text="16.00-17.00"
+            android:textColor="@color/button_purple"
+            android:textSize="20dp"
+
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
         <TextView
@@ -43,12 +48,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             android:text="Maria Kokona"
             android:textColor="@color/black"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appointmentDateDoctorPatient" />
+            app:layout_constraintTop_toBottomOf="@+id/appointmentTimeDoctorPatient"/>
 
         <TextView
             android:id="@+id/appointmentAmkaDoctorPatient"
@@ -56,51 +61,71 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="20000000000"
-            android:textColor="@color/black"
+            android:textColor="@color/button_grey"
             android:textSize="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentNameDoctorPatient" />
 
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/commentsDoctorPatientConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="130dp"
+        android:layout_marginStart="105dp"
+        app:layout_constraintLeft_toRightOf="@+id/patientImageDoctorAppointment"
+        app:layout_constraintTop_toBottomOf="@+id/appointmentInformationConstraint">
         <TextView
             android:id="@+id/appointmentTitleCommentsDoctorPatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+
             android:text="Σχόλια:"
             android:textColor="@color/black"
             android:textSize="18dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appointmentAmkaDoctorPatient" />
+             />
 
         <TextView
             android:id="@+id/appointmentCommentsDoctorPatient"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="5dp"
             android:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
+            android:textColor="@color/button_grey"
             android:maxLines="1"
             android:ellipsize="end"
-            android:layout_marginBottom="10dp"
-            android:textSize="18dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentTitleCommentsDoctorPatient"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <TextView
-        android:id="@+id/appointmentTimeDoctorPatient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="16.00"
-        android:textSize="18dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/tickAppointmentButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/baseline_ic_checkmark"
+        android:elevation="8dp"
+        app:layout_constraintStart_toEndOf="@+id/commentsDoctorPatientConstraint"
+        app:layout_constraintTop_toBottomOf="@+id/appointmentInformationConstraint"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/exAppointmentButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/baseline_ic_x"
+        app:layout_constraintStart_toEndOf="@+id/tickAppointmentButton"
+        app:layout_constraintTop_toBottomOf="@+id/appointmentInformationConstraint"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 
