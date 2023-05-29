@@ -67,6 +67,12 @@ public class DoctorHomeFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.textView2.setText(new StringBuilder()
+                .append(UserHolder.doctor().getName())
+                .append(" ")
+                .append(UserHolder.doctor().getSurname())
+                .toString());
+
         binding.profileImg.setImageResource(ProfileImageProvider
                 .getProfileImage(UserHolder.doctor().getName()));
 

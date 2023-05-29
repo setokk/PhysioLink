@@ -10,8 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorRequestBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.api.API;
+import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.ui.doctor.OnButtonClickListener;
 import com.mobile.physiolink.util.date.TimeFormatter;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.MyViewHolder>
         implements OnButtonClickListener
@@ -79,17 +89,53 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
         appointments = newAppointments;
     }
 
-    // TODO: handle what happens when each button is pressed
     @Override
     public void onButtonClicked(int position,int id)
     {
         if(id==ACCEPT)
         {
-            System.out.println("accept button pressed");
+            HashMap<String, String> keyValues = new HashMap<>(5);
+            keyValues.put("appointment_id", String.valueOf(appointments[position].getId()));
+            keyValues.put("date", appointments[position].getDate());
+            keyValues.put("doctor_name", UserHolder.doctor().getName());
+            keyValues.put("doctor_surname", UserHolder.doctor().getSurname());
+            keyValues.put("doctor_phone_number", UserHolder.doctor().getPhoneNumber());
+
+            RequestFacade.postRequest(API.ACCEPT_APPOINTMENT, keyValues, new Callback()
+            {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    call.cancel();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+
+                }
+            });
         }
         else
         {
-            System.out.println("reject button pressed");
+            HashMap<String, String> keyValues = new HashMap<>(6);
+            keyValues.put("appointment_id", String.valueOf(appointments[position].getId()));
+            keyValues.put("date", appointments[position].getDate());
+            keyValues.put("reason", "reason");
+            keyValues.put("doctor_name", UserHolder.doctor().getName());
+            keyValues.put("doctor_surname", UserHolder.doctor().getSurname());
+            keyValues.put("doctor_phone_number", UserHolder.doctor().getPhoneNumber());
+
+            RequestFacade.postRequest(API.DECLINE_PAYMENT, keyValues, new Callback()
+            {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    call.cancel();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+
+                }
+            });
         }
 
         remove(position);
@@ -126,8 +172,11 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
             {
                 Toast.makeText(binding.getRoot().getContext(),"Το ραντεβού αποδέχθηκε!"
                         ,Toast.LENGTH_SHORT).show();
+
+                System.out.println(listener != null);
+                System.out.println(getBindingAdapterPosition());
                 if (listener != null) {
-                    int position = getBindingAdapterPosition();
+                    int position = getAbsoluteAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
                         listener.onButtonClicked(position,ACCEPT);
                     }
