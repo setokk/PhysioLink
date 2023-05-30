@@ -12,10 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorRequestBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.api.API;
+import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.ui.doctor.OnButtonClickListener;
 import com.mobile.physiolink.ui.popup.AppointmentRejectPopUp;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 import com.mobile.physiolink.util.date.TimeFormatter;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.MyViewHolder>
         implements OnButtonClickListener
@@ -137,14 +147,28 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
                 confirmation.setPositiveOnClick((dialog, which) ->
                 {
                     // TODO: API CALL
+                    int position = getBindingAdapterPosition();
+                    HashMap<String, String> keyValues = new HashMap<>(5);
+                    keyValues.put("appointment_id", String.valueOf(appointments[position].getId()));
+                    keyValues.put("date", appointments[position].getDate().replace('-', '/'));
+                    keyValues.put("doctor_name", UserHolder.doctor().getName());
+                    keyValues.put("doctor_surname", UserHolder.doctor().getSurname());
+                    keyValues.put("doctor_phone_number", UserHolder.doctor().getPhoneNumber());
+                    RequestFacade.postRequest(API.ACCEPT_APPOINTMENT, keyValues, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            call.cancel();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {}
+                    });
+
+                    if (listener != null) {
+                        listener.onButtonClicked(position,ACCEPT);
+                    }
                     Toast.makeText(binding.getRoot().getContext(), "Το ραντεβού αποδέχθηκε!",
                             Toast.LENGTH_SHORT).show();
-                    if (listener != null) {
-                        int position = getBindingAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onButtonClicked(position,ACCEPT);
-                        }
-                    }
                 });
                 confirmation.setNegativeOnClick(((dialog,which)->
                 {
@@ -159,19 +183,31 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
                         "Απόρριψη","Πίσω");
                 rejection.setPositiveOnClick((dialog, which) ->
                 {
-                    // TODO: API CALL
-                    //reason for the rejection given by the doctor
-                    String reason  = rejection.getReason();
-                    System.out.println(reason);
+                    int position = getBindingAdapterPosition();
 
+                    HashMap<String, String> keyValues = new HashMap<>(6);
+                    keyValues.put("appointment_id", String.valueOf(appointments[position].getId()));
+                    keyValues.put("reason", rejection.getReason());
+                    keyValues.put("date", appointments[position].getDate().replace('-', '/'));
+                    keyValues.put("doctor_name", UserHolder.doctor().getName());
+                    keyValues.put("doctor_surname", UserHolder.doctor().getSurname());
+                    keyValues.put("doctor_phone_number", UserHolder.doctor().getPhoneNumber());
+
+                    RequestFacade.postRequest(API.DECLINE_PAYMENT, keyValues, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            call.cancel();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {}
+                    });
+
+                    if (listener != null) {
+                        listener.onButtonClicked(position,ACCEPT);
+                    }
                     Toast.makeText(binding.getRoot().getContext(),"Το ραντεβού απορρίφθηκε!"
                             ,Toast.LENGTH_SHORT).show();
-                    if (listener != null) {
-                        int position = getBindingAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onButtonClicked(position,ACCEPT);
-                        }
-                    }
                 });
                 rejection.setNegativeOnClick(((dialog,which)->
                 {
