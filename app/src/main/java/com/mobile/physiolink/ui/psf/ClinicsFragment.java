@@ -56,7 +56,7 @@ public class ClinicsFragment extends Fragment
 
         binding.newClinicButton.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
-                .navigate(R.id.action_fragment_clinics_to_doctorInformationFragment));
+                .navigate(R.id.action_phisiotherpeftiriaFragment_to_createPhisiotherapeftiriaFragment));
     }
 }
 

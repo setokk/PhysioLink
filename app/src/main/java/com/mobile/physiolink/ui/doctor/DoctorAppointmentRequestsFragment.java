@@ -48,7 +48,7 @@ public class DoctorAppointmentRequestsFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDoctorAppointmentRequestsBinding.inflate(inflater,container,false);
 
-        adapter = new AdapterForRequests();
+        adapter = new AdapterForRequests(this.requireActivity().getSupportFragmentManager());
         viewModel = new ViewModelProvider(this).get(DoctorRequestsViewModel.class);
         viewModel.getRequestAppointments().observe(getViewLifecycleOwner(), appointments ->
         {

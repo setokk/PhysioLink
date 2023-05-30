@@ -15,11 +15,11 @@
         tools:context=".ui.psf.CreateClinicFragment">
 
         <TextView
-            android:id="@+id/doctor_info_header"
+            android:id="@+id/doctor_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:text="Στοιχεία Γιατρού:"
+            android:layout_marginTop="40dp"
+            android:text="Στοιχεία Λογαριασμόυ Γιατρού:"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -77,7 +77,7 @@
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_info_header">
+            app:layout_constraintTop_toBottomOf="@+id/doctor_header">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/doc_username_input"
@@ -135,12 +135,12 @@
             app:boxStrokeWidthFocused="0dp"
             app:counterMaxLength="20"
             app:endIconMode="clear_text"
-            app:helperText="Υποχρεωτικό *"
             app:errorEnabled="true"
+            app:helperText="Υποχρεωτικό *"
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doc_passward_input_layout">
+            app:layout_constraintTop_toBottomOf="@+id/doctor_info_header">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/doc_name_input"
@@ -353,6 +353,19 @@
                 android:textColorHint="@color/input_grey"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/doctor_info_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Στοιχεία Γιατρού:"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/doc_passward_input_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
