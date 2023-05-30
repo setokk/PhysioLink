@@ -6,6 +6,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -20,12 +21,21 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorNewPatientBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.api.error.Error;
+import com.mobile.physiolink.service.dao.PatientDAO;
+import com.mobile.physiolink.service.schemas.PatientSchema;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class DoctorNewPatientFragment extends Fragment
 {
@@ -211,9 +221,40 @@ public class DoctorNewPatientFragment extends Fragment
                             "Ναι", "Οχι");
                     confirmation.setPositiveOnClick((dialog, which) ->
                     {
-                        // TODO: API CALL
-                        Toast.makeText(getActivity(), "Εγινε αποθήκευση Ασθενή!",
-                                Toast.LENGTH_SHORT).show();
+
+                        PatientSchema schema = new PatientSchema(binding.patientUsernameInput.getText().toString(),
+                                binding.patientPasswordInput.getText().toString(),
+                                binding.patientNameInput.getText().toString(),
+                                binding.patientSurnameInput.getText().toString(),
+                                binding.patientEmailInput.getText().toString(),
+                                binding.patientPhoneInput.getText().toString(),
+                                binding.patientCityInput.getText().toString(),
+                                binding.patientAddressInput.getText().toString(),
+                                binding.patientPostalCodeInput.getText().toString(),
+                                binding.patientAmkaInput.getText().toString(),
+                                UserHolder.doctor().getId());
+
+                        FragmentActivity context = getActivity();
+                        PatientDAO.getInstance().create(schema, new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {call.cancel();}
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException
+                            {
+                                String res = response.body().string();
+                                context.runOnUiThread(() ->
+                                {
+                                    if (res.contains(Error.RESOURCE_EXISTS))
+                                    {
+                                        Toast.makeText(getActivity(), "Το όνομα χρήστη υπάρχει ήδη",
+                                                Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+                                        Toast.makeText(getActivity(), "Έγινε αποθήκευση Ασθενή!",
+                                            Toast.LENGTH_SHORT).show();
+                                });
+                            }
+                        });
                     });
                     confirmation.setNegativeOnClick(((dialog, which) ->
                     {
