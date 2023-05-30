@@ -32,6 +32,10 @@ public class CreateClinicFragment extends Fragment
     private boolean phone_error;
 
     private boolean code_error;
+
+    private boolean address_error;
+
+    private boolean postalCodeError;
     private final ArrayList<TextInputLayout> all_inputs_layouts = new ArrayList<>();
     private final ArrayList<TextInputEditText> all_inputs = new ArrayList<>();
 
@@ -85,6 +89,9 @@ public class CreateClinicFragment extends Fragment
         all_inputs_layouts.add(binding.addressInputLayout);
         all_inputs.add(binding.addressInput);
 
+        all_inputs_layouts.add(binding.tkClinicInputLayout);
+        all_inputs.add(binding.tkClinicInput);
+
 //        Σε αυτή τη λούπα δημιουργήτε ένας onchange listener για κάθε στοιχείο της λίστας
         for(int j =0; j<all_inputs.size(); j++){
             TextInputEditText current = all_inputs.get(j);
@@ -118,7 +125,7 @@ public class CreateClinicFragment extends Fragment
                     }
 
                     if (current_layout.equals(binding.phonenumberInputLayout)) {
-                        if (current.getText().length() != 10 && current.getText().length() != 0) {
+                        if (current.getText().length() != 10) {
                             current_layout.setError("Ο αριθμός πρέπει να έχει 10 ψηφία!");
                             phone_error = true;
                         } else {
@@ -142,6 +149,22 @@ public class CreateClinicFragment extends Fragment
                             code_error = false;
                             current_layout.setError(null);
                         }
+                    } else if (current_layout.equals(binding.addressInputLayout)){
+                        if(!current.getText().toString().matches("^[Α-Ωα-ω]+,\\s*\\d+$")){
+                           current_layout.setError("Η Διεύθυνση πρέπει να είναι της μορφής (Ονομα, Αριθμος)");
+                           address_error = true;
+                        } else {
+                            address_error = false;
+                            current_layout.setError(null);
+                        }
+                    } else if (current_layout.equals(binding.tkClinicInputLayout)){
+                        if (current.getText().length() != 5) {
+                            current_layout.setError("Ο ταχυδρομικός κώδικας πρέπει να έχει 5 ψηφία!");
+                            postalCodeError = true;
+                        } else {
+                            current_layout.setError(null);
+                            postalCodeError = false;
+                        }
                     }
                 }
                 @Override
@@ -160,7 +183,11 @@ public class CreateClinicFragment extends Fragment
                         input_erros = true;
                     }
                 }
-                if(input_erros || phone_error || afm_error || code_error){
+                if(binding.tkClinicInput.getText().toString().startsWith("0")){
+                    binding.tkClinicInputLayout.setError("Ο ταχυδρομικός κώδικας δεν είναι έγκυρος!");
+                    postalCodeError = true;
+                }
+                if(input_erros || phone_error || afm_error || code_error || address_error || postalCodeError){
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{

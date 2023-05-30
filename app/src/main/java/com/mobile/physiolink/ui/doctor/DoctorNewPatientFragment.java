@@ -37,6 +37,8 @@ public class DoctorNewPatientFragment extends Fragment
     private boolean passwordError;
     private boolean emailError;
     private boolean postalCodeError;
+
+    private boolean address_error;
     private final ArrayList<TextInputLayout> allInputsLayouts = new ArrayList<>();
     private final ArrayList<TextInputEditText> allInputs = new ArrayList<>();
 
@@ -169,19 +171,20 @@ public class DoctorNewPatientFragment extends Fragment
                             currentInputLayout.setError(null);
                         }
                     } else if (currentInputLayout.equals(binding.patientPostalCodeInputLayout)){
-                        if(currentInput.getText().toString().startsWith("0")){
-                            currentInputLayout.setError("Ο ταχυδρομικός κώδικας δεν είναι έγκυρος!");
-                            postalCodeError = true;
-                        } else {
-                            currentInputLayout.setError(null);
-                            postalCodeError = false;
-                        }
                         if (currentInput.getText().length() != 5) {
                             currentInputLayout.setError("Ο ταχυδρομικός κώδικας πρέπει να έχει 5 ψηφία!");
                             postalCodeError = true;
                         } else {
                             currentInputLayout.setError(null);
                             postalCodeError = false;
+                        }
+                    } else if (currentInputLayout.equals(binding.patientAddressInputLayout)){
+                        if(!currentInput.getText().toString().matches("^[Α-Ωα-ω]+,\\s*\\d+$")){
+                            currentInputLayout.setError("Η Διεύθυνση πρέπει να είναι της μορφής (Ονομα, Αριθμος)");
+                            address_error = true;
+                        } else {
+                            address_error = false;
+                            currentInputLayout.setError(null);
                         }
                     }
                 }
@@ -202,7 +205,11 @@ public class DoctorNewPatientFragment extends Fragment
                         inputError = true;
                     }
                 }
-                if(inputError || phoneError || AmkaError || passwordError || emailError || postalCodeError){
+                if(binding.patientPostalCodeInput.getText().toString().startsWith("0")){
+                    binding.patientPostalCodeInputLayout.setError("Ο ταχυδρομικός κώδικας δεν είναι έγκυρος!");
+                    postalCodeError = true;
+                }
+                if(inputError || phoneError || AmkaError || passwordError || emailError || postalCodeError || address_error){
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
