@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.text.TextUtils;
@@ -11,16 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHistoryBinding;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
+import com.mobile.physiolink.ui.patient.viewmodel.PatientHistoryViewModel;
 
 public class PatientHistoryFragment extends Fragment
 {
     private FragmentPatientHistoryBinding binding;
 
-    String h1[],h2[],h3[],h4[],h5[];
+    private AdapterForHistoryPatient adapter;
+    private PatientHistoryViewModel viewModel;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -32,8 +37,18 @@ public class PatientHistoryFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
         binding = FragmentPatientHistoryBinding.inflate(inflater, container, false);
+
+        adapter = new AdapterForHistoryPatient();
+
+        viewModel = new ViewModelProvider(this).get(PatientHistoryViewModel.class);
+        viewModel.getAppointments().observe(getViewLifecycleOwner(), appointments -> {
+            adapter.setAppointments(appointments);
+        });
+        viewModel.getTotalPayment().observe(getViewLifecycleOwner(), totalPayment -> {
+            binding.sumCost.setText(String.valueOf(totalPayment));
+        });
+
         return binding.getRoot();
     }
 
@@ -42,15 +57,10 @@ public class PatientHistoryFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        h1=getResources().getStringArray(R.array.appointmentsService);
-        h2=getResources().getStringArray(R.array.servicesPatientHistoryListExampleDate);
-        h3=getResources().getStringArray(R.array.timePatientHistory);
-        h4=getResources().getStringArray(R.array.servicesListExampleDescription);
-        h5=getResources().getStringArray(R.array.paroxesCostExamle);
+        viewModel.loadAppointments(UserHolder.patient().getId());
 
         binding.historyRecyclerview.addItemDecoration(new DecorationSpacingItem(20));
-        binding.historyRecyclerview.setAdapter(new AdapterForHistoryPatient());
+        binding.historyRecyclerview.setAdapter(adapter);
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
     }
 }
