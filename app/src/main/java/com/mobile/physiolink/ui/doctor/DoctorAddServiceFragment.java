@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -65,6 +66,9 @@ public class DoctorAddServiceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        binding = FragmentDoctorAddServiceBinding.inflate(inflater, container, false);
+
         adapter = new AdapterForNewDoctorServices();
         viewModel = new ViewModelProvider(this).get(DoctorAddServicesViewModel.class);
         viewModel.getNewDoctorServices().observe(getViewLifecycleOwner(), newDoctorServices ->{
@@ -104,8 +108,20 @@ public class DoctorAddServiceFragment extends Fragment {
             }));
             confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
         });
-        // Inflate the layout for this fragment
-        binding = FragmentDoctorAddServiceBinding.inflate(inflater, container, false);
+
+        binding.searchViewNewServicesDoctor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
         return binding.getRoot();
     }
 

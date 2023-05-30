@@ -13,6 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -20,7 +22,7 @@ import okhttp3.Response;
 
 public class DoctorAddServicesViewModel extends ViewModel {
 
-    private MutableLiveData<Service[]> newDoctorServices;
+    private MutableLiveData<List<Service>> newDoctorServices;
 
     public void loadNewDoctorServices(long doctorId){
         RequestFacade.getRequest(API.GET_EXCLUDED_DOCTOR_SERVICES + doctorId , new Callback() {
@@ -38,15 +40,15 @@ public class DoctorAddServicesViewModel extends ViewModel {
                 try
                 {
                     JSONArray jsonServices = new JSONObject(res).getJSONArray("services");
-                    Service[] services = new Service[jsonServices.length()];
+                    List<Service> services = new ArrayList<>();
 
-                    for (int i = 0; i < jsonServices.length(); ++i)
+                    for (int i = 0; i < jsonServices.length(); i++)
                     {
                         JSONObject element = jsonServices.getJSONObject(i);
-                        services[i] = new Service(element.getString("id"),
+                        services.add(new Service(element.getString("id"),
                                 element.getString("title"),
                                 element.getString("description"),
-                                element.getDouble("price"));
+                                element.getDouble("price")));
                     }
                     newDoctorServices.postValue(services);
                 } catch (JSONException e)
@@ -58,7 +60,7 @@ public class DoctorAddServicesViewModel extends ViewModel {
         });
     }
 
-    public MutableLiveData<Service[]> getNewDoctorServices()
+    public MutableLiveData<List<Service>> getNewDoctorServices()
     {
         if (newDoctorServices == null)
             newDoctorServices = new MutableLiveData<>();

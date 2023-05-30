@@ -4,6 +4,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
@@ -13,28 +15,32 @@ import com.mobile.physiolink.databinding.ItemDoctorServicesBinding;
 import com.mobile.physiolink.model.service.Service;
 import com.mobile.physiolink.ui.doctor.OnLongItemClickListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-public class AdapterForNewDoctorServices extends RecyclerView.Adapter<AdapterForNewDoctorServices.MyViewHolder> {
+public class AdapterForNewDoctorServices extends RecyclerView.Adapter<AdapterForNewDoctorServices.MyViewHolder> implements Filterable {
 
-    private Service[] services;
+    private List<Service> services;
+    private List<Service> servicesFull;
     private boolean[] isExpanded;
     private OnLongItemClickListener<Service> listener;
 
 
     public AdapterForNewDoctorServices()
     {
-        services = new Service[0];
-        isExpanded = new boolean[services.length];
+        services = new ArrayList<>();
+        isExpanded = new boolean[services.size()];
     }
 
     public void setOnLongItemClickListener(OnLongItemClickListener<Service> listener){
         this.listener=listener;
     }
-    public void setServices(Service[] services)
+    public void setServices(List<Service> services)
     {
         this.services = services;
-        isExpanded = new boolean[services.length];
+        this.servicesFull = new ArrayList<>(services);
+        isExpanded = new boolean[services.size()];
         Arrays.fill(isExpanded, false);
         notifyDataSetChanged();
     }
@@ -51,11 +57,11 @@ public class AdapterForNewDoctorServices extends RecyclerView.Adapter<AdapterFor
     public void onBindViewHolder(@NonNull AdapterForNewDoctorServices.MyViewHolder holder, int position) {
 
         holder.itemDoctorServicesBinding.serviceNameDoctor
-                .setText(services[position].getTitle());
+                .setText(services.get(position).getTitle());
         holder.itemDoctorServicesBinding.serviceDescriptionDoctor
-                .setText(services[position].getDescription());
+                .setText(services.get(position).getDescription());
         holder.itemDoctorServicesBinding.servicePriceDoctor
-                .setText(String.valueOf(services[position].getPrice()));
+                .setText(String.valueOf(services.get(position).getPrice()));
 
         boolean isItemExpanded = isExpanded[position];
 
@@ -70,12 +76,44 @@ public class AdapterForNewDoctorServices extends RecyclerView.Adapter<AdapterFor
     }
 
     @Override
-    public int getItemCount() { return services.length; }
+    public int getItemCount() { return services.size(); }
 
     private void toggleExpansion(int position) {
         isExpanded[position] = !isExpanded[position];
         notifyItemChanged(position);
     }
+
+    @Override
+    public Filter getFilter() {
+        return servicesFilter;
+    }
+
+    private Filter servicesFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Service> filteredList = new ArrayList<>();
+            if (charSequence == null || charSequence.length() == 0) {
+                filteredList.addAll(servicesFull);
+            } else {
+                String filterPattern = charSequence.toString().toUpperCase().trim();
+                for (Service service : servicesFull) {
+                    if (service.getTitle().toUpperCase().contains(filterPattern) ||
+                            service.getDescription().toUpperCase().contains(filterPattern)) {
+                        filteredList.add(service);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            services.clear();
+            services.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
@@ -89,16 +127,13 @@ public class AdapterForNewDoctorServices extends RecyclerView.Adapter<AdapterFor
             itemDoctorServicesBinding.getRoot().setOnClickListener(view ->
                     toggleExpansion(getBindingAdapterPosition()));
 
-            itemDoctorServicesBinding.getRoot().setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    int position = getAbsoluteAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION && listener != null)
-                    {
-                        listener.onLongItemClick(services[position]);
-                    }
-                    return true;
+            itemDoctorServicesBinding.getRoot().setOnLongClickListener(view -> {
+                int position = getAbsoluteAdapterPosition();
+                if (position != RecyclerView.NO_POSITION && listener != null)
+                {
+                    listener.onLongItemClick(services.get(position));
                 }
+                return true;
             });
         }
 
