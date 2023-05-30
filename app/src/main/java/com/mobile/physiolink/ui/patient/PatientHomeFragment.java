@@ -60,6 +60,7 @@ public class PatientHomeFragment extends Fragment
                 binding.myDoctorTitle.setText("Η Γιατρός μου:");
             else
                 binding.myDoctorTitle.setText("Ο Γιατρός μου:");
+            binding.doctorProfileImgPatient.setImageResource(profileImg);
         });
         viewmodel.getUpcomingAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
