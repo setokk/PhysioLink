@@ -151,20 +151,22 @@
 
         <TextView
             android:id="@+id/requestProblem"
-            android:layout_width="190dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="20dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Πόνος στο δεξί χέρι και στο αριστερό πόδι"
-            android:visibility="visible"
             android:textSize="16sp"
-            android:textStyle="normal"
 
+            android:textStyle="normal"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/buttonsLayout"
             app:layout_constraintTop_toBottomOf="@id/requestPhotoDoctor" />
 
         <TextView
