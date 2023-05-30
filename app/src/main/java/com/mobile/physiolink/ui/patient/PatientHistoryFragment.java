@@ -5,12 +5,10 @@ import android.os.Bundle;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-<<<<<<< Updated upstream
 import androidx.lifecycle.ViewModelProvider;
-=======
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
->>>>>>> Stashed changes
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.text.TextUtils;
