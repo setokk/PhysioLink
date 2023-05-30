@@ -9,8 +9,8 @@
         tools:context=".ui.doctor.DoctorPatientsFragment">
 
 
-    <SearchView
-        android:id="@+id/SearchViewPatientsDoctor"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewPatientsDoctor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -22,7 +22,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:queryHint="Αναζήτηση.."/>
+        android:queryHint="Αναζήτηση..."
+        app:iconifiedByDefault="false"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/patientsListDoctor"
@@ -34,7 +35,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/SearchViewPatientsDoctor" />
+            app:layout_constraintTop_toBottomOf="@id/searchViewPatientsDoctor" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/newPatientBtn"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -67,6 +68,19 @@ public class DoctorPatientsFragment extends Fragment
             adapter.setPatients(patients);
         });
 
+        binding.searchViewPatientsDoctor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
         return binding.getRoot();
     }
 
@@ -86,5 +100,6 @@ public class DoctorPatientsFragment extends Fragment
         binding.newPatientBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)
                         .navigate(R.id.action_doctorPatientsFragment_to_doctorNewPatientFragment));
+
     }
 }

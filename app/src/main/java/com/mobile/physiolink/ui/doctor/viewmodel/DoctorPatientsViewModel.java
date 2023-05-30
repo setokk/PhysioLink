@@ -12,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -19,9 +21,9 @@ import okhttp3.Response;
 
 public class DoctorPatientsViewModel extends ViewModel
 {
-    private MutableLiveData<Patient[]> doctorPatients;
+    private MutableLiveData<List<Patient>> doctorPatients;
 
-    public MutableLiveData<Patient[]> getDoctorPatients()
+    public MutableLiveData<List<Patient>> getDoctorPatients()
     {
         if (doctorPatients == null)
             doctorPatients = new MutableLiveData<>();
@@ -48,11 +50,11 @@ public class DoctorPatientsViewModel extends ViewModel
                 try
                 {
                     JSONArray jsonPatients = new JSONObject(res).getJSONArray("patients");
-                    Patient[] patients = new Patient[jsonPatients.length()];
+                    List<Patient> patients = new ArrayList<>();
                     for (int i = 0; i < jsonPatients.length(); ++i)
                     {
                         JSONObject element = jsonPatients.getJSONObject(i);
-                        patients[i] = new Patient(element.getLong("id"),
+                        patients.add(new Patient(element.getLong("id"),
                                 element.getString("username"),
                                 "patient", element.getString("name"),
                                 element.getString("surname"),
@@ -61,8 +63,7 @@ public class DoctorPatientsViewModel extends ViewModel
                                 element.getString("amka"),
                                 element.getString("city"),
                                 element.getString("address"),
-                                element.getString("postal_code"),
-                                doctorId);
+                                element.getString("postal_code"), doctorId));
                     }
                     doctorPatients.postValue(patients);
                 } catch (JSONException e)
