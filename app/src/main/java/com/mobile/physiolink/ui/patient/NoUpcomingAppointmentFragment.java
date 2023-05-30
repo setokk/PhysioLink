@@ -2,9 +2,11 @@ package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.text.SpannableString;
@@ -29,6 +31,7 @@ public class NoUpcomingAppointmentFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override

@@ -2,9 +2,15 @@ package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+<<<<<<< Updated upstream
 import androidx.lifecycle.ViewModelProvider;
+=======
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+>>>>>>> Stashed changes
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.text.TextUtils;
@@ -31,6 +37,17 @@ public class PatientHistoryFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        /* On back button pressed, Go back to home fragment */
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.containerPatient);
+                navController.navigate(R.id.action_patientHistoryFragment_to_fragmentPatientHome);
+            }
+        });
     }
 
     @Override

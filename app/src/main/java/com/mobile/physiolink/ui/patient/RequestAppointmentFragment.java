@@ -101,6 +101,16 @@ public class RequestAppointmentFragment extends Fragment
         weekDayFormatter = new ArrayWeekDayFormatter(
             getResources().getTextArray(R.array.greek_days));
 
+        /* On back button pressed, Go back to patient's doctor fragment */
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.containerPatient);
+                navController.navigate(R.id.action_fragmentRequestAppointment_to_fragmentPatientDoctor);
+            }
+        });
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
