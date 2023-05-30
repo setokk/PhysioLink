@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -60,6 +61,19 @@ public class PatientHistoryFragment extends Fragment
         });
         viewModel.getTotalPayment().observe(getViewLifecycleOwner(), totalPayment -> {
             binding.sumCost.setText(String.valueOf(totalPayment));
+        });
+
+        binding.searchViewPatientHistory.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
         });
 
         return binding.getRoot();

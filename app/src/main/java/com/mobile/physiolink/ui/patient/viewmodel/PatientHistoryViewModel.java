@@ -15,6 +15,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -22,7 +24,7 @@ import okhttp3.Response;
 
 public class PatientHistoryViewModel extends ViewModel {
 
-    private MutableLiveData<Appointment[]> appointments;
+    private MutableLiveData<List<Appointment>> appointments;
     private MutableLiveData<Double> totalPayment;
 
     public void loadAppointments(long patientId){
@@ -43,18 +45,18 @@ public class PatientHistoryViewModel extends ViewModel {
                     JSONObject jsonHistory = new JSONObject(res).getJSONObject("history");
                     JSONArray jsonAppointments = jsonHistory.getJSONArray("appointments");
                     Double jsonTotalPayment = jsonHistory.getDouble("total_payment");
-                    Appointment[] appointmentsFinal = new Appointment[jsonAppointments.length()];
+                    List<Appointment> appointmentsFinal = new ArrayList<>();
 
                     for(int i=0;i<jsonAppointments.length();i++){
                         JSONObject element = jsonAppointments.getJSONObject(i);
 
-                        appointmentsFinal[i]= new AppointmentBuilder()
+                        appointmentsFinal.add(new AppointmentBuilder()
                                 .setDate(element.getString("date"))
                                 .setHour(element.getString("hour"))
                                 .setServiceTitle(element.getString("service_title"))
                                 .setMessage(element.getString("message"))
                                 .setServicePrice(element.getDouble("price"))
-                                .build();
+                                .build());
                     }
                     appointments.postValue(appointmentsFinal);
                     totalPayment.postValue(jsonTotalPayment);
@@ -67,7 +69,7 @@ public class PatientHistoryViewModel extends ViewModel {
         });
     }
 
-    public MutableLiveData<Appointment[]> getAppointments() {
+    public MutableLiveData<List<Appointment>> getAppointments() {
         if (appointments == null)
             appointments = new MutableLiveData<>();
         return appointments;

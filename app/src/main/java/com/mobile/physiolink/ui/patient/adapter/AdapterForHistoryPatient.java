@@ -4,6 +4,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -13,24 +15,28 @@ import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemPatientHistoryBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHistoryPatient.MyViewHolder>
+public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHistoryPatient.MyViewHolder> implements Filterable
 {
-    private Appointment[] appointments = new Appointment[0];
+    private List<Appointment> appointments;
+    private List<Appointment> appointmentsFull;
 
     private boolean[] isExpanded;
 
     public AdapterForHistoryPatient()
     {
-        isExpanded = new boolean[0];
+        this.appointments = new ArrayList<>();
+        isExpanded = new boolean[appointments.size()];
     }
 
-    public void setAppointments(Appointment[] appointments)
+    public void setAppointments(List<Appointment> appointments)
     {
         this.appointments = appointments;
-
-        isExpanded = new boolean[appointments.length];
+        appointmentsFull = new ArrayList<>(appointments);
+        isExpanded = new boolean[appointments.size()];
         Arrays.fill(isExpanded, false);
 
         notifyDataSetChanged();
@@ -49,29 +55,29 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
     public void onBindViewHolder(@NonNull AdapterForHistoryPatient.MyViewHolder holder, int position)
     {
         holder.itemHistoryBinding.serviceNamePatientHistory
-                .setText(appointments[position].getServiceTitle());
+                .setText(appointments.get(position).getServiceTitle());
         holder.itemHistoryBinding.appointmentDatePatientHistory
-                .setText(appointments[position].getDate());
+                .setText(appointments.get(position).getDate());
 
         String pmAm;
-        double hour = Double.parseDouble(appointments[position].getHour());
+        double hour = Double.parseDouble(appointments.get(position).getHour());
         if (hour < 12)
             pmAm = "πμ";
         else
             pmAm = "μμ";
 
         holder.itemHistoryBinding.appointmentTimePatientHistory
-                .setText(String.format("%s:00 " + pmAm, appointments[position].getHour()));
+                .setText(String.format("%s:00 " + pmAm, appointments.get(position).getHour()));
         holder.itemHistoryBinding.appointmentDescriptionPatientHistory
-                .setText(appointments[position].getServiceDescription());
+                .setText(appointments.get(position).getServiceDescription());
         holder.itemHistoryBinding.servicePricePatientHistory
-                .setText(String.format("%s€", appointments[position].getServicePrice()));
+                .setText(String.format("%s€", appointments.get(position).getServicePrice()));
 
         boolean isItemExpanded = isExpanded[position];
         boolean hasContent = holder.itemHistoryBinding.appointmentDescriptionPatientHistory.length() > 0;
 
         holder.itemHistoryBinding.appointmentDescriptionPatientHistory
-                .setText(hasContent ? appointments[position].getServiceDescription() : "-");
+                .setText(hasContent ? appointments.get(position).getServiceDescription() : "-");
 
         // Set the initial state based on the expanded flag
             if (isItemExpanded) {
@@ -90,8 +96,43 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
 
     @Override
     public int getItemCount() {
-        return appointments.length;
+        return appointments.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return appointmentsFilter;
+    }
+
+    private Filter appointmentsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Appointment> filteredList = new ArrayList<>();
+            if (charSequence == null || charSequence.length() == 0) {
+                filteredList.addAll(appointmentsFull);
+            }
+            else {
+                String filterPattern = charSequence.toString().toUpperCase().trim();
+                for(Appointment appoint: appointmentsFull){
+                    if(appoint.getMessage().contains(filterPattern) ||
+                        appoint.getServiceDescription().contains(filterPattern) ||
+                        appoint.getServiceTitle().contains(filterPattern)){
+                        filteredList.add(appoint);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            appointments.clear();
+            appointments.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class MyViewHolder extends RecyclerView.ViewHolder
     {

@@ -20,6 +20,9 @@ import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
 import com.mobile.physiolink.ui.patient.viewmodel.PatientHomeViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class PatientHomeFragment extends Fragment
 {
@@ -60,8 +63,8 @@ public class PatientHomeFragment extends Fragment
         });
         viewmodel.getLatestCompletedAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
-            Appointment[] appointments = new Appointment[1];
-            appointments[0] = appoint;
+            List<Appointment> appointments = new ArrayList<>();
+            appointments.add(appoint);
             adapter.setAppointments(appointments);
         });
 
