@@ -24,6 +24,8 @@ import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatients;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorPatientsViewModel;
 
+import java.util.Locale;
+
 public class DoctorPatientsFragment extends Fragment
 {
     private FragmentDoctorPatientsBinding binding;
@@ -100,6 +102,5 @@ public class DoctorPatientsFragment extends Fragment
         binding.newPatientBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)
                         .navigate(R.id.action_doctorPatientsFragment_to_doctorNewPatientFragment));
-
     }
 }
