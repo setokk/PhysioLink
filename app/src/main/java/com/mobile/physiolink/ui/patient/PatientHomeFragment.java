@@ -55,12 +55,11 @@ public class PatientHomeFragment extends Fragment
                 AppointmentFragment = new UpcomingAppointmentFragment(appoint);
                 transaction.replace(R.id.upcomingAppointmentFragmentContainer, AppointmentFragment);
                 transaction.commit();
+
             }
         });
         viewmodel.getLatestCompletedAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
-            System.out.println(appoint.getDate() + "-" + appoint.getHour());
-
             Appointment[] appointments = new Appointment[1];
             appointments[0] = appoint;
             adapter.setAppointments(appointments);
