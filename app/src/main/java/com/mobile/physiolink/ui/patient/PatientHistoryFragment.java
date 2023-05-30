@@ -60,7 +60,9 @@ public class PatientHistoryFragment extends Fragment
             adapter.setAppointments(appointments);
         });
         viewModel.getTotalPayment().observe(getViewLifecycleOwner(), totalPayment -> {
-            binding.sumCost.setText(String.valueOf(totalPayment));
+            binding.sumCost.setText(new StringBuilder()
+                    .append(totalPayment)
+                    .append("€").toString());
         });
 
         binding.searchViewPatientHistory.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
