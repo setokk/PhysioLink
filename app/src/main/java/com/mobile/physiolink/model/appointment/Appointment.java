@@ -28,6 +28,7 @@ public class Appointment implements ResourceNotFindable
     private String serviceTitle;
     private String serviceDescription;
     private double servicePrice;
+    private boolean isConfirmed;
 
     public Appointment()
     {
@@ -180,5 +181,13 @@ public class Appointment implements ResourceNotFindable
 
     public void setServicePrice(double servicePrice) {
         this.servicePrice = servicePrice;
+    }
+
+    public boolean isConfirmed() {
+        return isConfirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        isConfirmed = confirmed;
     }
 }

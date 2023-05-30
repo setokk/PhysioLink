@@ -92,6 +92,7 @@ public class PatientHomeViewModel extends ViewModel
                             .setDocAddress(jsonUpcoming.getString("address"))
                             .setDocPostalCode(jsonUpcoming.getString("postal_code"))
                             .setMessage(jsonUpcoming.getString("message"))
+                            .setConfirmed(jsonUpcoming.getInt("isConfirmed") == 1)
                             .build();
                     upcomingAppointment.postValue(appointment);
                 } catch (JSONException e)

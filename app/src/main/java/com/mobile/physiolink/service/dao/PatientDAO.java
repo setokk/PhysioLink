@@ -61,6 +61,7 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema>
         keyValues.put("address", item.address);
         keyValues.put("postal_code", item.postalCode);
         keyValues.put("amka", item.amka);
+        keyValues.put("doctor_id", String.valueOf(item.doctorId));
 
         RequestFacade.postRequest(API.EDIT_PATIENT, keyValues, callback);
     }

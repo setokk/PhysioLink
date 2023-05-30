@@ -97,4 +97,10 @@ public class AppointmentBuilder
         appointment.setServicePrice(servicePrice);
         return this;
     }
+
+    public AppointmentBuilder setConfirmed(boolean isConfirmed)
+    {
+        appointment.setConfirmed(isConfirmed);
+        return this;
+    }
 }

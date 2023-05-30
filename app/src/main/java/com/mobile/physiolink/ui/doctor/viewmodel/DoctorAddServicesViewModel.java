@@ -43,7 +43,7 @@ public class DoctorAddServicesViewModel extends ViewModel {
                     for (int i = 0; i < jsonServices.length(); ++i)
                     {
                         JSONObject element = jsonServices.getJSONObject(i);
-                        services[i] = new Service("",
+                        services[i] = new Service(element.getString("id"),
                                 element.getString("title"),
                                 element.getString("description"),
                                 element.getDouble("price"));
