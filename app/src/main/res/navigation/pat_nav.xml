@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_fragmentPatientHome_to_fragmentRequestAppointment"
             app:destination="@id/fragmentRequestAppointment" />
+        <action
+            android:id="@+id/action_fragmentPatientHome_to_fragmentPatientProfile2"
+            app:destination="@id/fragmentPatientProfile" />
 
     </fragment>
     <fragment
@@ -40,6 +43,9 @@
         <action
             android:id="@+id/action_fragmentRequestAppointment_to_fragmentPatientDoctor"
             app:destination="@id/fragmentPatientDoctor" />
+        <action
+            android:id="@+id/action_fragmentRequestAppointment_to_fragmentPatientHome3"
+            app:destination="@id/fragmentPatientHome" />
     </fragment>
     <fragment
         android:id="@+id/patientHistoryFragment"
@@ -55,9 +61,9 @@
         android:name="com.mobile.physiolink.ui.patient.PatientProfileFragment"
         android:label="Προφίλ"
         tools:layout="@layout/fragment_patient_profile">
-    <action
-        android:id="@+id/action_fragmentPatientProfile_to_fragmentPatientHome"
-        app:destination="@id/fragmentPatientHome" />
+        <action
+            android:id="@+id/action_fragmentPatientProfile_to_fragmentPatientHome"
+            app:destination="@id/fragmentPatientHome" />
     </fragment>
 
 
