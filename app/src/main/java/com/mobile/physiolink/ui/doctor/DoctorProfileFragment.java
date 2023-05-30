@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorProfileBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 public class DoctorProfileFragment extends Fragment {
     private FragmentDoctorProfileBinding binding;
@@ -46,6 +47,9 @@ public class DoctorProfileFragment extends Fragment {
     {
         // Inflate the layout for this fragment
         binding = FragmentDoctorProfileBinding.inflate(inflater, container, false);
+
+        binding.profileImageDoctor.setImageResource(ProfileImageProvider
+                .getProfileImage(UserHolder.doctor().getName()));
         binding.profileNameDoctor.setText(String.format("%s %s",
                 UserHolder.doctor().getName(), UserHolder.doctor().getSurname()));
         binding.profileUsernameDoctor.setText(String.format("%s ",

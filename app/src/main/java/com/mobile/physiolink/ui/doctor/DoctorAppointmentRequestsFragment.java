@@ -38,7 +38,7 @@ public class DoctorAppointmentRequestsFragment extends Fragment
             public void handleOnBackPressed()
             {
                 NavController navController = Navigation.findNavController(getActivity(), R.id.container);
-                navController.navigate(R.id.action_doctorAppointmentsFragment_to_doctorHomeFragment);
+                navController.navigate(R.id.action_doctorAppointmentRequestsFragment_to_doctorHomeFragment);
             }
         });
 
