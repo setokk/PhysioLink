@@ -1,5 +1,6 @@
 package com.mobile.physiolink.ui.doctor;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.transition.AutoTransition;
@@ -7,6 +8,7 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -115,6 +117,11 @@ public class DoctorPatientHistoryFragment extends Fragment
             if (shouldEdit)
             {
                 makeTextViewsEditable();
+                binding.patientHistoryNameDoctor.setFocusableInTouchMode(true);
+                binding.patientHistoryNameDoctor.requestFocus();
+                binding.patientHistoryNameDoctor.setSelection(binding.patientHistoryNameDoctor.getText().length());
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(binding.patientHistoryNameDoctor, InputMethodManager.SHOW_IMPLICIT);
                 binding.editInfoBtnPatientHistoryDoctor.setText("Αποθήκευση");
             }
             else
