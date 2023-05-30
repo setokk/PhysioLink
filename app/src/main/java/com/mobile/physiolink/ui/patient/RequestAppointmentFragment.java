@@ -143,10 +143,9 @@ public class RequestAppointmentFragment extends Fragment
         // Send appointment request
         binding.saveButton.setOnClickListener((v) ->
         {
-            if (binding.messageInput.getText().toString().isEmpty() ||
-                binding.hourBtn.getText().toString().isEmpty())
+            if (binding.hourBtn.getText().toString().isEmpty())
             {
-                Toast.makeText(getActivity(), "Πρέπει να συμπληρωθούν όλα τα πεδία...",
+                Toast.makeText(getActivity(), "Πρέπει να επιλεχθεί ώρα...",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -184,6 +183,7 @@ public class RequestAppointmentFragment extends Fragment
                                 Toast.LENGTH_SHORT).show();
 
                         binding.calendarView.clearSelection();
+                        binding.hourBtn.setText("");
 
                         // Reload everything
                         appointmentViewmodel.loadAvailableHours(selectedDate.getMonthValue(),
