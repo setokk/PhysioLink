@@ -126,7 +126,8 @@ public class PatientHomeViewModel extends ViewModel
                             .setDate(jsonAppointment.getString("date"))
                             .setHour(jsonAppointment.getString("hour"))
                             .setServicePrice(jsonAppointment.getDouble("service_price"))
-                            .setMessage(jsonAppointment.getString("service_title")) // TODO: CHANGE TITLE
+                            .setMessage(jsonAppointment.getString("message"))
+                            .setServiceTitle(jsonAppointment.getString("service_title"))
                             .build();
                     latestCompletedAppointment.postValue(appointment);
                 }

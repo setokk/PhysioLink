@@ -19,6 +19,7 @@ import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
 import com.mobile.physiolink.ui.patient.viewmodel.PatientHomeViewModel;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,17 @@ public class PatientHomeFragment extends Fragment
         viewmodel = new ViewModelProvider(this).get(PatientHomeViewModel.class);
         viewmodel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
         {
-            System.out.println(doctor);
+            binding.doctorNamePatient.setText(new StringBuilder()
+                    .append(doctor.getName())
+                    .append(" ")
+                    .append(doctor.getSurname())
+                    .toString());
+
+            int profileImg = ProfileImageProvider.getProfileImage(doctor.getName());
+            if (profileImg == R.drawable.prof_doctoress)
+                binding.myDoctorTitle.setText("Η Γιατρός μου:");
+            else
+                binding.myDoctorTitle.setText("Ο Γιατρός μου:");
         });
         viewmodel.getUpcomingAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
