@@ -82,18 +82,13 @@ public class AdapterForPatients extends RecyclerView.Adapter<AdapterForPatients.
             else{
                 String filterPattern = charSequence.toString().toUpperCase().trim();
                 for(Patient patient: patientsFull){
-                    if(patient.getName().toUpperCase().contains(filterPattern)){
+                    if(patient.getName().toUpperCase().contains(filterPattern) ||
+                       patient.getSurname().toUpperCase().contains(filterPattern) ||
+                       patient.getAmka().toUpperCase().contains(filterPattern) ||
+                       patient.getPhoneNumber().toUpperCase().contains(filterPattern)){
                         filteredList.add(patient);
                     }
-                    if(patient.getSurname().toUpperCase().contains(filterPattern)){
-                        filteredList.add(patient);
-                    }
-                    if(patient.getAmka().toUpperCase().contains(filterPattern)){
-                        filteredList.add(patient);
-                    }
-                    if(patient.getPhoneNumber().toUpperCase().contains(filterPattern)){
-                        filteredList.add(patient);
-                    }
+
                 }
             }
             FilterResults results = new FilterResults();

@@ -102,10 +102,8 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
             else{
                 String filterPattern = charSequence.toString().toUpperCase().trim();
                 for(Service service: servicesFull){
-                    if(service.getTitle().toUpperCase().contains(filterPattern)){
-                        filteredList.add(service);
-                    }
-                    if(service.getDescription().toUpperCase().contains(filterPattern)){
+                    if(service.getTitle().toUpperCase().contains(filterPattern) ||
+                       service.getDescription().toUpperCase().contains(filterPattern)){
                         filteredList.add(service);
                     }
                 }
