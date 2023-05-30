@@ -140,6 +140,15 @@ public class DoctorPatientHistoryFragment extends Fragment
                 makeTextViewsUneditable();
                 binding.editInfoBtnPatientHistoryDoctor.setText("Επεξεργασία");
 
+                if (invalidInput())
+                {
+                    Toast.makeText(getActivity(), "Λάθος στοχεία. Σιγουρευτείτε ότι το ΑΜΚΑ(11), " +
+                            "το κινητό τηλέφωνο(10) και ο ΤΚ(5) είναι σωστά σε πλήθος", Toast.LENGTH_LONG).show();
+
+                    shouldEdit = !shouldEdit;
+                    return;
+                }
+
                 Patient patient = viewModel.getSelectedPatient().getValue();
                 PatientSchema schema = new PatientSchema(patient.getUsername(), "",
                         binding.patientHistoryNameDoctor.getText().toString(),
@@ -179,6 +188,14 @@ public class DoctorPatientHistoryFragment extends Fragment
         long patientId = DoctorPatientHistoryFragmentArgs.fromBundle(getArguments()).getPatientId();
         viewModel.loadPatient(patientId);
         viewModel.loadPatientHistoryAppointments(patientId);
+    }
+
+    private boolean invalidInput()
+    {
+        return ((binding.postalCodePatientHistoryDoctor.getText().toString().length() != 5) ||
+            (binding.phonePatientHistoryDoctor.getText().toString().length() != 10) ||
+            (binding.amkaPatientHistoryDoctor.getText().toString().length() != 11));
+
     }
 
     private void makeTextViewsEditable()
