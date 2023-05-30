@@ -1,16 +1,20 @@
 package com.mobile.physiolink.ui.doctor.adapter;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorRequestBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.ui.doctor.OnButtonClickListener;
+import com.mobile.physiolink.ui.popup.AppointmentRejectPopUp;
+import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 import com.mobile.physiolink.util.date.TimeFormatter;
 
 public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.MyViewHolder>
@@ -20,11 +24,14 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
     public static final int ACCEPT=1;
     public static final int REJECT=2;
 
+    private final FragmentManager fm;
+
     private Appointment[] appointments;
 
-    public AdapterForRequests()
+    public AdapterForRequests(FragmentManager fm)
     {
         appointments = new Appointment[0];
+        this.fm=fm;
     }
 
     public void setAppointments(Appointment[] appointments)
@@ -124,26 +131,53 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
 
             binding.requestAcceptButton.setOnClickListener(view ->
             {
-                Toast.makeText(binding.getRoot().getContext(),"Το ραντεβού αποδέχθηκε!"
-                        ,Toast.LENGTH_SHORT).show();
-                if (listener != null) {
-                    int position = getBindingAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        listener.onButtonClicked(position,ACCEPT);
+                //creates popup to ensure the appointment confirmation
+                ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποδοχή","Είστε σίγουρος ότι θέλετε να αποδεχτείτε το ραντεβού;",
+                        "Αποδοχή","Πίσω");
+                confirmation.setPositiveOnClick((dialog, which) ->
+                {
+                    // TODO: API CALL
+                    Toast.makeText(binding.getRoot().getContext(), "Το ραντεβού αποδέχθηκε!",
+                            Toast.LENGTH_SHORT).show();
+                    if (listener != null) {
+                        int position = getBindingAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onButtonClicked(position,ACCEPT);
+                        }
                     }
-                }
+                });
+                confirmation.setNegativeOnClick(((dialog,which)->
+                {
+
+                }));
+                confirmation.show(fm,"Confirmation pop up");
             });
             binding.requestRejectButton.setOnClickListener(view ->
             {
-                Toast.makeText(binding.getRoot().getContext(),"Το ραντεβού απορρίφθηκε!"
-                        ,Toast.LENGTH_SHORT).show();
-                if (listener != null) {
-                    int position = getAbsoluteAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        listener.onButtonClicked(position,REJECT);
-                    }
-                }
+                //creates popup to ensure appointment rejection and give reasoning
+                AppointmentRejectPopUp rejection = new AppointmentRejectPopUp("Απόρριψη",
+                        "Απόρριψη","Πίσω");
+                rejection.setPositiveOnClick((dialog, which) ->
+                {
+                    // TODO: API CALL
+                    //reason for the rejection given by the doctor
+                    String reason  = rejection.getReason();
+                    System.out.println(reason);
 
+                    Toast.makeText(binding.getRoot().getContext(),"Το ραντεβού απορρίφθηκε!"
+                            ,Toast.LENGTH_SHORT).show();
+                    if (listener != null) {
+                        int position = getBindingAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onButtonClicked(position,ACCEPT);
+                        }
+                    }
+                });
+                rejection.setNegativeOnClick(((dialog,which)->
+                {
+
+                }));
+                rejection.show(fm,"Confirmation pop up");
             });
         }
     }
