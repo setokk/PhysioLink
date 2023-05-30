@@ -65,7 +65,7 @@
                     android:paddingTop="0dp"
                     android:paddingBottom="5dp"
                     android:layout_marginStart="8dp"
-                    android:text="onoma"
+                    android:text=""
                     android:backgroundTint="@color/transparent"
                     android:textColor="@color/white"
                     android:textSize="18sp"
