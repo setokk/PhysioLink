@@ -24,6 +24,7 @@ import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForPatientDoctorServices;
 import com.mobile.physiolink.ui.patient.viewmodel.PatientDoctorViewModel;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 public class PatientDoctorFragment extends Fragment
 {
@@ -60,6 +61,9 @@ public class PatientDoctorFragment extends Fragment
         viewModel = new ViewModelProvider(this).get(PatientDoctorViewModel.class);
         viewModel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
         {
+            binding.doctorProfilePicPatient.setImageResource(
+                    ProfileImageProvider.getProfileImage(doctor.getName()));
+
             binding.doctorPatientName.setText(doctor.getName());
             binding.doctorPatientSurname.setText(doctor.getSurname());
             binding.doctorAfmPatient.setText(doctor.getAfm());
