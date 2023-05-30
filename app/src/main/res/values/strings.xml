@@ -164,7 +164,7 @@
     <string name="AfmHint">ΑΦΜ *</string>
     <string name="PhoneHint">Κινητό</string>
     <string name="CityHint">Πόλη *</string>
-    <string name="AddressHint">Διεύθυνση *</string>
+    <string name="AddressHint">Διεύθυνση *  (Ονομα, Αριθμός)</string>
     <string name="CreateNewClinic">Δημιουργία Νέου Φυσιοθεραπευτηρίου</string>
     <string name="ServiceDescription">Περιγραφή Παροχής :</string>
     <string name="SaveString">Αποθήκευση</string>
