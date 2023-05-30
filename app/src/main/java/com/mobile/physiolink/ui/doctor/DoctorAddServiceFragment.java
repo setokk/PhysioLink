@@ -6,6 +6,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -19,10 +20,17 @@ import android.widget.Toast;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorAddServiceBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.dao.ServiceDAO;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForNewDoctorServices;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorAddServicesViewModel;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 
 public class DoctorAddServiceFragment extends Fragment {
@@ -67,11 +75,27 @@ public class DoctorAddServiceFragment extends Fragment {
             ConfirmationPopUp confirmation = new ConfirmationPopUp("Προσθήκη Παροχής",
                     "Είστε σίγουρος πως θέλετε να προσθέσετε αυτή την παροχή στις δικές σας παροχές σας;",
                     "Ναι", "Όχι");
+
+            FragmentActivity context = getActivity();
             confirmation.setPositiveOnClick((dialog, which) ->
             {
-                // TODO: API CALL
-                Toast.makeText(getActivity(), "Έγινε επιτυχώς η προσθήκη!",
-                        Toast.LENGTH_SHORT).show();
+                ServiceDAO.getInstance().linkServiceToDoctor(service.getId(),
+                        UserHolder.doctor().getId(), new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                call.cancel();
+                            }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                context.runOnUiThread(() ->
+                                {
+                                    Toast.makeText(context, "Έγινε επιτυχώς η προσθήκη!",
+                                            Toast.LENGTH_SHORT).show();
+                                });
+                                viewModel.loadNewDoctorServices(UserHolder.doctor().getId());
+                            }
+                        });
             });
             confirmation.setNegativeOnClick(((dialog, which) ->
             {

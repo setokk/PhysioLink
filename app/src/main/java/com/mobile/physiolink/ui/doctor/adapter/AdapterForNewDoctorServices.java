@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorServicesBinding;
@@ -17,12 +18,12 @@ import java.util.Arrays;
 public class AdapterForNewDoctorServices extends RecyclerView.Adapter<AdapterForNewDoctorServices.MyViewHolder> {
 
     private Service[] services;
-
     private boolean[] isExpanded;
     private OnLongItemClickListener<Service> listener;
 
 
-    public AdapterForNewDoctorServices(){
+    public AdapterForNewDoctorServices()
+    {
         services = new Service[0];
         isExpanded = new boolean[services.length];
     }

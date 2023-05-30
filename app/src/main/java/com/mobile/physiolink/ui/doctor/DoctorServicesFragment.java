@@ -1,11 +1,12 @@
 package com.mobile.physiolink.ui.doctor;
-// TODO Na ginei katallhlh allagh tou arxeiou molis ginei h diasyndesh me ta dedomena ths bashs
+
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,10 +22,17 @@ import com.mobile.physiolink.R;
 
 import com.mobile.physiolink.databinding.FragmentDoctorServicesBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.dao.ServiceDAO;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorServicesViewModel;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class DoctorServicesFragment extends Fragment{
     private FragmentDoctorServicesBinding binding;
@@ -61,15 +69,29 @@ public class DoctorServicesFragment extends Fragment{
             adapter.setServices(services);
         });
 
-        adapter.setOnLongItemClickListener(service ->{
+        adapter.setOnLongItemClickListener(service -> {
             ConfirmationPopUp confirmation = new ConfirmationPopUp("Διαγραφή Παροχής",
                     "Είστε σίγουρος πως θέλετε να διαγράψετε αυτή την παροχή;",
                     "Ναι", "Όχι");
+
+            FragmentActivity context = getActivity();
             confirmation.setPositiveOnClick((dialog, which) ->
             {
-                // TODO: API CALL
-                Toast.makeText(getActivity(), "Έγινε επιτυχώς η διαγραφή!",
-                        Toast.LENGTH_SHORT).show();
+                ServiceDAO.getInstance().deleteServiceFromDoctor(service.getId(),
+                        UserHolder.doctor().getId(), new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) { call.cancel(); }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                context.runOnUiThread(() ->
+                                {
+                                    Toast.makeText(getActivity(), "Έγινε επιτυχώς η διαγραφή!",
+                                            Toast.LENGTH_SHORT).show();
+                                });
+                                viewModel.loadDoctorServices(UserHolder.doctor().getId());
+                            }
+                        });
             });
             confirmation.setNegativeOnClick(((dialog, which) ->
             {
