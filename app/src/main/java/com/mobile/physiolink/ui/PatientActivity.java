@@ -31,6 +31,7 @@ public class PatientActivity extends AppCompatActivity
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigationPatient, navController, false);
 
+        getSupportActionBar().setTitle("PhysioLink");
         /* Pop backstack after every navigation bar click
         binding.bottomNavigationPatient.setOnItemSelectedListener((item) ->
         {
