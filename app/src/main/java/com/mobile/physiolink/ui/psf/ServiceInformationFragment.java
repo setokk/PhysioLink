@@ -18,10 +18,17 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobile.physiolink.databinding.FragmentServiceInformationBinding;
+import com.mobile.physiolink.model.service.Service;
+import com.mobile.physiolink.service.dao.ServiceDAO;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 import com.mobile.physiolink.ui.psf.viewmodel.ServiceInformationViewModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 
 public class ServiceInformationFragment extends Fragment {
@@ -64,6 +71,130 @@ public class ServiceInformationFragment extends Fragment {
                     .append("€").toString());
         });
 
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        String serviceId = ServiceInformationFragmentArgs.fromBundle(getArguments()).getServiceId();
+        viewModel.loadService(serviceId);
+
+        populateAllInputs();
+
+        binding.editButton.setOnClickListener(v ->
+        {
+            if(!edit)
+            {
+                Toast.makeText(getActivity(), "Μπορείται να επεξεργαστείται τα πεδία.", Toast.LENGTH_SHORT).show();
+                edit = true;
+                for(int i = 0; i < all_inputs.size(); i++)
+                {
+                    all_inputs.get(i).setEnabled(true);
+                }
+
+                for(int j = 0; j < all_inputs.size(); j++)
+                {
+                    TextInputEditText current = all_inputs.get(j);
+                    TextInputLayout current_layout = all_inputs_layouts.get(j);
+
+                    current.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                            if (current.getText().length() == 0) {
+                                current_layout.setError("*");
+                                input_erros = true;
+                            } else {
+                                current_layout.setError(null);
+                                current_layout.setHelperText(null);
+                                input_erros = false;
+                            }
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable editable) {
+
+                        }
+                    });
+                }
+
+                binding.editButton.setText("Τέλος Επεξεργασίας");
+            }
+            else
+            {
+                for(int i = 0; i< all_inputs.size(); i++){
+                    if(all_inputs.get(i).getText().length() == 0){
+                        input_erros = true;
+                    }
+                }
+                if(input_erros){
+                    Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
+                            "Είστε σίγουρος για την επιλογή σας;",
+                            "Ναι", "Οχι");
+                    confirmation.setPositiveOnClick((dialog, which) ->
+                    {
+                        Service service = new Service(serviceId,
+                                binding.nameInput.getText().toString(),
+                                binding.descriptionInput.getText().toString(),
+                                Double.parseDouble(binding.priceInput.getText().toString()
+                                        .replace("€", "")));
+                        ServiceDAO.getInstance().update(serviceId, service, new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                call.cancel();
+                            }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                getActivity().runOnUiThread(() ->
+                                {
+                                    Toast.makeText(getActivity(), "Έγινε αποθήκευση των αλλαγών!",
+                                            Toast.LENGTH_SHORT).show();
+
+                                    for(int i = 0; i < all_inputs.size(); i++){
+                                        all_inputs.get(i).setEnabled(false);
+                                    }
+
+                                    edit = false;
+                                    binding.editButton.setText("Επεξεργασία");
+                                });
+                            }
+                        });
+                    });
+                    confirmation.setNegativeOnClick(((dialog, which) ->
+                    {
+                        Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
+                                Toast.LENGTH_SHORT).show();
+
+                        for(int i = 0; i < all_inputs.size(); i++){
+                            all_inputs.get(i).setEnabled(false);
+                        }
+
+                        edit = false;
+                        binding.editButton.setText("Επεξεργασία");
+
+                        binding.nameInput.setText(prev_name);
+                        binding.codeInput.setText(prev_code);
+                        binding.priceInput.setText(prev_price);
+                        binding.descriptionInput.setText(prev_description);
+                    }));
+
+                    confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
+                }
+            }
+        });
+    }
+
+    private void populateAllInputs()
+    {
         all_inputs.add(binding.nameInput);
         all_inputs_layouts.add(binding.nameInputLayout);
         prev_name = binding.nameInput.getText().toString();
@@ -79,107 +210,5 @@ public class ServiceInformationFragment extends Fragment {
         all_inputs.add(binding.descriptionInput);
         all_inputs_layouts.add(binding.descriptionInputLayout);
         prev_description = binding.descriptionInput.getText().toString();
-
-        binding.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!edit){
-                    Toast.makeText(getActivity(), "Μπορείται να επεξεργαστείται τα πεδία.", Toast.LENGTH_SHORT).show();
-                    edit = true;
-                    for(int i = 0; i < all_inputs.size(); i++){
-                        all_inputs.get(i).setEnabled(true);
-                    }
-
-                    for(int j = 0; j < all_inputs.size(); j++){
-                        TextInputEditText current = all_inputs.get(j);
-                        TextInputLayout current_layout = all_inputs_layouts.get(j);
-
-                        current.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                            }
-
-                            @Override
-                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                                if (current.getText().length() == 0) {
-                                    current_layout.setError("*");
-                                    input_erros = true;
-                                } else {
-                                    current_layout.setError(null);
-                                    current_layout.setHelperText(null);
-                                    input_erros = false;
-                                }
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable editable) {
-
-                            }
-                        });
-                    }
-
-                    binding.editButton.setText("Τέλος Επεξεργασίας");
-
-                }
-                else{
-
-                    for(int i = 0; i< all_inputs.size(); i++){
-                        if(all_inputs.get(i).getText().length() == 0){
-                            input_erros = true;
-                        }
-                    }
-                    if(input_erros){
-                        Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
-                                "Είστε σίγουρος για την επιλογή σας;",
-                                "Ναι", "Οχι");
-                        confirmation.setPositiveOnClick((dialog, which) ->
-                        {
-                            // TODO: API CALL
-                            Toast.makeText(getActivity(), "Έγινε αποθήκευση των αλλαγών!",
-                                    Toast.LENGTH_SHORT).show();
-
-                            for(int i = 0; i < all_inputs.size(); i++){
-                                all_inputs.get(i).setEnabled(false);
-                            }
-
-                            edit = false;
-                            binding.editButton.setText("Επεξεργασία");
-                        });
-                        confirmation.setNegativeOnClick(((dialog, which) ->
-                        {
-                            Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
-                                    Toast.LENGTH_SHORT).show();
-
-                            for(int i = 0; i < all_inputs.size(); i++){
-                                all_inputs.get(i).setEnabled(false);
-                            }
-
-                            edit = false;
-                            binding.editButton.setText("Επεξεργασία");
-
-                            binding.nameInput.setText(prev_name);
-                            binding.codeInput.setText(prev_code);
-                            binding.priceInput.setText(prev_price);
-                            binding.descriptionInput.setText(prev_description);
-                        }));
-
-                        confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
-                    }
-                }
-            }
-        });
-
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-        String serviceId = ServiceInformationFragmentArgs.fromBundle(getArguments()).getServiceId();
-        viewModel.loadService(serviceId);
     }
 }

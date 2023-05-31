@@ -36,7 +36,8 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
     @Override
     public void update(String id, Service item, Callback callback)
     {
-        HashMap<String, String> keyValues = new HashMap<>(3);
+        HashMap<String, String> keyValues = new HashMap<>(4);
+        keyValues.put("service_id", id);
         keyValues.put("title", item.getTitle());
         keyValues.put("description", item.getDescription());
         keyValues.put("price", String.valueOf(item.getPrice()));
