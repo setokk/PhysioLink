@@ -7,18 +7,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDocBinding;
+import com.mobile.physiolink.model.user.Doctor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.MyViewHolder>
 {
-    String listDoctorName[];
-    String listDoctorOffice[];
-    String listDoctorAddress[];
+    private List<Doctor> doctors;
 
-    public AdapterForClinics(String n1[], String n2[], String n3[])
+    public AdapterForClinics()
     {
-        listDoctorName = n1;
-        listDoctorOffice = n2;
-        listDoctorAddress = n3;
+        doctors = new ArrayList<>(0);
+    }
+
+    public void setDoctors(List<Doctor> doctors)
+    {
+        this.doctors = doctors;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -32,14 +38,18 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        holder.itemDocBinding.doctorName.setText(listDoctorName[position]);
-        holder.itemDocBinding.doctorClinic.setText(listDoctorOffice[position]);
-        holder.itemDocBinding.doctorAddress.setText(listDoctorAddress[position]);
+        holder.itemDocBinding.doctorName.setText(new StringBuilder()
+                .append(doctors.get(position).getName())
+                .append(" ")
+                .append(doctors.get(position).getSurname())
+                .toString());
+        holder.itemDocBinding.doctorClinic.setText(doctors.get(position).getPhysioName());
+        holder.itemDocBinding.doctorAddress.setText(doctors.get(position).getAddress());
     }
 
     @Override
     public int getItemCount() {
-        return listDoctorName.length;
+        return doctors.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder
