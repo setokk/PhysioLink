@@ -7,20 +7,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemServicesBinding;
+import com.mobile.physiolink.model.service.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterForServices extends RecyclerView.Adapter<AdapterForServices.MyViewHolder>
 {
-    String listParoxesName[];
-    String listParoxesId[];
-    String listParoxesCost[];
-    String listParoxesDescription[];
+    private List<Service> services;
 
-    public AdapterForServices(String k1[], String k2[], String k3[], String k4[])
+    public AdapterForServices()
     {
-        listParoxesName = k1;
-        listParoxesId = k2;
-        listParoxesCost = k3;
-        listParoxesDescription = k4;
+        services = new ArrayList<>(0);
+    }
+
+    public void setServices(List<Service> services)
+    {
+        this.services = services;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -36,16 +40,18 @@ public class AdapterForServices extends RecyclerView.Adapter<AdapterForServices.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        holder.itemServicesBinding.serviceName.setText(listParoxesName[position]);
-        holder.itemServicesBinding.serviceId.setText(listParoxesId[position]);
-        holder.itemServicesBinding.serviceCost.setText(listParoxesCost[position]);
-        holder.itemServicesBinding.serviceDescription.setText(listParoxesDescription[position]);
+        holder.itemServicesBinding.serviceId.setText(services.get(position).getId());
+        holder.itemServicesBinding.serviceName.setText(services.get(position).getTitle());
+        holder.itemServicesBinding.serviceDescription.setText(services.get(position).getDescription());
+        holder.itemServicesBinding.serviceCost.setText(new StringBuilder()
+                .append(services.get(position).getPrice())
+                .append("€").toString());
     }
 
     @Override
     public int getItemCount()
     {
-        return listParoxesName.length;
+        return services.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder
