@@ -13,13 +13,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class ClinicsViewModel extends ViewModel {
-    private MutableLiveData<Doctor[]> doctors;
+    private MutableLiveData<List<Doctor>> doctors;
 
     public void loadDoctors() {
         RequestFacade.getRequest(API.GET_DOCTORS, new Callback() {
@@ -36,11 +38,11 @@ public class ClinicsViewModel extends ViewModel {
 
                 try {
                     JSONArray jsonDoctors = new JSONObject(res).getJSONArray("doctors");
-                    Doctor[] newDoctors = new Doctor[jsonDoctors.length()];
+                    List<Doctor> newDoctors = new ArrayList<>();
 
                     for (int i = 0; i < jsonDoctors.length(); i++) {
                         JSONObject element = jsonDoctors.getJSONObject(i);
-                        newDoctors[i] = new Doctor(element.getLong("id"),
+                        newDoctors.add(new Doctor(element.getLong("id"),
                                                    "",
                                                    "doctor",
                                                    element.getString("name"),
@@ -51,7 +53,7 @@ public class ClinicsViewModel extends ViewModel {
                                                    element.getString("city"),
                                                    element.getString("address"),
                                                    element.getString("postal_code"),
-                                                   element.getString("physio_name"));
+                                                   element.getString("physio_name")));
                     }
                     doctors.postValue(newDoctors);
                 } catch (JSONException e) {
@@ -61,7 +63,7 @@ public class ClinicsViewModel extends ViewModel {
         });
     }
 
-    public MutableLiveData<Doctor[]> getDoctors() {
+    public MutableLiveData<List<Doctor>> getDoctors() {
         if (doctors == null) {
             doctors = new MutableLiveData<>();
         }
