@@ -18,6 +18,7 @@ import com.mobile.physiolink.model.appointment.Appointment;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHistoryPatient.MyViewHolder> implements Filterable
 {
@@ -129,7 +130,8 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             appointments.clear();
-            appointments.addAll((List) filterResults.values);
+            appointments.addAll(Optional.ofNullable((List) filterResults.values)
+                    .orElse(new ArrayList<>(0)));
             notifyDataSetChanged();
         }
     };

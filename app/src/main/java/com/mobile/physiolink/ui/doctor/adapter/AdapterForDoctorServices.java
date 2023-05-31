@@ -19,6 +19,7 @@ import com.mobile.physiolink.ui.doctor.OnLongItemClickListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoctorServices.MyViewHolder> implements Filterable
 {
@@ -116,7 +117,8 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             services.clear();
-            services.addAll((List) filterResults.values);
+            services.addAll(Optional.ofNullable((List) filterResults.values)
+                    .orElse(new ArrayList<>(0)));
             notifyDataSetChanged();
         }
     };
