@@ -52,7 +52,7 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
                 .append(doctors.get(position).getSurname())
                 .toString());
         holder.itemDocBinding.doctorClinic.setText(doctors.get(position).getPhysioName());
-        holder.itemDocBinding.doctorAddress.setText(doctors.get(position).getAddress());
+        holder.itemDocBinding.doctorCity.setText(doctors.get(position).getCity());
     }
 
     @Override

@@ -51,9 +51,6 @@ public class AdapterForServices extends RecyclerView.Adapter<AdapterForServices.
         holder.itemServicesBinding.serviceId.setText(services.get(position).getId());
         holder.itemServicesBinding.serviceName.setText(services.get(position).getTitle());
         holder.itemServicesBinding.serviceDescription.setText(services.get(position).getDescription());
-        holder.itemServicesBinding.serviceCost.setText(new StringBuilder()
-                .append(services.get(position).getPrice())
-                .append("€").toString());
     }
 
     @Override

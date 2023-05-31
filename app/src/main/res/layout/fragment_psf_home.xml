@@ -8,51 +8,55 @@
     android:background="@color/background_lime"
     tools:context=".ui.psf.PsfHomeFragment">
 
-    <TextView
-        android:id="@+id/psf_home_text_view"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/psfConnectedAsConstraint"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/welcome_text"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/psf_profile_pic" />
+        android:background="@color/low_opacity_white"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/connectedAsTitlePsf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="Συνδέθηκες ως:"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@id/connectedAsTitlePsf"
+            app:layout_constraintTop_toBottomOf="@id/connectedAsTitlePsf"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ImageButton
         android:id="@+id/psf_imageButton_1"
-        android:layout_width="331dp"
-        android:layout_height="191dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/images_border_radius"
+        android:src="@drawable/fysiotherapeutiria2"
         android:contentDescription="Clinic"
-        android:paddingHorizontal="0dp"
-        android:paddingVertical="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/psf_imageButton_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/psf_home_text_view" />
-
-    <ImageView
-        android:id="@+id/psf_profile_pic"
-        android:layout_width="92dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/round_style"
-        app:layout_constraintBottom_toTopOf="@+id/psf_home_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/psf_imageButton_2"
+        app:layout_constraintTop_toBottomOf="@+id/psfConnectedAsConstraint" />
 
     <ImageButton
         android:id="@+id/psf_imageButton_2"
-        android:layout_width="331dp"
-        android:layout_height="191dp"
-        android:layout_marginBottom="32dp"
-        android:contentDescription="Servecis"
-        android:scaleType="fitXY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/images_border_radius"
+        android:src="@drawable/paroxes2"
+        android:contentDescription="Services"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
