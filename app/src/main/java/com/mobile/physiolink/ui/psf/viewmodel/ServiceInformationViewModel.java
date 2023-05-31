@@ -52,7 +52,7 @@ public class ServiceInformationViewModel extends ViewModel
         });
     }
 
-    public MutableLiveData<Service> getServices()
+    public MutableLiveData<Service> getService()
     {
         if (service == null)
             service = new MutableLiveData<>();

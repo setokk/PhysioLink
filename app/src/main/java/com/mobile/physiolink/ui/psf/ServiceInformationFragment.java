@@ -2,7 +2,10 @@ package com.mobile.physiolink.ui.psf;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +19,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobile.physiolink.databinding.FragmentServiceInformationBinding;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
+import com.mobile.physiolink.ui.psf.viewmodel.ServiceInformationViewModel;
 
 import java.util.ArrayList;
 
@@ -23,6 +27,7 @@ import java.util.ArrayList;
 public class ServiceInformationFragment extends Fragment {
 
     private FragmentServiceInformationBinding binding;
+    private ServiceInformationViewModel viewModel;
 
     private boolean edit = false;
     private boolean input_erros;
@@ -48,6 +53,16 @@ public class ServiceInformationFragment extends Fragment {
 
         binding = FragmentServiceInformationBinding.inflate(inflater, container, false);
 
+        viewModel = new ViewModelProvider(this).get(ServiceInformationViewModel.class);
+        viewModel.getService().observe(getViewLifecycleOwner(), service ->
+        {
+            binding.codeInput.setText(service.getId());
+            binding.nameInput.setText(service.getTitle());
+            binding.descriptionInput.setText(service.getDescription());
+            binding.priceInput.setText(new StringBuilder()
+                    .append(service.getPrice())
+                    .append("€").toString());
+        });
 
         all_inputs.add(binding.nameInput);
         all_inputs_layouts.add(binding.nameInputLayout);
@@ -159,5 +174,12 @@ public class ServiceInformationFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        String serviceId = ServiceInformationFragmentArgs.fromBundle(getArguments()).getServiceId();
+        viewModel.loadService(serviceId);
     }
 }

@@ -82,7 +82,7 @@
             android:maxLength="20"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:text="Aθλητική Μάλαξη"
+            android:text=""
             android:textAlignment="gravity"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -115,7 +115,7 @@
             android:maxLength="7"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:text="45$"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -157,7 +157,7 @@
             android:maxLength="10"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:text="ΘΜ001"
+            android:text=""
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -202,7 +202,7 @@
             android:inputType="textMultiLine|textAutoComplete"
             android:maxLength="1000"
             android:paddingTop="10dp"
-            android:text="Είδος θεραπευτικού μασάζ που απευθύνεται σε αθλητές. Τα είδη αθλητικής μάλαξης που έχουν καθιερωθεί είναι τέσσερα: (α) συντήρησης, (β) προετοιμασίας, (γ) αποκατάστασης, και (δ) μέσο-αγωνιστική. Οι τεχνικές που χρησιμοποιούνται στην αθλητική μάλαξη είναι ιδιαίτερα αποτελεσματικές στη διαχείριση οξέων και χρόνιων τραυματισμών, στη μείωση της έντασης του μυϊκού σπασμού και της αίσθησης του πόνου στους τραυματισμένους-υπερφορτισμένους μυς, καθώς και στην επούλωση και τη δημιουργία νέων, ισχυρών και ελαστικών ιστών"
+            android:text=""
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -5,6 +5,8 @@ import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 import okhttp3.Callback;
@@ -50,7 +52,12 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
     @Override
     public void get(String id, Callback callback)
     {
-        RequestFacade.getRequest(API.GET_SERVICE + id, callback);
+        try {
+            String encodedID = URLEncoder.encode(id,
+                    StandardCharsets.UTF_8.toString());
+            RequestFacade.getRequest(API.GET_SERVICE + encodedID, callback);
+        }
+        catch (Exception ignored) {}
     }
 
     public void linkServiceToDoctor(String serviceId, long doctorId, Callback callback)
