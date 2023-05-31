@@ -33,6 +33,8 @@ public class DoctorActivity extends AppCompatActivity
         /* AppBar Configuration */
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController, false);
+        
+        getSupportActionBar().setTitle("PhysioLink");
     }
 
     @Override
