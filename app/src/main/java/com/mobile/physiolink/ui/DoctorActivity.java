@@ -35,6 +35,8 @@ public class DoctorActivity extends AppCompatActivity
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController, false);
         
         getSupportActionBar().setTitle("PhysioLink");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.PhysioLink_Logo_WhiteB_NoCircle.png);
     }
 
     @Override
