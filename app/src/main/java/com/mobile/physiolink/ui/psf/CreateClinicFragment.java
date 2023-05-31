@@ -16,11 +16,19 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentCreateClinicBinding;
+import com.mobile.physiolink.service.api.error.Error;
+import com.mobile.physiolink.service.dao.DoctorDAO;
+import com.mobile.physiolink.service.schemas.DoctorSchema;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 
 public class CreateClinicFragment extends Fragment
@@ -150,8 +158,8 @@ public class CreateClinicFragment extends Fragment
                             current_layout.setError(null);
                         }
                     } else if (current_layout.equals(binding.addressInputLayout)){
-                        if(!current.getText().toString().matches("^[Α-Ωα-ω]+,\\s*\\d+$")){
-                           current_layout.setError("Η Διεύθυνση πρέπει να είναι της μορφής (Ονομα, Αριθμος)");
+                        if(!current.getText().toString().matches("^([\\u0391-\\u03C9\\u03AC-\\u03CE\\s]+\\d+)$")){
+                           current_layout.setError("Η Διεύθυνση πρέπει να είναι της μορφής (Ονομα Αριθμος)");
                            address_error = true;
                         } else {
                             address_error = false;
@@ -196,11 +204,42 @@ public class CreateClinicFragment extends Fragment
                             "Ναι", "Οχι");
                     confirmation.setPositiveOnClick((dialog, which) ->
                     {
-                        // TODO: API CALL
-                        Toast.makeText(getActivity(), "Εγινε αποθήκευση Φυσιοθεραπευτηρίου!",
-                                Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
-                                .navigate(R.id.action_fragment_create_clinic_to_fragment_clinics);
+                        DoctorSchema schema = new DoctorSchema(binding.docUsernameInput.getText().toString(),
+                                binding.docPasswardInput.getText().toString(),
+                                binding.docNameInput.getText().toString(),
+                                binding.docSurnameInput.getText().toString(),
+                                "needs_an_email@email.com", //TODO: ADD EMAIL INPUT
+                                binding.phonenumberInput.getText().toString(),
+                                binding.afmInput.getText().toString(),
+                                binding.cityInput.getText().toString(),
+                                binding.addressInput.getText().toString(),
+                                binding.tkClinicInput.getText().toString(),
+                                binding.clinicNameInput.getText().toString());
+                        DoctorDAO.getInstance().create(schema, new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                call.cancel();
+                            }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                String res = response.body().string();
+                                getActivity().runOnUiThread(() ->
+                                {
+                                    if (res.contains(Error.RESOURCE_EXISTS))
+                                    {
+                                        Toast.makeText(getActivity(), "Υπάρχει ήδη χρήστης με το ίδιο username",
+                                                Toast.LENGTH_LONG).show();
+                                        return;
+                                    }
+
+                                    Toast.makeText(getActivity(), "Εγινε αποθήκευση Φυσιοθεραπευτηρίου!",
+                                            Toast.LENGTH_SHORT).show();
+                                    Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                                            .navigate(R.id.action_fragment_create_clinic_to_fragment_clinics);
+                                });
+                            }
+                        });
                     });
                     confirmation.setNegativeOnClick(((dialog, which) ->
                     {
