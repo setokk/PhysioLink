@@ -183,73 +183,71 @@ public class CreateClinicFragment extends Fragment
             });
         }
 
-        binding.saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                for(int i = 0; i< all_inputs.size(); i++){
-                    if(all_inputs.get(i).getText().length() == 0 ){
-                        all_inputs_layouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
-                        input_erros = true;
-                    }
+        binding.saveButton.setOnClickListener(view ->
+        {
+            for(int i = 0; i< all_inputs.size(); i++){
+                if(all_inputs.get(i).getText().length() == 0 ){
+                    all_inputs_layouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
+                    input_erros = true;
                 }
-                if(binding.tkClinicInput.getText().toString().startsWith("0")){
-                    binding.tkClinicInputLayout.setError("Ο ταχυδρομικός κώδικας δεν είναι έγκυρος!");
-                    postalCodeError = true;
-                }
-                if(input_erros || phone_error || afm_error || code_error || address_error || postalCodeError){
-                    Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
-                            "Είστε σίγουρος για την επιλογή σας;",
-                            "Ναι", "Οχι");
-                    confirmation.setPositiveOnClick((dialog, which) ->
-                    {
-                        DoctorSchema schema = new DoctorSchema(binding.docUsernameInput.getText().toString(),
-                                binding.docPasswardInput.getText().toString(),
-                                binding.docNameInput.getText().toString(),
-                                binding.docSurnameInput.getText().toString(),
-                                "needs_an_email@email.com", //TODO: ADD EMAIL INPUT
-                                binding.phonenumberInput.getText().toString(),
-                                binding.afmInput.getText().toString(),
-                                binding.cityInput.getText().toString(),
-                                binding.addressInput.getText().toString(),
-                                binding.tkClinicInput.getText().toString(),
-                                binding.clinicNameInput.getText().toString());
-                        DoctorDAO.getInstance().create(schema, new Callback() {
-                            @Override
-                            public void onFailure(Call call, IOException e) {
-                                call.cancel();
-                            }
+            }
+            if(binding.tkClinicInput.getText().toString().startsWith("0")){
+                binding.tkClinicInputLayout.setError("Ο ταχυδρομικός κώδικας δεν είναι έγκυρος!");
+                postalCodeError = true;
+            }
+            if(input_erros || phone_error || afm_error || code_error || address_error || postalCodeError){
+                Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
+                        "Είστε σίγουρος για την επιλογή σας;",
+                        "Ναι", "Οχι");
+                confirmation.setPositiveOnClick((dialog, which) ->
+                {
+                    DoctorSchema schema = new DoctorSchema(binding.docUsernameInput.getText().toString(),
+                            binding.docPasswardInput.getText().toString(),
+                            binding.docNameInput.getText().toString(),
+                            binding.docSurnameInput.getText().toString(),
+                            "needs_an_email@email.com", //TODO: ADD EMAIL INPUT
+                            binding.phonenumberInput.getText().toString(),
+                            binding.afmInput.getText().toString(),
+                            binding.cityInput.getText().toString(),
+                            binding.addressInput.getText().toString(),
+                            binding.tkClinicInput.getText().toString(),
+                            binding.clinicNameInput.getText().toString());
+                    DoctorDAO.getInstance().create(schema, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            call.cancel();
+                        }
 
-                            @Override
-                            public void onResponse(Call call, Response response) throws IOException {
-                                String res = response.body().string();
-                                getActivity().runOnUiThread(() ->
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            String res = response.body().string();
+                            getActivity().runOnUiThread(() ->
+                            {
+                                if (res.contains(Error.RESOURCE_EXISTS))
                                 {
-                                    if (res.contains(Error.RESOURCE_EXISTS))
-                                    {
-                                        Toast.makeText(getActivity(), "Υπάρχει ήδη χρήστης με το ίδιο username",
-                                                Toast.LENGTH_LONG).show();
-                                        return;
-                                    }
+                                    Toast.makeText(getActivity(), "Υπάρχει ήδη χρήστης με το ίδιο username",
+                                            Toast.LENGTH_LONG).show();
+                                    return;
+                                }
 
-                                    Toast.makeText(getActivity(), "Εγινε αποθήκευση Φυσιοθεραπευτηρίου!",
-                                            Toast.LENGTH_SHORT).show();
-                                    Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
-                                            .navigate(R.id.action_fragment_create_clinic_to_fragment_clinics);
-                                });
-                            }
-                        });
+                                Toast.makeText(getActivity(), "Εγινε αποθήκευση Φυσιοθεραπευτηρίου!",
+                                        Toast.LENGTH_SHORT).show();
+                                Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                                        .navigate(R.id.action_fragment_create_clinic_to_fragment_clinics);
+                            });
+                        }
                     });
-                    confirmation.setNegativeOnClick(((dialog, which) ->
-                    {
-                        Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
-                                Toast.LENGTH_SHORT).show();
-                    }));
+                });
+                confirmation.setNegativeOnClick(((dialog, which) ->
+                {
+                    Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
+                            Toast.LENGTH_SHORT).show();
+                }));
 
-                    confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
-                }
+                confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
             }
         });
 
