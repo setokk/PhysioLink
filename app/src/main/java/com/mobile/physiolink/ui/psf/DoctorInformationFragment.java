@@ -45,8 +45,6 @@ public class DoctorInformationFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,11 +66,7 @@ public class DoctorInformationFragment extends Fragment {
             binding.emailInput.setText(doctor.getEmail());
             binding.phoneInput.setText(doctor.getPhoneNumber());
             binding.cityInput.setText(doctor.getCity());
-
-            String[] splitted = doctor.getAddress().split(" ");
-            binding.addressInput.setText(splitted[0]);
-            binding.numberInput.setText(splitted[1]);
-
+            binding.addressInput.setText(doctor.getAddress());
             binding.tkInput.setText(doctor.getPostalCode());
             binding.afmInput.setText(doctor.getAfm());
             binding.clinicNameInput.setText(doctor.getPhysioName());
@@ -127,7 +121,7 @@ public class DoctorInformationFragment extends Fragment {
                             binding.phoneInput.getText().toString(),
                             binding.afmInput.getText().toString(),
                             binding.cityInput.getText().toString(),
-                            binding.addressInput.getText().toString() + " " + binding.numberInput.getText().toString(),
+                            binding.addressInput.getText().toString(),
                             binding.tkInput.getText().toString(),
                             binding.clinicNameInput.getText().toString());
                     FragmentActivity context = getActivity();
@@ -162,7 +156,6 @@ public class DoctorInformationFragment extends Fragment {
         all_inputs.add(binding.cityInput);
         all_inputs.add(binding.addressInput);
         all_inputs.add(binding.tkInput);
-        all_inputs.add(binding.numberInput);
         all_inputs.add(binding.emailInput);
     }
 }

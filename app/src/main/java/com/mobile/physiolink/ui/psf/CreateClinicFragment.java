@@ -158,8 +158,9 @@ public class CreateClinicFragment extends Fragment
                             current_layout.setError(null);
                         }
                     } else if (current_layout.equals(binding.addressInputLayout)){
-                        if(!current.getText().toString().matches("^([\\u0391-\\u03C9\\u03AC-\\u03CE\\s]+\\d+)$")){
-                           current_layout.setError("Η Διεύθυνση πρέπει να είναι της μορφής (Ονομα Αριθμος)");
+                        if(current.getText().toString().length() == 0)
+                        {
+                           current_layout.setError("Η Διεύθυνση δεν μπορεί να είναι κενή");
                            address_error = true;
                         } else {
                             address_error = false;
