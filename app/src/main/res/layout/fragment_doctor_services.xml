@@ -8,8 +8,8 @@
     android:background="@color/background_lime"
     tools:context=".ui.doctor.DoctorServicesFragment">
 
-    <SearchView
-        android:id="@+id/SearchViewServicesDoctor"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewServicesDoctor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -21,7 +21,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:queryHint="Αναζήτηση.."/>
+        app:queryHint="@string/query_hint"
+        app:iconifiedByDefault="false"/>
 
 
 
@@ -35,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/SearchViewServicesDoctor" />
+        app:layout_constraintTop_toBottomOf="@id/searchViewServicesDoctor" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addServiceBtn"

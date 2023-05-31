@@ -1,14 +1,17 @@
 package com.mobile.physiolink.ui.doctor;
-// TODO Na ginei katallhlh allagh tou arxeiou molis ginei h diasyndesh me ta dedomena ths bashs
+
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +22,17 @@ import com.mobile.physiolink.R;
 
 import com.mobile.physiolink.databinding.FragmentDoctorServicesBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.dao.ServiceDAO;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorServicesViewModel;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class DoctorServicesFragment extends Fragment{
     private FragmentDoctorServicesBinding binding;
@@ -33,13 +43,22 @@ public class DoctorServicesFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        /* On back button pressed, Go back to home fragment */
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.container);
+                navController.navigate(R.id.action_doctorServicesFragment_to_doctorHomeFragment);
+            }
+        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
         binding = FragmentDoctorServicesBinding.inflate(inflater, container, false);
 
         adapter = new AdapterForDoctorServices();
@@ -49,15 +68,29 @@ public class DoctorServicesFragment extends Fragment{
             adapter.setServices(services);
         });
 
-        adapter.setOnLongItemClickListener(service ->{
+        adapter.setOnLongItemClickListener(service -> {
             ConfirmationPopUp confirmation = new ConfirmationPopUp("Διαγραφή Παροχής",
                     "Είστε σίγουρος πως θέλετε να διαγράψετε αυτή την παροχή;",
                     "Ναι", "Όχι");
+
+            FragmentActivity context = getActivity();
             confirmation.setPositiveOnClick((dialog, which) ->
             {
-                // TODO: API CALL
-                Toast.makeText(getActivity(), "Έγινε επιτυχώς η διαγραφή!",
-                        Toast.LENGTH_SHORT).show();
+                ServiceDAO.getInstance().deleteServiceFromDoctor(service.getId(),
+                        UserHolder.doctor().getId(), new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) { call.cancel(); }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                context.runOnUiThread(() ->
+                                {
+                                    Toast.makeText(getActivity(), "Έγινε επιτυχώς η διαγραφή!",
+                                            Toast.LENGTH_SHORT).show();
+                                });
+                                viewModel.loadDoctorServices(UserHolder.doctor().getId());
+                            }
+                        });
             });
             confirmation.setNegativeOnClick(((dialog, which) ->
             {
@@ -67,6 +100,20 @@ public class DoctorServicesFragment extends Fragment{
 
             confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
         });
+
+        binding.searchViewServicesDoctor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
         return binding.getRoot();
     }
 

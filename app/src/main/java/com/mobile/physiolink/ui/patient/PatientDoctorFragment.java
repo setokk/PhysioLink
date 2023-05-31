@@ -2,10 +2,12 @@ package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -22,6 +24,7 @@ import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForPatientDoctorServices;
 import com.mobile.physiolink.ui.patient.viewmodel.PatientDoctorViewModel;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 public class PatientDoctorFragment extends Fragment
 {
@@ -35,7 +38,21 @@ public class PatientDoctorFragment extends Fragment
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        /* On back button pressed, Go back to home fragment */
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.containerPatient);
+                navController.navigate(R.id.action_fragmentPatientDoctor_to_fragmentPatientHome);
+            }
+        });
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +61,9 @@ public class PatientDoctorFragment extends Fragment
         viewModel = new ViewModelProvider(this).get(PatientDoctorViewModel.class);
         viewModel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
         {
+            binding.doctorProfilePicPatient.setImageResource(
+                    ProfileImageProvider.getProfileImage(doctor.getName()));
+
             binding.doctorPatientName.setText(doctor.getName());
             binding.doctorPatientSurname.setText(doctor.getSurname());
             binding.doctorAfmPatient.setText(doctor.getAfm());

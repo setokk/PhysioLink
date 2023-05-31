@@ -5,12 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorProfileBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 public class DoctorProfileFragment extends Fragment {
     private FragmentDoctorProfileBinding binding;
@@ -24,6 +29,16 @@ public class DoctorProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        /* On back button pressed, Go back to home fragment */
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.container);
+                navController.navigate(R.id.action_doctorProfileFragment_to_doctorHomeFragment);
+            }
+        });
     }
 
     @Override
@@ -32,6 +47,9 @@ public class DoctorProfileFragment extends Fragment {
     {
         // Inflate the layout for this fragment
         binding = FragmentDoctorProfileBinding.inflate(inflater, container, false);
+
+        binding.profileImageDoctor.setImageResource(ProfileImageProvider
+                .getProfileImage(UserHolder.doctor().getName()));
         binding.profileNameDoctor.setText(String.format("%s %s",
                 UserHolder.doctor().getName(), UserHolder.doctor().getSurname()));
         binding.profileUsernameDoctor.setText(String.format("%s ",

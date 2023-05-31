@@ -36,6 +36,11 @@ public class DoctorActivity extends AppCompatActivity
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     public boolean onSupportNavigateUp()
     {
         NavController navController = Navigation.findNavController(this, R.id.container);

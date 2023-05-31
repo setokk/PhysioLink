@@ -51,20 +51,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Όνομα:"
+                    android:paddingBottom="5dp"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/patientHistoryNameDoctor"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/patientHistoryNameDoctor"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patientHistoryNameDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="5dp"
                     android:layout_marginStart="8dp"
                     android:text=""
+                    android:backgroundTint="@color/transparent"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/patientHistoryNameTitleDoctor"
@@ -75,6 +77,7 @@
                     android:id="@+id/patientHistorySurnameTitleDoctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
                     android:text="Επίθετο:"
                     android:textColor="@color/white"
                     android:textSize="18sp"
@@ -84,12 +87,15 @@
                     app:layout_constraintRight_toLeftOf="@+id/patientHistorySurnameDoctor"
                     app:layout_constraintTop_toBottomOf="@+id/patientHistoryNameDoctor" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patientHistorySurnameDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="5dp"
                     android:layout_marginStart="8dp"
                     android:text=""
+                    android:backgroundTint="@color/transparent"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/patientHistorySurnameTitleDoctor"
@@ -127,6 +133,7 @@
                     android:id="@+id/amkaTitlePatientHistoryDoctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -136,14 +143,17 @@
                     app:layout_constraintRight_toLeftOf="@+id/amkaPatientHistoryDoctor"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/amkaPatientHistoryDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_marginStart="5dp"
-                    android:text=""
+                    android:text="amka"
+                    android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/amkaTitlePatientHistoryDoctor"
                     app:layout_constraintStart_toEndOf="@+id/amkaTitlePatientHistoryDoctor"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -152,6 +162,7 @@
                     android:id="@+id/phoneTitlePatientHistoryDoctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -161,14 +172,17 @@
                     app:layout_constraintRight_toLeftOf="@+id/phonePatientHistoryDoctor"
                     app:layout_constraintTop_toBottomOf="@+id/amkaTitlePatientHistoryDoctor" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/phonePatientHistoryDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_marginStart="5dp"
                     android:text=""
+                    android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/phoneTitlePatientHistoryDoctor"
                     app:layout_constraintStart_toEndOf="@+id/phoneTitlePatientHistoryDoctor"
                     app:layout_constraintTop_toTopOf="@+id/phoneTitlePatientHistoryDoctor" />
@@ -177,6 +191,7 @@
                     android:id="@+id/emailTitlePatientHistoryDoctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -186,14 +201,17 @@
                     app:layout_constraintRight_toLeftOf="@+id/emailPatientHistoryDoctor"
                     app:layout_constraintTop_toBottomOf="@+id/phoneTitlePatientHistoryDoctor" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailPatientHistoryDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_marginStart="5dp"
                     android:text=""
+                    android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/emailTitlePatientHistoryDoctor"
                     app:layout_constraintStart_toEndOf="@+id/emailTitlePatientHistoryDoctor"
                     app:layout_constraintTop_toTopOf="@+id/emailTitlePatientHistoryDoctor" />
@@ -201,6 +219,7 @@
                     android:id="@+id/cityTitlePatientHistoryDoctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -210,14 +229,17 @@
                     app:layout_constraintRight_toLeftOf="@+id/cityPatientHistoryDoctor"
                     app:layout_constraintTop_toBottomOf="@+id/emailTitlePatientHistoryDoctor"
                     />
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/cityPatientHistoryDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_marginStart="5dp"
                     android:text=""
+                    android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/cityTitlePatientHistoryDoctor"
                     app:layout_constraintStart_toEndOf="@+id/cityTitlePatientHistoryDoctor"
                     app:layout_constraintTop_toTopOf="@+id/cityTitlePatientHistoryDoctor"/>
@@ -225,6 +247,7 @@
                     android:id="@+id/postalCodeTitlePatientHistoryDoctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -234,14 +257,17 @@
                     app:layout_constraintStart_toEndOf="@+id/cityPatientHistoryDoctor"
                     app:layout_constraintTop_toTopOf="@+id/cityTitlePatientHistoryDoctor"/>
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/postalCodePatientHistoryDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_marginStart="5dp"
                     android:text=""
+                    android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/cityTitlePatientHistoryDoctor"
                     app:layout_constraintStart_toEndOf="@+id/postalCodeTitlePatientHistoryDoctor"
                     app:layout_constraintTop_toTopOf="@+id/cityTitlePatientHistoryDoctor"/>
@@ -249,6 +275,7 @@
                     android:id="@+id/addressTitlePatientHistoryDoctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -257,22 +284,20 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/addressPatientHistoryDoctor"
                     app:layout_constraintTop_toBottomOf="@+id/cityTitlePatientHistoryDoctor"/>
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addressPatientHistoryDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_marginStart="5dp"
                     android:text=""
+                    android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/addressTitlePatientHistoryDoctor"
                     app:layout_constraintStart_toEndOf="@+id/addressTitlePatientHistoryDoctor"
                     app:layout_constraintTop_toTopOf="@+id/addressTitlePatientHistoryDoctor"/>
-
-
-
-                
-
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/editInfoBtnPatientHistoryDoctor"

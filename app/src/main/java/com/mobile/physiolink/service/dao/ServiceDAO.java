@@ -53,6 +53,24 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
         RequestFacade.getRequest(API.GET_SERVICE + id, callback);
     }
 
+    public void linkServiceToDoctor(String serviceId, long doctorId, Callback callback)
+    {
+        HashMap<String, String> keyValues = new HashMap<>(2);
+        keyValues.put("service_id", serviceId);
+        keyValues.put("doctor_id", String.valueOf(doctorId));
+
+        RequestFacade.postRequest(API.LINK_SERVICE_TO_DOCTOR, keyValues, callback);
+    }
+
+    public void deleteServiceFromDoctor(String serviceId, long doctorId, Callback callback)
+    {
+        HashMap<String, String> keyValues = new HashMap<>(2);
+        keyValues.put("service_id", serviceId);
+        keyValues.put("doctor_id", String.valueOf(doctorId));
+
+        RequestFacade.postRequest(API.DELETE_DOCTOR_SERVICE, keyValues, callback);
+    }
+
     public void getDoctorServices(long doctorId, Callback callback)
     {
         RequestFacade.getRequest(API.GET_SERVICES_OF + doctorId, callback);

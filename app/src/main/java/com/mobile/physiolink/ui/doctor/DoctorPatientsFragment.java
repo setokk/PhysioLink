@@ -2,10 +2,13 @@ package com.mobile.physiolink.ui.doctor;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -21,6 +24,8 @@ import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatients;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorPatientsViewModel;
 
+import java.util.Locale;
+
 public class DoctorPatientsFragment extends Fragment
 {
     private FragmentDoctorPatientsBinding binding;
@@ -31,6 +36,16 @@ public class DoctorPatientsFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        /* On back button pressed, Go back to home fragment */
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.container);
+                navController.navigate(R.id.action_doctorPatientsFragment_to_doctorHomeFragment);
+            }
+        });
     }
 
     @Override
@@ -53,6 +68,19 @@ public class DoctorPatientsFragment extends Fragment
         viewModel.getDoctorPatients().observe(getViewLifecycleOwner(), patients ->
         {
             adapter.setPatients(patients);
+        });
+
+        binding.searchViewPatientsDoctor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
         });
 
         return binding.getRoot();

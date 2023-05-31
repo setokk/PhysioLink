@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentUpcomingAppointmentBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
+import com.mobile.physiolink.util.date.TimeFormatter;
 
 public class UpcomingAppointmentFragment extends Fragment {
 
@@ -49,18 +50,23 @@ public class UpcomingAppointmentFragment extends Fragment {
 
         binding.appointmentDatePatient.setText(String.format("%s, ", appointment.getDate()
                 .replace('-', '/')));
-
-//        String pmAm;
-//        double hour = Double.parseDouble(appointment.getHour());
-//        if (hour < 12)
-//            pmAm = "πμ";
-//        else
-//            pmAm = "μμ";
-        binding.appointmentTimePatient.setText(appointment.getHour());
+        binding.appointmentTimePatient.setText(TimeFormatter.formatToPM_AM(appointment.getHour()
+                .substring(0, 2).replace(":", "")));
         binding.appointmentAdressPatient.setText(String.format("%s,", appointment.getDocAddress()));
         binding.appointmentCityPatient.setText(String.format("%s,", appointment.getDocCity()));
         binding.appointmentPostalCodePatient.setText(appointment.getDocPostalCode());
         binding.appointmentCommentsPatient.setText(appointment.getMessage());
+
+        if (appointment.isConfirmed())
+        {
+            binding.isConfirmedText.setText("Επιβεβαιωμένο");
+            binding.isConfirmedText.setTextColor(getResources()
+                    .getColor(R.color.success));
+        }
+        else
+        {
+            binding.isConfirmedText.setText("Σε εκκρεμότητα");
+        }
 
         boolean hasContent = binding.appointmentCommentsPatient.length() > 0;
         if (!hasContent) {

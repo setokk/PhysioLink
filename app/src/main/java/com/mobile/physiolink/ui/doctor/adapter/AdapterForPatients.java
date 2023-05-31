@@ -3,6 +3,8 @@ package com.mobile.physiolink.ui.doctor.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,19 +14,25 @@ import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.ui.doctor.OnItemClickListener;
 
-public class AdapterForPatients extends RecyclerView.Adapter<AdapterForPatients.MyViewHolder>
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+public class AdapterForPatients extends RecyclerView.Adapter<AdapterForPatients.MyViewHolder> implements Filterable
 {
-    private Patient[] patients;
+    private List<Patient> patients;
+    private List<Patient> patientsFull;
     private OnItemClickListener<Patient> listener;
 
     public AdapterForPatients()
     {
-        patients = new Patient[0];
+        patients = new ArrayList<>();
     }
 
-    public void setPatients(Patient[] patients)
+    public void setPatients(List<Patient> patients)
     {
         this.patients = patients;
+        this.patientsFull = new ArrayList<>(patients);
         notifyDataSetChanged();
     }
 
@@ -46,19 +54,57 @@ public class AdapterForPatients extends RecyclerView.Adapter<AdapterForPatients.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
         holder.binding.patientNameDoctor
-                .setText(patients[position].getName());
+                .setText(patients.get(position).getName());
         holder.binding.patientSurnameDoctor
-                .setText(patients[position].getSurname());
+                .setText(patients.get(position).getSurname());
         holder.binding.AMKApatientDoctor
-                .setText(patients[position].getAmka());
+                .setText(patients.get(position).getAmka());
         holder.binding.phoneNumberPatientDoctor
-                .setText(patients[position].getPhoneNumber());
+                .setText(patients.get(position).getPhoneNumber());
     }
 
     @Override
     public int getItemCount() {
-        return patients.length;
+        return patients.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return patientsFilter;
+    }
+
+    private final Filter patientsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Patient> filteredList = new ArrayList<>();
+            if(charSequence == null || charSequence.length() == 0){
+                filteredList.addAll(patientsFull);
+            }
+            else{
+                String filterPattern = charSequence.toString().toUpperCase().trim();
+                for(Patient patient: patientsFull){
+                    if(patient.getName().toUpperCase().contains(filterPattern) ||
+                       patient.getSurname().toUpperCase().contains(filterPattern) ||
+                       patient.getAmka().toUpperCase().contains(filterPattern) ||
+                       patient.getPhoneNumber().toUpperCase().contains(filterPattern)){
+                        filteredList.add(patient);
+                    }
+
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            patients.clear();
+            patients.addAll(Optional.ofNullable((List) filterResults.values)
+                    .orElse(new ArrayList<>(0)));
+            notifyDataSetChanged();
+        }
+    };
 
     public class MyViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener
@@ -78,7 +124,7 @@ public class AdapterForPatients extends RecyclerView.Adapter<AdapterForPatients.
             int position = getAbsoluteAdapterPosition();
             if (position != RecyclerView.NO_POSITION && listener != null)
             {
-                listener.onItemClick(patients[position]);
+                listener.onItemClick(patients.get(position));
             }
         }
     }

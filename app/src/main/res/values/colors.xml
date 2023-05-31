@@ -20,4 +20,5 @@
     <color name="bottom_bar_color">#6750A4 </color>
     <color name="history_view_data_secondary">#49454F</color>
     <color name="low_opacity_white">#33FFFFFF</color>
+    <color name="success">#00DE1A</color>
 </resources>

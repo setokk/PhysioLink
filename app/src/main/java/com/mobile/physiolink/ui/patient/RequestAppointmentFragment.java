@@ -1,5 +1,9 @@
 package com.mobile.physiolink.ui.patient;
 
+import android.graphics.BlendMode;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -22,6 +26,7 @@ import android.widget.Toast;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentRequestAppointmentBinding;
 import com.mobile.physiolink.databinding.ItemListTimeBinding;
+import com.mobile.physiolink.model.availability.AvailableHoursManager;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
@@ -30,8 +35,13 @@ import com.mobile.physiolink.ui.patient.adapter.AdapterForAppointmentHour;
 import com.mobile.physiolink.ui.patient.viewmodel.RequestAppointmentViewModel;
 import com.mobile.physiolink.util.date.DateFormatter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
+
+import org.threeten.bp.DayOfWeek;
+import org.threeten.bp.chrono.ChronoLocalDate;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -48,8 +58,6 @@ public class RequestAppointmentFragment extends Fragment
     private AdapterForAppointmentHour adapter;
 
     private FragmentRequestAppointmentBinding binding;
-
-    private ItemListTimeBinding itemListTimeBinding;
 
     private ArrayWeekDayFormatter weekDayFormatter;
     private MonthArrayTitleFormatter monthFormatter;
@@ -93,6 +101,16 @@ public class RequestAppointmentFragment extends Fragment
         weekDayFormatter = new ArrayWeekDayFormatter(
             getResources().getTextArray(R.array.greek_days));
 
+        /* On back button pressed, Go back to patient's doctor fragment */
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.containerPatient);
+                navController.navigate(R.id.action_fragmentRequestAppointment_to_fragmentPatientDoctor);
+            }
+        });
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
@@ -135,10 +153,9 @@ public class RequestAppointmentFragment extends Fragment
         // Send appointment request
         binding.saveButton.setOnClickListener((v) ->
         {
-            if (binding.messageInput.getText().toString().isEmpty() ||
-                binding.hourBtn.getText().toString().isEmpty())
+            if (binding.hourBtn.getText().toString().isEmpty())
             {
-                Toast.makeText(getActivity(), "Πρέπει να συμπληρωθούν όλα τα πεδία...",
+                Toast.makeText(getActivity(), "Πρέπει να επιλεχθεί ώρα...",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -176,6 +193,7 @@ public class RequestAppointmentFragment extends Fragment
                                 Toast.LENGTH_SHORT).show();
 
                         binding.calendarView.clearSelection();
+                        binding.hourBtn.setText("");
 
                         // Reload everything
                         appointmentViewmodel.loadAvailableHours(selectedDate.getMonthValue(),
