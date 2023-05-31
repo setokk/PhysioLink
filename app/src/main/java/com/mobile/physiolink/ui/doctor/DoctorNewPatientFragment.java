@@ -121,13 +121,6 @@ public class DoctorNewPatientFragment extends Fragment
             String emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
             Pattern emailRegex = Pattern.compile(emailPattern);
 
-//            currentInput.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    currentInput.requestFocus();
-//                }
-//            });
-
             currentInput.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -206,71 +199,69 @@ public class DoctorNewPatientFragment extends Fragment
             });
         }
 
-        binding.saveNewPatientBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                for(int i = 0; i< allInputs.size(); i++){
-                    if(allInputs.get(i).getText().length() == 0){
-                        allInputsLayouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
-                        inputError = true;
-                    }
+        binding.saveNewPatientBtn.setOnClickListener(view ->
+        {
+            for(int i = 0; i< allInputs.size(); i++){
+                if(allInputs.get(i).getText().length() == 0){
+                    allInputsLayouts.get(i).setError("Το πεδίο πρέπει να συμπληρωθεί!");
+                    inputError = true;
                 }
-                if(binding.patientPostalCodeInput.getText().toString().startsWith("0")){
-                    binding.patientPostalCodeInputLayout.setError("Ο ταχυδρομικός κώδικας δεν είναι έγκυρος!");
-                    postalCodeError = true;
-                }
-                if(inputError || phoneError || AmkaError || passwordError || emailError || postalCodeError || address_error){
-                    Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
-                            "Είστε σίγουρος για την επιλογή σας;",
-                            "Ναι", "Οχι");
-                    confirmation.setPositiveOnClick((dialog, which) ->
-                    {
+            }
+            if(binding.patientPostalCodeInput.getText().toString().startsWith("0")){
+                binding.patientPostalCodeInputLayout.setError("Ο ταχυδρομικός κώδικας δεν είναι έγκυρος!");
+                postalCodeError = true;
+            }
+            if(inputError || phoneError || AmkaError || passwordError || emailError || postalCodeError || address_error){
+                Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
+                        "Είστε σίγουρος για την επιλογή σας;",
+                        "Ναι", "Οχι");
+                confirmation.setPositiveOnClick((dialog, which) ->
+                {
 
-                        PatientSchema schema = new PatientSchema(binding.patientUsernameInput.getText().toString(),
-                                binding.patientPasswordInput.getText().toString(),
-                                binding.patientNameInput.getText().toString(),
-                                binding.patientSurnameInput.getText().toString(),
-                                binding.patientEmailInput.getText().toString(),
-                                binding.patientPhoneInput.getText().toString(),
-                                binding.patientCityInput.getText().toString(),
-                                binding.patientAddressInput.getText().toString(),
-                                binding.patientPostalCodeInput.getText().toString(),
-                                binding.patientAmkaInput.getText().toString(),
-                                UserHolder.doctor().getId());
+                    PatientSchema schema = new PatientSchema(binding.patientUsernameInput.getText().toString().trim(),
+                            binding.patientPasswordInput.getText().toString().trim(),
+                            binding.patientNameInput.getText().toString().trim(),
+                            binding.patientSurnameInput.getText().toString().trim(),
+                            binding.patientEmailInput.getText().toString().trim(),
+                            binding.patientPhoneInput.getText().toString().trim(),
+                            binding.patientCityInput.getText().toString().trim(),
+                            binding.patientAddressInput.getText().toString().trim(),
+                            binding.patientPostalCodeInput.getText().toString().trim(),
+                            binding.patientAmkaInput.getText().toString().trim(),
+                            UserHolder.doctor().getId());
 
-                        FragmentActivity context = getActivity();
-                        PatientDAO.getInstance().create(schema, new Callback() {
-                            @Override
-                            public void onFailure(Call call, IOException e) {call.cancel();}
-                            @Override
-                            public void onResponse(Call call, Response response) throws IOException
+                    FragmentActivity context = getActivity();
+                    PatientDAO.getInstance().create(schema, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {call.cancel();}
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException
+                        {
+                            String res = response.body().string();
+                            context.runOnUiThread(() ->
                             {
-                                String res = response.body().string();
-                                context.runOnUiThread(() ->
+                                if (res.contains(Error.RESOURCE_EXISTS))
                                 {
-                                    if (res.contains(Error.RESOURCE_EXISTS))
-                                    {
-                                        Toast.makeText(getActivity(), "Το όνομα χρήστη υπάρχει ήδη",
-                                                Toast.LENGTH_SHORT).show();
-                                        return;
-                                    }
-                                        Toast.makeText(getActivity(), "Έγινε αποθήκευση Ασθενή!",
+                                    Toast.makeText(getActivity(), "Το όνομα χρήστη υπάρχει ήδη",
                                             Toast.LENGTH_SHORT).show();
-                                });
-                            }
-                        });
+                                    return;
+                                }
+                                    Toast.makeText(getActivity(), "Έγινε αποθήκευση Ασθενή!",
+                                        Toast.LENGTH_SHORT).show();
+                            });
+                        }
                     });
-                    confirmation.setNegativeOnClick(((dialog, which) ->
-                    {
-                        Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
-                                Toast.LENGTH_SHORT).show();
-                    }));
+                });
+                confirmation.setNegativeOnClick(((dialog, which) ->
+                {
+                    Toast.makeText(getActivity(), "Δεν έγινε αποθήκευση!",
+                            Toast.LENGTH_SHORT).show();
+                }));
 
-                    confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
-                }
+                confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
             }
         });
 
