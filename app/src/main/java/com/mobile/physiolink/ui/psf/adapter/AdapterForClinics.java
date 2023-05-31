@@ -1,6 +1,7 @@
 package com.mobile.physiolink.ui.psf.adapter;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDocBinding;
 import com.mobile.physiolink.model.user.Doctor;
+import com.mobile.physiolink.ui.doctor.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.MyViewHolder>
 {
     private List<Doctor> doctors;
+    private OnItemClickListener<Doctor> listener;
 
     public AdapterForClinics()
     {
@@ -25,6 +28,11 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     {
         this.doctors = doctors;
         notifyDataSetChanged();
+    }
+
+    public void setOnItemClickListener(OnItemClickListener<Doctor> listener)
+    {
+        this.listener = listener;
     }
 
     @NonNull
@@ -53,6 +61,7 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder
+        implements View.OnClickListener
     {
         ItemDocBinding itemDocBinding;
 
@@ -60,6 +69,16 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
         {
             super(itemDocBinding.getRoot());
             this.itemDocBinding = itemDocBinding;
+            this.itemDocBinding.getRoot().setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAbsoluteAdapterPosition();
+            if (position != RecyclerView.NO_POSITION && listener != null)
+            {
+                listener.onItemClick(doctors.get(position));
+            }
         }
     }
 }
