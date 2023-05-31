@@ -42,11 +42,12 @@ public class PSFActivity extends AppCompatActivity
             return true;
         }));
     }
-//    @Override
-//    public boolean onSupportNavigateUp()
-//    {
-//        NavController navController = Navigation.findNavController(this, R.id.containerPatient);
-//        return NavigationUI.navigateUp(navController, appBarConfiguration)
-//                || super.onSupportNavigateUp();
-//    }
+
+    @Override
+    public boolean onSupportNavigateUp()
+    {
+        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 }
