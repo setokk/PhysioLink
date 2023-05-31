@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentServicesBinding;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.psf.ServicesFragmentDirections;
 import com.mobile.physiolink.ui.psf.adapter.AdapterForServices;
 import com.mobile.physiolink.ui.psf.viewmodel.ServicesViewModel;
 
@@ -40,6 +41,15 @@ public class ServicesFragment extends Fragment
         binding = FragmentServicesBinding.inflate(inflater, container, false);
 
         adapter = new AdapterForServices();
+        adapter.setOnItemClickListener((service) ->
+        {
+            com.mobile.physiolink.ui.psf.ServicesFragmentDirections
+                    .ActionFragmentServicesToServiceInformationFragment
+                    action = ServicesFragmentDirections
+                    .actionFragmentServicesToServiceInformationFragment(service.getId());
+            Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                    .navigate(action);
+        });
 
         viewModel = new ViewModelProvider(this).get(ServicesViewModel.class);
         viewModel.getServices().observe(getViewLifecycleOwner(), services ->

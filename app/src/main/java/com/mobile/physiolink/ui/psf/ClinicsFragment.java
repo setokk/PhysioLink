@@ -42,6 +42,17 @@ public class ClinicsFragment extends Fragment
         // Inflate the layout for this fragment
         binding = FragmentClinicsBinding.inflate(inflater, container, false);
 
+        adapter = new AdapterForClinics();
+        adapter.setOnItemClickListener((doctor) ->
+        {
+            com.mobile.physiolink.ui.psf.ClinicsFragmentDirections
+                    .ActionFragmentClinicsToDoctorInformationFragment
+                    action = ClinicsFragmentDirections
+                    .actionFragmentClinicsToDoctorInformationFragment(doctor.getId());
+            Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                    .navigate(action);
+        });
+
         viewModel = new ViewModelProvider(this).get(ClinicsViewModel.class);
         viewModel.getDoctors().observe(getViewLifecycleOwner(), doctors ->
         {
@@ -56,7 +67,6 @@ public class ClinicsFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter = new AdapterForClinics();
         binding.customListView.setAdapter(adapter);
         binding.customListView.addItemDecoration(new DecorationSpacingItem(20));
         binding.customListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
