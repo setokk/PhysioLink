@@ -34,7 +34,7 @@ public class PSFActivity extends AppCompatActivity
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavPsf, navController);
 
-        getSupportActionBar().setTitle("PhysioLink");
+        
         /* BottomNavigation listener for popping backstack
         binding.bottomNavPsf.setOnItemSelectedListener((item ->
         {
