@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
@@ -29,17 +30,19 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder> implements OnButtonClickListener {
-    public static final int ACCEPT=1;
-    public static final int REJECT=2;
 
+    private static final int ACCEPT=1;
+    private static final int REJECT=2;
+    private final FragmentManager fm;
     private Appointment[] appointments;
 
     private boolean[] isExpanded;
 
-    public AdapterForAppointments()
+    public AdapterForAppointments(FragmentManager fm)
     {
         appointments = new Appointment[0];
         isExpanded = new boolean[appointments.length];
+        this.fm = fm;
     }
 
     public void setAppointments(Appointment[] appointments)
@@ -129,7 +132,7 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
                 {
 
                 });
-
+                paymentPopUp.show(fm,"Payment pop up");
             });
 
             binding.exAppointmentButton.setOnClickListener(view ->
@@ -144,6 +147,7 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
                 {
 
                 });
+                deletePopUp.show(fm,"Payment pop up");
             });
         }
     }
