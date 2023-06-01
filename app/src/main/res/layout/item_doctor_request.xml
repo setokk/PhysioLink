@@ -9,7 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="10dp">
+        android:paddingBottom="8dp"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/buttonsLayout"
@@ -59,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/requestPhotoDoctor"
             app:layout_constraintLeft_toRightOf="@id/requestPhotoDoctor"
             app:layout_constraintTop_toTopOf="parent">
@@ -77,9 +79,9 @@
                 android:id="@+id/AMKAtextview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="AMKA:"
-                android:textSize="@dimen/_12ssp"
-                app:layout_constraintBottom_toBottomOf="@id/requestAMKA"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/requestNameDoctor" />
 
@@ -88,10 +90,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
+                android:layout_marginTop="5dp"
                 android:text="Onoma"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/requestSurnameDoctor"
+
                 app:layout_constraintRight_toLeftOf="@id/requestSurnameDoctor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calendarImage" />
@@ -102,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Epitheto"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/requestNameDoctor"
                 app:layout_constraintLeft_toRightOf="@id/requestNameDoctor"
@@ -114,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="0101995555"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/AMKAtextview"
                 app:layout_constraintStart_toEndOf="@+id/AMKAtextview"
                 app:layout_constraintTop_toTopOf="@id/AMKAtextview" />
@@ -126,7 +129,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="14/03/2023"
                 android:textColor="@color/button_purple"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/calendarImage"
                 app:layout_constraintLeft_toRightOf="@id/calendarImage"
@@ -140,7 +143,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="14:00"
                 android:textColor="@color/button_purple"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/requestAppointmentDate"
                 app:layout_constraintLeft_toRightOf="@id/requestAppointmentDate"
@@ -153,9 +156,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             android:text="Σχόλια:"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/requestPhotoDoctor"
             app:layout_constraintBottom_toTopOf="@id/requestProblem"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -167,7 +170,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Πόνος στο δεξί χέρι και στο αριστερό πόδι"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="16sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/requestProblemTitle"

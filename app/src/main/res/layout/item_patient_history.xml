@@ -37,7 +37,7 @@
 
             android:text="00/00/0000"
             android:textColor="@color/button_purple"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@+id/calendarIconHistory"
             app:layout_constraintTop_toTopOf="@+id/calendarIconHistory"
@@ -50,7 +50,7 @@
             android:layout_marginStart="9dp"
             android:text="15:00"
             android:textColor="@color/button_purple"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@+id/appointmentDatePatientHistory"
             app:layout_constraintTop_toTopOf="@+id/appointmentDatePatientHistory"
@@ -63,7 +63,7 @@
             android:layout_marginTop="4dp"
             android:text="Βελονισμός"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentDatePatientHistory" />
 
@@ -74,7 +74,7 @@
             android:layout_marginTop="5dp"
             android:text="Το σχόλιο σας:"
             android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/serviceNamePatientHistory"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -86,7 +86,7 @@
             android:textColor="@color/button_grey"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentDescriptionPatientHistoryTitle" />
@@ -101,7 +101,7 @@
         android:layout_marginTop="30dp"
         android:text="40€"
         android:textColor="@color/button_purple"
-        android:textSize="@dimen/_16ssp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

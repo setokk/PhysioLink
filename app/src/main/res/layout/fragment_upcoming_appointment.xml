@@ -14,11 +14,9 @@
         android:id="@+id/isConfirmedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-
         android:text="se ekremotita"
         android:textColor="@color/design_default_color_error"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="14sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,6 +25,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/isConfirmedText"
         app:layout_constraintEnd_toEndOf="parent"
         >
@@ -49,7 +48,7 @@
         android:text="kfgnrtig"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/calendarImgPatient"
         app:layout_constraintTop_toTopOf="@id/calendarImgPatient"
         app:layout_constraintBottom_toBottomOf="@id/calendarImgPatient"/>
@@ -62,7 +61,7 @@
         android:text="gggggggggggggggggggg"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@+id/appointmentDatePatient"
         app:layout_constraintTop_toTopOf="@+id/appointmentDatePatient"
         app:layout_constraintBottom_toBottomOf="@+id/appointmentDatePatient"/>
@@ -82,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text=""
-        android:textSize="@dimen/_12ssp"
+        android:textSize="16sp"
 
         android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@id/locationImgPatient"
@@ -95,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text=""
-        android:textSize="@dimen/_12ssp"
+        android:textSize="16sp"
 
         android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@id/appointmentAdressPatient"
@@ -108,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text=""
-        android:textSize="@dimen/_12ssp"
+        android:textSize="16sp"
 
         android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@id/appointmentCityPatient"
@@ -122,7 +121,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginLeft="5dp"
         android:text="Το σχόλια σας:"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="16sp"
 
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +136,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="15dp"
         android:text=""
-        android:textSize="@dimen/_12ssp"
+        android:textSize="16sp"
         android:textColor="@color/black"
         android:maxLines="1"
         android:ellipsize="end"

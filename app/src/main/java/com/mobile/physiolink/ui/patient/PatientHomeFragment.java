@@ -55,12 +55,13 @@ public class PatientHomeFragment extends Fragment
                     .append(" ")
                     .append(doctor.getSurname())
                     .toString());
+            binding.doctorPhysioNamePatient.setText(new StringBuilder().append(doctor.getPhysioName()));
 
             int profileImg = ProfileImageProvider.getProfileImage(doctor.getName());
             if (profileImg == R.drawable.prof_doctoress)
-                binding.myDoctorTitle.setText("Η Γιατρός μου:");
+                binding.myDoctorTitle.setText("Η Φυσιοθεραπεύτρια μου:");
             else
-                binding.myDoctorTitle.setText("Ο Γιατρός μου:");
+                binding.myDoctorTitle.setText("Ο Φυσιοθεραπευτής μου:");
             binding.doctorProfileImgPatient.setImageResource(profileImg);
         });
         viewmodel.getUpcomingAppointment().observe(getViewLifecycleOwner(), appoint ->

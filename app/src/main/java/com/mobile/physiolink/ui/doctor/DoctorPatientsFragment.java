@@ -1,6 +1,9 @@
 package com.mobile.physiolink.ui.doctor;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -12,19 +15,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorPatientsBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
-import com.mobile.physiolink.ui.doctor.DoctorPatientsFragmentDirections;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatients;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatients;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorPatientsViewModel;
-
-import java.util.Locale;
 
 public class DoctorPatientsFragment extends Fragment
 {
@@ -91,7 +87,7 @@ public class DoctorPatientsFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
+        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(40); // 20px spacing
         binding.patientsListDoctor.addItemDecoration(itemDecoration);
 
         binding.patientsListDoctor.setAdapter(adapter);
