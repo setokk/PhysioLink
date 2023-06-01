@@ -1,6 +1,10 @@
 package com.mobile.physiolink.ui.doctor;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -12,11 +16,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorAddServiceBinding;
@@ -133,7 +132,7 @@ public class DoctorAddServiceFragment extends Fragment {
 
         binding.doctorAddServicesList.setAdapter(adapter);
         binding.doctorAddServicesList.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
+        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(40); // 20px spacing
         binding.doctorAddServicesList.addItemDecoration(itemDecoration);
 
         viewModel.loadNewDoctorServices(UserHolder.doctor().getId());

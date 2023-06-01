@@ -9,8 +9,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/patientImageDoctorAppointment"
-        android:layout_width="@dimen/_45sdp"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_width="@dimen/_55sdp"
+        android:layout_height="@dimen/_55sdp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="16.00-17.00"
             android:textColor="@color/button_purple"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="Maria Kokona"
             android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentTimeDoctorPatient"/>
 
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:text="ΑΜΚΑ: "
             android:textColor="@color/button_grey"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentNameDoctorPatient"/>
 
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:text="20000000000"
             android:textColor="@color/button_grey"
-            android:textSize="@dimen/_11ssp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/appointmentAmkaTitleDoctorPatient"
             app:layout_constraintTop_toTopOf="@+id/appointmentAmkaTitleDoctorPatient"
             app:layout_constraintBottom_toBottomOf="@+id/appointmentAmkaTitleDoctorPatient"/>
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:text="Σχόλια:"
             android:textColor="@color/black"
-            android:textSize="@dimen/_11ssp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,7 +100,7 @@
             android:maxLines="1"
             android:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
             android:textColor="@color/button_grey"
-            android:textSize="@dimen/_11ssp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/appointmentTitleCommentsDoctorPatient"
             app:layout_constraintTop_toBottomOf="@+id/appointmentTitleCommentsDoctorPatient" />
