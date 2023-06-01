@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_lime"
-    tools:context=".ui.psf.ClinicsFragment" >
-
+    tools:context=".ui.psf.ClinicsFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchbarParoxes"
-        android:layout_width="379dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/search_background"
-        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/search_bar_style"
         android:textColor="@color/black"
         android:textColorHint="@color/input_grey"
+        app:queryHint="@string/query_hint"
         android:textSize="16sp"
+        app:iconifiedByDefault="false"
         app:layout_constraintBottom_toTopOf="@id/customListViewParoxes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,18 +42,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/customListViewParoxes"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchbarParoxes"
-        app:layout_constraintVertical_bias="1.0" >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchbarParoxes">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -62,17 +60,16 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="31dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/button_purple"
-
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/baseline_add_24"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
+        android:paddingVertical="10dp"
         android:paddingBottom="1dp"
         android:text="@string/CreateNewService"
         android:textColor="@color/white"
         android:textSize="14sp"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

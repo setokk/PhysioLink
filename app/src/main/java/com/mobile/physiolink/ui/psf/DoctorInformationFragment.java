@@ -61,8 +61,8 @@ public class DoctorInformationFragment extends Fragment {
             binding.profilImage.setImageResource(
                     ProfileImageProvider.getProfileImage(doctor.getName()));
 
-            binding.nameTextview.setText(doctor.getName());
-            binding.surnameTextview.setText(doctor.getSurname());
+            binding.nameTextView.setText(doctor.getName());
+            binding.surnameTextView.setText(doctor.getSurname());
             binding.emailInput.setText(doctor.getEmail());
             binding.phoneInput.setText(doctor.getPhoneNumber());
             binding.cityInput.setText(doctor.getCity());

@@ -39,6 +39,7 @@
         android:id="@+id/serviceDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@id/serviceName"
         app:layout_constraintStart_toStartOf="@id/serviceName"
