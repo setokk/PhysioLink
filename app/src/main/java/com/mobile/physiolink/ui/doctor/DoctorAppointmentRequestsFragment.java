@@ -67,6 +67,8 @@ public class DoctorAppointmentRequestsFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.noRequestsTextView.setVisibility(View.GONE);
+
         DecorationSpacingItem spacingItem = new DecorationSpacingItem(20);
         binding.requestListDoctor.addItemDecoration(spacingItem);
 
