@@ -25,6 +25,7 @@ import com.mobile.physiolink.service.schemas.DoctorSchema;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
+import com.mobile.physiolink.ui.psf.adapter.AdapterForServices;
 import com.mobile.physiolink.ui.psf.viewmodel.DoctorInformationViewModel;
 import com.mobile.physiolink.util.image.ProfileImageProvider;
 
@@ -39,7 +40,7 @@ public class DoctorInformationFragment extends Fragment {
 
     private FragmentDoctorInformationBinding binding;
     private DoctorInformationViewModel viewModel;
-    private AdapterForDoctorServices adapter;
+    private AdapterForServices adapter;
 
     private boolean edit;
 
@@ -59,7 +60,7 @@ public class DoctorInformationFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentDoctorInformationBinding.inflate(inflater, container, false);
 
-        adapter = new AdapterForDoctorServices();
+        adapter = new AdapterForServices();
 
         viewModel = new ViewModelProvider(this).get(DoctorInformationViewModel.class);
         viewModel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
