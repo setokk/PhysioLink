@@ -8,7 +8,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
-        android:layout_width="@dimen/_110sdp"
+        android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_40sdp"
         android:background="@drawable/round_style"
         android:backgroundTint="@color/button_purple"
@@ -20,86 +20,111 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/inputsLoginConstraint"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inputsLoginConstraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_70sdp"
-        app:layout_constraintTop_toBottomOf="@id/textView"
-        app:layout_constraintStart_toStartOf="@id/textView"
-        app:layout_constraintEnd_toEndOf="@id/textView"
-        app:errorEnabled="true"
-        app:boxBackgroundColor="@color/background_lime"
-        app:boxStrokeColor="@color/background_lime"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/roboto"
-            android:hint="@string/hint_username"
-            android:inputType="textNoSuggestions"
-            android:textColorHint="@color/input_grey" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        app:boxBackgroundColor="@color/background_lime"
-        app:boxStrokeColor="@color/background_lime"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:errorEnabled="true"
-        app:passwordToggleEnabled="true"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout2"
-        app:layout_constraintStart_toStartOf="@id/textInputLayout2"
-        app:layout_constraintEnd_toEndOf="@id/textInputLayout2">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/round_style"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/roboto"
-            android:hint="@string/hint_password"
-            android:inputType="textPassword"
-            android:textColorHint="@color/input_grey" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/loginPhysiolinkLogo"
-        android:layout_width="@dimen/_90sdp"
-        android:layout_height="@dimen/_90sdp"
-        android:layout_marginTop="@dimen/_60sdp"
-        android:src="@drawable/physiolink_logo"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginPhysiolinkConstraint"
+        app:layout_constraintBottom_toTopOf="@id/btnLogin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <TextView
-        android:id="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_30sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:errorEnabled="true"
+            app:boxBackgroundColor="@color/background_lime"
+            app:boxStrokeColor="@color/background_lime"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_style"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/roboto"
+                android:hint="@string/hint_username"
+                android:inputType="textNoSuggestions"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_30sdp"
+            app:boxBackgroundColor="@color/background_lime"
+            app:boxStrokeColor="@color/background_lime"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:errorEnabled="true"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_style"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/roboto"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:textColorHint="@color/input_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loginPhysiolinkConstraint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="@dimen/_26sdp"
-        app:layout_constraintEnd_toEndOf="@+id/loginPhysiolinkLogo"
-        app:layout_constraintStart_toStartOf="@+id/loginPhysiolinkLogo"
-        app:layout_constraintTop_toBottomOf="@+id/loginPhysiolinkLogo" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/inputsLoginConstraint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/loginPhysiolinkLogo"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:src="@drawable/physiolink_logo"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textView"/>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/_26sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginPhysiolinkLogo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
