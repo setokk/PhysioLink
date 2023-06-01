@@ -24,7 +24,7 @@ import okhttp3.Response;
 public class DoctorInformationViewModel extends ViewModel
 {
     private MutableLiveData<Doctor> doctor;
-    private MutableLiveData<Service[]> doctorServices;
+    private MutableLiveData<List<Service>> doctorServices;
 
     public void loadDoctor(long doctorId)
     {
@@ -81,15 +81,15 @@ public class DoctorInformationViewModel extends ViewModel
                 try
                 {
                     JSONArray jsonServices = new JSONObject(res).getJSONArray("services");
-                    Service[] services = new Service[jsonServices.length()];
+                    List<Service> services = new ArrayList<>(jsonServices.length());
 
                     for (int i = 0; i < jsonServices.length(); ++i)
                     {
                         JSONObject element = jsonServices.getJSONObject(i);
-                        services[i] = new Service(element.getString("id"),
+                        services.add(new Service(element.getString("id"),
                                 element.getString("title"),
                                 element.getString("description"),
-                                element.getDouble("price"));
+                                element.getDouble("price")));
                     }
                     doctorServices.postValue(services);
                 } catch (JSONException e)
@@ -100,7 +100,7 @@ public class DoctorInformationViewModel extends ViewModel
         });
     }
 
-    public MutableLiveData<Service[]> getDoctorServices()
+    public MutableLiveData<List<Service>> getDoctorServices()
     {
         if (doctorServices == null)
             doctorServices = new MutableLiveData<>();
