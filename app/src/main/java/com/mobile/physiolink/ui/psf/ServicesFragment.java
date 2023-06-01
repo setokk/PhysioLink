@@ -3,6 +3,7 @@ package com.mobile.physiolink.ui.psf;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -55,6 +56,19 @@ public class ServicesFragment extends Fragment
         viewModel.getServices().observe(getViewLifecycleOwner(), services ->
         {
             adapter.setServices(services);
+        });
+
+        binding.searchbarParoxes.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
         });
 
         return binding.getRoot();
