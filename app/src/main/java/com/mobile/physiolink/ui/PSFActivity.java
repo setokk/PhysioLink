@@ -34,13 +34,10 @@ public class PSFActivity extends AppCompatActivity
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavPsf, navController);
 
-//        BottomNavigation listener for popping backstack
-        binding.bottomNavPsf.setOnItemSelectedListener((item ->
-        {
-            navController.popBackStack();
-            navController.navigate(item.getItemId());
-            return true;
-        }));
+        /*ActionBar*/
+        getSupportActionBar().setTitle("PhysioLink");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.physiolink_logo);
     }
 
     @Override
