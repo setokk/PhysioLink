@@ -125,7 +125,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/myDoctorPatientBtn"
-                android:layout_width="55dp"
+                android:layout_width="30dp"
                 android:layout_height="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

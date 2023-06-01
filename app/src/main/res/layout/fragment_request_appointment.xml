@@ -155,7 +155,7 @@
             android:paddingBottom="10dp"
             android:text="@string/SaveString"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_15ssp"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
