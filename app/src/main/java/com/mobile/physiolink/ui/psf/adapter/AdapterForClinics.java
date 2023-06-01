@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mobile.physiolink.databinding.ItemDocBinding;
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.ui.doctor.OnItemClickListener;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,9 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
+        int imageID = ProfileImageProvider
+                .getProfileImage(doctors.get(position).getName());
+        holder.itemDocBinding.doctorImage.setImageResource(imageID);
         holder.itemDocBinding.doctorName.setText(new StringBuilder()
                 .append(doctors.get(position).getName())
                 .append(" ")
