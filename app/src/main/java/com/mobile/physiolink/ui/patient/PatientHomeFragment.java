@@ -32,6 +32,7 @@ public class PatientHomeFragment extends Fragment
     private PatientHomeViewModel viewmodel;
 
     private Fragment AppointmentFragment;
+    private Fragment NoUpcomingAppointmentFragment;
 
     public PatientHomeFragment() {
         // Required empty public constructor
@@ -64,13 +65,20 @@ public class PatientHomeFragment extends Fragment
         });
         viewmodel.getUpcomingAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
+            binding.upcomingAppointmentFragmentContainer.setVisibility(View.VISIBLE);
             if (appoint.isFound())
             {
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 AppointmentFragment = new UpcomingAppointmentFragment(appoint);
                 transaction.replace(R.id.upcomingAppointmentFragmentContainer, AppointmentFragment);
                 transaction.commit();
-
+            }
+            else
+            {
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                NoUpcomingAppointmentFragment = new NoUpcomingAppointmentFragment();
+                transaction.replace(R.id.upcomingAppointmentFragmentContainer, NoUpcomingAppointmentFragment);
+                transaction.commit();
             }
         });
         viewmodel.getLatestCompletedAppointment().observe(getViewLifecycleOwner(), appoint ->
@@ -87,6 +95,8 @@ public class PatientHomeFragment extends Fragment
                               @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.upcomingAppointmentFragmentContainer.setVisibility(View.GONE);
 
         this.adapter = new AdapterForHistoryPatient();
         binding.patientHistoryLastItemPatient.setAdapter(adapter);
@@ -113,11 +123,6 @@ public class PatientHomeFragment extends Fragment
         binding.seeYourHistoryBtnPatient.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(),R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientHome_to_patientHistoryFragment));
-
-
-
-
-
     }
 }
 
