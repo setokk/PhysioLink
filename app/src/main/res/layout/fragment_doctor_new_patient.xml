@@ -23,7 +23,7 @@
             android:layout_marginTop="40dp"
             android:text="Στοιχεία Ασθενή:"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -32,7 +32,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientNameInputLayout"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/_230sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
@@ -63,7 +63,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientSurnameInputLayout"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/_230sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
@@ -94,7 +94,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientCityInputLayout"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/_230sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
@@ -125,7 +125,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientAddressInputLayout"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/_230sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
@@ -156,7 +156,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientPostalCodeInputLayout"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/_230sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
@@ -187,7 +187,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientAmkaInputLayout"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/_230sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
@@ -218,7 +218,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientPhoneInputLayout"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/_230sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
@@ -251,8 +251,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientEmailInputLayout"
-            android:layout_width="294dp"
-            android:layout_height="75dp"
+            android:layout_width="@dimen/_230sdp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="1dp"
@@ -288,7 +288,7 @@
             android:layout_marginTop="60dp"
             android:text="Στοιχεία Λογαριασμού Ασθενή:"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -296,7 +296,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientUsernameInputLayout"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/_230sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
@@ -327,7 +327,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/patientPasswordInputLayout"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/_230sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="17dp"
@@ -360,16 +360,16 @@
             android:id="@+id/saveNewPatientBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_40sdp"
             android:background="@drawable/rounded_button"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="20dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
             android:paddingBottom="10dp"
             android:text="Αποθήκευση"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_16ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
