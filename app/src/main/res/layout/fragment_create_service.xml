@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint="Τιμή*"
+                android:hint="Τιμή"
                 android:maxLength="5"
                 android:inputType="number"
                 android:textColor="@color/black"
