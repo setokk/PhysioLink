@@ -66,7 +66,7 @@ public class ServiceInformationFragment extends Fragment {
             binding.nameInput.setText(service.getTitle());
             binding.descriptionInput.setText(service.getDescription());
             binding.priceInput.setText(new StringBuilder()
-                    .append(service.getPrice())
+                    .append((int) service.getPrice())
                     .append("€").toString());
         });
 
@@ -140,6 +140,7 @@ public class ServiceInformationFragment extends Fragment {
                             "Ναι", "Οχι");
                     confirmation.setPositiveOnClick((dialog, which) ->
                     {
+
                         Service service = new Service(serviceId,
                                 binding.nameInput.getText().toString(),
                                 binding.descriptionInput.getText().toString(),
