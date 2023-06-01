@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/fragment_home_psf"
         android:name="com.mobile.physiolink.ui.psf.PsfHomeFragment"
-        android:label="Αρχική"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_psf_home" >
         <action
             android:id="@+id/action_fragment_home_psf_to_phisiotherpeftiriaFragment"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/fragment_clinics"
         android:name="com.mobile.physiolink.ui.psf.ClinicsFragment"
-        android:label="Φυσιοθεραπευτήρια"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_clinics" >
         <action
             android:id="@+id/action_phisiotherpeftiriaFragment_to_fragment_home_psf"
@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/fragment_services"
         android:name="com.mobile.physiolink.ui.psf.ServicesFragment"
-        android:label="Παροχές"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_services" >
         <action
             android:id="@+id/action_parohesFragment_to_fragment_home_psf"
@@ -49,7 +49,7 @@
     <fragment
         android:id="@+id/fragment_create_clinic"
         android:name="com.mobile.physiolink.ui.psf.CreateClinicFragment"
-        android:label="Δημιουργία Φυσιοθεραπευτηρίου"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_create_clinic" >
         <action
             android:id="@+id/action_fragment_create_clinic_to_fragment_clinics"
@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/fragment_create_service"
         android:name="com.mobile.physiolink.ui.psf.CreateServiceFragment"
-        android:label="Δημιουργία Παροχών"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_create_service" >
         <action
             android:id="@+id/action_fragment_create_service_to_fragment_services"
@@ -67,7 +67,7 @@
     <fragment
         android:id="@+id/serviceInformationFragment"
         android:name="com.mobile.physiolink.ui.psf.ServiceInformationFragment"
-        android:label="fragment_service_information"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_service_information" >
         <action
             android:id="@+id/action_serviceInformationFragment_to_fragment_services"
@@ -76,7 +76,7 @@
     <fragment
         android:id="@+id/doctorInformationFragment"
         android:name="com.mobile.physiolink.ui.psf.DoctorInformationFragment"
-        android:label="fragment_doctor_information"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_doctor_information" >
         <action
             android:id="@+id/action_doctorInformationFragment_to_fragment_clinics"
