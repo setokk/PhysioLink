@@ -34,7 +34,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_30sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/textInputLayout"
@@ -61,8 +61,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
             android:layout_marginHorizontal="@dimen/_30sdp"
             app:boxBackgroundColor="@color/background_lime"
             app:boxStrokeColor="@color/background_lime"
