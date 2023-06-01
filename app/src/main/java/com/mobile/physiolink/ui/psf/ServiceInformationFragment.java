@@ -62,7 +62,7 @@ public class ServiceInformationFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(ServiceInformationViewModel.class);
         viewModel.getService().observe(getViewLifecycleOwner(), service ->
         {
-            binding.codeInput.setText(service.getId());
+            binding.codeTextview.setText(service.getId());
             binding.nameInput.setText(service.getTitle());
             binding.descriptionInput.setText(service.getDescription());
             binding.priceInput.setText(new StringBuilder()
