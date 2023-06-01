@@ -38,6 +38,7 @@
             android:text="00/00/0000"
             android:textColor="@color/button_purple"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@+id/calendarIconHistory"
             app:layout_constraintTop_toTopOf="@+id/calendarIconHistory"
             app:layout_constraintBottom_toBottomOf="@+id/calendarIconHistory"/>
@@ -50,6 +51,7 @@
             android:text="15:00"
             android:textColor="@color/button_purple"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@+id/appointmentDatePatientHistory"
             app:layout_constraintTop_toTopOf="@+id/appointmentDatePatientHistory"
             app:layout_constraintBottom_toBottomOf="@+id/appointmentDatePatientHistory"/>
@@ -58,9 +60,10 @@
             android:id="@+id/serviceNamePatientHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="Βελονισμός"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentDatePatientHistory" />
 

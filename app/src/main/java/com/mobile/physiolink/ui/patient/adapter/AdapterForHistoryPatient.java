@@ -112,9 +112,9 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
             else {
                 String filterPattern = charSequence.toString().toUpperCase().trim();
                 for(Appointment appoint: appointmentsFull){
-                    if(appoint.getMessage().contains(filterPattern) ||
+                    if(appoint.getMessage().toUpperCase().contains(filterPattern) ||
                         appoint.getDate().contains(filterPattern) ||
-                        appoint.getServiceTitle().contains(filterPattern)){
+                        appoint.getServiceTitle().toUpperCase().contains(filterPattern)){
                         filteredList.add(appoint);
                     }
                 }
