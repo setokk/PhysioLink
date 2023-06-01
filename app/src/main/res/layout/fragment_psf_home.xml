@@ -8,55 +8,73 @@
     android:background="@color/background_lime"
     tools:context=".ui.psf.PsfHomeFragment">
 
-    <TextView
-        android:id="@+id/psf_home_text_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/psfConnectedAsConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/low_opacity_white"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/connectedAsTitlePsf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="Συνδέθηκες ως:"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/psfUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@id/connectedAsTitlePsf"
+            app:layout_constraintTop_toBottomOf="@id/connectedAsTitlePsf"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/psf_imageButton_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/welcome_text"
-        android:textColor="@color/white"
-        android:textSize="24sp"
+        android:background="@drawable/images_border_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/psf_profile_pic" />
+        app:layout_constraintBottom_toTopOf="@id/psf_imageButton_2"
+        app:layout_constraintTop_toBottomOf="@+id/psfConnectedAsConstraint">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fysiotherapeutiria2"
+            android:contentDescription="Clinic"
+            android:scaleType="fitXY" />
+    </androidx.cardview.widget.CardView>
 
-    <ImageButton
-        android:id="@+id/psf_imageButton_1"
-        android:layout_width="331dp"
-        android:layout_height="191dp"
-        android:contentDescription="Clinic"
-        android:paddingHorizontal="0dp"
-        android:paddingVertical="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/psf_imageButton_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/psf_home_text_view" />
-
-    <ImageView
-        android:id="@+id/psf_profile_pic"
-        android:layout_width="92dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/round_style"
-        app:layout_constraintBottom_toTopOf="@+id/psf_home_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
+    <androidx.cardview.widget.CardView
         android:id="@+id/psf_imageButton_2"
-        android:layout_width="331dp"
-        android:layout_height="191dp"
-        android:layout_marginBottom="32dp"
-        android:contentDescription="Servecis"
-        android:scaleType="fitXY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/images_border_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/psf_imageButton_1" />
+        app:layout_constraintTop_toBottomOf="@+id/psf_imageButton_1">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/paroxes2"
+            android:contentDescription="Services"
+            android:scaleType="fitXY"/>
+
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
         android:id="@+id/textView_phisoterapeftiria"
@@ -64,6 +82,7 @@
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:background="@color/button_purple"
+        android:elevation="10dp"
         android:text="Φυσιοθεραπευτήρια"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -79,6 +98,7 @@
         android:gravity="center"
         android:layout_height="35dp"
         android:background="@color/button_purple"
+        android:elevation="10dp"
         android:text="Παροχές"
         android:textAlignment="center"
         android:textColor="@color/white"

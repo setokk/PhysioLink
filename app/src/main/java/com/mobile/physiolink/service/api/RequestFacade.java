@@ -5,9 +5,11 @@ import android.os.StrictMode;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -27,7 +29,7 @@ public class RequestFacade
                 .build();
 
         Request request = new Request.Builder()
-                .url(URL)
+                .url(Objects.requireNonNull(HttpUrl.parse(URL)))
                 .get()
                 .build();
 

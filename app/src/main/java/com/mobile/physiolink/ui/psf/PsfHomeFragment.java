@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPsfHomeBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
 
 public class PsfHomeFragment extends Fragment
 {
@@ -53,6 +54,8 @@ public class PsfHomeFragment extends Fragment
             Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
                     .navigate(R.id.action_fragment_home_psf_to_parohesFragment);
         });
+
+        binding.psfUsername.setText(UserHolder.psf().getUsername());
 
     }
 }

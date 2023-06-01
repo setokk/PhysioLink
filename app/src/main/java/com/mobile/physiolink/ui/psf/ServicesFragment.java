@@ -3,7 +3,9 @@ package com.mobile.physiolink.ui.psf;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -14,14 +16,16 @@ import android.view.ViewGroup;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentServicesBinding;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.psf.ServicesFragmentDirections;
 import com.mobile.physiolink.ui.psf.adapter.AdapterForServices;
+import com.mobile.physiolink.ui.psf.viewmodel.ServicesViewModel;
 
 
-public class ServicesFragment extends Fragment {
-
+public class ServicesFragment extends Fragment
+{
     private FragmentServicesBinding binding;
-
-    String k1[],k2[],k3[],k4[];
+    private ServicesViewModel viewModel;
+    private AdapterForServices adapter;
 
 
     @Override
@@ -36,6 +40,37 @@ public class ServicesFragment extends Fragment {
     {
         // Inflate the layout for this fragment
         binding = FragmentServicesBinding.inflate(inflater, container, false);
+
+        adapter = new AdapterForServices();
+        adapter.setOnItemClickListener((service) ->
+        {
+            com.mobile.physiolink.ui.psf.ServicesFragmentDirections
+                    .ActionFragmentServicesToServiceInformationFragment
+                    action = ServicesFragmentDirections
+                    .actionFragmentServicesToServiceInformationFragment(service.getId());
+            Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                    .navigate(action);
+        });
+
+        viewModel = new ViewModelProvider(this).get(ServicesViewModel.class);
+        viewModel.getServices().observe(getViewLifecycleOwner(), services ->
+        {
+            adapter.setServices(services);
+        });
+
+        binding.searchbarParoxes.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
         return binding.getRoot();
     }
 
@@ -44,22 +79,16 @@ public class ServicesFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
 
-        k1=getResources().getStringArray(R.array.paroxesNameExample);
-        k2=getResources().getStringArray(R.array.paroxesIdExamle);
-        k3=getResources().getStringArray(R.array.paroxesCostExamle);
-        k4=getResources().getStringArray(R.array.paroxesDescriptionExamle);
-
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
         binding.customListViewParoxes.addItemDecoration(itemDecoration);
 
-        AdapterForServices adapter = new AdapterForServices(k1,k2,k3,k4);
         binding.customListViewParoxes.setAdapter(adapter);
         binding.customListViewParoxes.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
-
 
         binding.newParoxesButton.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
                 .navigate(R.id.action_parohesFragment_to_createParoxesFragment));
+
+        viewModel.loadServices();
     }
 }

@@ -11,7 +11,9 @@ public final class ProfileImageProvider
 
     public static int getProfileImage(String name)
     {
-        if (name.charAt(name.length() - 1) == 'ς' && !nameInExceptions(name))
+        if ((name.charAt(name.length() - 1) == 'ς' |
+                name.charAt(name.length() - 1) == 'λ')
+                && !nameInExceptions(name))
             return R.drawable.prof_doctor;
         else
             return R.drawable.prof_doctoress;

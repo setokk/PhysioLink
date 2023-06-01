@@ -69,6 +69,9 @@
         android:name="com.mobile.physiolink.ui.psf.ServiceInformationFragment"
         android:label="fragment_service_information"
         tools:layout="@layout/fragment_service_information" >
+        <argument
+            android:name="service_id"
+            app:argType="string"/>
         <action
             android:id="@+id/action_serviceInformationFragment_to_fragment_services"
             app:destination="@id/fragment_services" />
@@ -78,6 +81,9 @@
         android:name="com.mobile.physiolink.ui.psf.DoctorInformationFragment"
         android:label="fragment_doctor_information"
         tools:layout="@layout/fragment_doctor_information" >
+        <argument
+            android:name="doctor_id"
+            app:argType="long"/>
         <action
             android:id="@+id/action_doctorInformationFragment_to_fragment_clinics"
             app:destination="@id/fragment_clinics" />

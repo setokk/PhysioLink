@@ -5,6 +5,8 @@ import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 import okhttp3.Callback;
@@ -34,7 +36,8 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
     @Override
     public void update(String id, Service item, Callback callback)
     {
-        HashMap<String, String> keyValues = new HashMap<>(3);
+        HashMap<String, String> keyValues = new HashMap<>(4);
+        keyValues.put("service_id", id);
         keyValues.put("title", item.getTitle());
         keyValues.put("description", item.getDescription());
         keyValues.put("price", String.valueOf(item.getPrice()));
@@ -50,7 +53,12 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
     @Override
     public void get(String id, Callback callback)
     {
-        RequestFacade.getRequest(API.GET_SERVICE + id, callback);
+        try {
+            String encodedID = URLEncoder.encode(id,
+                    StandardCharsets.UTF_8.toString());
+            RequestFacade.getRequest(API.GET_SERVICE + encodedID, callback);
+        }
+        catch (Exception ignored) {}
     }
 
     public void linkServiceToDoctor(String serviceId, long doctorId, Callback callback)
@@ -69,6 +77,11 @@ public class ServiceDAO implements InterfaceDAO<String, Service>
         keyValues.put("doctor_id", String.valueOf(doctorId));
 
         RequestFacade.postRequest(API.DELETE_DOCTOR_SERVICE, keyValues, callback);
+    }
+
+    public void getServices(Callback callback)
+    {
+        RequestFacade.getRequest(API.GET_SERVICES, callback);
     }
 
     public void getDoctorServices(long doctorId, Callback callback)
