@@ -22,8 +22,8 @@
 
             <ImageButton
                 android:id="@+id/requestRejectButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/baseline_ic_x"
                 android:contentDescription="Reject Appointment"
@@ -33,8 +33,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/requestAcceptButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
                 android:background="@drawable/baseline_ic_checkmark"
                 android:contentDescription="Accept appointment"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -46,8 +46,8 @@
 
         <ImageView
             android:id="@+id/requestPhotoDoctor"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -65,8 +65,8 @@
 
             <ImageView
                 android:id="@+id/calendarImage"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginBottom="5dp"
                 app:srcCompat="@drawable/calendar_icon_today"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="AMKA:"
-                android:textSize="14sp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="@id/requestAMKA"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/requestNameDoctor" />
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="Onoma"
-                android:textSize="16sp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/requestSurnameDoctor"
                 app:layout_constraintRight_toLeftOf="@id/requestSurnameDoctor"
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Epitheto"
-                android:textSize="16sp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/requestNameDoctor"
                 app:layout_constraintLeft_toRightOf="@id/requestNameDoctor"
@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="0101995555"
-                android:textSize="14sp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/AMKAtextview"
                 app:layout_constraintStart_toEndOf="@+id/AMKAtextview"
                 app:layout_constraintTop_toTopOf="@id/AMKAtextview" />
@@ -126,7 +126,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="14/03/2023"
                 android:textColor="@color/button_purple"
-                android:textSize="16sp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/calendarImage"
                 app:layout_constraintLeft_toRightOf="@id/calendarImage"
@@ -140,7 +140,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="14:00"
                 android:textColor="@color/button_purple"
-                android:textSize="16sp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/requestAppointmentDate"
                 app:layout_constraintLeft_toRightOf="@id/requestAppointmentDate"
@@ -155,7 +155,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:text="Σχόλια:"
-            android:textSize="14sp"
+            android:textSize="@dimen/_12ssp"
             app:layout_constraintTop_toBottomOf="@id/requestPhotoDoctor"
             app:layout_constraintBottom_toTopOf="@id/requestProblem"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -167,7 +167,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Πόνος στο δεξί χέρι και στο αριστερό πόδι"
-            android:textSize="14sp"
+            android:textSize="@dimen/_12ssp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/requestProblemTitle"

@@ -14,20 +14,29 @@
         android:id="@+id/isConfirmedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="5dp"
-        android:text=""
+
+
+        android:text="se ekremotita"
         android:textColor="@color/design_default_color_error"
-        android:textSize="14sp"
+        android:textSize="@dimen/_12ssp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/calendarImgPatient" />
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/isConfirmedText"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
 
     <ImageView
         android:id="@+id/calendarImgPatient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
+
         android:src="@drawable/calendar_icon_today"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -37,10 +46,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text=""
+        android:text="kfgnrtig"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintStart_toEndOf="@id/calendarImgPatient"
         app:layout_constraintTop_toTopOf="@id/calendarImgPatient"
         app:layout_constraintBottom_toBottomOf="@id/calendarImgPatient"/>
@@ -50,19 +59,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
-        android:text=""
+        android:text="gggggggggggggggggggg"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintLeft_toRightOf="@+id/appointmentDatePatient"
         app:layout_constraintTop_toTopOf="@+id/appointmentDatePatient"
         app:layout_constraintBottom_toBottomOf="@+id/appointmentDatePatient"/>
 
     <ImageView
         android:id="@+id/locationImgPatient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/baseline_location_on_24"
         app:layout_constraintTop_toBottomOf="@id/calendarImgPatient"
         app:layout_constraintLeft_toLeftOf="parent"/>
@@ -73,8 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text=""
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+
         android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@id/locationImgPatient"
         app:layout_constraintTop_toTopOf="@id/locationImgPatient"
@@ -86,8 +95,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text=""
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+
         android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@id/appointmentAdressPatient"
         app:layout_constraintTop_toTopOf="@id/appointmentAdressPatient"
@@ -99,8 +108,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text=""
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+
         android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@id/appointmentCityPatient"
         app:layout_constraintTop_toTopOf="@id/appointmentCityPatient"
@@ -110,10 +119,11 @@
         android:id="@+id/appointmentCommentsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="5dp"
         android:text="Το σχόλια σας:"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/locationImgPatient"
@@ -127,13 +137,14 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="15dp"
         android:text=""
-        android:textSize="16sp"
+        android:textSize="@dimen/_12ssp"
         android:textColor="@color/black"
         android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
