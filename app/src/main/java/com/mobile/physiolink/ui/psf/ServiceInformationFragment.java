@@ -41,7 +41,6 @@ public class ServiceInformationFragment extends Fragment {
 
     private String prev_name;
     private String prev_price;
-    private String prev_code;
     private String prev_description;
     private final ArrayList<TextInputEditText> all_inputs = new ArrayList<>();
     private final ArrayList<TextInputLayout> all_inputs_layouts = new ArrayList<>();
@@ -182,7 +181,6 @@ public class ServiceInformationFragment extends Fragment {
                         binding.editButton.setText("Επεξεργασία");
 
                         binding.nameInput.setText(prev_name);
-                        binding.codeInput.setText(prev_code);
                         binding.priceInput.setText(prev_price);
                         binding.descriptionInput.setText(prev_description);
                     }));
@@ -202,10 +200,6 @@ public class ServiceInformationFragment extends Fragment {
         all_inputs.add(binding.priceInput);
         all_inputs_layouts.add(binding.priceInputLayout);
         prev_price = binding.priceInput.getText().toString();
-
-        all_inputs.add(binding.codeInput);
-        all_inputs_layouts.add(binding.codeInputLayout);
-        prev_code = binding.codeInput.getText().toString();
 
         all_inputs.add(binding.descriptionInput);
         all_inputs_layouts.add(binding.descriptionInputLayout);
