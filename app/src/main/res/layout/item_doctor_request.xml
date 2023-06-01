@@ -1,63 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ti"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/round2_style"
-    android:backgroundTint="@color/request_green"
-    android:orientation="horizontal">
+    android:background="@drawable/list_item_style">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/buttonsLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginHorizontal="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/requestProblem">
 
             <ImageButton
                 android:id="@+id/requestRejectButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/round_style"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/baseline_ic_x"
                 android:contentDescription="Reject Appointment"
                 app:layout_constraintBottom_toBottomOf="@id/requestAcceptButton"
                 app:layout_constraintLeft_toRightOf="@id/requestAcceptButton"
-                app:layout_constraintTop_toTopOf="@id/requestAcceptButton"
-                app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+                app:layout_constraintTop_toTopOf="@id/requestAcceptButton"/>
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/requestAcceptButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/rounded_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/baseline_ic_checkmark"
                 android:contentDescription="Accept appointment"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/requestRejectButton"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="?android:attr/textCheckMark" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/requestPhotoDoctor"
-            android:layout_width="70dp"
-            android:layout_height="73.5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:layout_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/requestPatientInfoLayout"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/profile_photo_picker" />
 
@@ -72,13 +65,13 @@
 
             <ImageView
                 android:id="@+id/calendarImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/requestAppointmentDate"
-                app:layout_constraintRight_toLeftOf="@id/requestAppointmentDate"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                app:srcCompat="@drawable/calendar_icon_today"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/AMKAtextview"
-                app:srcCompat="@drawable/baseline_calendar_month_24" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/requestNameDoctor"/>
 
             <TextView
                 android:id="@+id/AMKAtextview"
@@ -97,10 +90,11 @@
                 android:fontFamily="sans-serif"
                 android:text="Onoma"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/requestSurnameDoctor"
                 app:layout_constraintRight_toLeftOf="@id/requestSurnameDoctor"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/calendarImage" />
 
             <TextView
                 android:id="@+id/requestSurnameDoctor"
@@ -109,6 +103,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="Epitheto"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/requestNameDoctor"
                 app:layout_constraintLeft_toRightOf="@id/requestNameDoctor"
                 app:layout_constraintTop_toTopOf="@id/requestNameDoctor" />
@@ -130,6 +125,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="14/03/2023"
+                android:textColor="@color/button_purple"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/calendarImage"
                 app:layout_constraintLeft_toRightOf="@id/calendarImage"
@@ -142,6 +139,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="14:00"
+                android:textColor="@color/button_purple"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/requestAppointmentDate"
                 app:layout_constraintLeft_toRightOf="@id/requestAppointmentDate"
@@ -150,49 +149,31 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:id="@+id/requestProblemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Σχόλια:"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/requestPhotoDoctor"
+            app:layout_constraintBottom_toTopOf="@id/requestProblem"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
             android:id="@+id/requestProblem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginRight="5dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Πόνος στο δεξί χέρι και στο αριστερό πόδι"
-            android:textSize="16sp"
-
+            android:textSize="14sp"
             android:textStyle="normal"
-            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/requestProblemTitle"
             app:layout_constraintRight_toLeftOf="@id/buttonsLayout"
-            app:layout_constraintTop_toBottomOf="@id/requestPhotoDoctor" />
+            app:layout_constraintTop_toBottomOf="@id/requestProblemTitle" />
 
-        <TextView
-            android:id="@+id/requestTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
-            android:text=""
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/requestPatientInfoLayout" />
-
-        <TextView
-            android:id="@+id/requestProblemExpanded"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:maxWidth="190dp"
-            android:text=">  Πόνος στο δεξί χέρι και στο αριστερό πόδι"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/requestPhotoDoctor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,6 +1,7 @@
 package com.mobile.physiolink.ui.doctor.adapter;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,16 +38,19 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
     private final FragmentManager fm;
 
     private Appointment[] appointments;
+    boolean isExpanded[];
 
     public AdapterForRequests(FragmentManager fm)
     {
         appointments = new Appointment[0];
+        isExpanded = new boolean[appointments.length];
         this.fm=fm;
     }
 
     public void setAppointments(Appointment[] appointments)
     {
         this.appointments = appointments;
+        isExpanded = new boolean[appointments.length];
         notifyDataSetChanged();
     }
 
@@ -73,11 +77,22 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
                 .setText(TimeFormatter.formatToPM_AM(appointments[position].getHour()));
         holder.binding.requestProblem
                 .setText(appointments[position].getMessage());
-        holder.binding.requestProblemExpanded
-                .setText(appointments[position].getMessage());
-        holder.isExpanded = false;
+
+        boolean isItemExpanded = isExpanded[position];
+
+        if(isItemExpanded){
+            holder.binding.requestProblem.setMaxLines(Integer.MAX_VALUE);
+            holder.binding.requestProblem.setEllipsize(null);
+        } else {
+            holder.binding.requestProblem.setMaxLines(2);
+            holder.binding.requestProblem.setEllipsize(TextUtils.TruncateAt.END);
+        }
     }
 
+    private void toggleExpansion(int position) {
+        isExpanded[position] = !isExpanded[position];
+        notifyItemChanged(position);
+    }
     @Override
     public int getItemCount() {
         return appointments.length;
@@ -117,7 +132,6 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
     public class MyViewHolder extends RecyclerView.ViewHolder
     {
         ItemDoctorRequestBinding binding;
-        boolean isExpanded = false;
 
         public MyViewHolder(ItemDoctorRequestBinding binding, OnButtonClickListener listener)
         {
@@ -127,16 +141,7 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
             //Switch to extended on click
             binding.getRoot().setOnClickListener(view ->
             {
-                if(isExpanded)
-                {
-                    binding.requestProblemExpanded.setVisibility(View.GONE);
-                    binding.requestProblem.setVisibility(View.VISIBLE);
-                }else
-                {
-                    binding.requestProblemExpanded.setVisibility(View.VISIBLE);
-                    binding.requestProblem.setVisibility(View.INVISIBLE);
-                }
-                isExpanded = !isExpanded;
+                toggleExpansion(getBindingAdapterPosition());
             });
 
             binding.requestAcceptButton.setOnClickListener(view ->

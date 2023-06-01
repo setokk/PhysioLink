@@ -14,12 +14,14 @@
         android:id="@+id/isConfirmedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
         android:text=""
         android:textColor="@color/design_default_color_error"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/calendarImgPatient" />
 
     <ImageView
         android:id="@+id/calendarImgPatient"
@@ -109,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Τα σχόλια σας:"
+        android:text="Το σχόλια σας:"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/black"

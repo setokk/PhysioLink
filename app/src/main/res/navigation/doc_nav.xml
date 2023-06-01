@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/doctorHomeFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorHomeFragment"
-        android:label="DoctorHomeFragment"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_doctor_home">
         <action
             android:id="@+id/action_doctorHomeFragment_to_doctorProfileFragment"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/doctorProfileFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorProfileFragment"
-        android:label="Προφίλ"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_doctor_profile">
         <action
             android:id="@+id/action_doctorProfileFragment_to_doctorHomeFragment"
@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/doctorAppointmentsFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorAppointmentsFragment"
-        android:label="fragment_doctor_appointments"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_doctor_appointments" >
         <action
             android:id="@+id/action_doctorAppointmentsFragment_to_doctorHomeFragment"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/doctorPatientsFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorPatientsFragment"
-        android:label="fragment_doctor_patients"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_doctor_patients" >
         <action
             android:id="@+id/action_doctorPatientsFragment_to_doctorNewPatientFragment"
@@ -62,7 +62,7 @@
     <fragment
         android:id="@+id/doctorServicesFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorServicesFragment"
-        android:label="fragment_doctor_services"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_doctor_services" >
         <action
             android:id="@+id/action_doctorServicesFragment_to_doctorAddServiceFragment"
@@ -74,7 +74,7 @@
     <fragment
         android:id="@+id/doctorNewPatientFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorNewPatientFragment"
-        android:label="fragment_doctor_new_patient"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_doctor_new_patient" >
         <action
             android:id="@+id/action_doctorNewPatientFragment_to_doctorPatientsFragment"
@@ -83,7 +83,7 @@
     <fragment
         android:id="@+id/doctorPatientHistoryFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorPatientHistoryFragment"
-        android:label="fragment_doctor_patient_history"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_doctor_patient_history" >
         <argument
             android:name="patient_id"
@@ -95,7 +95,7 @@
     <fragment
         android:id="@+id/doctorAppointmentRequestsFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorAppointmentRequestsFragment"
-        android:label="DoctorAppointmentRequestsFragment" >
+        android:label="@string/app_name" >
         <action
             android:id="@+id/action_doctorAppointmentRequestsFragment_to_doctorHomeFragment"
             app:destination="@id/doctorHomeFragment" />
@@ -103,7 +103,7 @@
     <fragment
         android:id="@+id/doctorAddServiceFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorAddServiceFragment"
-        android:label="fragment_doctor_add_service"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_doctor_add_service" >
         <action
             android:id="@+id/action_doctorAddServiceFragment_to_doctorServicesFragment"

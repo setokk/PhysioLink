@@ -125,7 +125,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/myDoctorPatientBtn"
-                android:layout_width="55dp"
+                android:layout_width="30dp"
                 android:layout_height="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -149,7 +149,6 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/upcomingAppointmentFragmentContainer"
-            android:name="com.mobile.physiolink.ui.patient.NoUpcomingAppointmentFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -157,8 +156,7 @@
             android:layout_marginTop="5dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/upcomingAppointmentTitle"
-            tools:layout="@layout/fragment_no_upcoming_appointment" />
+            app:layout_constraintTop_toBottomOf="@id/upcomingAppointmentTitle" />
 
         <TextView
             android:id="@+id/patientHistoryTitlePatient"

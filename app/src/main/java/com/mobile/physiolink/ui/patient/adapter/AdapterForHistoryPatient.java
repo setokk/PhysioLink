@@ -2,16 +2,13 @@ package com.mobile.physiolink.ui.patient.adapter;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemPatientHistoryBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
 
@@ -115,9 +112,9 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
             else {
                 String filterPattern = charSequence.toString().toUpperCase().trim();
                 for(Appointment appoint: appointmentsFull){
-                    if(appoint.getMessage().contains(filterPattern) ||
+                    if(appoint.getMessage().toUpperCase().contains(filterPattern) ||
                         appoint.getDate().contains(filterPattern) ||
-                        appoint.getServiceTitle().contains(filterPattern)){
+                        appoint.getServiceTitle().toUpperCase().contains(filterPattern)){
                         filteredList.add(appoint);
                     }
                 }
