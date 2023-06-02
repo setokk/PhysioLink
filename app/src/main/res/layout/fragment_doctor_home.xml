@@ -95,7 +95,7 @@
         android:id="@+id/noAppointmentsImg"
         android:layout_width="@dimen/_130sdp"
         android:layout_height="@dimen/_130sdp"
-        android:src="@drawable/no_appointment2"
+        android:src="@drawable/no_appointment3"
         android:visibility="gone"
         app:layout_constraintVertical_bias="0.3"
         app:layout_constraintTop_toBottomOf="@id/upcoming"
