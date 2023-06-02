@@ -10,7 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/logOutSettings">
 
 
@@ -20,6 +22,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/list_item_style"
             android:paddingStart="20dp"
+            android:paddingVertical="18dp"
             android:layout_marginTop="10dp"
             android:text="Αλλαγή Κωδικού"
             android:textSize="16sp"
@@ -27,16 +30,19 @@
             android:drawableLeft="@drawable/icon_change_password"
             android:drawablePadding="10dp"
             android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@id/aboutUsSettings"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
         </androidx.appcompat.widget.AppCompatButton>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/aboutUsSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/list_item_style"
             android:paddingStart="20dp"
+            android:paddingVertical="18dp"
             android:layout_marginTop="10dp"
             android:text="Σχετικά με εμάς"
             android:textSize="16sp"
@@ -44,6 +50,8 @@
             android:drawableLeft="@drawable/icon_about_us"
             android:drawablePadding="11dp"
             android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/changePasswordSettings"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.appcompat.widget.AppCompatButton
@@ -52,7 +60,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/list_item_style"
         android:layout_marginBottom="@dimen/_2sdp"
-
+        android:paddingVertical="15dp"
         android:layout_marginTop="10dp"
         android:text="Αποσύνδεση"
         android:textSize="16sp"
@@ -69,6 +77,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
