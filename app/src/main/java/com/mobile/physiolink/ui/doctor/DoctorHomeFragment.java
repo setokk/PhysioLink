@@ -59,6 +59,10 @@ public class DoctorHomeFragment extends Fragment
                 adapter.setAppointments(appointments);
             }
         });
+        viewModel.getNewRequestsCounter().observe(getViewLifecycleOwner(), requestsNum ->
+        {
+            // TODO: MAKE RED CIRCLE APPEAR ON TOP OF REQUESTS BUTTON
+        });
 
         return binding.getRoot();
     }
@@ -85,6 +89,7 @@ public class DoctorHomeFragment extends Fragment
         binding.recyclerViewApp.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         viewModel.loadTodaysLatestAppointments(UserHolder.doctor().getId());
+        viewModel.loadNewRequestsCounter(UserHolder.doctor().getId());
 
         binding.appointRequestBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)
