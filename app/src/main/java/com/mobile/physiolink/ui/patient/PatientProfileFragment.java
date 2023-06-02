@@ -19,6 +19,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientProfileBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -63,7 +64,7 @@ public class PatientProfileFragment extends Fragment{
     {
         // Inflate the layout for this fragment
         binding = FragmentPatientProfileBinding.inflate(inflater, container, false);
-        binding.profileImagePatient.setImageResource(R.drawable.boy);
+        ProfileImageProvider.setImageForUser(binding.profileImagePatient, UserHolder.patient());
         binding.profileNamePatient.setText(String.format("%s %s",
                 UserHolder.patient().getName(), UserHolder.patient().getSurname()));
         binding.profileUsernamePatient.setText(String.format("%s ",

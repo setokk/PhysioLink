@@ -65,9 +65,8 @@ public class DoctorInformationFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(DoctorInformationViewModel.class);
         viewModel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
         {
-            binding.profilImage.setImageResource(
-                    ProfileImageProvider.getProfileImage(doctor.getName()));
-
+            ProfileImageProvider.setImageForUser(binding.profilImage,
+                    doctor);
             binding.nameTextView.setText(doctor.getName());
             binding.surnameTextView.setText(doctor.getSurname());
             binding.emailInput.setText(doctor.getEmail());

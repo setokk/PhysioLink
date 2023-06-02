@@ -28,7 +28,6 @@
                 android:layout_width="@dimen/_75sdp"
                 android:layout_height="@dimen/_75sdp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/profile_photo_picker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>

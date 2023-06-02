@@ -52,9 +52,8 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        int imageID = ProfileImageProvider
-                .getProfileImage(doctors.get(position).getName());
-        holder.itemDocBinding.doctorImage.setImageResource(imageID);
+        ProfileImageProvider.setImageForUser(holder.itemDocBinding.doctorImage,
+                doctors.get(position));
         holder.itemDocBinding.doctorName.setText(new StringBuilder()
                 .append(doctors.get(position).getName())
                 .append(" ")
