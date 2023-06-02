@@ -153,13 +153,13 @@ public class DoctorInformationFragment extends Fragment {
                             {
                                 Toast.makeText(context, "Έγινε επιτυχής ενημέρωση στοιχείων φυσιοθεραπευτηρίου/γιατρού",
                                         Toast.LENGTH_SHORT).show();
-                                edit = false;
                             });
                         }
                     });
                 }));
 
                 confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
+                edit = false;
             }
         });
     }
