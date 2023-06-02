@@ -43,19 +43,20 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/newClinicButton"
-        android:layout_width="220dp"
-        android:layout_height="65dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:padding="10dp"
+        android:paddingEnd="20dp"
         android:background="@drawable/round_style"
         android:backgroundTint="@color/button_purple"
         android:drawableLeft="@drawable/baseline_add_24"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
+
         android:paddingBottom="1dp"
-        android:text="@string/CreateNewClinic"
+        android:text="Δημιουργία Νέου \n Φυσιοθεραπευτηρίου"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="@dimen/_12ssp"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
