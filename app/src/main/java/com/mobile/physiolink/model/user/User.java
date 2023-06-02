@@ -55,6 +55,8 @@ public class User implements ResourceNotFindable
         return imageURL;
     }
 
+    public boolean hasImage() { return !imageURL.equals(Error.RESOURCE_NOT_FOUND); }
+
     public boolean isPSF()
     {
         return type.equalsIgnoreCase("PSF");
