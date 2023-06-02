@@ -51,11 +51,13 @@ public class DoctorHomeFragment extends Fragment
         {
             if (appointments.length == 0)
             {
-                // TODO: Dynamic showing of not having appointments
-                return;
+                binding.noAppointmentsImg.setVisibility(View.VISIBLE);
+                binding.noAppointmentTextView.setVisibility(View.VISIBLE);
+            } else {
+                binding.noAppointmentsImg.setVisibility(View.GONE);
+                binding.noAppointmentTextView.setVisibility(View.GONE);
+                adapter.setAppointments(appointments);
             }
-
-            adapter.setAppointments(appointments);
         });
 
         return binding.getRoot();

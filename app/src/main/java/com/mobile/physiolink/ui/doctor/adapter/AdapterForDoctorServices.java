@@ -63,7 +63,7 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
         holder.itemDoctorServicesBinding.serviceDescriptionDoctor
                 .setText(services.get(position).getDescription());
         holder.itemDoctorServicesBinding.servicePriceDoctor
-                .setText(String.valueOf(services.get(position).getPrice()));
+                .setText(String.valueOf((int) services.get(position).getPrice()));
 
         boolean isItemExpanded = isExpanded[position];
 
