@@ -23,6 +23,7 @@ public final class API
 
     /* User auth related API endpoint */
     public static final String AUTH_USER = API.URL + "/auth/log-in";
+    public static final String CHANGE_PASSWORD = API.URL + "/password/change";
 
     /* Provision related API endpoints */
     public static final String CREATE_SERVICE = API.URL + "/service/create";
