@@ -25,8 +25,10 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImagePatient"
-                android:layout_width="@dimen/_75sdp"
-                android:layout_height="@dimen/_75sdp"
+                android:layout_width="@dimen/_76sdp"
+                android:layout_height="@dimen/_76sdp"
+                app:civ_border_color="@color/background_lime"
+                app:civ_border_width="2dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/profile_photo_picker"
                 app:layout_constraintEnd_toEndOf="parent"

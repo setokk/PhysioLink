@@ -63,7 +63,6 @@ public class PatientProfileFragment extends Fragment{
     {
         // Inflate the layout for this fragment
         binding = FragmentPatientProfileBinding.inflate(inflater, container, false);
-        binding.profileImagePatient.setImageResource(R.drawable.boy);
         binding.profileNamePatient.setText(String.format("%s %s",
                 UserHolder.patient().getName(), UserHolder.patient().getSurname()));
         binding.profileUsernamePatient.setText(String.format("%s ",
