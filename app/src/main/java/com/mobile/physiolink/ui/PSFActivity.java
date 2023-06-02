@@ -32,7 +32,7 @@ public class PSFActivity extends AppCompatActivity
 
         /* AppBar Configuration */
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.bottomNavPsf, navController);
+        NavigationUI.setupWithNavController(binding.bottomNavPsf, navController,false);
 
         /*ActionBar*/
         getSupportActionBar().setTitle("PhysioLink");

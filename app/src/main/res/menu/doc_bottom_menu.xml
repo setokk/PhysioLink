@@ -3,25 +3,21 @@
 
     <item
         android:id="@+id/doctorHomeFragment"
-        android:title="Αρχική"
         android:icon="@drawable/baseline_home_24"
-        />
+        android:title="@string/home_label" />
 
     <item
         android:id="@+id/doctorAppointmentsFragment"
-        android:title="Ραντεβού"
         android:icon="@drawable/baseline_calendar_month_24"
-        />
+        android:title="@string/appointments"/>
 
     <item
         android:id="@+id/doctorServicesFragment"
-        android:title="Παροχές"
         android:icon="@drawable/baseline_medical_services_24"
-        />
+        android:title="@string/services"/>
 
     <item
         android:id="@+id/doctorPatientsFragment"
-        android:title="Ασθενείς"
         android:icon="@drawable/baseline_contacts_24"
-        />
+        android:title="@string/patients"/>
 </menu>
