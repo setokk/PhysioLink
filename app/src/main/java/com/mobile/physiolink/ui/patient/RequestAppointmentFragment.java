@@ -209,7 +209,9 @@ public class RequestAppointmentFragment extends Fragment
             keyValues.put("date", DateFormatter.fixDatePrefixes(selectedDate.getYear(),
                     selectedDate.getMonthValue(),
                     selectedDate.getDayOfMonth()));
-            keyValues.put("hour", (String) binding.hourBtn.getText().subSequence(0,2));
+            keyValues.put("hour", binding.hourBtn.getText().toString()
+                    .substring(0,2)
+                    .replace(":", ""));
             keyValues.put("patient_name", UserHolder.patient().getName());
             keyValues.put("patient_surname", UserHolder.patient().getSurname());
             keyValues.put("patient_number", UserHolder.patient().getPhoneNumber());
