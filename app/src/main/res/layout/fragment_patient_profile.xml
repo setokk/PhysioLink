@@ -25,18 +25,32 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImagePatient"
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_80sdp"
+                android:layout_width="@dimen/_75sdp"
+                android:layout_height="@dimen/_75sdp"
                 android:layout_marginTop="20dp"
+                android:src="@drawable/profile_photo_picker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/editImgPatientProfile"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="7dp"
+                android:src="@drawable/baseline_add_a_photo_24"
+                android:background="@drawable/bg_for_photo_picker"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="@id/profileImagePatient"
+                app:layout_constraintTop_toBottomOf="@id/profileImagePatient"
+                app:layout_constraintEnd_toEndOf="@id/profileImagePatient"
+                app:layout_constraintBottom_toBottomOf="@id/profileImagePatient"/>
 
             <TextView
                 android:id="@+id/profileNamePatient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 android:text="Μαρια Δολεσιδου"
 
                 android:textColor="@color/white"
