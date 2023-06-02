@@ -23,14 +23,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemDoctorPaymentPopUpBinding;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorServicesViewModel;
 import com.mobile.physiolink.ui.patient.RecyclerItemClickListener;
+import com.mobile.physiolink.ui.popup.adapter.AdapterForServicesPayment;
+
+import java.util.ArrayList;
 
 public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
+    private DoctorServicesViewModel servicesViewmodel;
+
+
+
     private final String title;
     private ItemDoctorPaymentPopUpBinding binding;
-    private AdapterForDoctorServices adapter;
+    private AdapterForServicesPayment adapter;
     private ImageView patientProfilePic, newPatientProfilePic;
     private TextView appointmentHour;
     private TextView appointmentName;
@@ -42,7 +48,7 @@ public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
     private CardView chooseServiceCardView;
 
     private DoctorServicesViewModel doctorServicesViewModel;
-    private boolean reopened = false;
+
 
 
     private DialogInterface.OnClickListener positiveListener;
@@ -85,40 +91,52 @@ public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.item_doctor_payment_pop_up, container, false);
-        binding = ItemDoctorPaymentPopUpBinding.bind(view);
+        binding = ItemDoctorPaymentPopUpBinding.inflate(inflater, container, false);
 
-        adapter = new AdapterForDoctorServices();
-        binding.availableServicesList.setAdapter(adapter);
-        binding.availableServicesList.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.serviceBtn.setOnClickListener(view1 -> {
-            if (binding.availableServicesList.getVisibility() == View.GONE) {
-                TransitionManager.beginDelayedTransition(binding.chooseServiceCardView, new AutoTransition());
-                binding.availableServicesList.setVisibility(View.VISIBLE);
+
+
+        servicesViewmodel = new ViewModelProvider(this).get(DoctorServicesViewModel.class);
+        servicesViewmodel.getDoctorServices().observe(getViewLifecycleOwner(), services ->
+        {
+
+                adapter.setServices(services);
+
+
+        });
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        adapter = new AdapterForServicesPayment(new ArrayList<>());
+        binding.servicesPaymentList.setAdapter(adapter);
+        binding.servicesPaymentList.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        binding.serviceBtn.setOnClickListener(view1 ->
+        {
+            if (binding.servicesPaymentList.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(binding.chooseServicePaymentCardView, new AutoTransition());
+                binding.servicesPaymentList.setVisibility(View.VISIBLE);
             } else {
-                TransitionManager.beginDelayedTransition(binding.chooseServiceCardView, new AutoTransition());
-                binding.availableServicesList.setVisibility(View.GONE);
+                TransitionManager.beginDelayedTransition(binding.chooseServicePaymentCardView, new AutoTransition());
+                binding.servicesPaymentList.setVisibility(View.GONE);
             }
         });
 
-        binding.availableServicesList.addOnItemTouchListener(
-                new RecyclerItemClickListener(requireContext(), binding.availableServicesList, new RecyclerItemClickListener.OnItemClickListener() {
+        binding.servicesPaymentList.addOnItemTouchListener(
+                new RecyclerItemClickListener(this.getContext(), binding.servicesPaymentList, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        String serviceText = adapter.getServices().get(position).getTitle();
-                        String priceText = Double.toString(adapter.getServices().get(position).getPrice());
-                        binding.serviceBtn.setText(serviceText);
-                        binding.servicePrice.setText(priceText);
-                        binding.availableServicesList.setVisibility(View.GONE);
+                        String text = String.valueOf(adapter.getServices().get(position));
+                        binding.serviceBtn.setText(text);
+                        binding.servicesPaymentList.setVisibility(View.GONE);
                     }
 
                     @Override
                     public void onLongItemClick(View view, int position) {
-                        // Handle long item click if needed
+
                     }
                 })
         );
-
-        return view;
     }
 }
