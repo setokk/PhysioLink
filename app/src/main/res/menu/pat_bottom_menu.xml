@@ -12,7 +12,7 @@
         android:title="@string/profil_label" />
 
     <item
-        android:id="@+id/patientHistoryFragment"
+        android:id="@+id/fragmentPatientSettings"
         android:icon="@drawable/baseline_settings_24"
         android:title="@string/settings_label" />
 </menu>

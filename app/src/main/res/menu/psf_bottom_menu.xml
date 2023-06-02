@@ -7,7 +7,7 @@
         android:title="@string/home_label" />
 
     <item
-        android:id="@+id/fragment_clinics"
+        android:id="@+id/fragmentPsfSettings"
         android:icon="@drawable/baseline_settings_24"
         android:title="@string/settings_label" />
 </menu>

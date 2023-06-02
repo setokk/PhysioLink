@@ -17,6 +17,13 @@
             app:destination="@id/fragment_services" />
     </fragment>
     <fragment
+        android:id="@+id/fragmentPsfSettings"
+        android:name="com.mobile.physiolink.ui.psf.PsfSettingsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_psf_settings">
+
+    </fragment>
+    <fragment
         android:id="@+id/fragment_clinics"
         android:name="com.mobile.physiolink.ui.psf.ClinicsFragment"
         android:label="@string/app_name"

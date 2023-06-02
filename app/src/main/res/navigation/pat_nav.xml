@@ -24,6 +24,14 @@
 
     </fragment>
     <fragment
+        android:id="@+id/fragmentPatientSettings"
+        android:name="com.mobile.physiolink.ui.patient.PatientSettingsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_patient_settings">
+
+    </fragment>
+
+    <fragment
         android:id="@+id/fragmentPatientDoctor"
         android:name="com.mobile.physiolink.ui.patient.PatientDoctorFragment"
         android:label="@string/app_name"
