@@ -3,7 +3,6 @@ package com.mobile.physiolink.ui.doctor.adapter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
@@ -12,22 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemDoctorAppointmentBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
-import com.mobile.physiolink.model.user.singleton.UserHolder;
-import com.mobile.physiolink.service.api.API;
-import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.ui.doctor.OnButtonClickListener;
 import com.mobile.physiolink.ui.popup.AppointmentDeletePopUp;
-import com.mobile.physiolink.ui.popup.AppointmentRejectPopUp;
-import com.mobile.physiolink.ui.popup.EndOfAppointmentPopUp;
+import com.mobile.physiolink.ui.popup.AppointmentPaymentPopUp;
 import com.mobile.physiolink.util.date.TimeFormatter;
 
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder> implements OnButtonClickListener {
 
@@ -122,7 +111,8 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
 
             binding.tickAppointmentButton.setOnClickListener(view ->
             {
-                EndOfAppointmentPopUp paymentPopUp = new EndOfAppointmentPopUp(binding.patientImageDoctorAppointment, binding.appointmentTimeDoctorPatient, binding.appointmentNameDoctorPatient);
+                AppointmentPaymentPopUp paymentPopUp = new AppointmentPaymentPopUp(binding.patientImageDoctorAppointment,
+                        binding.appointmentTimeDoctorPatient.getText().toString(), binding.appointmentNameDoctorPatient.getText().toString());
                 paymentPopUp.setPositiveOnClick((dialog, which) ->
                 {
 

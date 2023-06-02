@@ -45,7 +45,7 @@
             android:layout_marginTop="12dp"
             android:text="Maria Kokona"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentTimeDoctorPatient" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -53,8 +53,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/chooseServiceConstraint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="4dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
 
@@ -63,54 +63,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appointmentInformationConstraint">
 
-        <TextView
-            android:id="@+id/chooseServiceTitle"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/chooseServiceCardView"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Επιλέξτε την παροχή:"
-            android:textColor="@color/black"
-            android:textSize="19dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/servicePriceTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="65dp"
-            android:text="Τιμή:"
-            android:textColor="@color/black"
-            android:textSize="19dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <Spinner
-            android:id="@+id/appointmentService"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chooseServiceTitle" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/serviceBtn"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/white"
+                    android:gravity="left|center"
+                    android:hint=" Επιλέξτε παροχή"
+                    android:textColorHint="@color/black"
+                    android:paddingLeft="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/availableServicesList"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/serviceBtn" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/servicePrice"
             android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="60dp"
             android:layout_marginEnd="40dp"
             android:background="@color/white"
             android:paddingStart="5dp"
-            android:paddingTop="12dp"
+            android:paddingTop="19dp"
             android:text="Τιμή"
             android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="17dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/servicePriceTitle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
