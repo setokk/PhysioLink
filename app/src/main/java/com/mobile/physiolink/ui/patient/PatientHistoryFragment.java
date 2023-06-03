@@ -59,8 +59,9 @@ public class PatientHistoryFragment extends Fragment
             adapter.setAppointments(appointments);
         });
         viewModel.getTotalPayment().observe(getViewLifecycleOwner(), totalPayment -> {
+            int payment = Integer.valueOf(totalPayment.intValue());
             binding.sumCost.setText(new StringBuilder()
-                    .append(totalPayment)
+                    .append(payment)
                     .append("€").toString());
         });
 
