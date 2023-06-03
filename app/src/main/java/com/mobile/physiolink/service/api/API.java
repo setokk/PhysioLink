@@ -23,11 +23,12 @@ public final class API
 
     /* User auth related API endpoint */
     public static final String AUTH_USER = API.URL + "/auth/log-in";
+    public static final String CHANGE_PASSWORD = API.URL + "/auth/password/change";
 
     /* Provision related API endpoints */
     public static final String CREATE_SERVICE = API.URL + "/service/create";
-    public static final String GET_SERVICE = "/service/get/";
-    public static final String EDIT_SERVICE = API.URL + "/service/edit/";
+    public static final String GET_SERVICE = API.URL + "/service/get/";
+    public static final String EDIT_SERVICE = API.URL + "/service/edit";
     public static final String GET_SERVICES = API.URL + "/services/get";
     public static final String GET_SERVICES_OF = API.URL + "/services/of/";
 
@@ -62,6 +63,7 @@ public final class API
     public static final String DECLINE_PAYMENT = API.URL + "/appointment/decline";
     public static final String GET_EXCLUDED_DOCTOR_SERVICES = API.URL + "/services/not/of/";
     public static final String DELETE_DOCTOR_SERVICE = API.URL + "/service/delete";
-
+    public static final String LINK_SERVICE_TO_DOCTOR = API.URL + "/service/link";
+    public static final String UPLOAD_PROFILE_IMAGE = API.URL + "/images/upload/";
     public static final String GET_NOTIFICATIONS = API.URL + "/notifications/of/";
 }
