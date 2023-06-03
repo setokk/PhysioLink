@@ -20,6 +20,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientProfileBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.util.image.ImageUploader;
 import com.mobile.physiolink.util.image.ProfileImageProvider;
 
@@ -76,6 +77,7 @@ public class PatientProfileFragment extends Fragment{
                     Toast.makeText(getActivity(), "Η φωτογραφία προφίλ ανέβηκε επιτυχώς!"
                             ,Toast.LENGTH_SHORT).show();
 
+                    UserHolder.psf().setImageURL(API.URL + "/images/get/" + UserHolder.psf().getId());
                     ProfileImageProvider.setImageForUser(binding.profileImagePatient,
                             UserHolder.psf());
                 });
