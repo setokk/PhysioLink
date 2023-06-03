@@ -1,5 +1,7 @@
 package com.mobile.physiolink.ui.doctor;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +19,6 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorProfileBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
-import com.mobile.physiolink.ui.patient.PatientProfileFragment;
 import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -29,6 +30,13 @@ public class DoctorProfileFragment extends Fragment {
     public DoctorProfileFragment()
     {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Uri uri = data.getData();
+        photoProfile.setImageURI(uri);
     }
 
     @Override
