@@ -63,7 +63,17 @@ public class DoctorServicesFragment extends Fragment{
         viewModel = new ViewModelProvider(this).get(DoctorServicesViewModel.class);
         viewModel.getDoctorServices().observe(getViewLifecycleOwner(), services ->
         {
-            adapter.setServices(services);
+            if (services.size() == 0)
+            {
+
+                binding.noServicesTextView.setVisibility(View.VISIBLE);
+                binding.informativeTextView.setVisibility(View.GONE);
+            } else {
+                binding.noServicesTextView.setVisibility(View.GONE);
+                binding.informativeTextView.setVisibility(View.VISIBLE);
+                adapter.setServices(services);
+            }
+
         });
 
         adapter.setOnLongItemClickListener(service -> {
