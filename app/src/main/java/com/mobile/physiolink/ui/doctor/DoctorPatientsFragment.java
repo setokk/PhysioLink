@@ -63,7 +63,15 @@ public class DoctorPatientsFragment extends Fragment
         viewModel = new ViewModelProvider(this).get(DoctorPatientsViewModel.class);
         viewModel.getDoctorPatients().observe(getViewLifecycleOwner(), patients ->
         {
-            adapter.setPatients(patients);
+            if (patients.size() == 0)
+            {
+
+                binding.noPatientsTextView.setVisibility(View.VISIBLE);
+            } else {
+                binding.noPatientsTextView.setVisibility(View.GONE);
+                adapter.setPatients(patients);
+            }
+
         });
 
         binding.searchViewPatientsDoctor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

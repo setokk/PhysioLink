@@ -56,7 +56,16 @@ public class PatientHistoryFragment extends Fragment
 
         viewModel = new ViewModelProvider(this).get(PatientHistoryViewModel.class);
         viewModel.getAppointments().observe(getViewLifecycleOwner(), appointments -> {
-            adapter.setAppointments(appointments);
+            if (appointments.size() == 0)
+            {
+                binding.noHistoryImg.setVisibility(View.VISIBLE);
+                binding.noHistoryTextView.setVisibility(View.VISIBLE);
+            } else {
+                binding.noHistoryImg.setVisibility(View.GONE);
+                binding.noHistoryTextView.setVisibility(View.GONE);
+                adapter.setAppointments(appointments);
+            }
+
         });
         viewModel.getTotalPayment().observe(getViewLifecycleOwner(), totalPayment -> {
             int payment = Integer.valueOf(totalPayment.intValue());

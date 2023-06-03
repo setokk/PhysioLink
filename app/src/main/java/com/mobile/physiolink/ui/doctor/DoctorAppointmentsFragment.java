@@ -67,7 +67,16 @@ public class DoctorAppointmentsFragment extends Fragment
         viewModel = new ViewModelProvider(this).get(DoctorAppointmentsViewModel.class);
         viewModel.getDoctorAppointments().observe(getViewLifecycleOwner(), appointments ->
         {
+
             adapter.setAppointments(appointments);
+            if (appointments.length == 0)
+            {
+                binding.noAppointmentsDayImg.setVisibility(View.VISIBLE);
+                binding.noAppointmentDayTextView.setVisibility(View.VISIBLE);
+            } else {
+                binding.noAppointmentsDayImg.setVisibility(View.GONE);
+                binding.noAppointmentDayTextView.setVisibility(View.GONE);
+            }
         });
 
         return binding.getRoot();
