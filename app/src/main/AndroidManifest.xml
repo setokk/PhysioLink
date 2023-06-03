@@ -37,6 +37,7 @@
         <activity android:name=".ui.PatientActivity"
             android:windowSoftInputMode="adjustPan"
             android:label="@string/home_label"/>
+        <service android:name=".service.notification.NotificationService"/>
     </application>
 
 </manifest>
