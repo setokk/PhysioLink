@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Δεν έχεις ακόμα \n ραντεβού!"
+        android:text="@string/NoAppoint"
 
         android:textColor="@color/button_purple"
         android:textStyle="bold"
@@ -40,7 +40,7 @@
         android:id="@+id/makeAppointmentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Κλείσε ραντεβού με τον γιατρό σου,"
+        android:text="@string/LongStringAppoint"
 
         android:textColor="@color/button_purple"
         android:textStyle="bold"
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:background="@color/transparent"
-        android:text="πατώντας εδώ!"
+        android:text="@string/CloseNow"
         android:textColor="@color/button_purple"
         android:textStyle="bold"
         android:textAllCaps="false"

@@ -34,6 +34,36 @@
     <string name="services">Παροχές</string>
     <string name="patients">Ασθενείς</string>
     <string name="postal_code">Ταχ/Κωδ:</string>
+    <string name="YourInformation">Τα στοιχεία σας:</string>
+    <string name="Amka">ΑΜΚΑ:</string>
+    <string name="Name">Όνομα:</string>
+    <string name="LastName">Επώνυμο:</string>
+    <string name="Afm">ΑΦΜ:</string>
+    <string name="Email">Email:</string>
+    <string name="Phone">Κινητό:</string>
+    <string name="City">Πόλη:</string>
+    <string name="Address">Διεύθυνση:</string>
+    <string name="ClinicDetails">Στοιχεία Φυσιοθεραπευτηρίου:</string>
+    <string name="DoctorDetails">Στοιχεία Φυσιοθεραπευτή:</string>
+    <string name="NoAppoint">Δεν έχεις ακόμη \n ραντεβού!</string>
+    <string name="MakeAppointment">Κλείσε Ραντεβού</string>
+    <string name="LongStringAppoint">Κλείσε ραντεβού με τον γιατρό σου,</string>
+    <string name="CloseNow">πατώντας εδω!</string>
+    <string name="YourComment">Το σχόλιο σας:</string>
+    <string name="ChangePassword">Άλλαξε Κωδικό</string>
+    <string name="AboutUs">Σχετικά με εμάς</string>
+    <string name="LogOut">Αποσύνδεση</string>
+    <string name="Version">Έκδοση 1.0</string>
+    <string name="LoggedUs">Συνδεθήκατε ως:</string>
+    <string name="MyDoctor">Ο Γιατρός μου:</string>
+    <string name="UpcommingAppoinment">Προσεχές Ραντεβού:</string>
+    <string name="MyLastVisit">Η τελευταία μου επίσκεψη:</string>
+    <string name="SeeHistory">Δες όλο το ιστορικό σου</string>
+    <string name="Clinic">Φυσιοθεραπευτήριο:</string>
+    <string name="TotalCost">Συνολικά Έξοδα:</string>
+    <string name="NewPassword">New Password</string>
+    <string name="ConfirmNewPassword">Confirm New Password</string>
+
 
 
     <string-array name="greek_days">
