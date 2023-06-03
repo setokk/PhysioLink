@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.widget.ImageView;
 
 import com.mobile.physiolink.R;
+import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.model.user.User;
@@ -32,6 +33,20 @@ public final class ProfileImageProvider
         else
             imageResource = getPatientDefaultProfileImage(user);
         imageView.setImageResource(imageResource);
+    }
+
+    public static void setImageOfAppointment(ImageView imageView, Appointment appointment)
+    {
+        String imageURL = appointment.getImageURL();
+        if (imageURL.equals("Resource not found"))
+        {
+            imageView.setImageResource(R.drawable.boy);
+            return;
+        }
+
+        Picasso.with(imageView.getRootView().getContext())
+                .load(Uri.parse(imageURL))
+                .into(imageView);
     }
 
     public static int getDoctorDefaultProfileImage(User user)

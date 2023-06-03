@@ -11,6 +11,7 @@ import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemDoctorAppointmentBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.util.date.TimeFormatter;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import java.util.Arrays;
 
@@ -50,6 +51,8 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
     @Override
     public void onBindViewHolder(@NonNull AdapterForAppointments.MyViewHolder holder, int position)
     {
+        ProfileImageProvider.setImageOfAppointment(holder.binding.patientImageDoctorAppointment,
+                appointments[position]);
         holder.binding.appointmentNameDoctorPatient
                 .setText(new StringBuilder()
                         .append(appointments[position].getPatName())

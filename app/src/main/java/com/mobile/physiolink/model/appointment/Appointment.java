@@ -27,6 +27,7 @@ public class Appointment implements ResourceNotFindable
     // Extra Service fields
     private String serviceTitle;
     private String serviceDescription;
+    private String imageURL;
     private double servicePrice;
     private boolean isConfirmed;
 
@@ -35,6 +36,7 @@ public class Appointment implements ResourceNotFindable
         date = "";
         hour = "";
         message = "";
+        imageURL = "Resource not found";
     }
 
     public Appointment(String state)
@@ -189,5 +191,13 @@ public class Appointment implements ResourceNotFindable
 
     public void setConfirmed(boolean confirmed) {
         isConfirmed = confirmed;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
