@@ -37,15 +37,8 @@ public class PSFActivity extends AppCompatActivity
         /*ActionBar*/
         getSupportActionBar().setTitle("PhysioLink");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.physiolink_logo);
+        getSupportActionBar().setIcon(R.drawable.physiolink_logo_circle_small);
 
-        /* BottomNavigation listener for popping backstack
-        binding.bottomNavPsf.setOnItemSelectedListener((item ->
-        {
-            navController.popBackStack();
-            navController.navigate(item.getItemId());
-            return true;
-        }));*/
     }
 
     @Override
