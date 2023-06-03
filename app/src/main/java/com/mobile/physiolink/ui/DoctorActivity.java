@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ActivityDoctorBinding;
+import com.mobile.physiolink.service.notification.NotificationService;
 
 public class DoctorActivity extends AppCompatActivity
 {
