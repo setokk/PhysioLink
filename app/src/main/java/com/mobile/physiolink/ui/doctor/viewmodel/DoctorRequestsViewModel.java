@@ -54,6 +54,7 @@ public class DoctorRequestsViewModel extends ViewModel
                                 .setPatSurname(element.getString("patient_surname"))
                                 .setPatAmka(element.getString("amka"))
                                 .setMessage(element.getString("message"))
+                                .setImageURL(element.getString("image"))
                                 .build();
                     }
                     requestAppointments.postValue(appointments);

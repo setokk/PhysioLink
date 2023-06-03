@@ -8,6 +8,7 @@ public class User implements ResourceNotFindable
     private long id;
     private String username;
     private final String type;
+    private String imageURL;
 
     /* Used for returning invalid or empty objects */
     public User(String state) {this.username = state; this.type = "";}
@@ -20,6 +21,7 @@ public class User implements ResourceNotFindable
         this.id = id;
         this.username = username;
         this.type = type;
+        this.imageURL = Error.RESOURCE_NOT_FOUND; // Default value
     }
 
     public boolean isValid()
@@ -42,6 +44,18 @@ public class User implements ResourceNotFindable
     {
         return username;
     }
+
+    public void setImageURL(String imageURL)
+    {
+        this.imageURL = imageURL;
+    }
+
+    public String getImageURL()
+    {
+        return imageURL;
+    }
+
+    public boolean hasImage() { return !imageURL.equals("Resource not found"); }
 
     public boolean isPSF()
     {

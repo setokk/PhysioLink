@@ -1,259 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/profileDoctorConstraint"
     android:background="@color/background_lime">
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/profileDoctorHeaderConstraint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/button_purple">
-
-        <ImageView
-            android:id="@+id/profileImageDoctor"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:background="@drawable/round_style"
-
-            android:layout_marginTop="52dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </ImageView>
-
-        <TextView
-            android:id="@+id/profileNameDoctor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Μαρια Δολεσιδου"
-
-            android:textColor="@color/white"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profileImageDoctor" />
-        <TextView
-            android:id="@+id/profileUsernameDoctor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="maraki123"
-            android:textSize="22dp"
-            android:textColor="@color/white"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profileNameDoctor"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_height="match_parent"
+        >
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/profileInformationDoctorConstraint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/profileDoctorHeaderConstraint"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:id="@+id/titleYourInformationDoctorProfile"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profileDoctorHeaderConstraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:paddingStart="10dp"
-            android:background="#996750A4"
-            android:text="Τα στοιχεία σας:"
-            android:textColor="@color/white"
-            android:textSize="22dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:id="@+id/titleAmkaProfileDoctor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="AMKA:"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="15dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/button_purple">
 
-            app:layout_constraintTop_toBottomOf="@id/titleYourInformationDoctorProfile"/>
-        <TextView
-            android:id="@+id/amkaOutputProfileDoctor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="999999999999"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toEndOf="@+id/titleAmkaProfileDoctor"
-            app:layout_constraintTop_toBottomOf="@+id/titleYourInformationDoctorProfile"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImageDoctor"
+                android:layout_width="@dimen/_76sdp"
+                android:layout_height="@dimen/_76sdp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/boy"
+                app:civ_border_color="@color/background_lime"
+                app:civ_border_width="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </de.hdodenhof.circleimageview.CircleImageView>
 
-        <TextView
-            android:id="@+id/titlePhoneDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Κινητό:"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="13dp"
-            app:layout_constraintTop_toBottomOf="@+id/titleAmkaProfileDoctor"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <ImageView
+                android:id="@+id/editImgDoctorProfile"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="7dp"
+                android:src="@drawable/baseline_add_a_photo_24"
+                android:background="@drawable/bg_for_photo_picker"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="@id/profileImageDoctor"
+                app:layout_constraintTop_toBottomOf="@id/profileImageDoctor"
+                app:layout_constraintEnd_toEndOf="@id/profileImageDoctor"
+                app:layout_constraintBottom_toBottomOf="@id/profileImageDoctor"/>
 
-        <TextView
-            android:id="@+id/phoneOutputDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="6900000000"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="5dp"
-            app:layout_constraintTop_toBottomOf="@+id/amkaOutputProfileDoctor"
-            app:layout_constraintStart_toEndOf="@+id/titlePhoneDoctorProfile"
-            />
-        <TextView
-            android:id="@+id/titleEmailDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="E-mail:"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="13dp"
-            app:layout_constraintTop_toBottomOf="@+id/titlePhoneDoctorProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <TextView
-            android:id="@+id/emailOutputDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="giorgos.papadopoylos@physiolink.com"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="0dp"
-            app:layout_constraintTop_toBottomOf="@id/titleEmailDoctorProfile"
-            app:layout_constraintStart_toStartOf="parent"
-
-            />
+            <TextView
+                android:id="@+id/profileNameDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Μαρια Δολεσιδου"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_17ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editImgDoctorProfile" />
+            <TextView
+                android:id="@+id/profileUsernameDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="maraki123"
+                android:textSize="@dimen/_17ssp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profileNameDoctor"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-        <TextView
-            android:id="@+id/titlePhysioInformationDoctorProfile"
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profileInformationDoctorConstraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:paddingStart="10dp"
-            android:background="#996750A4"
-            android:text="Στοιχεία Φυσιοθεραπευτηρίου:"
-            android:textColor="@color/white"
-            android:textSize="22dp"
-            app:layout_constraintTop_toBottomOf="@+id/emailOutputDoctorProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <TextView
-            android:id="@+id/titlePhysioNameDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Όνομα:"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/titlePhysioInformationDoctorProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <TextView
-            android:id="@+id/physioNameDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Αίολος"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/titlePhysioInformationDoctorProfile"
-            app:layout_constraintStart_toEndOf="@+id/titlePhysioNameDoctorProfile"/>
+            app:layout_constraintTop_toBottomOf="@+id/profileDoctorHeaderConstraint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/titleCityDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Πόλη:"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="13dp"
-            app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <TextView
-            android:id="@+id/cityOutputDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Θεσσαλονικη"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="13dp"
-            app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile"
-            app:layout_constraintStart_toEndOf="@+id/titleCityDoctorProfile"/>
-        <TextView
-            android:id="@+id/titleAdressDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Διεύθυνση:"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="13dp"
-            app:layout_constraintTop_toBottomOf="@+id/titleCityDoctorProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <TextView
-            android:id="@+id/adressOutputDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Aγιου Δημητριου 5"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="13dp"
-            app:layout_constraintTop_toBottomOf="@+id/cityOutputDoctorProfile"
-            app:layout_constraintStart_toEndOf="@+id/titleAdressDoctorProfile"/>
-        <TextView
-            android:id="@+id/titlePostalCodeDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ταχ/Κωδ:"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="13dp"
-            app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile"
-            app:layout_constraintStart_toEndOf="@+id/cityOutputDoctorProfile"/>
+            <TextView
+                android:id="@+id/titleYourInformationDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingStart="10dp"
+                android:background="#996750A4"
+                android:text="Τα στοιχεία σας:"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_17ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/titleAmkaProfileDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AMKA:"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintStart_toStartOf="parent"
 
-        <TextView
-            android:id="@+id/postalCodeDoctorProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="13dp"
-            android:text="56000"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            app:layout_constraintStart_toEndOf="@+id/titlePostalCodeDoctorProfile"
-            app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile" />
+                app:layout_constraintTop_toBottomOf="@id/titleYourInformationDoctorProfile"/>
+            <TextView
+                android:id="@+id/amkaOutputProfileDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999999999"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toEndOf="@+id/titleAmkaProfileDoctor"
+                app:layout_constraintTop_toBottomOf="@+id/titleYourInformationDoctorProfile"/>
 
+            <TextView
+                android:id="@+id/titlePhoneDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Κινητό:"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintTop_toBottomOf="@+id/titleAmkaProfileDoctor"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/phoneOutputDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6900000000"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintTop_toBottomOf="@+id/amkaOutputProfileDoctor"
+                app:layout_constraintStart_toEndOf="@+id/titlePhoneDoctorProfile"
+                />
+            <TextView
+                android:id="@+id/titleEmailDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail:"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintTop_toBottomOf="@+id/titlePhoneDoctorProfile"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/emailOutputDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="giorgos.papadopoylos@physiolink.com"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintTop_toBottomOf="@id/titleEmailDoctorProfile"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+
+
+            <TextView
+                android:id="@+id/titlePhysioInformationDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingStart="10dp"
+                android:background="#996750A4"
+                android:text="Στοιχεία Φυσιοθεραπευτηρίου:"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_17ssp"
+                app:layout_constraintTop_toBottomOf="@+id/emailOutputDoctorProfile"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/titlePhysioNameDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Όνομα:"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/titlePhysioInformationDoctorProfile"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/physioNameDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Αίολος"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/titlePhysioInformationDoctorProfile"
+                app:layout_constraintStart_toEndOf="@+id/titlePhysioNameDoctorProfile"/>
+
+            <TextView
+                android:id="@+id/titleCityDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Πόλη:"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/cityOutputDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Θεσσαλονικη"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile"
+                app:layout_constraintStart_toEndOf="@+id/titleCityDoctorProfile"/>
+            <TextView
+                android:id="@+id/titleAdressDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Διεύθυνση:"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleCityDoctorProfile"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/adressOutputDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aγιου Δημητριου 5"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintTop_toBottomOf="@+id/cityOutputDoctorProfile"
+                app:layout_constraintStart_toEndOf="@+id/titleAdressDoctorProfile"/>
+            <TextView
+                android:id="@+id/titlePostalCodeDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/postal_code"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile"
+                app:layout_constraintStart_toEndOf="@+id/cityOutputDoctorProfile"/>
+
+            <TextView
+                android:id="@+id/postalCodeDoctorProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="13dp"
+                android:text="56000"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintStart_toEndOf="@+id/titlePostalCodeDoctorProfile"
+                app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

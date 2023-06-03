@@ -26,7 +26,6 @@
                 android:id="@+id/patientProfileImgPatient"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/boy"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -189,16 +188,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:text="Δες όλο το ιστορικό σου"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_15ssp"
             android:background="@color/low_opacity_white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/patientHistoryLastItemPatient"
             android:drawableRight="@drawable/baseline_arrow_forward_purple"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,8 +9,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/patientImageDoctorAppointment"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,13 +39,14 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
 
+
         <TextView
             android:id="@+id/appointmentNameDoctorPatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Maria Kokona"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentTimeDoctorPatient"/>
 
@@ -55,7 +56,7 @@
             android:layout_height="wrap_content"
             android:text="ΑΜΚΑ: "
             android:textColor="@color/button_grey"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentNameDoctorPatient"/>
 
@@ -69,6 +70,7 @@
             app:layout_constraintStart_toEndOf="@+id/appointmentAmkaTitleDoctorPatient"
             app:layout_constraintTop_toTopOf="@+id/appointmentAmkaTitleDoctorPatient"
             app:layout_constraintBottom_toBottomOf="@+id/appointmentAmkaTitleDoctorPatient"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -106,8 +108,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/tickAppointmentButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_marginLeft="15dp"
         android:background="@drawable/baseline_ic_checkmark"
         android:contentDescription="Patient Appointment Confirm"
@@ -118,8 +120,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/exAppointmentButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/baseline_ic_x"

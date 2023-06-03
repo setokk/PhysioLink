@@ -17,6 +17,24 @@
             app:destination="@id/fragment_services" />
     </fragment>
     <fragment
+        android:id="@+id/fragmentPsfSettings"
+        android:name="com.mobile.physiolink.ui.psf.PsfSettingsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_psf_settings">
+        <action
+            android:id="@+id/action_fragmentPsfSettings_to_fragmentPsfChangePassword"
+            app:destination="@+id/fragmentPsfChangePassword"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPsfChangePassword"
+        android:name="com.mobile.physiolink.ui.psf.PsfChangePasswordFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_psf_change_password">
+
+    </fragment>
+
+    <fragment
         android:id="@+id/fragment_clinics"
         android:name="com.mobile.physiolink.ui.psf.ClinicsFragment"
         android:label="@string/app_name"

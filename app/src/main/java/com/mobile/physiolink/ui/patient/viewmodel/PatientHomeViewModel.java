@@ -55,6 +55,10 @@ public class PatientHomeViewModel extends ViewModel
                             jsonDoctor.getString("address"),
                             jsonDoctor.getString("postal_code"),
                             jsonDoctor.getString("physio_name"));
+
+                    String imageURL = jsonDoctor.getString("image");
+                    doctorObj.setImageURL(imageURL);
+
                     doctor.postValue(doctorObj);
                 }
                 catch (JSONException e)

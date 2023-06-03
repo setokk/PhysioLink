@@ -68,6 +68,7 @@ public class UserAuth
                 String city = json.getString("city");
                 String address = json.getString("address");
                 String postalCode = json.getString("postal_code");
+                String imageURL = json.getString("image");
 
                 /* Uncommon fields */
                 if (user.isDoctor())
@@ -86,6 +87,8 @@ public class UserAuth
                     user = new Patient(id, username, type, name, surname, email,
                             phoneNumber, amka, city, address, postalCode, doctor_id);
                 }
+
+                user.setImageURL(imageURL);
             }
         }
 

@@ -24,8 +24,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/patientHistoryProfilePicDoctor"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_55sdp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginVertical="10dp"
@@ -39,7 +39,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:paddingTop="10dp"
                 android:paddingBottom="15dp"
                 app:layout_constraintLeft_toRightOf="@id/patientHistoryProfilePicDoctor"
                 app:layout_constraintRight_toRightOf="parent"
@@ -51,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Όνομα:"
+                    android:layout_marginTop="10dp"
                     android:paddingBottom="5dp"
                     android:textColor="@color/white"
                     android:textSize="18sp"
@@ -61,10 +61,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patientHistoryNameDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:paddingTop="0dp"
                     android:paddingBottom="5dp"
-                    android:layout_marginStart="8dp"
+
                     android:text=""
                     android:backgroundTint="@color/transparent"
                     android:textColor="@color/white"
@@ -90,10 +90,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patientHistorySurnameDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:paddingTop="0dp"
                     android:paddingBottom="5dp"
-                    android:layout_marginStart="8dp"
                     android:text=""
                     android:backgroundTint="@color/transparent"
                     android:textColor="@color/white"
@@ -102,19 +101,18 @@
                     app:layout_constraintStart_toEndOf="@+id/patientHistorySurnameTitleDoctor"
                     app:layout_constraintTop_toBottomOf="@+id/patientHistoryNameTitleDoctor" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/patientHistoryInfoDownBtn"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/baseline_arrow_drop_down_24"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/patientHistoryInfoDownBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:padding="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/baseline_arrow_drop_down_24"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/patientHistoryNameInfoConstraint"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/patientHistoryNameInfoConstraint" />
+
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -151,7 +149,7 @@
                     android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="2dp"
                     android:text="amka"
                     android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/amkaTitlePatientHistoryDoctor"
@@ -180,7 +178,7 @@
                     android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="2dp"
                     android:text=""
                     android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/phoneTitlePatientHistoryDoctor"
@@ -191,30 +189,25 @@
                     android:id="@+id/emailTitlePatientHistoryDoctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:text="Email:"
-                    app:layout_constraintBottom_toBottomOf="@+id/emailPatientHistoryDoctor"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/emailPatientHistoryDoctor"
                     app:layout_constraintTop_toBottomOf="@+id/phoneTitlePatientHistoryDoctor" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailPatientHistoryDoctor"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:paddingTop="0dp"
                     android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
-                    android:text=""
+                    android:text="kgkgkg"
                     android:backgroundTint="@color/transparent"
-                    app:layout_constraintBottom_toBottomOf="@+id/emailTitlePatientHistoryDoctor"
-                    app:layout_constraintStart_toEndOf="@+id/emailTitlePatientHistoryDoctor"
-                    app:layout_constraintTop_toTopOf="@+id/emailTitlePatientHistoryDoctor" />
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailTitlePatientHistoryDoctor" />
                 <TextView
                     android:id="@+id/cityTitlePatientHistoryDoctor"
                     android:layout_width="wrap_content"
@@ -227,7 +220,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/cityPatientHistoryDoctor"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/cityPatientHistoryDoctor"
-                    app:layout_constraintTop_toBottomOf="@+id/emailTitlePatientHistoryDoctor"
+                    app:layout_constraintTop_toBottomOf="@+id/emailPatientHistoryDoctor"
                     />
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/cityPatientHistoryDoctor"
@@ -237,7 +230,7 @@
                     android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="2dp"
                     android:text=""
                     android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/cityTitlePatientHistoryDoctor"
@@ -265,7 +258,7 @@
                     android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="2dp"
                     android:text=""
                     android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/cityTitlePatientHistoryDoctor"
@@ -292,7 +285,7 @@
                     android:paddingBottom="6dp"
                     android:textSize="16sp"
                     android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="2dp"
                     android:text=""
                     android:backgroundTint="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/addressTitlePatientHistoryDoctor"
@@ -308,7 +301,7 @@
                     android:text="Επεξεργασία"
                     android:textAllCaps="false"
                     android:textColor="@color/input_grey"
-                    android:textSize="12sp"
+                    android:textSize="15sp"
                     android:textStyle="italic|normal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

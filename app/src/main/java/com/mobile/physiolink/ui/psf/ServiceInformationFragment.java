@@ -62,11 +62,11 @@ public class ServiceInformationFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(ServiceInformationViewModel.class);
         viewModel.getService().observe(getViewLifecycleOwner(), service ->
         {
-            binding.codeInput.setText(service.getId());
+            binding.codeTextview.setText(service.getId());
             binding.nameInput.setText(service.getTitle());
             binding.descriptionInput.setText(service.getDescription());
             binding.priceInput.setText(new StringBuilder()
-                    .append(service.getPrice())
+                    .append((int) service.getPrice())
                     .append("€").toString());
         });
 
@@ -140,6 +140,7 @@ public class ServiceInformationFragment extends Fragment {
                             "Ναι", "Οχι");
                     confirmation.setPositiveOnClick((dialog, which) ->
                     {
+
                         Service service = new Service(serviceId,
                                 binding.nameInput.getText().toString(),
                                 binding.descriptionInput.getText().toString(),

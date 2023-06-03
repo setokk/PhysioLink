@@ -24,6 +24,7 @@ public class DoctorHomeViewModel extends ViewModel
 {
     private static final int MAX_APPOINTMENTS = 3;
     private MutableLiveData<Appointment[]> latestAppointments;
+    private MutableLiveData<Integer> newRequestsCounter;
 
     public void loadTodaysLatestAppointments(long doctorId)
     {
@@ -68,6 +69,7 @@ public class DoctorHomeViewModel extends ViewModel
                                 .setPatName(element.getString("patient_name"))
                                 .setPatSurname(element.getString("patient_surname"))
                                 .setPatAmka(element.getString("amka"))
+                                .setImageURL(element.getString("image"))
                                 .build();
                     }
                     latestAppointments.postValue(appointments);
@@ -78,6 +80,40 @@ public class DoctorHomeViewModel extends ViewModel
                 }
             }
         });
+    }
+
+    public void loadNewRequestsCounter(long doctorId)
+    {
+        RequestFacade.getRequest(API.GET_PENDING_APPOINTMENTS + doctorId, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                call.cancel();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String res = response.body().string();
+                if (res.contains(Error.RESOURCE_NOT_FOUND))
+                    return;
+
+                try
+                {
+                    JSONArray jsonAppointments = new JSONObject(res).getJSONArray("appointments");
+                    newRequestsCounter.postValue(jsonAppointments.length());
+                }
+                catch (JSONException e)
+                {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
+    public MutableLiveData<Integer> getNewRequestsCounter() {
+        if (newRequestsCounter == null)
+            newRequestsCounter = new MutableLiveData<>();
+
+        return newRequestsCounter;
     }
 
     public MutableLiveData<Appointment[]> getLatestAppointments()

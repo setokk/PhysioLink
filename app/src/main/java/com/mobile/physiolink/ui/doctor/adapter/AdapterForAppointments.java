@@ -11,6 +11,7 @@ import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemDoctorAppointmentBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.util.date.TimeFormatter;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import java.util.Arrays;
 
@@ -50,6 +51,8 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
     @Override
     public void onBindViewHolder(@NonNull AdapterForAppointments.MyViewHolder holder, int position)
     {
+        ProfileImageProvider.setImageOfAppointment(holder.binding.patientImageDoctorAppointment,
+                appointments[position]);
         holder.binding.appointmentNameDoctorPatient
                 .setText(new StringBuilder()
                         .append(appointments[position].getPatName())
@@ -57,10 +60,11 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
                         .append(appointments[position].getPatSurname()).toString());
         holder.binding.appointmentTimeDoctorPatient
                 .setText(TimeFormatter.formatToPM_AM(appointments[position].getHour()));
-        holder.binding.patientImageDoctorAppointment.setImageResource(R.drawable.boy);
-        /*holder.binding.appointmentCommentsDoctorPatient
-                .setText(appointments[position].getMessage());*/
 
+        boolean hasContent = holder.binding.appointmentCommentsDoctorPatient.length() > 0;
+
+            holder.binding.appointmentCommentsDoctorPatient
+                    .setText(hasContent ? appointments[position].getMessage() : "-");
 
         boolean isItemExpanded = isExpanded[position];
 

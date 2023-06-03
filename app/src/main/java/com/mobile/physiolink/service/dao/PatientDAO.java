@@ -80,29 +80,5 @@ public class PatientDAO implements InterfaceDAO<Long, PatientSchema>
     public void getPatientsOf(Long doctorId, Callback callback)
     {
         RequestFacade.getRequest(API.GET_PATIENTS_OF + doctorId, callback);
-        /* Check if server sent back that this doctor has no patients */
-        /*JSONObject res = new JSONObject(response);
-        if (res.toString().contains(Error.RESOURCE_NOT_FOUND))
-            return new Patient[0];
-
-        *//* Get JSON patients array and return a Patient array *//*
-        JSONArray array = res.getJSONArray("patients");
-        Patient[] patients = new Patient[array.length()];
-        for (int i = 0; i < array.length(); i++)
-        {
-            JSONObject element = array.getJSONObject(i);
-            patients[i] = new Patient(element.getLong("id"),
-                    element.getString("username"),
-                    "patient",
-                    element.getString("name"),
-                    element.getString("surname"),
-                    element.getString("email"),
-                    element.getString("phone_number"),
-                    element.getString("amka"),
-                    element.getString("address"),
-                    doctorId);
-        }
-
-        return patients;*/
     }
 }

@@ -44,7 +44,7 @@ public class AdapterForPatientDoctorServices extends RecyclerView.Adapter<Adapte
     public void onBindViewHolder(@NonNull AdapterForPatientDoctorServices.MyViewHolder holder, int position) {
         holder.itemDoctorServicesBinding.patientDoctorServiceName.setText(services[position].getTitle());
         holder.itemDoctorServicesBinding.patientDoctorServiceDescription.setText(services[position].getDescription());
-        holder.itemDoctorServicesBinding.patientDoctorServicePrice.setText(String.valueOf(services[position].getPrice()));
+        holder.itemDoctorServicesBinding.patientDoctorServicePrice.setText(String.valueOf((int) services[position].getPrice()));
 
         boolean isItemExpanded = isExpanded[position];
         boolean hasContent = holder.itemDoctorServicesBinding.patientDoctorServiceDescription.length() > 0;

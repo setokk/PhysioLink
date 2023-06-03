@@ -42,18 +42,20 @@ public class ClinicsViewModel extends ViewModel {
 
                     for (int i = 0; i < jsonDoctors.length(); i++) {
                         JSONObject element = jsonDoctors.getJSONObject(i);
-                        newDoctors.add(new Doctor(element.getLong("id"),
-                                                   "",
-                                                   "doctor",
-                                                   element.getString("name"),
-                                                   element.getString("surname"),
-                                                   element.getString("email"),
-                                                   element.getString("phone_number"),
-                                                   element.getString("afm"),
-                                                   element.getString("city"),
-                                                   element.getString("address"),
-                                                   element.getString("postal_code"),
-                                                   element.getString("physio_name")));
+                        Doctor doctor = new Doctor(element.getLong("id"),
+                                "",
+                                "doctor",
+                                element.getString("name"),
+                                element.getString("surname"),
+                                element.getString("email"),
+                                element.getString("phone_number"),
+                                element.getString("afm"),
+                                element.getString("city"),
+                                element.getString("address"),
+                                element.getString("postal_code"),
+                                element.getString("physio_name"));
+                        doctor.setImageURL(element.getString("image"));
+                        newDoctors.add(doctor);
                     }
                     doctors.postValue(newDoctors);
                 } catch (JSONException e) {

@@ -13,6 +13,7 @@ import com.mobile.physiolink.databinding.ActivityLoginBinding;
 import com.mobile.physiolink.service.validator.UserAuth;
 import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import org.json.JSONException;
 
@@ -39,6 +40,8 @@ public class LoginActivity extends AppCompatActivity
             catch (IOException | InterruptedException | JSONException ignored)
             { Toast.makeText(this, "Προέκυψε ένα σφάλμα. Ελέγξτε την σύνδεση σας στο διαδίκτυο και δοκιμάστε ξανά!", Toast.LENGTH_SHORT).show(); }
         });
+
+        ProfileImageProvider.clearURI();
     }
 
     /**

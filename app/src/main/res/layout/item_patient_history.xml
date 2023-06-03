@@ -22,9 +22,9 @@
 
         <ImageView
             android:id="@+id/calendarIconHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_marginTop="7dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/calendar_icon_today" />
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:layout_marginTop="7dp"
+
             android:text="00/00/0000"
             android:textColor="@color/button_purple"
             android:textSize="16sp"
@@ -97,7 +97,7 @@
         android:id="@+id/servicePricePatientHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="30dp"
         android:text="40€"
         android:textColor="@color/button_purple"

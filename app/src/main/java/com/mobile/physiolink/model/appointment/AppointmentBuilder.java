@@ -103,4 +103,10 @@ public class AppointmentBuilder
         appointment.setConfirmed(isConfirmed);
         return this;
     }
+
+    public AppointmentBuilder setImageURL(String imageURL)
+    {
+        appointment.setImageURL(imageURL);
+        return this;
+    }
 }

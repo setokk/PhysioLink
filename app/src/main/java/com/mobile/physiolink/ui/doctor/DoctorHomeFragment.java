@@ -51,11 +51,17 @@ public class DoctorHomeFragment extends Fragment
         {
             if (appointments.length == 0)
             {
-                // TODO: Dynamic showing of not having appointments
-                return;
+                binding.noAppointmentsImg.setVisibility(View.VISIBLE);
+                binding.noAppointmentTextView.setVisibility(View.VISIBLE);
+            } else {
+                binding.noAppointmentsImg.setVisibility(View.GONE);
+                binding.noAppointmentTextView.setVisibility(View.GONE);
+                adapter.setAppointments(appointments);
             }
-
-            adapter.setAppointments(appointments);
+        });
+        viewModel.getNewRequestsCounter().observe(getViewLifecycleOwner(), requestsNum ->
+        {
+            // TODO: MAKE RED CIRCLE APPEAR ON TOP OF REQUESTS BUTTON
         });
 
         return binding.getRoot();
@@ -73,8 +79,8 @@ public class DoctorHomeFragment extends Fragment
                 .append(UserHolder.doctor().getSurname())
                 .toString());
 
-        binding.profileImg.setImageResource(ProfileImageProvider
-                .getProfileImage(UserHolder.doctor().getName()));
+        ProfileImageProvider.setImageForUser(binding.profileImg,
+                UserHolder.doctor(), true);
 
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
         binding.recyclerViewApp.addItemDecoration(itemDecoration);
@@ -83,6 +89,7 @@ public class DoctorHomeFragment extends Fragment
         binding.recyclerViewApp.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         viewModel.loadTodaysLatestAppointments(UserHolder.doctor().getId());
+        viewModel.loadNewRequestsCounter(UserHolder.doctor().getId());
 
         binding.appointRequestBtn.setOnClickListener(v ->
                 Navigation.findNavController(getActivity(), R.id.container)

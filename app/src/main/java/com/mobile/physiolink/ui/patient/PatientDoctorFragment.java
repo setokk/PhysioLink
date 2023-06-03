@@ -1,6 +1,11 @@
 package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -10,13 +15,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientDoctorBinding;
@@ -61,9 +59,8 @@ public class PatientDoctorFragment extends Fragment
         viewModel = new ViewModelProvider(this).get(PatientDoctorViewModel.class);
         viewModel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
         {
-            binding.doctorProfilePicPatient.setImageResource(
-                    ProfileImageProvider.getProfileImage(doctor.getName()));
-
+            ProfileImageProvider.setImageForUser(binding.doctorProfilePicPatient,
+                    doctor, false);
             binding.doctorPatientName.setText(doctor.getName());
             binding.doctorPatientSurname.setText(doctor.getSurname());
             binding.doctorAfmPatient.setText(doctor.getAfm());
@@ -112,7 +109,7 @@ public class PatientDoctorFragment extends Fragment
                 Navigation.findNavController(getActivity(),R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientDoctor_to_fragmentRequestAppointment));
 
-        binding.doctorPatientServicesList.addItemDecoration(new DecorationSpacingItem(20));
+        binding.doctorPatientServicesList.addItemDecoration(new DecorationSpacingItem(40));
 
         adapter = new AdapterForPatientDoctorServices();
         binding.doctorPatientServicesList.setAdapter(adapter);

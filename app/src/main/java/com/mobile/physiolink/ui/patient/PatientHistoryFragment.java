@@ -1,6 +1,9 @@
 package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
@@ -11,14 +14,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.mobile.physiolink.model.user.singleton.UserHolder;
-import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientHistoryBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.patient.adapter.AdapterForHistoryPatient;
 import com.mobile.physiolink.ui.patient.viewmodel.PatientHistoryViewModel;
 
@@ -88,7 +87,7 @@ public class PatientHistoryFragment extends Fragment
 
         viewModel.loadAppointments(UserHolder.patient().getId());
 
-        binding.historyRecyclerview.addItemDecoration(new DecorationSpacingItem(20));
+        binding.historyRecyclerview.addItemDecoration(new DecorationSpacingItem(40));
         binding.historyRecyclerview.setAdapter(adapter);
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }

@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorServicesBinding;
 import com.mobile.physiolink.model.service.Service;
-import com.mobile.physiolink.model.user.Patient;
-import com.mobile.physiolink.ui.doctor.OnItemClickListener;
 import com.mobile.physiolink.ui.doctor.OnLongItemClickListener;
 
 import java.util.ArrayList;
@@ -63,7 +61,7 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
         holder.itemDoctorServicesBinding.serviceDescriptionDoctor
                 .setText(services.get(position).getDescription());
         holder.itemDoctorServicesBinding.servicePriceDoctor
-                .setText(String.valueOf(services.get(position).getPrice()));
+                .setText(String.valueOf((int) services.get(position).getPrice()));
 
         boolean isItemExpanded = isExpanded[position];
 

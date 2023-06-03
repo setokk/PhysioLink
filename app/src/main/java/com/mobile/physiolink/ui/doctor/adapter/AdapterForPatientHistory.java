@@ -42,7 +42,7 @@ public class AdapterForPatientHistory extends RecyclerView.Adapter<AdapterForPat
         holder.binding.servicePatientHistoryDateDoctor
                 .setText(new StringBuilder()
                         .append(appointments[position].getDate().replace('-', '/'))
-                        .append(", ")
+                        .append(" ")
                         .append(TimeFormatter.formatToPM_AM(appointments[position].getHour()))
                         .toString());
         holder.binding.servicePatientHistoryPriceDoctor

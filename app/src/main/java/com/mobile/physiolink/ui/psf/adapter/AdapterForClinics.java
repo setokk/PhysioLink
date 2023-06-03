@@ -52,9 +52,8 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        int imageID = ProfileImageProvider
-                .getProfileImage(doctors.get(position).getName());
-        holder.itemDocBinding.doctorImage.setImageResource(imageID);
+        ProfileImageProvider.setImageForUser(holder.itemDocBinding.doctorImage,
+                doctors.get(position), false);
         holder.itemDocBinding.doctorName.setText(new StringBuilder()
                 .append(doctors.get(position).getName())
                 .append(" ")
@@ -79,7 +78,8 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
         protected FilterResults performFiltering(CharSequence charSequence) {
             List<Doctor> filteredList = new ArrayList<>();
             if (charSequence == null || charSequence.length() == 0) {
-                filteredList.addAll(doctorsFull);
+                filteredList.addAll(Optional.ofNullable(doctorsFull)
+                        .orElse(new ArrayList<>(0)));
             } else {
                 String filterPattern = charSequence.toString().toUpperCase().trim();
                 for(Doctor doctor: doctorsFull){

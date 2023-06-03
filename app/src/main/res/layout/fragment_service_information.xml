@@ -34,14 +34,13 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="Τιμή:"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintHorizontal_bias="0.7"
-                app:layout_constraintBottom_toBottomOf="@+id/name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/name"
-                app:layout_constraintTop_toTopOf="@+id/name" />
+                app:layout_constraintStart_toStartOf="@+id/codeTitleTextview"
+                app:layout_constraintTop_toBottomOf="@+id/codeTitleTextview"/>
 
             <TextView
                 android:id="@+id/name"
@@ -59,14 +58,17 @@
                 android:id="@+id/name_input_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
                 android:textAlignment="gravity"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
-                app:counterMaxLength="20"
+                app:counterMaxLength="200"
                 app:endIconMode="none"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@id/name"
-                app:layout_constraintTop_toBottomOf="@id/name">
+                app:layout_constraintTop_toBottomOf="@id/name"
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/name_input"
@@ -76,12 +78,13 @@
                     android:backgroundTint="@color/white"
                     android:enabled="false"
                     android:gravity="center"
-                    android:inputType="textNoSuggestions|textAutoComplete"
-                    android:maxLength="20"
+                    android:inputType="textMultiLine|textNoSuggestions|textAutoComplete"
+                    android:maxLength="200"
                     android:paddingVertical="12dp"
                     android:text=""
                     android:textAlignment="gravity"
                     android:textColor="@color/black"
+                    android:lineBreakStyle="normal"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,13 +92,15 @@
                 android:id="@+id/price_input_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
                 app:counterMaxLength="5"
                 app:endIconMode="none"
                 app:layout_constraintStart_toStartOf="@+id/price"
                 app:layout_constraintTop_toBottomOf="@id/price"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:prefixTextAppearance="@style/TextAppearance.AppCompat.Body1">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -115,42 +120,24 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/code_textview"
+                android:id="@+id/codeTitleTextview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="5dp"
                 android:text="Κωδικός:"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="@+id/name_input_layout"
                 app:layout_constraintTop_toBottomOf="@+id/name_input_layout" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/code_input_layout"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/code_textview"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:counterMaxLength="40"
-                app:endIconMode="none"
-                app:layout_constraintStart_toStartOf="@id/code_textview"
-                app:layout_constraintTop_toBottomOf="@id/code_textview">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/code_input"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/round2_style"
-                    android:backgroundTint="@color/white"
-                    android:enabled="false"
-                    android:gravity="center"
-                    android:inputType="textNoSuggestions"
-                    android:maxLength="40"
-                    android:paddingVertical="12dp"
-                    android:text=""
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/codeTitleTextview"
+                app:layout_constraintTop_toTopOf="@+id/codeTitleTextview"
+                app:layout_constraintBottom_toBottomOf="@+id/codeTitleTextview"/>
 
             <TextView
                 android:id="@+id/description_textview"
@@ -160,8 +147,8 @@
                 android:text="Περιγραφή:"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@id/code_input_layout"
-                app:layout_constraintTop_toBottomOf="@+id/code_input_layout" />
+                app:layout_constraintStart_toStartOf="@id/price_input_layout"
+                app:layout_constraintTop_toBottomOf="@+id/price_input_layout" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/description_input_layout"
@@ -199,10 +186,10 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/edit_button"
-        android:layout_width="170dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
         android:background="@drawable/round_style"
         android:backgroundTint="@color/button_purple"
         android:drawableLeft="@drawable/baseline_edit_24"
@@ -210,7 +197,7 @@
         android:text="Επεξεργασία"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/_12ssp"
         app:layout_anchor="@+id/serviceInfoScrollViewPsf"
         app:layout_anchorGravity="bottom|end"/>
 

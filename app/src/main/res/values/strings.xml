@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">PhysioLink</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="btn_login_text">Συνδεση</string>
+    <string name="btn_login_text">Σύνδεση</string>
     <string name="home_label">Αρχική</string>
     <string name="input_username">Username</string>
     <string name="input_password">Password</string>
-    <string name="hint_username">Username *</string>
-    <string name="hint_password">Password *</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
     <string name="home_hello">Καλωσήρθες,</string>
     <string name="doctor_appointments">Προσεχή Ραντεβού</string>
     <string name="doctor_patients">Οι Ασθενείς μου</string>
@@ -156,23 +156,28 @@
     <string name="welcome_text">Καλωσήρθες!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="codeString">Κωδικός *</string>
+    <string name="codeString">Κωδικός</string>
     <string name="durationText">Διάρκεια (σε λεπτά)</string>
     <string name="CreateNewService">Δημιουργία Νέας Παροχής</string>
     <string name="ServiceDetails">Στοιχεία Παροχής:</string>
-    <string name="NameHint">Όνομα *</string>
-    <string name="LastNameHint">Επώνυμο *</string>
-    <string name="AfmHint">ΑΦΜ *</string>
+    <string name="NameHint">Όνομα</string>
+    <string name="LastNameHint">Επώνυμο</string>
+    <string name="AfmHint">ΑΦΜ</string>
+    <string name="EmailHint">Email</string>
     <string name="PhoneHint">Κινητό</string>
-    <string name="CityHint">Πόλη *</string>
-    <string name="AddressHint">Διεύθυνση *</string>
+    <string name="CityHint">Πόλη</string>
+    <string name="AddressHint">Διεύθυνση</string>
     <string name="CreateNewClinic">Δημιουργία Νέου Φυσιοθεραπευτηρίου</string>
     <string name="ServiceDescription">Περιγραφή Παροχής :</string>
     <string name="SaveString">Αποθήκευση</string>
-    <string name="DurationHint">Διάρκεια (σε λεπτά) *</string>
-    <string name="DescriptionHint">Περιγραφή *</string>
+    <string name="DurationHint">Διάρκεια (σε λεπτά)</string>
+    <string name="DescriptionHint">Περιγραφή</string>
     <string name="selectDateBarName">Επιλέξτε Ημερομήνια</string>
     <string name="doctor_no_new_requests">Δεν υπάρχουν νέα αιτήματα.</string>
+    <string name="appointments">Ραντεβού</string>
+    <string name="services">Παροχές</string>
+    <string name="patients">Ασθενείς</string>
+    <string name="postal_code">Ταχ/Κωδ:</string>
 
     <string-array name="doctoNameListExample">
         <item>Γιώργος Παπαδόπουλος</item>

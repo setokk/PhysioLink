@@ -55,13 +55,11 @@ public class PatientHomeFragment extends Fragment
                     .append(" ")
                     .append(doctor.getSurname())
                     .toString());
+            binding.doctorPhysioNamePatient.setText(new StringBuilder().append(doctor.getPhysioName()));
 
-            int profileImg = ProfileImageProvider.getProfileImage(doctor.getName());
-            if (profileImg == R.drawable.prof_doctoress)
-                binding.myDoctorTitle.setText("Η Γιατρός μου:");
-            else
-                binding.myDoctorTitle.setText("Ο Γιατρός μου:");
-            binding.doctorProfileImgPatient.setImageResource(profileImg);
+            binding.myDoctorTitle.setText("Ο Φυσιοθεραπευτής μου:");
+            ProfileImageProvider.setImageForUser(binding.doctorProfileImgPatient,
+                    doctor, false);
         });
         viewmodel.getUpcomingAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
@@ -104,6 +102,8 @@ public class PatientHomeFragment extends Fragment
 
         binding.patientNamePatient.setText(String.format("%s %s",
                 UserHolder.patient().getName(), UserHolder.patient().getSurname()));
+        ProfileImageProvider.setImageForUser(binding.patientProfileImgPatient,
+                UserHolder.patient(), true);
 
         /* Load data */
         viewmodel.loadDoctor(UserHolder.patient().getDoctorId());

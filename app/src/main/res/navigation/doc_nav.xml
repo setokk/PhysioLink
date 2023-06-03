@@ -26,6 +26,23 @@
             app:destination="@id/doctorAppointmentRequestsFragment" />
     </fragment>
     <fragment
+        android:id="@+id/doctorSettingsFragment"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorSettingsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_doctor_settings">
+        <action
+            android:id="@+id/action_doctorSettingsFragment_to_doctorChangePassword"
+            app:destination="@+id/doctorChangePassword"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/doctorChangePassword"
+        android:name="com.mobile.physiolink.ui.doctor.DoctorChangePasswordFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_change_password">
+
+    </fragment>
+    <fragment
         android:id="@+id/doctorProfileFragment"
         android:name="com.mobile.physiolink.ui.doctor.DoctorProfileFragment"
         android:label="@string/app_name"

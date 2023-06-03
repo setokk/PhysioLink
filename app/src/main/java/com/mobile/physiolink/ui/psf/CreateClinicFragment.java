@@ -88,6 +88,9 @@ public class CreateClinicFragment extends Fragment
         all_inputs_layouts.add(binding.phonenumberInputLayout);
         all_inputs.add(binding.phonenumberInput);
 
+        all_inputs_layouts.add(binding.emailInputLayout);
+        all_inputs.add(binding.emailInput);
+
         all_inputs_layouts.add(binding.clinicNameInputLayout);
         all_inputs.add(binding.clinicNameInput);
 
@@ -208,7 +211,7 @@ public class CreateClinicFragment extends Fragment
                             binding.docPasswardInput.getText().toString(),
                             binding.docNameInput.getText().toString(),
                             binding.docSurnameInput.getText().toString(),
-                            "needs_an_email@email.com", //TODO: ADD EMAIL INPUT
+                            binding.emailInput.getText().toString(),
                             binding.phonenumberInput.getText().toString(),
                             binding.afmInput.getText().toString(),
                             binding.cityInput.getText().toString(),

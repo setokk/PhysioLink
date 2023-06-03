@@ -20,6 +20,7 @@ import com.mobile.physiolink.ui.doctor.OnButtonClickListener;
 import com.mobile.physiolink.ui.popup.AppointmentRejectPopUp;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 import com.mobile.physiolink.util.date.TimeFormatter;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -65,6 +66,8 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
 
     public void onBindViewHolder(MyViewHolder holder, int position)
     {
+        ProfileImageProvider.setImageOfAppointment(holder.binding.requestPhotoDoctor,
+                appointments[position]);
         holder.binding.requestNameDoctor
                 .setText(appointments[position].getPatName());
         holder.binding.requestSurnameDoctor

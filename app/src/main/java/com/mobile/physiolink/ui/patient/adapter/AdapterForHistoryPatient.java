@@ -69,7 +69,7 @@ public class AdapterForHistoryPatient extends RecyclerView.Adapter<AdapterForHis
         holder.itemHistoryBinding.appointmentDescriptionPatientHistory
                 .setText(appointments.get(position).getServiceDescription());
         holder.itemHistoryBinding.servicePricePatientHistory
-                .setText(String.format("%s€", appointments.get(position).getServicePrice()));
+                .setText(String.format("%s€",(int) appointments.get(position).getServicePrice()));
 
         boolean isItemExpanded = isExpanded[position];
         boolean hasContent = holder.itemHistoryBinding.appointmentDescriptionPatientHistory.length() > 0;

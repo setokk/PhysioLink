@@ -1,6 +1,10 @@
 package com.mobile.physiolink.ui.doctor;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -13,18 +17,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.mobile.physiolink.R;
-
 import com.mobile.physiolink.databinding.FragmentDoctorServicesBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.service.dao.ServiceDAO;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorServicesViewModel;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
@@ -122,7 +120,7 @@ public class DoctorServicesFragment extends Fragment{
     {
         super.onViewCreated(view, savedInstanceState);
 
-        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
+        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(40); // 20px spacing
         binding.servicesListDoctor.addItemDecoration(itemDecoration);
 
         binding.servicesListDoctor.setAdapter(adapter);

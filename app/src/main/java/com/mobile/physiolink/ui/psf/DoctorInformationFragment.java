@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,10 @@ import com.mobile.physiolink.databinding.FragmentDoctorInformationBinding;
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.service.dao.DoctorDAO;
 import com.mobile.physiolink.service.schemas.DoctorSchema;
+import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
+import com.mobile.physiolink.ui.psf.adapter.AdapterForServices;
 import com.mobile.physiolink.ui.psf.viewmodel.DoctorInformationViewModel;
 import com.mobile.physiolink.util.image.ProfileImageProvider;
 
@@ -36,6 +40,7 @@ public class DoctorInformationFragment extends Fragment {
 
     private FragmentDoctorInformationBinding binding;
     private DoctorInformationViewModel viewModel;
+    private AdapterForServices adapter;
 
     private boolean edit;
 
@@ -55,12 +60,13 @@ public class DoctorInformationFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentDoctorInformationBinding.inflate(inflater, container, false);
 
+        adapter = new AdapterForServices();
+
         viewModel = new ViewModelProvider(this).get(DoctorInformationViewModel.class);
         viewModel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
         {
-            binding.profilImage.setImageResource(
-                    ProfileImageProvider.getProfileImage(doctor.getName()));
-
+            ProfileImageProvider.setImageForUser(binding.profilImage,
+                    doctor, false);
             binding.nameTextView.setText(doctor.getName());
             binding.surnameTextView.setText(doctor.getSurname());
             binding.emailInput.setText(doctor.getEmail());
@@ -71,6 +77,10 @@ public class DoctorInformationFragment extends Fragment {
             binding.afmInput.setText(doctor.getAfm());
             binding.clinicNameInput.setText(doctor.getPhysioName());
         });
+        viewModel.getDoctorServices().observe(getViewLifecycleOwner(), services ->
+        {
+            adapter.setServices(services);
+        });
 
         return binding.getRoot();
     }
@@ -80,8 +90,13 @@ public class DoctorInformationFragment extends Fragment {
 
         long doctorId = DoctorInformationFragmentArgs.fromBundle(getArguments()).getDoctorId();
         viewModel.loadDoctor(doctorId);
+        viewModel.loadDoctorServices(doctorId);
 
         populateAllInputs();
+
+        binding.servicesRecyclerView.addItemDecoration(new DecorationSpacingItem(20)); // 20px spacing
+        binding.servicesRecyclerView.setAdapter(adapter);
+        binding.servicesRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         binding.editButton.setOnClickListener(v ->
         {
@@ -137,13 +152,13 @@ public class DoctorInformationFragment extends Fragment {
                             {
                                 Toast.makeText(context, "Έγινε επιτυχής ενημέρωση στοιχείων φυσιοθεραπευτηρίου/γιατρού",
                                         Toast.LENGTH_SHORT).show();
-                                edit = false;
                             });
                         }
                     });
                 }));
 
                 confirmation.show(getActivity().getSupportFragmentManager(), "Confirmation pop up");
+                edit = false;
             }
         });
     }

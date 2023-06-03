@@ -13,6 +13,7 @@ import com.mobile.physiolink.databinding.ItemDoctorPatientsBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.ui.doctor.OnItemClickListener;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,8 @@ public class AdapterForPatients extends RecyclerView.Adapter<AdapterForPatients.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
+        ProfileImageProvider.setImageForUser(holder.binding.patientDoctorProfilePic,
+                patients.get(position), false);
         holder.binding.patientNameDoctor
                 .setText(patients.get(position).getName());
         holder.binding.patientSurnameDoctor
