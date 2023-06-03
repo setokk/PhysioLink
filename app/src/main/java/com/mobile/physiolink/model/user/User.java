@@ -21,7 +21,6 @@ public class User implements ResourceNotFindable
         this.id = id;
         this.username = username;
         this.type = type;
-        this.imageURL = Error.RESOURCE_NOT_FOUND; // Default value
     }
 
     public boolean isValid()
