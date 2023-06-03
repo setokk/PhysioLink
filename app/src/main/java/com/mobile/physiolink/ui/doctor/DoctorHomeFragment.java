@@ -79,7 +79,8 @@ public class DoctorHomeFragment extends Fragment
                 .append(UserHolder.doctor().getSurname())
                 .toString());
 
-        ProfileImageProvider.setImageForUser(binding.profileImg, UserHolder.doctor());
+        ProfileImageProvider.setImageForUser(binding.profileImg,
+                UserHolder.doctor(), true);
 
         DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
         binding.recyclerViewApp.addItemDecoration(itemDecoration);

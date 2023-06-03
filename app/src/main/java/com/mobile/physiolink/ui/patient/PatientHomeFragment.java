@@ -59,7 +59,7 @@ public class PatientHomeFragment extends Fragment
 
             binding.myDoctorTitle.setText("Ο Φυσιοθεραπευτής μου:");
             ProfileImageProvider.setImageForUser(binding.doctorProfileImgPatient,
-                    doctor);
+                    doctor, false);
         });
         viewmodel.getUpcomingAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
@@ -103,7 +103,7 @@ public class PatientHomeFragment extends Fragment
         binding.patientNamePatient.setText(String.format("%s %s",
                 UserHolder.patient().getName(), UserHolder.patient().getSurname()));
         ProfileImageProvider.setImageForUser(binding.patientProfileImgPatient,
-                UserHolder.patient());
+                UserHolder.patient(), true);
 
         /* Load data */
         viewmodel.loadDoctor(UserHolder.patient().getDoctorId());

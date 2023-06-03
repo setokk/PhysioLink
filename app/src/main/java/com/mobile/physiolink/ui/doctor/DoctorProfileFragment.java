@@ -60,7 +60,7 @@ public class DoctorProfileFragment extends Fragment {
                             ,Toast.LENGTH_SHORT).show();
 
                     ProfileImageProvider.setImageForUser(binding.profileImageDoctor,
-                            UserHolder.psf());
+                            UserHolder.psf(), true);
                 });
             }
         });
@@ -89,7 +89,8 @@ public class DoctorProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentDoctorProfileBinding.inflate(inflater, container, false);
 
-        ProfileImageProvider.setImageForUser(binding.profileImageDoctor, UserHolder.doctor());
+        ProfileImageProvider.setImageForUser(binding.profileImageDoctor,
+                UserHolder.doctor(), true);
         binding.profileNameDoctor.setText(String.format("%s %s",
                 UserHolder.doctor().getName(), UserHolder.doctor().getSurname()));
         binding.profileUsernameDoctor.setText(String.format("%s ",

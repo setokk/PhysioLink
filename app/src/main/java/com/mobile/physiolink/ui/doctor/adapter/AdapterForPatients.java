@@ -55,7 +55,7 @@ public class AdapterForPatients extends RecyclerView.Adapter<AdapterForPatients.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
         ProfileImageProvider.setImageForUser(holder.binding.patientDoctorProfilePic,
-                patients.get(position));
+                patients.get(position), false);
         holder.binding.patientNameDoctor
                 .setText(patients.get(position).getName());
         holder.binding.patientSurnameDoctor

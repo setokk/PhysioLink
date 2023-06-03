@@ -20,11 +20,11 @@ public final class ProfileImageProvider
     private static final List<String> nameExceptions = Arrays.asList("Άρτεμις", "Αρτεμις");
     public static Uri userURI = null;
 
-    public static void setImageForUser(ImageView imageView, User user)
+    public static void setImageForUser(ImageView imageView, User user, boolean shouldUseURI)
     {
         if (user.hasImage())
         {
-            if (userURI != null)
+            if (userURI != null && shouldUseURI)
             {
                 imageView.setImageURI(userURI);
             }

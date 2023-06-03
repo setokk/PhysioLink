@@ -53,7 +53,7 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
         ProfileImageProvider.setImageForUser(holder.itemDocBinding.doctorImage,
-                doctors.get(position));
+                doctors.get(position), false);
         holder.itemDocBinding.doctorName.setText(new StringBuilder()
                 .append(doctors.get(position).getName())
                 .append(" ")
