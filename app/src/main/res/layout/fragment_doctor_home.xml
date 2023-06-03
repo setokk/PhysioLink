@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:civ_border_width="3dp"
+            app:civ_border_width="2dp"
             app:civ_border_color="@color/button_purple" />
 
         <TextView
@@ -91,17 +91,43 @@
         app:layout_constraintStart_toStartOf="@id/upcoming"
         app:layout_constraintTop_toBottomOf="@+id/upcoming" />
 
+    <ImageView
+        android:id="@+id/noAppointmentsImg"
+        android:layout_width="@dimen/_130sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:src="@drawable/no_appointment3"
+        android:visibility="gone"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintTop_toBottomOf="@id/upcoming"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/appointRequestBtn"/>
+
+    <TextView
+        android:id="@+id/noAppointmentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Δεν έχετε προσεχή ραντεβού!"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/noAppointmentsImg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/appointRequestBtn"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
         android:padding="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="40dp"
+        android:paddingEnd="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
         android:background="@drawable/rounded_button"
         android:textColor="@color/white"
         android:text="Νέα Αιτήματα"
+        android:textSize="@dimen/_12ssp"
         android:textAllCaps="false"
         android:drawableLeft="@drawable/inquiry"
         app:layout_constraintBottom_toBottomOf="parent"
