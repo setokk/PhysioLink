@@ -13,11 +13,19 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobile.physiolink.databinding.FragmentChangePasswordBinding;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.api.API;
+import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 
 public class DoctorChangePasswordFragment extends Fragment {
@@ -70,8 +78,25 @@ public class DoctorChangePasswordFragment extends Fragment {
                         "Ναι", "Οχι");
                 confirmation.setPositiveOnClick((dialog, which) ->
                 {
-                    Toast.makeText(this.getContext(), "Έγινε η αλλαγή!",
-                            Toast.LENGTH_SHORT).show();
+                    HashMap<String, String> keyValues = new HashMap<>(2);
+                    keyValues.put("user_id", String.valueOf(UserHolder.psf().getId()));
+                    keyValues.put("password", binding.newRepeatInputChangePassword.getText().toString());
+
+                    RequestFacade.postRequest(API.CHANGE_PASSWORD, keyValues, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            call.cancel();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            getActivity().runOnUiThread(() ->
+                            {
+                                Toast.makeText(getContext(), "Έγινε η αλλαγή!",
+                                        Toast.LENGTH_SHORT).show();
+                            });
+                        }
+                    });
                 });
                 confirmation.setNegativeOnClick(((dialog, which) ->
                 {
