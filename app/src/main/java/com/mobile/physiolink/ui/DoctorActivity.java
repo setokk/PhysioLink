@@ -1,12 +1,11 @@
 package com.mobile.physiolink.ui;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -26,6 +25,7 @@ public class DoctorActivity extends AppCompatActivity
         binding = ActivityDoctorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         /* Setup Navigation with top level destinations */
         NavController navController = Navigation.findNavController(this, R.id.container);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
@@ -39,7 +39,29 @@ public class DoctorActivity extends AppCompatActivity
         getSupportActionBar().setTitle("PhysioLink");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.physiolink_logo);
+
+
     }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.doc_top, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.docSettings) {
+            NavController navController = Navigation.findNavController(this, R.id.container);
+            navController.navigate(R.id.doctorSettingsFragment);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 
     @Override
     public void onBackPressed() {
