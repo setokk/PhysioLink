@@ -1,5 +1,8 @@
 package com.mobile.physiolink.ui;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +36,10 @@ public class DoctorActivity extends AppCompatActivity
         /* AppBar Configuration */
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController, false);
+
+        configureNotificationChannel();
+        Intent notificationService = new Intent(getApplicationContext(), NotificationService.class);
+        startService(notificationService);
 
 
         /*ActionBar*/
@@ -74,5 +81,16 @@ public class DoctorActivity extends AppCompatActivity
         NavController navController = Navigation.findNavController(this, R.id.container);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void configureNotificationChannel()
+    {
+        CharSequence channelName = "Notification Channel";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel(NotificationService.CHANNEL_ID,
+                channelName,
+                importance);
+        NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        notificationManager.createNotificationChannel(channel);
     }
 }
