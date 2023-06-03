@@ -65,4 +65,5 @@ public final class API
     public static final String DELETE_DOCTOR_SERVICE = API.URL + "/service/delete";
     public static final String LINK_SERVICE_TO_DOCTOR = API.URL + "/service/link";
     public static final String UPLOAD_PROFILE_IMAGE = API.URL + "/images/upload/";
+    public static final String GET_NOTIFICATIONS = API.URL + "/notifications/of/";
 }
