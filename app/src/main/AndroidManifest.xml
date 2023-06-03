@@ -3,6 +3,8 @@
     package="com.mobile.physiolink"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -35,6 +37,7 @@
         <activity android:name=".ui.PatientActivity"
             android:windowSoftInputMode="adjustPan"
             android:label="@string/home_label"/>
+        <service android:name=".service.notification.NotificationService"/>
     </application>
 
 </manifest>

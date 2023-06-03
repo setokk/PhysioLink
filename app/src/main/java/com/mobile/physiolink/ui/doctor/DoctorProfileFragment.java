@@ -46,7 +46,7 @@ public class DoctorProfileFragment extends Fragment {
 
         Uri uri = data.getData();
         String path = ImageUploader.getAbsolutePathFromUri(uri);
-        ImageUploader.uploadImage(path, new Callback() {
+        ImageUploader.uploadImage(getActivity(), path, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 call.cancel();
@@ -60,7 +60,7 @@ public class DoctorProfileFragment extends Fragment {
                             ,Toast.LENGTH_SHORT).show();
 
                     ProfileImageProvider.setImageForUser(binding.profileImageDoctor,
-                            UserHolder.psf(), true);
+                            UserHolder.psf());
                 });
             }
         });
@@ -90,7 +90,7 @@ public class DoctorProfileFragment extends Fragment {
         binding = FragmentDoctorProfileBinding.inflate(inflater, container, false);
 
         ProfileImageProvider.setImageForUser(binding.profileImageDoctor,
-                UserHolder.doctor(), true);
+                UserHolder.doctor());
         binding.profileNameDoctor.setText(String.format("%s %s",
                 UserHolder.doctor().getName(), UserHolder.doctor().getSurname()));
         binding.profileUsernameDoctor.setText(String.format("%s ",

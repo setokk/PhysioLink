@@ -37,6 +37,7 @@
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
                 android:hint="@string/DescriptionHint"
+
                 android:inputType="textMultiLine|textNoSuggestions"
                 android:maxLength="1000"
                 android:minHeight="150dp"

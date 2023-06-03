@@ -45,6 +45,10 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
         notifyDataSetChanged();
     }
 
+    public List<Service> getServices() {
+        return services;
+    }
+
     @NonNull
     @Override
     public AdapterForDoctorServices.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

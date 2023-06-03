@@ -2,8 +2,11 @@ package com.mobile.physiolink.util.image;
 
 import android.net.Uri;
 
+import androidx.fragment.app.FragmentActivity;
+
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.service.api.API;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -16,7 +19,7 @@ import okhttp3.RequestBody;
 
 public class ImageUploader
 {
-    public static void uploadImage(String name, Callback callback)
+    public static void uploadImage(FragmentActivity context, String name, Callback callback)
     {
         OkHttpClient client = new OkHttpClient()
                 .newBuilder()
@@ -36,12 +39,14 @@ public class ImageUploader
                 .build();
 
         client.newCall(request).enqueue(callback);
+
+        // CLEAR CACHE
+        Picasso.with(context)
+                .invalidate(Uri.parse(UserHolder.psf().getImageURL()));
     }
 
     public static String getAbsolutePathFromUri(Uri uri)
     {
-        ProfileImageProvider.userURI = uri;
-
         return new File(uri.getPath()).getAbsolutePath();
     }
 }

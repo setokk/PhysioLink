@@ -78,7 +78,7 @@ public class DoctorPatientHistoryFragment extends Fragment
         viewModel.getSelectedPatient().observe(getViewLifecycleOwner(), patient ->
         {
             ProfileImageProvider.setImageForUser(binding.patientHistoryProfilePicDoctor,
-                    patient, false);
+                    patient);
             binding.patientHistoryNameDoctor.setText(patient.getName());
             binding.patientHistorySurnameDoctor.setText(patient.getSurname());
             binding.phonePatientHistoryDoctor.setText(patient.getPhoneNumber());

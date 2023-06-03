@@ -60,7 +60,7 @@ public class PatientDoctorFragment extends Fragment
         viewModel.getDoctor().observe(getViewLifecycleOwner(), doctor ->
         {
             ProfileImageProvider.setImageForUser(binding.doctorProfilePicPatient,
-                    doctor, false);
+                    doctor);
             binding.doctorPatientName.setText(doctor.getName());
             binding.doctorPatientSurname.setText(doctor.getSurname());
             binding.doctorAfmPatient.setText(doctor.getAfm());

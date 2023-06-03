@@ -30,9 +30,32 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchViewPatientHistory">
+        app:layout_constraintTop_toBottomOf="@+id/searchViewPatientHistory"
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
+    <ImageView
+        android:id="@+id/noHistoryImg"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_120sdp"
+        android:src="@drawable/no_history"
+        android:visibility="gone"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewPatientHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+        android:id="@+id/noHistoryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Δεν έχετε Ιστορικό! "
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@+id/noHistoryImg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sumCostHistoryConstraint"

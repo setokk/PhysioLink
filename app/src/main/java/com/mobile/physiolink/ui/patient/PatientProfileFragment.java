@@ -63,7 +63,7 @@ public class PatientProfileFragment extends Fragment{
         super.onActivityResult(requestCode, resultCode, data);
         Uri uri = data.getData();
         String path = ImageUploader.getAbsolutePathFromUri(uri);
-        ImageUploader.uploadImage(path, new Callback() {
+        ImageUploader.uploadImage(getActivity(), path, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 call.cancel();
@@ -77,7 +77,7 @@ public class PatientProfileFragment extends Fragment{
                             ,Toast.LENGTH_SHORT).show();
 
                     ProfileImageProvider.setImageForUser(binding.profileImagePatient,
-                            UserHolder.psf(), true);
+                            UserHolder.psf());
                 });
             }
         });
@@ -90,7 +90,7 @@ public class PatientProfileFragment extends Fragment{
         // Inflate the layout for this fragment
         binding = FragmentPatientProfileBinding.inflate(inflater, container, false);
         ProfileImageProvider.setImageForUser(binding.profileImagePatient,
-                UserHolder.patient(), true);
+                UserHolder.patient());
         binding.profileNamePatient.setText(String.format("%s %s",
                 UserHolder.patient().getName(), UserHolder.patient().getSurname()));
         binding.profileUsernamePatient.setText(String.format("%s ",
