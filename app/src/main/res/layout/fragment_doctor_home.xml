@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:civ_border_width="3dp"
+            app:civ_border_width="2dp"
             app:civ_border_color="@color/button_purple" />
 
         <TextView

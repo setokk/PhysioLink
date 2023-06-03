@@ -177,6 +177,7 @@
     <string name="appointments">Ραντεβού</string>
     <string name="services">Παροχές</string>
     <string name="patients">Ασθενείς</string>
+    <string name="postal_code">Ταχ/Κωδ:</string>
 
     <string-array name="doctoNameListExample">
         <item>Γιώργος Παπαδόπουλος</item>

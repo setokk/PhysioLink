@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -12,14 +13,19 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentDoctorProfileBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.ui.patient.PatientProfileFragment;
 import com.mobile.physiolink.util.image.ProfileImageProvider;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DoctorProfileFragment extends Fragment {
     private FragmentDoctorProfileBinding binding;
-
+    ImageView editImg;
+    CircleImageView photoProfile;
     public DoctorProfileFragment()
     {
         // Required empty public constructor
@@ -74,5 +80,19 @@ public class DoctorProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view,
                               @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        editImg = binding.editImgDoctorProfile;
+        photoProfile = binding.profileImageDoctor;
+
+        editImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImagePicker.with(DoctorProfileFragment.this)
+                        .crop()
+                        .compress(1024)
+                        .maxResultSize(1080,1080)
+                        .start();
+            }
+        });
     }
 }
