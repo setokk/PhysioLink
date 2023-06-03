@@ -17,8 +17,8 @@ public class AdapterForServicesPayment extends RecyclerView.Adapter<AdapterForSe
 
     List<Service> services;
 
-    public AdapterForServicesPayment(List<Service> servicesList) {
-        this.services=new ArrayList<>(servicesList);
+    public AdapterForServicesPayment() {
+        this.services = new ArrayList<>();
     }
 
     public void setServices(List<Service> services) {
@@ -28,8 +28,9 @@ public class AdapterForServicesPayment extends RecyclerView.Adapter<AdapterForSe
 
     @NonNull
     @Override
-    public AdapterForServicesPayment.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemListServicePaymentBinding itemListServicePaymentBinding=ItemListServicePaymentBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemListServicePaymentBinding itemListServicePaymentBinding=ItemListServicePaymentBinding.
+                inflate(LayoutInflater.from(parent.getContext()),parent,false);
         return new AdapterForServicesPayment.MyViewHolder(itemListServicePaymentBinding);
     }
 
