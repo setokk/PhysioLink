@@ -14,7 +14,7 @@
         android:id="@+id/isConfirmedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="se ekremotita"
+        android:text=""
         android:textColor="@color/design_default_color_error"
         android:textSize="14sp"
         android:textStyle="bold|italic"
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="kfgnrtig"
+        android:text=""
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -56,12 +56,12 @@
         android:id="@+id/appointmentTimePatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:text="gggggggggggggggggggg"
+        android:layout_marginStart="6dp"
+        android:text=""
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintLeft_toRightOf="@+id/appointmentDatePatient"
+        app:layout_constraintStart_toEndOf="@+id/appointmentDatePatient"
         app:layout_constraintTop_toTopOf="@+id/appointmentDatePatient"
         app:layout_constraintBottom_toBottomOf="@+id/appointmentDatePatient"/>
 
@@ -78,12 +78,12 @@
         android:id="@+id/appointmentAdressPatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:text=""
         android:textSize="16sp"
 
         android:textColor="@color/black"
-        app:layout_constraintLeft_toRightOf="@id/locationImgPatient"
+        app:layout_constraintStart_toEndOf="@id/locationImgPatient"
         app:layout_constraintTop_toTopOf="@id/locationImgPatient"
         app:layout_constraintBottom_toBottomOf="@id/locationImgPatient"/>
 
@@ -91,12 +91,12 @@
         android:id="@+id/appointmentCityPatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:text=""
         android:textSize="16sp"
 
         android:textColor="@color/black"
-        app:layout_constraintLeft_toRightOf="@id/appointmentAdressPatient"
+        app:layout_constraintStart_toEndOf="@id/appointmentAdressPatient"
         app:layout_constraintTop_toTopOf="@id/appointmentAdressPatient"
         app:layout_constraintBottom_toBottomOf="@id/appointmentAdressPatient"/>
 
@@ -104,12 +104,12 @@
         android:id="@+id/appointmentPostalCodePatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:text=""
         android:textSize="16sp"
 
         android:textColor="@color/black"
-        app:layout_constraintLeft_toRightOf="@id/appointmentCityPatient"
+        app:layout_constraintStart_toEndOf="@id/appointmentCityPatient"
         app:layout_constraintTop_toTopOf="@id/appointmentCityPatient"
         app:layout_constraintBottom_toBottomOf="@id/appointmentCityPatient"/>
 
@@ -118,8 +118,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:layout_marginLeft="5dp"
-        android:text="Το σχόλια σας:"
+        android:layout_marginStart="5dp"
+        android:text="@string/YourComment"
         android:textSize="16sp"
 
         android:textColor="@color/black"
@@ -132,16 +132,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="15dp"
         android:text=""
         android:textSize="16sp"
         android:textColor="@color/black"
         android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
