@@ -40,8 +40,6 @@ public class LoginActivity extends AppCompatActivity
             catch (IOException | InterruptedException | JSONException ignored)
             { Toast.makeText(this, "Προέκυψε ένα σφάλμα. Ελέγξτε την σύνδεση σας στο διαδίκτυο και δοκιμάστε ξανά!", Toast.LENGTH_SHORT).show(); }
         });
-
-        ProfileImageProvider.clearURI();
     }
 
     /**

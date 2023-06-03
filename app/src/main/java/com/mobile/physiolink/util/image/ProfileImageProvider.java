@@ -18,22 +18,13 @@ import java.util.List;
 public final class ProfileImageProvider
 {
     private static final List<String> nameExceptions = Arrays.asList("Άρτεμις", "Αρτεμις");
-    public static Uri userURI = null;
-
-    public static void setImageForUser(ImageView imageView, User user, boolean shouldUseURI)
+    public static void setImageForUser(ImageView imageView, User user)
     {
         if (user.hasImage())
         {
-            if (userURI != null && shouldUseURI)
-            {
-                imageView.setImageURI(userURI);
-            }
-            else
-            {
-                Picasso.with(imageView.getRootView().getContext())
-                        .load(Uri.parse(user.getImageURL()))
-                        .into(imageView);
-            }
+            Picasso.with(imageView.getRootView().getContext())
+                    .load(Uri.parse(user.getImageURL()))
+                    .into(imageView);
             return;
         }
 
@@ -82,10 +73,5 @@ public final class ProfileImageProvider
     {
         return nameExceptions.stream()
                     .anyMatch(name::equals);
-    }
-
-    public static void clearURI()
-    {
-        userURI = null;
     }
 }
