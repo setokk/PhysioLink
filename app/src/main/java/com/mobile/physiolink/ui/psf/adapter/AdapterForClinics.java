@@ -78,7 +78,8 @@ public class AdapterForClinics extends RecyclerView.Adapter<AdapterForClinics.My
         protected FilterResults performFiltering(CharSequence charSequence) {
             List<Doctor> filteredList = new ArrayList<>();
             if (charSequence == null || charSequence.length() == 0) {
-                filteredList.addAll(doctorsFull);
+                filteredList.addAll(Optional.ofNullable(doctorsFull)
+                        .orElse(new ArrayList<>(0)));
             } else {
                 String filterPattern = charSequence.toString().toUpperCase().trim();
                 for(Doctor doctor: doctorsFull){

@@ -57,6 +57,10 @@ public class DoctorPatientHistoryViewModel extends ViewModel
                             jsonPatient.getString("address"),
                             jsonPatient.getString("postal_code"),
                             jsonPatient.getLong("doctor_id"));
+
+                    String imageURL = jsonPatient.getString("image");
+                    patient.setImageURL(imageURL);
+
                     selectedPatient.postValue(patient);
                 }
                 catch (JSONException e)

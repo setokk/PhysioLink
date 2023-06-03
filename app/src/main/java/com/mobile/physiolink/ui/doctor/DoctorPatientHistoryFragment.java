@@ -31,6 +31,7 @@ import com.mobile.physiolink.service.schemas.PatientSchema;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
 import com.mobile.physiolink.ui.doctor.adapter.AdapterForPatientHistory;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorPatientHistoryViewModel;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import java.io.IOException;
 
@@ -76,6 +77,8 @@ public class DoctorPatientHistoryFragment extends Fragment
         viewModel = new ViewModelProvider(this).get(DoctorPatientHistoryViewModel.class);
         viewModel.getSelectedPatient().observe(getViewLifecycleOwner(), patient ->
         {
+            ProfileImageProvider.setImageForUser(binding.patientHistoryProfilePicDoctor,
+                    patient);
             binding.patientHistoryNameDoctor.setText(patient.getName());
             binding.patientHistorySurnameDoctor.setText(patient.getSurname());
             binding.phonePatientHistoryDoctor.setText(patient.getPhoneNumber());

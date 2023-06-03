@@ -53,6 +53,10 @@ public class DoctorInformationViewModel extends ViewModel
                             jsonDoctor.getString("address"),
                             jsonDoctor.getString("postal_code"),
                             jsonDoctor.getString("physio_name"));
+
+                    String imageURL = jsonDoctor.getString("image");
+                    newDoctor.setImageURL(imageURL);
+
                     doctor.postValue(newDoctor);
                 }
                 catch (JSONException e)

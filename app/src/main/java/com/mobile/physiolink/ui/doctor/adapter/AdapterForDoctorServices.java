@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorServicesBinding;
 import com.mobile.physiolink.model.service.Service;
-import com.mobile.physiolink.model.user.Patient;
-import com.mobile.physiolink.ui.doctor.OnItemClickListener;
 import com.mobile.physiolink.ui.doctor.OnLongItemClickListener;
 
 import java.util.ArrayList;

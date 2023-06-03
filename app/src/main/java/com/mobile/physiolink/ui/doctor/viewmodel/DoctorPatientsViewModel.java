@@ -54,7 +54,7 @@ public class DoctorPatientsViewModel extends ViewModel
                     for (int i = 0; i < jsonPatients.length(); ++i)
                     {
                         JSONObject element = jsonPatients.getJSONObject(i);
-                        patients.add(new Patient(element.getLong("id"),
+                        Patient patient = new Patient(element.getLong("id"),
                                 element.getString("username"),
                                 "patient", element.getString("name"),
                                 element.getString("surname"),
@@ -63,7 +63,9 @@ public class DoctorPatientsViewModel extends ViewModel
                                 element.getString("amka"),
                                 element.getString("city"),
                                 element.getString("address"),
-                                element.getString("postal_code"), doctorId));
+                                element.getString("postal_code"), doctorId);
+                        patient.setImageURL(element.getString("image"));
+                        patients.add(patient);
                     }
                     doctorPatients.postValue(patients);
                 } catch (JSONException e)
