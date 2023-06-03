@@ -8,6 +8,8 @@ import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.model.user.User;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
@@ -16,14 +18,22 @@ import java.util.List;
 public final class ProfileImageProvider
 {
     private static final List<String> nameExceptions = Arrays.asList("Άρτεμις", "Αρτεμις");
+    public static Uri userURI = null;
 
     public static void setImageForUser(ImageView imageView, User user)
     {
         if (user.hasImage())
         {
-            Picasso.with(imageView.getRootView().getContext())
-                    .load(Uri.parse(user.getImageURL()))
-                    .into(imageView);
+            if (userURI != null)
+            {
+                imageView.setImageURI(userURI);
+            }
+            else
+            {
+                Picasso.with(imageView.getRootView().getContext())
+                        .load(Uri.parse(user.getImageURL()))
+                        .into(imageView);
+            }
             return;
         }
 
@@ -72,5 +82,10 @@ public final class ProfileImageProvider
     {
         return nameExceptions.stream()
                     .anyMatch(name::equals);
+    }
+
+    public static void clearURI()
+    {
+        userURI = null;
     }
 }
