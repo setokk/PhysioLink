@@ -38,6 +38,7 @@ public final class ProfileImageProvider
     public static void setImageOfAppointment(ImageView imageView, Appointment appointment)
     {
         String imageURL = appointment.getImageURL();
+        System.out.println(imageURL);
         if (imageURL.equals("Resource not found"))
         {
             imageView.setImageResource(R.drawable.boy);

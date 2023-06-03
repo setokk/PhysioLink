@@ -60,7 +60,6 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
                         .append(appointments[position].getPatSurname()).toString());
         holder.binding.appointmentTimeDoctorPatient
                 .setText(TimeFormatter.formatToPM_AM(appointments[position].getHour()));
-        holder.binding.patientImageDoctorAppointment.setImageResource(R.drawable.boy);
 
         boolean hasContent = holder.binding.appointmentCommentsDoctorPatient.length() > 0;
 
