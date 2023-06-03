@@ -53,7 +53,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/profile_photo_picker" />
+            app:srcCompat="@drawable/boy" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/requestPatientInfoLayout"
