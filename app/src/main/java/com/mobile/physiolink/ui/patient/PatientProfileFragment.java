@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -19,9 +20,15 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientProfileBinding;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.util.image.ImageUploader;
 import com.mobile.physiolink.util.image.ProfileImageProvider;
 
+import java.io.IOException;
+
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class PatientProfileFragment extends Fragment{
     private FragmentPatientProfileBinding binding;
@@ -55,7 +62,25 @@ public class PatientProfileFragment extends Fragment{
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Uri uri = data.getData();
-        photoProfile.setImageURI(uri);
+        String path = ImageUploader.getAbsolutePathFromUri(uri);
+        ImageUploader.uploadImage(getActivity(), path, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                call.cancel();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                getActivity().runOnUiThread(() ->
+                {
+                    Toast.makeText(getActivity(), "Η φωτογραφία προφίλ ανέβηκε επιτυχώς!"
+                            ,Toast.LENGTH_SHORT).show();
+
+                    ProfileImageProvider.setImageForUser(binding.profileImagePatient,
+                            UserHolder.psf());
+                });
+            }
+        });
     }
 
     @Override
@@ -64,7 +89,8 @@ public class PatientProfileFragment extends Fragment{
     {
         // Inflate the layout for this fragment
         binding = FragmentPatientProfileBinding.inflate(inflater, container, false);
-        ProfileImageProvider.setImageForUser(binding.profileImagePatient, UserHolder.patient());
+        ProfileImageProvider.setImageForUser(binding.profileImagePatient,
+                UserHolder.patient());
         binding.profileNamePatient.setText(String.format("%s %s",
                 UserHolder.patient().getName(), UserHolder.patient().getSurname()));
         binding.profileUsernamePatient.setText(String.format("%s ",

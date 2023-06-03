@@ -8,6 +8,8 @@ import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.model.user.Patient;
 import com.mobile.physiolink.model.user.User;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
@@ -16,7 +18,6 @@ import java.util.List;
 public final class ProfileImageProvider
 {
     private static final List<String> nameExceptions = Arrays.asList("Άρτεμις", "Αρτεμις");
-
     public static void setImageForUser(ImageView imageView, User user)
     {
         if (user.hasImage())

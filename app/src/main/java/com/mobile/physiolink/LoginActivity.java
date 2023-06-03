@@ -13,6 +13,7 @@ import com.mobile.physiolink.databinding.ActivityLoginBinding;
 import com.mobile.physiolink.service.validator.UserAuth;
 import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 import org.json.JSONException;
 
