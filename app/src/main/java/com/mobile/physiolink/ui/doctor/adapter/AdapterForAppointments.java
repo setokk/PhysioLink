@@ -115,8 +115,10 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
 
             binding.tickAppointmentButton.setOnClickListener(view ->
             {
-                AppointmentPaymentPopUp paymentPopUp = new AppointmentPaymentPopUp(binding.patientImageDoctorAppointment,
-                        String.valueOf(binding.appointmentTimeDoctorPatient.getText()), String.valueOf(binding.appointmentNameDoctorPatient.getText()));
+                AppointmentPaymentPopUp paymentPopUp = new AppointmentPaymentPopUp(
+                        appointments[getAbsoluteAdapterPosition()],
+                        binding.appointmentTimeDoctorPatient.getText().toString(),
+                        binding.appointmentNameDoctorPatient.getText().toString());
                 paymentPopUp.setPositiveOnClick((dialog, which) ->
                 {
 

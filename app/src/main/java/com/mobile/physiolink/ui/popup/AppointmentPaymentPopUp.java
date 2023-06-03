@@ -18,10 +18,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.mobile.physiolink.databinding.ItemDoctorPaymentPopUpBinding;
+import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorServicesViewModel;
 import com.mobile.physiolink.ui.patient.RecyclerItemClickListener;
 import com.mobile.physiolink.ui.popup.adapter.AdapterForServicesPayment;
+import com.mobile.physiolink.util.image.ProfileImageProvider;
 
 
 public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
@@ -29,7 +31,7 @@ public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
     private final String title;
     private ItemDoctorPaymentPopUpBinding binding;
     private AdapterForServicesPayment adapter;
-    private ImageView patientProfilePic, newPatientProfilePic;
+    private Appointment appointment;
     private String newAppointmentHour;
     private String newAppointmentName;
 
@@ -38,10 +40,9 @@ public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
     private DialogInterface.OnClickListener positiveListener;
     private DialogInterface.OnClickListener negativeListener;
 
-    public AppointmentPaymentPopUp(ImageView patientProfilePic, String appointmentHour, String appointmentName) {
+    public AppointmentPaymentPopUp(Appointment appointment, String appointmentHour, String appointmentName) {
         title = "Καταχώρηση ραντεβού";
-
-        this.patientProfilePic = patientProfilePic;
+        this.appointment = appointment;
         this.newAppointmentHour = appointmentHour;
         this.newAppointmentName = appointmentName;
 
@@ -77,6 +78,9 @@ public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
         servicesViewmodel = new ViewModelProvider(this).get(DoctorServicesViewModel.class);
         servicesViewmodel.getDoctorServices().observe(getViewLifecycleOwner(), services ->
                 adapter.setServices(services));
+
+        ProfileImageProvider.setImageOfAppointment(binding.patientImageDoctorAppointment,
+                appointment);
 
         return binding.getRoot();
     }
