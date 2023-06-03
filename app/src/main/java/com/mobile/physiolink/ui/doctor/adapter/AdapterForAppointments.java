@@ -58,9 +58,11 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
         holder.binding.appointmentTimeDoctorPatient
                 .setText(TimeFormatter.formatToPM_AM(appointments[position].getHour()));
         holder.binding.patientImageDoctorAppointment.setImageResource(R.drawable.boy);
-        /*holder.binding.appointmentCommentsDoctorPatient
-                .setText(appointments[position].getMessage());*/
 
+        boolean hasContent = holder.binding.appointmentCommentsDoctorPatient.length() > 0;
+
+            holder.binding.appointmentCommentsDoctorPatient
+                    .setText(hasContent ? appointments[position].getMessage() : "-");
 
         boolean isItemExpanded = isExpanded[position];
 
