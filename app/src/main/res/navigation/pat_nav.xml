@@ -28,6 +28,16 @@
         android:name="com.mobile.physiolink.ui.patient.PatientSettingsFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_patient_settings">
+        <action
+            android:id="@+id/action_fragmentPatientSettings_to_fragmentPatientChangePassword"
+            app:destination="@+id/fragmentPatientChangePassword"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPatientChangePassword"
+        android:name="com.mobile.physiolink.ui.patient.PatientChangePasswordFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_patient_change_password">
 
     </fragment>
 

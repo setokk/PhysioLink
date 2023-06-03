@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientSettingsBinding;
 
 public class PatientSettingsFragment extends Fragment {
@@ -46,6 +48,10 @@ public class PatientSettingsFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        binding.changePasswordSettings.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.containerPatient)
+                        .navigate(R.id.action_fragmentPatientSettings_to_fragmentPatientChangePassword));
 
     }
 }

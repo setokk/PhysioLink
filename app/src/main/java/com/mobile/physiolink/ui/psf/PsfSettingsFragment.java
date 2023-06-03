@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPsfSettingsBinding;
 
 public class PsfSettingsFragment extends Fragment {
@@ -47,6 +49,11 @@ public class PsfSettingsFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        binding.changePasswordSettingsPsf.setOnClickListener(v ->
+                Navigation.findNavController(getActivity(), R.id.fragmentContainerView)
+                        .navigate(R.id.action_fragmentPsfSettings_to_fragmentPsfChangePassword));
+
 
     }
 }
