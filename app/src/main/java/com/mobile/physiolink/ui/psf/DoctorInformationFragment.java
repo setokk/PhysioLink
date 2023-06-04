@@ -212,6 +212,8 @@ public class DoctorInformationFragment extends Fragment {
 
                                 for(int i = 0; i < all_inputs.size(); i++){
                                     all_inputs.get(i).setEnabled(false);
+                                    all_inputs.get(i).setTextColor(getResources().getColor(R.color.white));
+                                    all_inputs.get(i).setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.transparent)));
                                 }
 
                                 binding.editButton.setText("Επεξεργασία");
