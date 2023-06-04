@@ -143,11 +143,9 @@ public class DoctorInformationFragment extends Fragment {
                             @Override
                             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                                 if (current.getText().length() == 0) {
-                                    current_layout.setError("*");
                                     input_errors = true;
                                 } else {
                                     current_layout.setError(null);
-                                    current_layout.setHelperText(null);
                                     input_errors = false;
                                 }
                             }
