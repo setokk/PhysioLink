@@ -88,21 +88,22 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
 
         boolean hasContent = holder.binding.appointmentCommentsDoctorPatient.length() > 0;
 
-            holder.binding.appointmentCommentsDoctorPatient
-                    .setText(hasContent ? appointments[position].getMessage() : "-");
+        holder.binding.appointmentCommentsDoctorPatient
+                .setText(hasContent ? appointments[position].getMessage() : "-");
 
         boolean isItemExpanded = isExpanded[position];
 
         //Set the initial state based on the expanded flag
-        if (isItemExpanded) {
-            holder.binding.appointmentCommentsDoctorPatient.setMaxLines(Integer.MAX_VALUE);
-            holder.binding.appointmentCommentsDoctorPatient.setEllipsize(null);
-        } else {
-            holder.binding.appointmentCommentsDoctorPatient.setMaxLines(1);
-            holder.binding.appointmentCommentsDoctorPatient.setEllipsize(TextUtils.TruncateAt.END);
-
-
+        if(hasContent){
+            if (isItemExpanded) {
+                holder.binding.appointmentCommentsDoctorPatient.setMaxLines(Integer.MAX_VALUE);
+                holder.binding.appointmentCommentsDoctorPatient.setEllipsize(null);
+            } else {
+                holder.binding.appointmentCommentsDoctorPatient.setMaxLines(1);
+                holder.binding.appointmentCommentsDoctorPatient.setEllipsize(TextUtils.TruncateAt.END);
+            }
         }
+
     }
 
     public void remove(int position)

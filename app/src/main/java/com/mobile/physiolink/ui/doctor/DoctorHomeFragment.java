@@ -61,7 +61,14 @@ public class DoctorHomeFragment extends Fragment
         });
         viewModel.getNewRequestsCounter().observe(getViewLifecycleOwner(), requestsNum ->
         {
-            // TODO: MAKE RED CIRCLE APPEAR ON TOP OF REQUESTS BUTTON
+            long finalNum  = requestsNum.longValue();
+            if(finalNum == 0){
+                binding.requestsNumber.setText(String.valueOf(finalNum));
+                binding.requestsNumber.setVisibility(View.GONE);
+            } else {
+                binding.requestsNumber.setText(String.valueOf(finalNum));
+                binding.requestsNumber.setVisibility(View.VISIBLE);
+            }
         });
 
         return binding.getRoot();
