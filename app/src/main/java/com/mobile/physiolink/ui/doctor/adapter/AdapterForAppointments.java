@@ -128,30 +128,6 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
                         appointments[getAbsoluteAdapterPosition()],
                         binding.appointmentTimeDoctorPatient.getText().toString(),
                         binding.appointmentNameDoctorPatient.getText().toString());
-                paymentPopUp.setPositiveOnClick((dialog, which) ->
-                {
-                    HashMap<String, String> keyValues = new HashMap<>(3);
-                    keyValues.put("appointment_id", String.valueOf(appointments[getAbsoluteAdapterPosition()]
-                            .getId()));
-                    keyValues.put("service_title", appointments[getAbsoluteAdapterPosition()].getServiceTitle());
-                    keyValues.put("date", appointments[getAbsoluteAdapterPosition()].getDate());
-
-                    RequestFacade.postRequest(API.ACCEPT_PAYMENT, keyValues, new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            call.cancel();
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-
-                        }
-                    });
-
-                    Toast.makeText(binding.getRoot().getContext(), "Έγινε πληρωμή ραντεβού!",
-                            Toast.LENGTH_SHORT).show();
-                });
-
                 paymentPopUp.setNegativeOnClick((dialog, which) ->
                 {
                     Toast.makeText(binding.getRoot().getContext(), "Δεν έγινε πληρωμή ραντεβού!",

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,10 +21,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.mobile.physiolink.databinding.ItemDoctorPaymentPopUpBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.api.API;
+import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorServicesViewModel;
 import com.mobile.physiolink.ui.patient.RecyclerItemClickListener;
 import com.mobile.physiolink.ui.popup.adapter.AdapterForServicesPayment;
 import com.mobile.physiolink.util.image.ProfileImageProvider;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 
 public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
@@ -45,6 +55,30 @@ public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
         this.appointment = appointment;
         this.newAppointmentHour = appointmentHour;
         this.newAppointmentName = appointmentName;
+
+        setPositiveOnClick(((dialog, which) ->
+        {
+            HashMap<String, String> keyValues = new HashMap<>(3);
+            keyValues.put("appointment_id", String.valueOf(appointment.getId()));
+            keyValues.put("service_title", binding.serviceBtn.getText().toString());
+            keyValues.put("date", appointment.getDate());
+
+            RequestFacade.postRequest(API.ACCEPT_PAYMENT, keyValues, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    call.cancel();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    getDialog().getOwnerActivity().runOnUiThread(() ->
+                    {
+                        Toast.makeText(getDialog().getOwnerActivity(), "Έγινε επιτυχής καταχώρηση ραντεβού!",
+                                Toast.LENGTH_SHORT).show();
+                    });
+                }
+            });
+        }));
 
     }
 

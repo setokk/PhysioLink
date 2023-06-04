@@ -100,7 +100,8 @@ public class AdapterForDoctorServices extends RecyclerView.Adapter<AdapterForDoc
         protected FilterResults performFiltering(CharSequence charSequence) {
             List<Service> filteredList = new ArrayList<>();
             if(charSequence == null || charSequence.length() == 0){
-                filteredList.addAll(servicesFull);
+                filteredList.addAll(Optional.ofNullable(servicesFull)
+                        .orElse(new ArrayList<>(0)));
             }
             else{
                 String filterPattern = charSequence.toString().toUpperCase().trim();

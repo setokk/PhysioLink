@@ -20,6 +20,7 @@
     <string name="CityHint">Πόλη</string>
     <string name="AddressHint">Διεύθυνση</string>
     <string name="CreateNewClinic">Δημιουργία Νέου\nΦυσιοθεραπευτηρίου</string>
+    <string name="ServiceDescription">Περιγραφή Παροχής</string>
     <string name="DescriptionHint">Περιγραφή</string>
     <string name="selectDateBarName">Επιλέξτε Ημερομήνια</string>
     <string name="doctor_no_new_requests">Δεν υπάρχουν νέα αιτήματα.</string>
