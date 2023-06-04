@@ -75,6 +75,9 @@ public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
+                    if (context == null)
+                        return;
+
                     context.runOnUiThread(() ->
                     {
                         adapter.remove(position);
