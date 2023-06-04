@@ -25,6 +25,7 @@
                 android:background="@color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
+                app:counterMaxLength="9"
                 app:layout_constraintBottom_toBottomOf="@+id/afm_textview"
                 app:layout_constraintStart_toEndOf="@+id/afm_textview"
                 app:layout_constraintTop_toTopOf="@+id/afm_textview">
@@ -34,10 +35,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
+                    android:maxLength="9"
                     android:enabled="false"
                     android:paddingStart="0dp"
                     android:padding="5dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -262,7 +265,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
-                    android:textAlignment="center"
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -289,6 +292,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -315,6 +319,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -341,6 +346,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -367,6 +373,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -393,6 +400,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
