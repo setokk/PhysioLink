@@ -3,7 +3,9 @@ package com.mobile.physiolink.model.user;
 import com.mobile.physiolink.service.api.error.Error;
 import com.mobile.physiolink.service.api.error.ResourceNotFindable;
 
-public class User implements ResourceNotFindable
+import java.io.Serializable;
+
+public class User implements ResourceNotFindable, Serializable
 {
     private long id;
     private String username;
