@@ -35,6 +35,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
+                    android:paddingStart="0dp"
                     android:padding="5dp"
                     android:text=""
                     android:textColor="@color/white"
@@ -165,11 +166,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
                 android:text="@string/Email"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/afm_textview"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phone_textview" />
 
             <TextView
@@ -186,7 +188,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/email_input_layout" />
 
             <TextView
                 android:id="@+id/clinic_name_textview"
@@ -217,7 +219,7 @@
                 android:id="@+id/tk_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="5dp"
                 android:text="@string/postal_code"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -242,12 +244,12 @@
                 android:id="@+id/email_input_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="0dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
-                app:layout_constraintBottom_toBottomOf="@+id/email_textview"
-                app:layout_constraintStart_toEndOf="@+id/email_textview"
-                app:layout_constraintTop_toTopOf="@+id/email_textview">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_textview" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email_input"
@@ -255,7 +257,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
@@ -282,7 +284,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
@@ -308,7 +310,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
@@ -334,7 +336,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
@@ -360,7 +362,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
@@ -386,7 +388,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
