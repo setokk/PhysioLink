@@ -115,10 +115,16 @@ public class NotificationService extends Service {
                                 getApplicationContext(), CHANNEL_ID)
                                 .setSmallIcon(R.drawable.notification_icon)
                                 .setContentTitle(element.getString("title"))
-                                .setContentText(element.getString("message"))
+                                .setContentText("Εμφάνιση περισσότερων...")
                                 .setVibrate(new long[]{0, 1000})
                                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                                .setPriority(NotificationCompat.PRIORITY_HIGH);
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setAutoCancel(true);
+
+                        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
+                        bigTextStyle.bigText(element.getString("message"));
+
+                        builder.setStyle(bigTextStyle);
                         builder.setContentIntent(pendingIntent);
                         checkPermissionsAndNotify(builder);
                     }

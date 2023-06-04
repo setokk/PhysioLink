@@ -68,6 +68,8 @@ public class ServiceInformationFragment extends Fragment {
             binding.priceInput.setText(new StringBuilder()
                     .append((int) service.getPrice())
                     .append("€").toString());
+
+            populatePrevTexts();
         });
 
         return binding.getRoot();
@@ -99,28 +101,20 @@ public class ServiceInformationFragment extends Fragment {
 
                     current.addTextChangedListener(new TextWatcher() {
                         @Override
-                        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                            prev_name = binding.nameInput.getText().toString();
-                            prev_price = binding.priceInput.getText().toString();
-                            prev_description = binding.descriptionInput.getText().toString();
-                        }
+                        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
                         @Override
                         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                             if (current.getText().length() == 0) {
-                                current_layout.setError("*");
                                 input_errors = true;
                             } else {
                                 current_layout.setError(null);
-                                current_layout.setHelperText(null);
                                 input_errors = false;
                             }
                         }
 
                         @Override
-                        public void afterTextChanged(Editable editable) {
-
-                        }
+                        public void afterTextChanged(Editable editable) {}
                     });
                 }
 
@@ -204,5 +198,12 @@ public class ServiceInformationFragment extends Fragment {
 
         all_inputs.add(binding.descriptionInput);
         all_inputs_layouts.add(binding.descriptionInputLayout);
+    }
+
+    private void populatePrevTexts()
+    {
+        prev_name = binding.nameInput.getText().toString();
+        prev_price = binding.priceInput.getText().toString();
+        prev_description = binding.descriptionInput.getText().toString();
     }
 }

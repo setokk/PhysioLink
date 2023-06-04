@@ -46,7 +46,7 @@ public class AdapterForPatientHistory extends RecyclerView.Adapter<AdapterForPat
                         .append(TimeFormatter.formatToPM_AM(appointments[position].getHour()))
                         .toString());
         holder.binding.servicePatientHistoryPriceDoctor
-                .setText(String.valueOf(appointments[position].getServicePrice()));
+                .setText(String.valueOf((int) appointments[position].getServicePrice()));
     }
 
     @Override

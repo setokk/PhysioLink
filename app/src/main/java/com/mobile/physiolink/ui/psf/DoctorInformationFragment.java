@@ -88,6 +88,8 @@ public class DoctorInformationFragment extends Fragment {
             binding.tkInput.setText(doctor.getPostalCode());
             binding.afmInput.setText(doctor.getAfm());
             binding.clinicNameInput.setText(doctor.getPhysioName());
+
+            populatePrevTexts();
         });
         viewModel.getDoctorServices().observe(getViewLifecycleOwner(), services ->
         {
@@ -128,34 +130,18 @@ public class DoctorInformationFragment extends Fragment {
 
                         current.addTextChangedListener(new TextWatcher() {
                             @Override
-                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                               prev_name = binding.nameInput.getText().toString();
-                               prev_surname = binding.surnameInput.getText().toString();
-                               prev_afm = binding.afmInput.getText().toString();
-                               prev_phone = binding.phoneInput.getText().toString();
-                               prev_email = binding.emailInput.getText().toString();
-                               prev_physio_name = binding.clinicNameInput.getText().toString();
-                               prev_city = binding.cityInput.getText().toString();
-                               prev_tk = binding.tkInput.getText().toString();
-                               prev_address = binding.addressInput.getText().toString();
-                            }
-
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
                             @Override
                             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                                 if (current.getText().length() == 0) {
-                                    current_layout.setError("*");
                                     input_errors = true;
                                 } else {
                                     current_layout.setError(null);
-                                    current_layout.setHelperText(null);
                                     input_errors = false;
                                 }
                             }
-
                             @Override
-                            public void afterTextChanged(Editable editable) {
-
-                            }
+                            public void afterTextChanged(Editable editable) {}
                         });
                     }
                     binding.editButton.setText("Τέλος Επεξεργασίας");
@@ -226,6 +212,8 @@ public class DoctorInformationFragment extends Fragment {
 
                                 for(int i = 0; i < all_inputs.size(); i++){
                                     all_inputs.get(i).setEnabled(false);
+                                    all_inputs.get(i).setTextColor(getResources().getColor(R.color.white));
+                                    all_inputs.get(i).setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.transparent)));
                                 }
 
                                 binding.editButton.setText("Επεξεργασία");
@@ -261,5 +249,18 @@ public class DoctorInformationFragment extends Fragment {
         all_inputs_layouts.add(binding.addressInputLayout);
         all_inputs_layouts.add(binding.tkInputLayout);
         all_inputs_layouts.add(binding.emailInputLayout);
+    }
+
+    private void populatePrevTexts()
+    {
+        prev_name = binding.nameInput.getText().toString();
+        prev_surname = binding.surnameInput.getText().toString();
+        prev_afm = binding.afmInput.getText().toString();
+        prev_phone = binding.phoneInput.getText().toString();
+        prev_email = binding.emailInput.getText().toString();
+        prev_physio_name = binding.clinicNameInput.getText().toString();
+        prev_city = binding.cityInput.getText().toString();
+        prev_tk = binding.tkInput.getText().toString();
+        prev_address = binding.addressInput.getText().toString();
     }
 }
