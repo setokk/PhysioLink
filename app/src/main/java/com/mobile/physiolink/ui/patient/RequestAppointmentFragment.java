@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,6 +22,8 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.mobile.physiolink.R;
@@ -184,13 +187,13 @@ public class RequestAppointmentFragment extends Fragment
 
                         if (res.contains(Error.RESOURCE_EXISTS))
                         {
-                            Toast.makeText(getActivity(), "Έχετε κάνει ήδη αίτημα για ραντεβού! Μπορείτε να ξανακάνετε αίτημα μόλις περάσει η ημερομήνια του ραντεβού.",
+                            Toast.makeText(getActivity(), "Έχετε κάνει ήδη αίτημα για ραντεβού! Μπορείτε να ξανακάνετε αίτημα μόλις περάσει η ημερομήνια του ραντεβού σας.",
                                     Toast.LENGTH_LONG).show();
                             return;
                         }
 
                         Toast.makeText(getActivity(), "Το αίτημα για ραντεβού ολοκληρώθηκε επιτυχώς!",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_LONG).show();
 
                         binding.calendarView.clearSelection();
                         binding.hourBtn.setText("");
@@ -199,6 +202,9 @@ public class RequestAppointmentFragment extends Fragment
                         appointmentViewmodel.loadAvailableHours(selectedDate.getMonthValue(),
                                 selectedDate.getYear(),
                                 UserHolder.patient().getDoctorId());
+
+                        NavController navController = Navigation.findNavController(getActivity(), R.id.containerPatient);
+                        navController.navigate(R.id.action_fragmentRequestAppointment_to_fragmentPatientHome3);
                     });
                 }
             };
@@ -248,6 +254,8 @@ public class RequestAppointmentFragment extends Fragment
 
             adapter.setHours(appointmentViewmodel.getAvailableHoursOfDate(year, month, day));
             binding.dateText.setText(DateFormatter.formatToAlphanumeric(year, month, day));
+            Animation pulseAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.pulse_animation);
+            binding.dateText.startAnimation(pulseAnimation);
         });
 
         // Set minimum date to the current date

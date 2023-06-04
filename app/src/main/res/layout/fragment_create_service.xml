@@ -24,6 +24,7 @@
             app:counterMaxLength="1000"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
+            android:gravity="top"
             app:helperText="Υποχρεωτικό *"
             app:helperTextTextColor="@android:color/holo_red_light"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +37,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
+                android:gravity="top"
                 android:hint="@string/DescriptionHint"
-
                 android:inputType="textMultiLine|textNoSuggestions"
                 android:maxLength="1000"
                 android:minHeight="150dp"

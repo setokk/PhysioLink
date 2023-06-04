@@ -101,6 +101,7 @@
     <string name="thursday_short">Πεμ</string>
     <string name="friday_short">Παρ</string>
     <string name="saturday_short">Σαβ</string>
+    <string name="send">Αποστολή</string>
 
     <string-array name="greek_days">
         <item>Δε</item>
