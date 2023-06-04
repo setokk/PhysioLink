@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
 
-        FileManager.setContext(this);
+        FileManager.setPath(this);
         if (!FileManager.exists("user.ser"))
         {
             Intent intent = new Intent(this, LoginActivity.class);

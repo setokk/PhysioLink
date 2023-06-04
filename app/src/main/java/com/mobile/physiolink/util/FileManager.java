@@ -5,7 +5,6 @@ import android.content.Context;
 import com.mobile.physiolink.model.user.User;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -14,12 +13,10 @@ import java.nio.file.Paths;
 
 public class FileManager
 {
-    public static Context context;
     public static String pathToAppFolder;
 
-    public static void setContext(Context context)
+    public static void setPath(Context context)
     {
-        FileManager.context = context;
         pathToAppFolder = context.getExternalFilesDir(null).getAbsolutePath();
     }
 
@@ -41,6 +38,12 @@ public class FileManager
         inputStream.close();
 
         return user;
+    }
+
+    public static boolean deleteUserObj(String name)
+    {
+        String filePath = pathToAppFolder + File.separator + name;
+        return new File(filePath).delete();
     }
 
     public static boolean exists(String name)
