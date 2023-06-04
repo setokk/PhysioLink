@@ -12,8 +12,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.mobile.physiolink.LoginActivity;
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentPatientSettingsBinding;
+import com.mobile.physiolink.util.FileManager;
 
 public class PatientSettingsFragment extends Fragment {
     private FragmentPatientSettingsBinding binding;
@@ -53,6 +55,14 @@ public class PatientSettingsFragment extends Fragment {
                 Navigation.findNavController(getActivity(), R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientSettings_to_fragmentPatientChangePassword));
 
+        binding.logOutSettings.setOnClickListener(v ->
+        {
+            FileManager.deleteUserObj("user.ser");
+
+            getActivity().finish();
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        });
     }
 }
 
