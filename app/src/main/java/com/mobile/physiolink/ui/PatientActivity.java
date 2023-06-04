@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -39,6 +40,7 @@ public class PatientActivity extends AppCompatActivity
         getSupportActionBar().setTitle("PhysioLink");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.physiolink_logo_circle_small);
+        getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.lime_top_bar));
 
         configureNotificationChannel();
         Intent notificationService = new Intent(getApplicationContext(), NotificationService.class);
