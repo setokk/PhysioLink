@@ -2,8 +2,6 @@
     <string name="app_name">PhysioLink</string>
     <string name="btn_login_text">Σύνδεση</string>
     <string name="home_label">Αρχική</string>
-    <string name="input_username">Username</string>
-    <string name="input_password">Password</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
     <string name="doctor_appointments">Προσεχή Ραντεβού</string>
@@ -13,7 +11,6 @@
     <string name="profil_label">Προφίλ</string>
     <string name="settings_label">Ρυθμίσεις</string>
     <string name="query_hint">Αναζήτηση...</string>
-    <string name="welcome_text">Καλωσήρθες!</string>
     <string name="codeString">Κωδικός</string>
     <string name="CreateNewService">Δημιουργία Νέας Παροχής</string>
     <string name="ServiceDetails">Στοιχεία Παροχής:</string>
@@ -34,7 +31,6 @@
     <string name="services">Παροχές</string>
     <string name="patients">Ασθενείς</string>
     <string name="postal_code">Ταχ/Κωδ:</string>
-    <string name="YourInformation">Τα στοιχεία σας:</string>
     <string name="Amka">ΑΜΚΑ:</string>
     <string name="Name">Όνομα:</string>
     <string name="LastName">Επώνυμο:</string>
@@ -63,8 +59,33 @@
     <string name="TotalCost">Συνολικά Έξοδα:</string>
     <string name="NewPassword">New Password</string>
     <string name="ConfirmNewPassword">Confirm New Password</string>
+    <string name="no_appointments_doctor">Δεν έχετε ραντεβού!</string>
+    <string name="connected_as">Συνδέθηκες ως:</string>
+    <string name="add_service_prompt">Πατήστε παρατεταμένα πάνω σε μία παροχή για να την προσθέσετε στις δικές σας</string>
+    <string name="all">Όλα</string>
+    <string name="no_upcoming_appointment_doctor">Δεν έχετε προσεχή ραντεβού!</string>
+    <string name="amka_hint">ΑΜΚΑ</string>
+    <string name="postal_code_hint">Ταχυδρομικός κώδικας</string>
+    <string name="patient_account_info">Στοιχεία Λογαριασμού Ασθενή:</string>
+    <string name="mandatory">Υποχρεωτικό *</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="patient_info">Στοιχεία Ασθενή:</string>
+    <string name="patient_visit_history">Ιστορικό Συνεδριών:</string>
+    <string name="your_info">Τα στοιχεία σας:</string>
+    <string name="delete_service_prompt">Πατήστε παρατεταμένα πάνω σε μία παροχή για να την διαγράψετε από την λίστα σας</string>
+    <string name="no_services">Δεν έχετε παροχές!</string>
+    <string name="add_new_service_btn_text">Προσθήκη \n Νέας Παροχής</string>
+    <string name="create_new_patient_btn_text">Δημιουργία\n Νέου Ασθενή</string>
 
 
+    <string name="monday_short">Δευ</string>
+    <string name="tuesday_short">Τρι</string>
+    <string name="wednesday_short">Τετ</string>
+    <string name="thursday_short">Πεμ</string>
+    <string name="friday_short">Παρ</string>
+    <string name="saturday_short">Σαβ</string>
+    <string name="add_photo">Φωτογραφία προφίλ</string>
+    <string name="no_patients">Δεν έχετε ασθενείς!</string>
 
     <string-array name="greek_days">
         <item>Δε</item>

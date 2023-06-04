@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/background_lime"
@@ -15,13 +16,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/logOutSettingsDoc">
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/changePasswordSettingsDoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/list_item_style"
-            android:paddingStart="20dp"
+            android:paddingHorizontal="20dp"
             android:paddingVertical="18dp"
             android:layout_marginTop="10dp"
             android:text="Αλλαγή Κωδικού"
