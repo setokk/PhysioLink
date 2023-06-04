@@ -26,7 +26,6 @@ import com.mobile.physiolink.model.user.Doctor;
 import com.mobile.physiolink.service.dao.DoctorDAO;
 import com.mobile.physiolink.service.schemas.DoctorSchema;
 import com.mobile.physiolink.ui.decoration.DecorationSpacingItem;
-import com.mobile.physiolink.ui.doctor.adapter.AdapterForDoctorServices;
 import com.mobile.physiolink.ui.popup.ConfirmationPopUp;
 import com.mobile.physiolink.ui.psf.adapter.AdapterForServices;
 import com.mobile.physiolink.ui.psf.viewmodel.DoctorInformationViewModel;
@@ -80,8 +79,8 @@ public class DoctorInformationFragment extends Fragment {
         {
             ProfileImageProvider.setImageForUser(binding.profilImage,
                     doctor);
-            binding.nameTextView.setText(doctor.getName());
-            binding.surnameTextView.setText(doctor.getSurname());
+            binding.nameInput.setText(doctor.getName());
+            binding.surnameInput.setText(doctor.getSurname());
             binding.emailInput.setText(doctor.getEmail());
             binding.phoneInput.setText(doctor.getPhoneNumber());
             binding.cityInput.setText(doctor.getCity());
@@ -130,6 +129,8 @@ public class DoctorInformationFragment extends Fragment {
                         current.addTextChangedListener(new TextWatcher() {
                             @Override
                             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                               prev_name = binding.nameInput.getText().toString();
+                               prev_surname = binding.surnameInput.getText().toString();
                                prev_afm = binding.afmInput.getText().toString();
                                prev_phone = binding.phoneInput.getText().toString();
                                prev_email = binding.emailInput.getText().toString();
@@ -179,12 +180,14 @@ public class DoctorInformationFragment extends Fragment {
                     binding.editButton.setText("Επεξεργασία");
                     edit = false;
 
-                    for(int i = 0; i < all_inputs.size(); i++) {
-                        all_inputs.get(i).setEnabled(false);
-                        all_inputs.get(i).setTextColor(getResources().getColor(R.color.white));
-                        all_inputs.get(i).setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.transparent)));
+                    for(int k = 0; k < all_inputs.size(); k++) {
+                        all_inputs.get(k).setEnabled(false);
+                        all_inputs.get(k).setTextColor(getResources().getColor(R.color.white));
+                        all_inputs.get(k).setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.transparent)));
                     }
 
+                    binding.nameInput.setText(prev_name);
+                    binding.surnameInput.setText(prev_surname);
                     binding.afmInput.setText(prev_afm);
                     binding.phoneInput.setText(prev_phone);
                     binding.emailInput.setText(prev_email);
@@ -198,7 +201,8 @@ public class DoctorInformationFragment extends Fragment {
                 {
                     Doctor doctor = viewModel.getDoctor().getValue();
                     DoctorSchema schema = new DoctorSchema(doctor.getUsername(),
-                            "", doctor.getName(), doctor.getSurname(),
+                            "", binding.nameInput.getText().toString(),
+                            binding.surnameInput.getText().toString(),
                             binding.emailInput.getText().toString(),
                             binding.phoneInput.getText().toString(),
                             binding.afmInput.getText().toString(),
@@ -238,6 +242,8 @@ public class DoctorInformationFragment extends Fragment {
 
     private void populateAllInputs()
     {
+        all_inputs.add(binding.nameInput);
+        all_inputs.add(binding.surnameInput);
         all_inputs.add(binding.afmInput);
         all_inputs.add(binding.phoneInput);
         all_inputs.add(binding.clinicNameInput);
@@ -246,6 +252,8 @@ public class DoctorInformationFragment extends Fragment {
         all_inputs.add(binding.tkInput);
         all_inputs.add(binding.emailInput);
 
+        all_inputs_layouts.add(binding.nameInputLayout);
+        all_inputs_layouts.add(binding.surnameInputLayout);
         all_inputs_layouts.add(binding.afmInputLayout);
         all_inputs_layouts.add(binding.phoneInputLayout);
         all_inputs_layouts.add(binding.clinicNameInputLayout);
