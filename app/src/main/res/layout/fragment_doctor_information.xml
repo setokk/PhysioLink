@@ -110,7 +110,7 @@
                 android:paddingBottom="5dp"
                 android:text="@string/DoctorDetails"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profil_image" />
@@ -150,14 +150,15 @@
                 android:id="@+id/phone_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:text="@string/Phone"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/afm_textview"
-                app:layout_constraintStart_toEndOf="@+id/afm_input_layout"
-                app:layout_constraintTop_toTopOf="@+id/afm_textview" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/afm_textview"/>
 
             <TextView
                 android:id="@+id/email_textview"
@@ -169,7 +170,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/afm_textview"
-                app:layout_constraintTop_toBottomOf="@+id/afm_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/phone_textview" />
 
             <TextView
                 android:id="@+id/clinic_informations_textview"
@@ -182,7 +183,7 @@
                 android:paddingBottom="5dp"
                 android:text="@string/ClinicDetails"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email_textview" />
