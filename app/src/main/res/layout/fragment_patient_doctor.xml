@@ -278,9 +278,8 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:text="@string/postal_code"
-                    app:layout_constraintTop_toTopOf="@id/physioCityPatient"
-                    app:layout_constraintBottom_toBottomOf="@id/physioCityPatient"
-                    app:layout_constraintLeft_toRightOf="@id/physioCityPatient"/>
+                    app:layout_constraintTop_toBottomOf="@+id/physioCityPatientTitle"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <TextView
                     android:id="@+id/physioPCPatient"
@@ -304,7 +303,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:text="@string/Address"
-                    app:layout_constraintTop_toBottomOf="@+id/physioCityPatientTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/physioPCPatientTitle"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 

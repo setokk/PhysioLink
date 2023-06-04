@@ -252,14 +252,13 @@
                 android:id="@+id/tk_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:text="@string/postal_code"
                 android:textColor="@color/white"
+                android:layout_marginTop="15dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/city_input_layout"
-                app:layout_constraintStart_toEndOf="@id/city_input_layout"
-                app:layout_constraintTop_toTopOf="@+id/city_input_layout" />
+                app:layout_constraintStart_toStartOf="@+id/clinic_name_textview"
+                app:layout_constraintTop_toBottomOf="@+id/city_textview" />
 
             <TextView
                 android:id="@+id/address_textview"
@@ -271,7 +270,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/city_textview"
-                app:layout_constraintTop_toBottomOf="@+id/city_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/tk_textview" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email_input_layout"
