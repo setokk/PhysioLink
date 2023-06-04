@@ -37,7 +37,7 @@ public class ServiceInformationFragment extends Fragment {
     private ServiceInformationViewModel viewModel;
 
     private boolean edit = false;
-    private boolean input_erros;
+    private boolean input_errors;
 
     private String prev_name;
     private String prev_price;
@@ -85,7 +85,7 @@ public class ServiceInformationFragment extends Fragment {
         {
             if(!edit)
             {
-                Toast.makeText(getActivity(), "Μπορείται να επεξεργαστείται τα πεδία.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Μπορείτε να επεξεργαστείτε τα πεδία.", Toast.LENGTH_SHORT).show();
                 edit = true;
                 for(int i = 0; i < all_inputs.size(); i++)
                 {
@@ -100,18 +100,20 @@ public class ServiceInformationFragment extends Fragment {
                     current.addTextChangedListener(new TextWatcher() {
                         @Override
                         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                            prev_name = binding.nameInput.getText().toString();
+                            prev_price = binding.priceInput.getText().toString();
+                            prev_description = binding.descriptionInput.getText().toString();
                         }
 
                         @Override
                         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                             if (current.getText().length() == 0) {
                                 current_layout.setError("*");
-                                input_erros = true;
+                                input_errors = true;
                             } else {
                                 current_layout.setError(null);
                                 current_layout.setHelperText(null);
-                                input_erros = false;
+                                input_errors = false;
                             }
                         }
 
@@ -128,15 +130,15 @@ public class ServiceInformationFragment extends Fragment {
             {
                 for(int i = 0; i< all_inputs.size(); i++){
                     if(all_inputs.get(i).getText().length() == 0){
-                        input_erros = true;
+                        input_errors = true;
                     }
                 }
-                if(input_erros){
+                if(input_errors){
                     Toast.makeText(getActivity(), "Πρέπει να συμπληρώσετε σωστά όλα τα υποχρεωτικά πεδία", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     ConfirmationPopUp confirmation = new ConfirmationPopUp("Αποθήκευση",
-                            "Είστε σίγουρος για την επιλογή σας;",
+                            "Είστε σίγουρος/η για την επιλογή σας;",
                             "Ναι", "Οχι");
                     confirmation.setPositiveOnClick((dialog, which) ->
                     {
@@ -196,14 +198,11 @@ public class ServiceInformationFragment extends Fragment {
     {
         all_inputs.add(binding.nameInput);
         all_inputs_layouts.add(binding.nameInputLayout);
-        prev_name = binding.nameInput.getText().toString();
 
         all_inputs.add(binding.priceInput);
         all_inputs_layouts.add(binding.priceInputLayout);
-        prev_price = binding.priceInput.getText().toString();
 
         all_inputs.add(binding.descriptionInput);
         all_inputs_layouts.add(binding.descriptionInputLayout);
-        prev_description = binding.descriptionInput.getText().toString();
     }
 }
