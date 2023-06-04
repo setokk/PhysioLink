@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -23,6 +24,7 @@ import com.mobile.physiolink.model.appointment.Appointment;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
+import com.mobile.physiolink.ui.doctor.adapter.AdapterForAppointments;
 import com.mobile.physiolink.ui.doctor.viewmodel.DoctorServicesViewModel;
 import com.mobile.physiolink.ui.patient.RecyclerItemClickListener;
 import com.mobile.physiolink.ui.popup.adapter.AdapterForServicesPayment;
@@ -45,12 +47,14 @@ public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
     private String newAppointmentHour;
     private String newAppointmentName;
 
-
-
     private DialogInterface.OnClickListener positiveListener;
     private DialogInterface.OnClickListener negativeListener;
 
-    public AppointmentPaymentPopUp(Appointment appointment, String appointmentHour, String appointmentName) {
+    public AppointmentPaymentPopUp(Appointment appointment,
+                                   String appointmentHour,
+                                   String appointmentName,
+                                   FragmentActivity context,
+                                   AdapterForAppointments adapter, int position) {
         title = "Καταχώρηση ραντεβού";
         this.appointment = appointment;
         this.newAppointmentHour = appointmentHour;
@@ -71,9 +75,12 @@ public class AppointmentPaymentPopUp extends AppCompatDialogFragment {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    getDialog().getOwnerActivity().runOnUiThread(() ->
+                    context.runOnUiThread(() ->
                     {
-                        Toast.makeText(getDialog().getOwnerActivity(), "Έγινε επιτυχής καταχώρηση ραντεβού!",
+                        adapter.remove(position);
+                        adapter.notifyItemRemoved(position);
+
+                        Toast.makeText(context, "Έγινε επιτυχής καταχώρηση ραντεβού!",
                                 Toast.LENGTH_SHORT).show();
                     });
                 }

@@ -6,27 +6,19 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.ItemDoctorAppointmentBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
-import com.mobile.physiolink.service.api.API;
-import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.ui.doctor.OnButtonClickListener;
 import com.mobile.physiolink.ui.popup.AppointmentDeletePopUp;
 import com.mobile.physiolink.ui.popup.AppointmentPaymentPopUp;
 import com.mobile.physiolink.util.date.TimeFormatter;
 import com.mobile.physiolink.util.image.ProfileImageProvider;
 
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder> implements OnButtonClickListener {
 
@@ -36,6 +28,8 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
     private Appointment[] appointments;
 
     private boolean[] isExpanded;
+
+    private FragmentActivity context;
 
     public AdapterForAppointments(FragmentManager fm)
     {
@@ -50,6 +44,11 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
         isExpanded = new boolean[appointments.length];
         Arrays.fill(isExpanded, false);
         notifyDataSetChanged();
+    }
+
+    public void setContext(FragmentActivity context)
+    {
+        this.context = context;
     }
 
     @NonNull
@@ -96,6 +95,19 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
 
         }
     }
+
+    public void remove(int position)
+    {
+        Appointment[] newAppointments = new Appointment[appointments.length-1];
+        for(int i=0; i<position; i++){
+            newAppointments[i]=appointments[i];
+        }
+        for(int i=position+1; i<appointments.length; i++){
+            newAppointments[i-1]=appointments[i];
+        }
+        appointments = newAppointments;
+    }
+
     private void toggleExpansion(int position) {
         isExpanded[position] = !isExpanded[position];
         notifyItemChanged(position);
@@ -111,14 +123,15 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
     {
         ItemDoctorAppointmentBinding binding;
 
-        public MyViewHolder(ItemDoctorAppointmentBinding binding, OnButtonClickListener listener) {
+        public MyViewHolder(ItemDoctorAppointmentBinding binding,
+                            AdapterForAppointments adapter) {
             super(binding.getRoot());
             this.binding = binding;
 
             // Set click listener on the entire item view
             binding.getRoot().setOnClickListener(view ->
             {
-                    toggleExpansion(getBindingAdapterPosition());
+                toggleExpansion(getBindingAdapterPosition());
             });
 
 
@@ -127,7 +140,8 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
                 AppointmentPaymentPopUp paymentPopUp = new AppointmentPaymentPopUp(
                         appointments[getAbsoluteAdapterPosition()],
                         binding.appointmentTimeDoctorPatient.getText().toString(),
-                        binding.appointmentNameDoctorPatient.getText().toString());
+                        binding.appointmentNameDoctorPatient.getText().toString(),
+                        context, adapter, getBindingAdapterPosition());
                 paymentPopUp.setNegativeOnClick((dialog, which) ->
                 {
                     Toast.makeText(binding.getRoot().getContext(), "Δεν έγινε πληρωμή ραντεβού!",
