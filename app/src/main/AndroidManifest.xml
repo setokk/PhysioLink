@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,8 +22,9 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="true">
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="PhysioLink">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,14 +32,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.PSFActivity"
-                  android:windowSoftInputMode="adjustPan"
-                  android:label="@string/home_label"/>
+            android:windowSoftInputMode="adjustPan"
+            android:label="@string/home_label"/>
         <activity android:name=".ui.DoctorActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:label="@string/home_label"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.PatientActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:label="@string/home_label"/>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
         <service android:name=".service.notification.NotificationService"/>
     </application>
 
