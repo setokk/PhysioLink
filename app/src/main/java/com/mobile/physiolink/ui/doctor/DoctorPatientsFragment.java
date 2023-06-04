@@ -95,7 +95,7 @@ public class DoctorPatientsFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
-        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(40); // 20px spacing
+        DecorationSpacingItem itemDecoration = new DecorationSpacingItem(20); // 20px spacing
         binding.patientsListDoctor.addItemDecoration(itemDecoration);
 
         binding.patientsListDoctor.setAdapter(adapter);
