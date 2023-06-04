@@ -63,9 +63,12 @@ public class NotificationService extends Service {
             public void run() {
                 // DO NOT CHANGE !!!
                 // .psf() RETURNS THE "USER" SUPERCLASS
+                if (UserHolder.psf() == null)
+                    return;
+
                 sendNotificationRequest(UserHolder.psf().getId());
             }
-        }, 0, 30000);
+        }, 0, 40000);
     }
 
 
