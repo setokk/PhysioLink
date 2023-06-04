@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/create_service_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/background_lime"
         tools:context=".ui.psf.CreateServiceFragment">
 
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round2_style"
                 android:backgroundTint="@color/white"
-                android:hint="Τιμή"
+                android:hint="@string/price"
                 android:maxLength="5"
                 android:inputType="number"
                 android:textColor="@color/black"
@@ -179,7 +179,7 @@
             android:backgroundTint="@color/button_purple"
             android:paddingHorizontal="30dp"
             android:paddingVertical="15dp"
-            android:text="@string/SaveString"
+            android:text="@string/save"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"

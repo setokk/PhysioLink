@@ -38,22 +38,7 @@ public class PatientActivity extends AppCompatActivity
         /*ActionBar*/
         getSupportActionBar().setTitle("PhysioLink");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.physiolink_logo);
-
-        /* Pop backstack after every navigation bar click
-        binding.bottomNavigationPatient.setOnItemSelectedListener((item) ->
-        {
-            navController.popBackStack();
-            navController.navigate(item.getItemId());
-            return true;
-        });
-        */
-        /* Hide the back button from the header
-        navController.addOnDestinationChangedListener((oNavController, navDestination, bundle) ->
-        {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        });
-        */
+        getSupportActionBar().setIcon(R.drawable.physiolink_logo_circle_small);
 
         configureNotificationChannel();
         Intent notificationService = new Intent(getApplicationContext(), NotificationService.class);

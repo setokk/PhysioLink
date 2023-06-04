@@ -31,6 +31,8 @@ public class LoginActivity extends AppCompatActivity
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        getSupportActionBar().setTitle("PhysioLink");
+
         binding.btnLogin.setOnClickListener((view) ->
         {
             try

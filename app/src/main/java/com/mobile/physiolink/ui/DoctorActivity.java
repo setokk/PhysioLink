@@ -46,8 +46,7 @@ public class DoctorActivity extends AppCompatActivity
         /*ActionBar*/
         getSupportActionBar().setTitle("PhysioLink");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.physiolink_logo);
-
+        getSupportActionBar().setIcon(R.drawable.physiolink_logo_circle_small);
 
     }
     public boolean onCreateOptionsMenu(Menu menu) {
