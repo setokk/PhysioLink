@@ -12,13 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.physiolink.databinding.ItemDoctorAppointmentBinding;
 import com.mobile.physiolink.model.appointment.Appointment;
+import com.mobile.physiolink.model.user.singleton.UserHolder;
+import com.mobile.physiolink.service.api.API;
+import com.mobile.physiolink.service.api.RequestFacade;
 import com.mobile.physiolink.ui.doctor.OnButtonClickListener;
-import com.mobile.physiolink.ui.popup.AppointmentDeletePopUp;
 import com.mobile.physiolink.ui.popup.AppointmentPaymentPopUp;
+import com.mobile.physiolink.ui.popup.AppointmentRejectPopUp;
 import com.mobile.physiolink.util.date.TimeFormatter;
 import com.mobile.physiolink.util.image.ProfileImageProvider;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppointments.MyViewHolder> implements OnButtonClickListener {
 
@@ -152,15 +161,40 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
 
             binding.exAppointmentButton.setOnClickListener(view ->
             {
-                AppointmentDeletePopUp deletePopUp = new AppointmentDeletePopUp("Διαγραφή Ραντεβού", "Είστε σίγουρος οτι θέλετε να διαγράψετε το ραντεβού;",
+                AppointmentRejectPopUp deletePopUp = new AppointmentRejectPopUp("Διαγραφή Ραντεβού",
                         "Ναι", "Όχι");
                 deletePopUp.setPositiveOnClick((dialog, which) ->
                 {
+                    int position = getBindingAdapterPosition();
 
+                    HashMap<String, String> keyValues = new HashMap<>(6);
+                    keyValues.put("appointment_id", String.valueOf(appointments[position].getId()));
+                    keyValues.put("reason", deletePopUp.getReason());
+                    keyValues.put("date", appointments[position].getDate().replace('-', '/'));
+                    keyValues.put("doctor_name", UserHolder.doctor().getName());
+                    keyValues.put("doctor_surname", UserHolder.doctor().getSurname());
+                    keyValues.put("doctor_phone_number", UserHolder.doctor().getPhoneNumber());
+
+                    RequestFacade.postRequest(API.DECLINE_PAYMENT, keyValues, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            call.cancel();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {}
+                    });
+
+                    Toast.makeText(binding.getRoot().getContext(), "Έγινε απόρριψη ραντεβού!",
+                            Toast.LENGTH_SHORT).show();
+
+                    adapter.remove(position);
+                    adapter.notifyItemRemoved(position);
                 });
                 deletePopUp.setNegativeOnClick((dialog, which) ->
                 {
-
+                    Toast.makeText(binding.getRoot().getContext(), "Δεν έγινε απόρριψη ραντεβού!",
+                            Toast.LENGTH_SHORT).show();
                 });
                 deletePopUp.show(fm,"Payment pop up");
             });
