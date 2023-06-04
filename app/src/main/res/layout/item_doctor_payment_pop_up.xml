@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -31,9 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="16.00"
+            android:text=""
             android:textColor="@color/button_purple"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/appointmentNameDoctorPatient"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,9 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="Maria Kokona"
+            android:text=""
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentTimeDoctorPatient" />
@@ -82,18 +81,18 @@
                     android:layout_height="wrap_content"
                     android:minHeight="60dp"
                     android:paddingVertical="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingLeft="10dp"
-                    android:hint=" Επιλέξτε Παροχή"
+                    android:paddingEnd="5dp"
+                    android:paddingStart="10dp"
+                    android:hint="@string/choose_service"
                     android:background="@drawable/border"
                     android:textSize="16sp"
-                    android:gravity="left|center"
+                    android:gravity="start|center"
                     app:layout_constraintVertical_bias="0"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:drawableLeft="@drawable/baseline_view_list_24"/>
+                    android:drawableStart="@drawable/baseline_view_list_24"/>
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -121,10 +120,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="15dp"
-                android:text="Τιμή"
+                android:text="@string/price"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@id/servicePricePayment"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +136,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="@color/button_purple"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/servicePricePaymentTitle"
                 app:layout_constraintStart_toStartOf="@id/servicePricePaymentTitle"

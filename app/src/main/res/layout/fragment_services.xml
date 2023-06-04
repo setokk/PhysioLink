@@ -24,20 +24,7 @@
         app:layout_constraintBottom_toTopOf="@id/customListViewParoxes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <EditText
-            android:id="@+id/search_src_text_paroxes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Αναζήτηση"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:textColorHint="@color/input_grey"
-            android:textSize="16sp" />
-
-    </androidx.appcompat.widget.SearchView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -62,11 +49,11 @@
         android:layout_marginEnd="@dimen/_16sdp"
         android:layout_marginBottom="@dimen/_16sdp"
         android:padding="10dp"
+        android:paddingStart="10dp"
         android:paddingEnd="20dp"
         android:background="@drawable/rounded_button"
-        android:drawableLeft="@drawable/baseline_add_24"
-
-        android:text="Δημιουργία\n Νέας Παροχής"
+        android:drawableStart="@drawable/baseline_add_24"
+        android:text="@string/CreateNewService"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp"
         android:textAllCaps="false"

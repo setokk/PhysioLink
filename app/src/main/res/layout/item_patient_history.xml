@@ -24,6 +24,7 @@
             android:id="@+id/calendarIconHistory"
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
+            android:contentDescription="@string/date"
             android:layout_marginTop="7dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

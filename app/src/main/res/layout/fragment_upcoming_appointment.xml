@@ -34,7 +34,7 @@
         android:id="@+id/calendarImgPatient"
         android:layout_width="@dimen/_18sdp"
         android:layout_height="@dimen/_18sdp"
-
+        android:contentDescription="@string/date"
         android:src="@drawable/calendar_icon_today"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -70,6 +70,7 @@
         android:layout_width="@dimen/_18sdp"
         android:layout_height="@dimen/_18sdp"
         android:layout_marginTop="5dp"
+        android:contentDescription="@string/location"
         android:src="@drawable/baseline_location_on_24"
         app:layout_constraintTop_toBottomOf="@id/calendarImgPatient"
         app:layout_constraintLeft_toLeftOf="parent"/>
