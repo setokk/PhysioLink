@@ -109,7 +109,7 @@ public class PatientDoctorFragment extends Fragment
                 Navigation.findNavController(getActivity(),R.id.containerPatient)
                         .navigate(R.id.action_fragmentPatientDoctor_to_fragmentRequestAppointment));
 
-        binding.doctorPatientServicesList.addItemDecoration(new DecorationSpacingItem(40));
+        binding.doctorPatientServicesList.addItemDecoration(new DecorationSpacingItem(20));
 
         adapter = new AdapterForPatientDoctorServices();
         binding.doctorPatientServicesList.setAdapter(adapter);

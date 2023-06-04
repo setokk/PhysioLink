@@ -161,14 +161,13 @@
                     android:id="@+id/doctorPhonePatientTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="10dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:text="@string/Phone"
-                    app:layout_constraintLeft_toRightOf="@id/doctorAfmPatient"
-                    app:layout_constraintTop_toTopOf="@id/doctorAfmPatient"
-                    app:layout_constraintBottom_toBottomOf="@id/doctorAfmPatient"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorAfmPatient"/>
 
                 <TextView
                     android:id="@+id/doctorPhonePatient"
@@ -191,7 +190,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:text="@string/Email"
-                    app:layout_constraintTop_toBottomOf="@+id/doctorAfmPatientTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorPhonePatient"
                     app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <TextView
