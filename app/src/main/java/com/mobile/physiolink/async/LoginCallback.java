@@ -10,6 +10,7 @@ import com.mobile.physiolink.service.validator.UserAuth;
 import com.mobile.physiolink.ui.DoctorActivity;
 import com.mobile.physiolink.ui.PSFActivity;
 import com.mobile.physiolink.ui.PatientActivity;
+import com.mobile.physiolink.util.FileManager;
 
 import org.json.JSONException;
 
@@ -63,6 +64,9 @@ public class LoginCallback implements Callback
 
                     Toast.makeText(loginActivity, "Επιτυχής Σύνδεση!", Toast.LENGTH_SHORT).show();
 
+                    /* Save user obj */
+                    FileManager.writeUserObj(user, "user.ser");
+
                     /* Pass user to UserHolder static class */
                     UserHolder.setInstance(user);
                     loginActivity.startActivity(intent);
@@ -75,8 +79,9 @@ public class LoginCallback implements Callback
             }
             catch (JSONException | IOException e)
             {
+                e.printStackTrace();
                 Toast.makeText(loginActivity,
-                        e.getMessage(), Toast.LENGTH_SHORT).show();
+                        "Προέκυψε ένα σφάλμα δικτύου. Προσπαθήστε ξανά αργότερα!", Toast.LENGTH_SHORT).show();
             }
         });
     }
