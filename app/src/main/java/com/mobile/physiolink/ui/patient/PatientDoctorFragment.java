@@ -1,11 +1,14 @@
 package com.mobile.physiolink.ui.patient;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -95,12 +98,55 @@ public class PatientDoctorFragment extends Fragment
                 if(binding.doctorPhysioMoreInfoPatientConstraint.getVisibility()==View.GONE){
                     TransitionManager.beginDelayedTransition(binding.doctorPhysioInfoPatientCardView, new AutoTransition());
                     binding.doctorPhysioMoreInfoPatientConstraint.setVisibility(View.VISIBLE);
-                    binding.doctorPatientDownBtn.setBackgroundResource(R.drawable.baseline_arrow_drop_up_24);
+                    Animation rotateLeft = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_left);
+                    rotateLeft.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    binding.doctorPatientDownBtn.setBackgroundResource(R.drawable.baseline_arrow_drop_up_24);
+                                }
+                            }, -60);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                    binding.doctorPatientDownBtn.startAnimation(rotateLeft);
                 }
                 else{
                     TransitionManager.beginDelayedTransition(binding.doctorPhysioInfoPatientCardView, new AutoTransition());
                     binding.doctorPhysioMoreInfoPatientConstraint.setVisibility(View.GONE);
-                    binding.doctorPatientDownBtn.setBackgroundResource(R.drawable.baseline_arrow_drop_down_24);
+                    Animation rotateRight = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_right);
+                    rotateRight.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    binding.doctorPatientDownBtn.setBackgroundResource(R.drawable.baseline_arrow_drop_down_24);
+                                }
+                            }, -60);
+                        }
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                    binding.doctorPatientDownBtn.startAnimation(rotateRight);
                 }
             }
         });

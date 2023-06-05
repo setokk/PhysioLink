@@ -3,11 +3,14 @@ package com.mobile.physiolink.ui.doctor;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.os.Handler;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
@@ -113,16 +116,57 @@ public class DoctorPatientHistoryFragment extends Fragment
                 TransitionManager.beginDelayedTransition(binding.patientHistoryInfoDoctor,
                         new AutoTransition());
                 binding.patientHistoryMoreInfoDoctorConstraint.setVisibility(View.VISIBLE);
-                binding.patientHistoryInfoDownBtn
-                        .setBackgroundResource(R.drawable.baseline_arrow_drop_up_24);
+                Animation rotateLeft = AnimationUtils.loadAnimation(this.getContext(), R.anim.rotate_left);
+                rotateLeft.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                binding.patientHistoryInfoDownBtn.setBackgroundResource(R.drawable.baseline_arrow_drop_up_24);
+                            }
+                        }, -60);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                binding.patientHistoryInfoDownBtn.startAnimation(rotateLeft);
             }
             else
             {
                 TransitionManager.beginDelayedTransition(binding.patientHistoryInfoDoctor,
                         new AutoTransition());
                 binding.patientHistoryMoreInfoDoctorConstraint.setVisibility(View.GONE);
-                binding.patientHistoryInfoDownBtn
-                        .setBackgroundResource(R.drawable.baseline_arrow_drop_down_24);
+                Animation rotateRight = AnimationUtils.loadAnimation(this.getContext(), R.anim.rotate_right);
+                rotateRight.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                binding.patientHistoryInfoDownBtn.setBackgroundResource(R.drawable.baseline_arrow_drop_down_24);
+                            }
+                        }, -60);
+                    }
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                binding.patientHistoryInfoDownBtn.startAnimation(rotateRight);
             }
         });
 
