@@ -8,350 +8,359 @@
     android:background="@color/background_lime"
     tools:context=".ui.patient.PatientDoctorFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/doctorPhysioInfoPatientCardView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/button_purple">
-
+        android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/doctorPatientInfoBasicConstraint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/doctorPhysioInfoPatientCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:elevation="4dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/doctorProfilePicPatient"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
-                android:layout_margin="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/doctorPatientNameConstraint"
-                app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/button_purple">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/doctorPatientNameConstraint"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:paddingBottom="15dp"
-                app:layout_constraintLeft_toRightOf="@id/doctorProfilePicPatient"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <TextView
-                    android:id="@+id/doctorPatientNameTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/Name"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/doctorPatientName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/doctorPatientNameTitle"
-                    app:layout_constraintLeft_toRightOf="@+id/doctorPatientNameTitle"
-                    app:layout_constraintTop_toTopOf="@+id/doctorPatientNameTitle" />
-
-                <TextView
-                    android:id="@+id/doctorPatientSurnameTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/LastName"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/doctorPatientNameTitle" />
-
-                <TextView
-                    android:id="@+id/doctorPatientSurname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/doctorPatientSurnameTitle"
-                    app:layout_constraintLeft_toRightOf="@+id/doctorPatientSurnameTitle" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/doctorPatientDownBtn"
-                    android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_40sdp"
-
-                    android:background="@drawable/baseline_arrow_drop_down_24"
-                    android:textColor="@color/white"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/doctorPhysioMoreInfoPatientConstraint"
+                android:id="@+id/doctorPatientInfoBasicConstraint"
                 android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="0dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/doctorProfilePicPatient"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-                <TextView
-                    android:id="@+id/doctorInfoPatientTitle"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/doctorProfilePicPatient"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_margin="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/doctorPatientNameConstraint"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/doctorPatientNameConstraint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:paddingBottom="15dp"
+                    app:layout_constraintLeft_toRightOf="@id/doctorProfilePicPatient"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <TextView
+                        android:id="@+id/doctorPatientNameTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/Name"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/doctorPatientName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/doctorPatientNameTitle"
+                        app:layout_constraintLeft_toRightOf="@+id/doctorPatientNameTitle"
+                        app:layout_constraintTop_toTopOf="@+id/doctorPatientNameTitle" />
+
+                    <TextView
+                        android:id="@+id/doctorPatientSurnameTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/LastName"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/doctorPatientNameTitle" />
+
+                    <TextView
+                        android:id="@+id/doctorPatientSurname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/doctorPatientSurnameTitle"
+                        app:layout_constraintLeft_toRightOf="@+id/doctorPatientSurnameTitle" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/doctorPatientDownBtn"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+
+                        android:background="@drawable/baseline_arrow_drop_down_24"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/doctorPhysioMoreInfoPatientConstraint"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:background="@color/low_opacity_white"
-                    android:text="@string/DoctorDetails"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"/>
-                <TextView
-                    android:id="@+id/doctorAfmPatientTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="@string/Afm"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/doctorInfoPatientTitle" />
-
-                <TextView
-                    android:id="@+id/doctorAfmPatient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
-                    android:text=""
-                    app:layout_constraintLeft_toRightOf="@id/doctorAfmPatientTitle"
-                    app:layout_constraintTop_toTopOf="@id/doctorAfmPatientTitle"
-                    app:layout_constraintBottom_toBottomOf="@+id/doctorAfmPatientTitle"/>
-
-                <TextView
-                    android:id="@+id/doctorPhonePatientTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="@string/Phone"
+                    android:visibility="gone"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorProfilePicPatient"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/doctorAfmPatient"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:elevation="4dp">
 
-                <TextView
-                    android:id="@+id/doctorPhonePatient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
-                    android:text=""
-                    app:layout_constraintBottom_toBottomOf="@+id/doctorPhonePatientTitle"
-                    app:layout_constraintLeft_toRightOf="@+id/doctorPhonePatientTitle"
-                    app:layout_constraintTop_toTopOf="@+id/doctorPhonePatientTitle" />
+                    <TextView
+                        android:id="@+id/doctorInfoPatientTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:background="@color/low_opacity_white"
+                        android:text="@string/DoctorDetails"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+                    <TextView
+                        android:id="@+id/doctorAfmPatientTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:text="@string/Afm"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/doctorInfoPatientTitle" />
 
-                <TextView
-                    android:id="@+id/doctorEmailPatientTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="@string/Email"
-                    app:layout_constraintTop_toBottomOf="@+id/doctorPhonePatient"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                    <TextView
+                        android:id="@+id/doctorAfmPatient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:text=""
+                        app:layout_constraintLeft_toRightOf="@id/doctorAfmPatientTitle"
+                        app:layout_constraintTop_toTopOf="@id/doctorAfmPatientTitle"
+                        app:layout_constraintBottom_toBottomOf="@+id/doctorAfmPatientTitle"/>
 
-                <TextView
-                    android:id="@+id/doctorEmailPatient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:text=""
-                    app:layout_constraintTop_toBottomOf="@+id/doctorEmailPatientTitle"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView
+                        android:id="@+id/doctorPhonePatientTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:text="@string/Phone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/doctorAfmPatient"/>
 
-                <TextView
-                    android:id="@+id/physioInfoPatientTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/low_opacity_white"
-                    android:text="@string/ClinicDetails"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    app:layout_constraintTop_toBottomOf="@id/doctorEmailPatient"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"/>
+                    <TextView
+                        android:id="@+id/doctorPhonePatient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:text=""
+                        app:layout_constraintBottom_toBottomOf="@+id/doctorPhonePatientTitle"
+                        app:layout_constraintLeft_toRightOf="@+id/doctorPhonePatientTitle"
+                        app:layout_constraintTop_toTopOf="@+id/doctorPhonePatientTitle" />
 
-                <TextView
-                    android:id="@+id/physioNamePatientTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="@string/Name"
-                    app:layout_constraintTop_toBottomOf="@+id/physioInfoPatientTitle"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                    <TextView
+                        android:id="@+id/doctorEmailPatientTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:text="@string/Email"
+                        app:layout_constraintTop_toBottomOf="@+id/doctorPhonePatient"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
-                <TextView
-                    android:id="@+id/physioNamePatient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
-                    android:text=""
-                    app:layout_constraintTop_toTopOf="@id/physioNamePatientTitle"
-                    app:layout_constraintBottom_toBottomOf="@id/physioNamePatientTitle"
-                    app:layout_constraintLeft_toRightOf="@id/physioNamePatientTitle"/>
+                    <TextView
+                        android:id="@+id/doctorEmailPatient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:text=""
+                        app:layout_constraintTop_toBottomOf="@+id/doctorEmailPatientTitle"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
-                <TextView
-                    android:id="@+id/physioCityPatientTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="@string/City"
-                    app:layout_constraintTop_toBottomOf="@+id/physioNamePatientTitle"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                    <TextView
+                        android:id="@+id/physioInfoPatientTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/low_opacity_white"
+                        android:text="@string/ClinicDetails"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toBottomOf="@id/doctorEmailPatient"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
 
-                <TextView
-                    android:id="@+id/physioCityPatient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
-                    android:text=""
-                    app:layout_constraintTop_toTopOf="@id/physioCityPatientTitle"
-                    app:layout_constraintBottom_toBottomOf="@id/physioCityPatientTitle"
-                    app:layout_constraintLeft_toRightOf="@id/physioCityPatientTitle"/>
+                    <TextView
+                        android:id="@+id/physioNamePatientTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:text="@string/Name"
+                        app:layout_constraintTop_toBottomOf="@+id/physioInfoPatientTitle"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
-                <TextView
-                    android:id="@+id/physioPCPatientTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="@string/postal_code"
-                    app:layout_constraintTop_toBottomOf="@+id/physioCityPatientTitle"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                    <TextView
+                        android:id="@+id/physioNamePatient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:text=""
+                        app:layout_constraintTop_toTopOf="@id/physioNamePatientTitle"
+                        app:layout_constraintBottom_toBottomOf="@id/physioNamePatientTitle"
+                        app:layout_constraintLeft_toRightOf="@id/physioNamePatientTitle"/>
 
-                <TextView
-                    android:id="@+id/physioPCPatient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
-                    android:text=""
-                    app:layout_constraintTop_toTopOf="@id/physioPCPatientTitle"
-                    app:layout_constraintBottom_toBottomOf="@id/physioPCPatientTitle"
-                    app:layout_constraintLeft_toRightOf="@id/physioPCPatientTitle"/>
+                    <TextView
+                        android:id="@+id/physioCityPatientTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:text="@string/City"
+                        app:layout_constraintTop_toBottomOf="@+id/physioNamePatientTitle"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
-                <TextView
-                    android:id="@+id/physioAdressPatientTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="@string/Address"
-                    app:layout_constraintTop_toBottomOf="@+id/physioPCPatientTitle"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    <TextView
+                        android:id="@+id/physioCityPatient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:text=""
+                        app:layout_constraintTop_toTopOf="@id/physioCityPatientTitle"
+                        app:layout_constraintBottom_toBottomOf="@id/physioCityPatientTitle"
+                        app:layout_constraintLeft_toRightOf="@id/physioCityPatientTitle"/>
 
-                <TextView
-                    android:id="@+id/physioAdressPatient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="5dp"
-                    android:text=""
-                    app:layout_constraintTop_toTopOf="@id/physioAdressPatientTitle"
-                    app:layout_constraintBottom_toBottomOf="@id/physioAdressPatientTitle"
-                    app:layout_constraintLeft_toRightOf="@id/physioAdressPatientTitle"/>
+                    <TextView
+                        android:id="@+id/physioPCPatientTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:text="@string/postal_code"
+                        app:layout_constraintTop_toBottomOf="@+id/physioCityPatientTitle"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/physioPCPatient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:text=""
+                        app:layout_constraintTop_toTopOf="@id/physioPCPatientTitle"
+                        app:layout_constraintBottom_toBottomOf="@id/physioPCPatientTitle"
+                        app:layout_constraintLeft_toRightOf="@id/physioPCPatientTitle"/>
+
+                    <TextView
+                        android:id="@+id/physioAdressPatientTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="10dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:text="@string/Address"
+                        app:layout_constraintTop_toBottomOf="@+id/physioPCPatientTitle"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/physioAdressPatient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="5dp"
+                        android:text=""
+                        app:layout_constraintTop_toTopOf="@id/physioAdressPatientTitle"
+                        app:layout_constraintBottom_toBottomOf="@id/physioAdressPatientTitle"
+                        app:layout_constraintLeft_toRightOf="@id/physioAdressPatientTitle"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/doctorPatientServicesTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="4dp"
+            android:background="@color/low_opacity_white"
+            android:text="@string/services"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/doctorPhysioInfoPatientCardView"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/doctorPatientServicesList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/doctorPatientServicesTitle">
+        </androidx.recyclerview.widget.RecyclerView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/doctorPatientServicesTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="4dp"
-        android:background="@color/low_opacity_white"
-        android:text="@string/services"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/doctorPhysioInfoPatientCardView"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/doctorPatientServicesList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/doctorPatientServicesTitle">
-    </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/patientDoctorMakeAppointmentBtn"
