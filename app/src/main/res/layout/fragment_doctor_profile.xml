@@ -18,7 +18,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/button_purple">
+            android:background="@drawable/bg_profile">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImageDoctor"
@@ -242,7 +242,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="13dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleCityDoctorProfile"
+                app:layout_constraintTop_toBottomOf="@+id/titlePostalCodeDoctorProfile"
                 app:layout_constraintStart_toStartOf="parent"/>
             <TextView
                 android:id="@+id/adressOutputDoctorProfile"
@@ -253,7 +253,7 @@
                 android:textColor="@color/white"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="13dp"
-                app:layout_constraintTop_toBottomOf="@+id/cityOutputDoctorProfile"
+                app:layout_constraintTop_toBottomOf="@+id/titlePostalCodeDoctorProfile"
                 app:layout_constraintStart_toEndOf="@+id/titleAdressDoctorProfile"/>
             <TextView
                 android:id="@+id/titlePostalCodeDoctorProfile"
@@ -265,8 +265,8 @@
                 android:textStyle="bold"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="13dp"
-                app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile"
-                app:layout_constraintStart_toEndOf="@+id/cityOutputDoctorProfile"/>
+                app:layout_constraintTop_toBottomOf="@+id/titleCityDoctorProfile"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/postalCodeDoctorProfile"
@@ -278,7 +278,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_15ssp"
                 app:layout_constraintStart_toEndOf="@+id/titlePostalCodeDoctorProfile"
-                app:layout_constraintTop_toBottomOf="@+id/titlePhysioNameDoctorProfile" />
+                app:layout_constraintTop_toBottomOf="@+id/titleCityDoctorProfile" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

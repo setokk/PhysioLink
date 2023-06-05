@@ -86,23 +86,24 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
         holder.binding.appointmentTimeDoctorPatient
                 .setText(TimeFormatter.formatToPM_AM(appointments[position].getHour()));
 
-        boolean hasContent = holder.binding.appointmentCommentsDoctorPatient.length() > 0;
+        boolean hasContent = appointments[position].getMessage().length() > 0;
 
-            holder.binding.appointmentCommentsDoctorPatient
-                    .setText(hasContent ? appointments[position].getMessage() : "-");
+        holder.binding.appointmentCommentsDoctorPatient
+                .setText(hasContent ? appointments[position].getMessage() : "-");
 
         boolean isItemExpanded = isExpanded[position];
 
         //Set the initial state based on the expanded flag
-        if (isItemExpanded) {
-            holder.binding.appointmentCommentsDoctorPatient.setMaxLines(Integer.MAX_VALUE);
-            holder.binding.appointmentCommentsDoctorPatient.setEllipsize(null);
-        } else {
-            holder.binding.appointmentCommentsDoctorPatient.setMaxLines(1);
-            holder.binding.appointmentCommentsDoctorPatient.setEllipsize(TextUtils.TruncateAt.END);
-
-
+        if(true){
+            if (isItemExpanded) {
+                holder.binding.appointmentCommentsDoctorPatient.setMaxLines(Integer.MAX_VALUE);
+                holder.binding.appointmentCommentsDoctorPatient.setEllipsize(null);
+            } else {
+                holder.binding.appointmentCommentsDoctorPatient.setMaxLines(1);
+                holder.binding.appointmentCommentsDoctorPatient.setEllipsize(TextUtils.TruncateAt.END);
+            }
         }
+
     }
 
     public void remove(int position)
@@ -153,7 +154,7 @@ public class AdapterForAppointments extends RecyclerView.Adapter <AdapterForAppo
                         context, adapter, getBindingAdapterPosition());
                 paymentPopUp.setNegativeOnClick((dialog, which) ->
                 {
-                    Toast.makeText(binding.getRoot().getContext(), "Δεν έγινε πληρωμή ραντεβού!",
+                    Toast.makeText(binding.getRoot().getContext(), "Δεν έγινε επιβεβαίωση ραντεβού!",
                             Toast.LENGTH_SHORT).show();
                 });
                 paymentPopUp.show(fm,"Payment pop up");

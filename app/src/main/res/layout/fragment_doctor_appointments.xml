@@ -24,11 +24,11 @@
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/leftArrowDoctorAppointment"
             android:layout_width="@dimen/_30sdp"
@@ -40,6 +40,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/celectedDateDoctorAppointments"/>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/rightArrowDoctorAppointment"
             android:layout_width="@dimen/_30sdp"

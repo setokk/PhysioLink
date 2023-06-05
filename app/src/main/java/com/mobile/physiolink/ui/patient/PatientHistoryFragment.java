@@ -97,7 +97,7 @@ public class PatientHistoryFragment extends Fragment
 
         viewModel.loadAppointments(UserHolder.patient().getId());
 
-        binding.historyRecyclerview.addItemDecoration(new DecorationSpacingItem(40));
+        binding.historyRecyclerview.addItemDecoration(new DecorationSpacingItem(20));
         binding.historyRecyclerview.setAdapter(adapter);
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }

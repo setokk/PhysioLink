@@ -70,6 +70,7 @@ public class DoctorHomeViewModel extends ViewModel
                                 .setPatSurname(element.getString("patient_surname"))
                                 .setPatAmka(element.getString("amka"))
                                 .setImageURL(element.getString("image"))
+                                .setMessage(element.getString("message"))
                                 .build();
                     }
                     latestAppointments.postValue(appointments);

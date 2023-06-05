@@ -244,11 +244,9 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:layout_marginStart="10dp"
                     android:text="@string/postal_code"
-                    app:layout_constraintBottom_toBottomOf="@+id/cityPatientHistoryDoctor"
-                    app:layout_constraintStart_toEndOf="@+id/cityPatientHistoryDoctor"
-                    app:layout_constraintTop_toTopOf="@+id/cityTitlePatientHistoryDoctor"/>
+                    app:layout_constraintTop_toBottomOf="@+id/cityTitlePatientHistoryDoctor"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/postalCodePatientHistoryDoctor"
@@ -261,9 +259,9 @@
                     android:layout_marginStart="2dp"
                     android:text=""
                     android:backgroundTint="@color/transparent"
-                    app:layout_constraintBottom_toBottomOf="@+id/cityTitlePatientHistoryDoctor"
+                    app:layout_constraintBottom_toBottomOf="@+id/postalCodeTitlePatientHistoryDoctor"
                     app:layout_constraintStart_toEndOf="@+id/postalCodeTitlePatientHistoryDoctor"
-                    app:layout_constraintTop_toTopOf="@+id/cityTitlePatientHistoryDoctor"/>
+                    app:layout_constraintTop_toTopOf="@+id/postalCodeTitlePatientHistoryDoctor"/>
                 <TextView
                     android:id="@+id/addressTitlePatientHistoryDoctor"
                     android:layout_width="wrap_content"
@@ -276,7 +274,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/addressPatientHistoryDoctor"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/addressPatientHistoryDoctor"
-                    app:layout_constraintTop_toBottomOf="@+id/cityTitlePatientHistoryDoctor"/>
+                    app:layout_constraintTop_toBottomOf="@+id/postalCodeTitlePatientHistoryDoctor"/>
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addressPatientHistoryDoctor"
                     android:layout_width="wrap_content"

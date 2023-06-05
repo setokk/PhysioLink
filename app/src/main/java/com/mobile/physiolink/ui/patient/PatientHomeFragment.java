@@ -27,6 +27,8 @@ import java.util.List;
 
 public class PatientHomeFragment extends Fragment
 {
+
+    private boolean flag=false;
     private FragmentPatientHomeBinding binding;
     private AdapterForHistoryPatient adapter;
     private PatientHomeViewModel viewmodel;
@@ -45,6 +47,7 @@ public class PatientHomeFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+
         binding = FragmentPatientHomeBinding.inflate(inflater, container, false);
 
         viewmodel = new ViewModelProvider(this).get(PatientHomeViewModel.class);
@@ -79,11 +82,23 @@ public class PatientHomeFragment extends Fragment
                 transaction.commit();
             }
         });
+
+
+        if(!flag)
+        {
+            binding.noHistoryHomeConstraint.setVisibility(View.VISIBLE);
+        }
+
+
         viewmodel.getLatestCompletedAppointment().observe(getViewLifecycleOwner(), appoint ->
         {
+            flag=true;
             List<Appointment> appointments = new ArrayList<>();
             appointments.add(appoint);
+            binding.noHistoryHomeConstraint.setVisibility(View.GONE);
             adapter.setAppointments(appointments);
+
+
         });
 
         return binding.getRoot();

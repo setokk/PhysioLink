@@ -19,12 +19,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/afm_input_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:background="@color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
+                app:counterMaxLength="9"
                 app:layout_constraintBottom_toBottomOf="@+id/afm_textview"
                 app:layout_constraintStart_toEndOf="@+id/afm_textview"
                 app:layout_constraintTop_toTopOf="@+id/afm_textview">
@@ -34,7 +35,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
+                    android:maxLength="9"
                     android:enabled="false"
+                    android:paddingStart="0dp"
                     android:padding="5dp"
                     android:text=""
                     android:textColor="@color/white"
@@ -63,17 +66,59 @@
                 app:layout_constraintStart_toEndOf="@+id/profil_image"
                 app:layout_constraintTop_toTopOf="@+id/profil_image" />
 
-            <TextView
-                android:id="@+id/nameTextView"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_input_layout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text=""
-                android:textColor="@color/white"
-                android:textSize="18sp"
+                android:layout_marginTop="0dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintStart_toEndOf="@id/name_textview"
                 app:layout_constraintTop_toTopOf="@id/name_textview"
-                app:layout_constraintBottom_toBottomOf="@id/name_textview"/>
+                app:layout_constraintBottom_toBottomOf="@id/name_textview">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/transparent"
+                    android:enabled="false"
+                    android:paddingStart="0dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/surname_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="0dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:layout_constraintStart_toEndOf="@id/surname_textview"
+                app:layout_constraintTop_toTopOf="@id/surname_textview"
+                app:layout_constraintBottom_toBottomOf="@id/surname_textview">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/surname_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/transparent"
+                    android:enabled="false"
+                    android:paddingStart="0dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="3dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/surname_textview"
@@ -87,17 +132,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_textview"
                 app:layout_constraintBottom_toBottomOf="@id/profil_image"/>
 
-            <TextView
-                android:id="@+id/surnameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text=""
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@id/surname_textview"
-                app:layout_constraintTop_toTopOf="@id/surname_textview"
-                app:layout_constraintBottom_toBottomOf="@id/surname_textview"/>
 
             <TextView
                 android:id="@+id/doctor_informations_textview"
@@ -110,7 +144,7 @@
                 android:paddingBottom="5dp"
                 android:text="@string/DoctorDetails"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profil_image" />
@@ -126,7 +160,7 @@
                 android:paddingBottom="5dp"
                 android:text="@string/about_services"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -150,26 +184,28 @@
                 android:id="@+id/phone_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:text="@string/Phone"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/afm_textview"
-                app:layout_constraintStart_toEndOf="@+id/afm_input_layout"
-                app:layout_constraintTop_toTopOf="@+id/afm_textview" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/afm_textview"/>
 
             <TextView
                 android:id="@+id/email_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
                 android:text="@string/Email"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/afm_textview"
-                app:layout_constraintTop_toBottomOf="@+id/afm_textview" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phone_textview" />
 
             <TextView
                 android:id="@+id/clinic_informations_textview"
@@ -182,10 +218,10 @@
                 android:paddingBottom="5dp"
                 android:text="@string/ClinicDetails"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/email_input_layout" />
 
             <TextView
                 android:id="@+id/clinic_name_textview"
@@ -216,14 +252,13 @@
                 android:id="@+id/tk_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:text="@string/postal_code"
                 android:textColor="@color/white"
+                android:layout_marginTop="15dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/city_input_layout"
-                app:layout_constraintStart_toEndOf="@id/city_input_layout"
-                app:layout_constraintTop_toTopOf="@+id/city_input_layout" />
+                app:layout_constraintStart_toStartOf="@+id/clinic_name_textview"
+                app:layout_constraintTop_toBottomOf="@+id/city_textview" />
 
             <TextView
                 android:id="@+id/address_textview"
@@ -235,18 +270,18 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/city_textview"
-                app:layout_constraintTop_toBottomOf="@+id/city_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/tk_textview" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email_input_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="0dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
-                app:layout_constraintBottom_toBottomOf="@+id/email_textview"
-                app:layout_constraintStart_toEndOf="@+id/email_textview"
-                app:layout_constraintTop_toTopOf="@+id/email_textview">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_textview" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email_input"
@@ -254,22 +289,23 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
-                    android:textAlignment="center"
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phone_input_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 app:boxStrokeWidth="0dp"
+                app:counterMaxLength="10"
                 app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/phone_textview"
                 app:layout_constraintStart_toEndOf="@+id/phone_textview"
@@ -281,18 +317,20 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
+                    android:maxLength="10"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/clinic_name_input_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 app:boxStrokeWidth="0dp"
@@ -307,18 +345,19 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/city_input_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 app:boxStrokeWidth="0dp"
@@ -333,18 +372,19 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/address_input_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 app:boxStrokeWidth="0dp"
@@ -359,18 +399,19 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tk_input_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 app:boxStrokeWidth="0dp"
@@ -385,11 +426,12 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     android:enabled="false"
-                    android:paddingStart="10dp"
+                    android:paddingStart="0dp"
                     android:paddingTop="3dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="3dp"
                     android:text=""
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -414,8 +456,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/button_purple"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/baseline_edit_24"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"

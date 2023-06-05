@@ -50,6 +50,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/changePasswordSettingsPsf"/>
+        <ImageView
+            android:id="@+id/easterEggPsf"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="20dp"
+            android:src="@color/transparent"
+            android:contentDescription="pamak"
+            android:background="@color/transparent"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutUsSettingsPsf"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logOutSettingsPsf"

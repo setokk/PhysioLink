@@ -26,7 +26,7 @@ public class DecorationSpacingItem extends RecyclerView.ItemDecoration {
         }
         // add extra spacing only to the last item
         else {
-            outRect.bottom = spacing * 25; // adjust the spacing as needed
+            outRect.bottom = spacing * 40; // adjust the spacing as needed
         }
     }
 }

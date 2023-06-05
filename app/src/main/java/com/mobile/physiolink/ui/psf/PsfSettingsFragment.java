@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,6 +52,29 @@ public class PsfSettingsFragment extends Fragment {
                 Uri uri = Uri.parse("https://www.psf.org.gr/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+            }
+        });
+
+
+        binding.easterEggPsf.setOnClickListener(v -> {
+            if(binding.easterEggPsf.getContentDescription().equals("pamak")){
+                binding.easterEggPsf.setContentDescription("pamakara");
+                binding.easterEggPsf.setImageResource(R.drawable.easter_egg);
+                Animation easterEgg = AnimationUtils.loadAnimation(getContext(), R.anim.easter_egg_animation);
+                binding.easterEggPsf.startAnimation(easterEgg);
+            }else{
+                binding.easterEggPsf.setContentDescription("pamak");
+                Animation easterEggBack = AnimationUtils.loadAnimation(getContext(), R.anim.easter_egg_back_animation);
+                easterEggBack.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        binding.easterEggPsf.setImageResource(R.color.transparent);}
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
+                binding.easterEggPsf.startAnimation(easterEggBack);
             }
         });
 

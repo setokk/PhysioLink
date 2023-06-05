@@ -78,17 +78,22 @@ public class AdapterForRequests extends RecyclerView.Adapter<AdapterForRequests.
                 .setText(appointments[position].getDate().replace('-', '/'));
         holder.binding.requestAppointmentTime
                 .setText(TimeFormatter.formatToPM_AM(appointments[position].getHour()));
+
+        boolean hasContent = appointments[position].getMessage().length() > 0;
+
         holder.binding.requestProblem
-                .setText(appointments[position].getMessage());
+                .setText(hasContent ? appointments[position].getMessage() : "-");
 
         boolean isItemExpanded = isExpanded[position];
 
-        if(isItemExpanded){
-            holder.binding.requestProblem.setMaxLines(Integer.MAX_VALUE);
-            holder.binding.requestProblem.setEllipsize(null);
-        } else {
-            holder.binding.requestProblem.setMaxLines(2);
-            holder.binding.requestProblem.setEllipsize(TextUtils.TruncateAt.END);
+        if(hasContent){
+            if(isItemExpanded){
+                holder.binding.requestProblem.setMaxLines(Integer.MAX_VALUE);
+                holder.binding.requestProblem.setEllipsize(null);
+            } else {
+                holder.binding.requestProblem.setMaxLines(2);
+                holder.binding.requestProblem.setEllipsize(TextUtils.TruncateAt.END);
+            }
         }
     }
 

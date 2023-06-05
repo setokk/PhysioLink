@@ -15,10 +15,11 @@
             android:id="@+id/profileHeaderConstraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/button_purple">
+            android:background="@drawable/bg_profile">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImagePatient"
@@ -207,7 +208,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="13dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleCityPatientProfile"
+                app:layout_constraintTop_toBottomOf="@+id/titlePostalCodePatientProfile"
                 app:layout_constraintStart_toStartOf="parent"/>
             <TextView
                 android:id="@+id/adressOutputPatientProfile"
@@ -230,8 +231,8 @@
                 android:textStyle="bold"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="13dp"
-                app:layout_constraintTop_toBottomOf="@+id/emailOutputPatientProfile"
-                app:layout_constraintStart_toEndOf="@+id/cityOutputPatientProfile"/>
+                app:layout_constraintTop_toBottomOf="@+id/cityOutputPatientProfile"
+                app:layout_constraintStart_toStartOf="parent"/>
             <TextView
                 android:id="@+id/postalCodePatientProfile"
                 android:layout_width="wrap_content"

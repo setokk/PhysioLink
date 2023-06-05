@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import androidx.activity.OnBackPressedCallback;
@@ -253,5 +255,7 @@ public class DoctorAppointmentsFragment extends Fragment
         binding.celectedDateDoctorAppointments.setText(
                 DateFormatter.formatToAlphanumeric(currDate.getYear(),
                         currDate.getMonthValue(), currDate.getDayOfMonth()));
+        Animation pulseAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.pulse_animation);
+        binding.celectedDateDoctorAppointments.startAnimation(pulseAnimation);
     }
 }

@@ -1,9 +1,5 @@
 package com.mobile.physiolink.ui.patient;
 
-import android.graphics.BlendMode;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -11,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,12 +18,12 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.mobile.physiolink.R;
 import com.mobile.physiolink.databinding.FragmentRequestAppointmentBinding;
-import com.mobile.physiolink.databinding.ItemListTimeBinding;
-import com.mobile.physiolink.model.availability.AvailableHoursManager;
 import com.mobile.physiolink.model.user.singleton.UserHolder;
 import com.mobile.physiolink.service.api.API;
 import com.mobile.physiolink.service.api.RequestFacade;
@@ -35,17 +32,11 @@ import com.mobile.physiolink.ui.patient.adapter.AdapterForAppointmentHour;
 import com.mobile.physiolink.ui.patient.viewmodel.RequestAppointmentViewModel;
 import com.mobile.physiolink.util.date.DateFormatter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.DayViewDecorator;
-import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 
-import org.threeten.bp.DayOfWeek;
-import org.threeten.bp.chrono.ChronoLocalDate;
-
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.HashMap;
 
 import okhttp3.Call;
@@ -184,13 +175,13 @@ public class RequestAppointmentFragment extends Fragment
 
                         if (res.contains(Error.RESOURCE_EXISTS))
                         {
-                            Toast.makeText(getActivity(), "Έχετε κάνει ήδη αίτημα για ραντεβού! Μπορείτε να ξανακάνετε αίτημα μόλις περάσει η ημερομήνια του ραντεβού.",
+                            Toast.makeText(getActivity(), "Έχετε κάνει ήδη αίτημα για ραντεβού! Μπορείτε να ξανακάνετε αίτημα μόλις περάσει η ημερομήνια του ραντεβού σας.",
                                     Toast.LENGTH_LONG).show();
                             return;
                         }
 
                         Toast.makeText(getActivity(), "Το αίτημα για ραντεβού ολοκληρώθηκε επιτυχώς!",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_LONG).show();
 
                         binding.calendarView.clearSelection();
                         binding.hourBtn.setText("");
@@ -199,6 +190,9 @@ public class RequestAppointmentFragment extends Fragment
                         appointmentViewmodel.loadAvailableHours(selectedDate.getMonthValue(),
                                 selectedDate.getYear(),
                                 UserHolder.patient().getDoctorId());
+
+                        NavController navController = Navigation.findNavController(getActivity(), R.id.containerPatient);
+                        navController.navigate(R.id.action_fragmentRequestAppointment_to_fragmentPatientHome3);
                     });
                 }
             };
@@ -248,6 +242,8 @@ public class RequestAppointmentFragment extends Fragment
 
             adapter.setHours(appointmentViewmodel.getAvailableHoursOfDate(year, month, day));
             binding.dateText.setText(DateFormatter.formatToAlphanumeric(year, month, day));
+            Animation pulseAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.pulse_animation);
+            binding.dateText.startAnimation(pulseAnimation);
         });
 
         // Set minimum date to the current date

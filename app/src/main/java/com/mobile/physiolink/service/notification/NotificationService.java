@@ -63,9 +63,12 @@ public class NotificationService extends Service {
             public void run() {
                 // DO NOT CHANGE !!!
                 // .psf() RETURNS THE "USER" SUPERCLASS
+                if (UserHolder.psf() == null)
+                    return;
+
                 sendNotificationRequest(UserHolder.psf().getId());
             }
-        }, 0, 30000);
+        }, 0, 40000);
     }
 
 
@@ -112,10 +115,16 @@ public class NotificationService extends Service {
                                 getApplicationContext(), CHANNEL_ID)
                                 .setSmallIcon(R.drawable.notification_icon)
                                 .setContentTitle(element.getString("title"))
-                                .setContentText(element.getString("message"))
+                                .setContentText("Εμφάνιση περισσότερων...")
                                 .setVibrate(new long[]{0, 1000})
                                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                                .setPriority(NotificationCompat.PRIORITY_HIGH);
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setAutoCancel(true);
+
+                        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
+                        bigTextStyle.bigText(element.getString("message"));
+
+                        builder.setStyle(bigTextStyle);
                         builder.setContentIntent(pendingIntent);
                         checkPermissionsAndNotify(builder);
                     }
