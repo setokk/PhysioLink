@@ -9,6 +9,7 @@ import com.mobile.physiolink.service.api.API;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.Optional;
 
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -47,6 +48,7 @@ public class ImageUploader
 
     public static String getAbsolutePathFromUri(Uri uri)
     {
+        if (uri == null) return "";
         return new File(uri.getPath()).getAbsolutePath();
     }
 }

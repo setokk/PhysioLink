@@ -64,6 +64,9 @@ public class PatientProfileFragment extends Fragment{
         super.onActivityResult(requestCode, resultCode, data);
         Uri uri = data.getData();
         String path = ImageUploader.getAbsolutePathFromUri(uri);
+        if (path.isEmpty())
+            return;
+
         ImageUploader.uploadImage(getActivity(), path, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
