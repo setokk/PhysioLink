@@ -182,8 +182,8 @@ public class DoctorNewPatientFragment extends Fragment
                             postalCodeError = false;
                         }
                     } else if (currentInputLayout.equals(binding.patientAddressInputLayout)){
-                        if(!currentInput.getText().toString().matches("^[Α-Ωα-ω]+,\\s*\\d+$")){
-                            currentInputLayout.setError("Η Διεύθυνση πρέπει να είναι της μορφής (Ονομα, Αριθμος)");
+                        if(currentInput.getText().toString().length() == 0){
+                            currentInputLayout.setError("Δεν επιτρέπεται κενή διεύθυνση");
                             address_error = true;
                         } else {
                             address_error = false;
@@ -250,7 +250,9 @@ public class DoctorNewPatientFragment extends Fragment
                                     return;
                                 }
                                     Toast.makeText(getActivity(), "Έγινε αποθήκευση Ασθενή!",
-                                        Toast.LENGTH_SHORT).show();
+                                        Toast.LENGTH_LONG).show();
+                                    NavController navController = Navigation.findNavController(getActivity(), R.id.container);
+                                    navController.navigate(R.id.action_doctorNewPatientFragment_to_doctorPatientsFragment);
                             });
                         }
                     });
