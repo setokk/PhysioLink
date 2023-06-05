@@ -40,7 +40,6 @@ public class PatientActivity extends AppCompatActivity
         getSupportActionBar().setTitle("PhysioLink");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.physiolink_logo_circle_small);
-        getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.lime_top_bar));
 
         configureNotificationChannel();
         Intent notificationService = new Intent(getApplicationContext(), NotificationService.class);
