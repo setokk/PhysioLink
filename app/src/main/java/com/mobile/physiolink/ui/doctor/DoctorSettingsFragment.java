@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,6 +51,28 @@ public class DoctorSettingsFragment extends Fragment {
                 Uri uri = Uri.parse("https://www.psf.org.gr/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+            }
+        });
+
+        binding.easterEggDoc.setOnClickListener(v -> {
+            if(binding.easterEggDoc.getContentDescription().equals("pamak")){
+                binding.easterEggDoc.setContentDescription("pamakara");
+                binding.easterEggDoc.setImageResource(R.drawable.easter_egg);
+                Animation easterEgg = AnimationUtils.loadAnimation(getContext(), R.anim.easter_egg_animation);
+                binding.easterEggDoc.startAnimation(easterEgg);
+            }else{
+                binding.easterEggDoc.setContentDescription("pamak");
+                Animation easterEggBack = AnimationUtils.loadAnimation(getContext(), R.anim.easter_egg_back_animation);
+                easterEggBack.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        binding.easterEggDoc.setImageResource(R.color.transparent);}
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
+                binding.easterEggDoc.startAnimation(easterEggBack);
             }
         });
 
