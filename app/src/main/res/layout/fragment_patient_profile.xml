@@ -15,10 +15,11 @@
             android:id="@+id/profileHeaderConstraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/button_purple">
+            android:background="@drawable/bg_profile">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImagePatient"

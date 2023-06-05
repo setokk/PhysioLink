@@ -24,10 +24,13 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/patientProfileImgPatient"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/boy"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/button_purple"/>
 
             <TextView
                 android:id="@+id/connectedAsTitle"
