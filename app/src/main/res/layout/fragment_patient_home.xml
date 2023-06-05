@@ -185,6 +185,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/seeYourHistoryBtnPatient"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/noHistoryHomeConstraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/list_item_style"
+            android:padding="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/patientHistoryTitlePatient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/seeYourHistoryBtnPatient">
+
+            <ImageView
+                android:id="@+id/noHistoryHome"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:paddingBottom="20dp"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/no_history_home"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Δεν έχετε ακόμη \nεπισκέψεις!"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="15dp"
+                android:textAlignment="center"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintStart_toEndOf="@+id/noHistoryHome"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/seeYourHistoryBtnPatient"
