@@ -97,7 +97,15 @@ public class DoctorPatientHistoryFragment extends Fragment
 
         viewModel.getHistoryAppointments().observe(getViewLifecycleOwner(), appointments ->
         {
-            adapter.setAppointments(appointments);
+            if(appointments.length == 0){
+                binding.noServicesDocIcon.setVisibility(View.VISIBLE);
+                binding.noServicesDocText.setVisibility(View.VISIBLE);
+            } else {
+                binding.noServicesDocIcon.setVisibility(View.GONE);
+                binding.noServicesDocText.setVisibility(View.GONE);
+                adapter.setAppointments(appointments);
+            }
+
         });
 
         return binding.getRoot();

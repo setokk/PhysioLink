@@ -324,6 +324,32 @@
         android:textStyle="bold"
         android:textColor="@color/white"/>
 
+    <ImageView
+        android:id="@+id/noServicesDocIcon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/no_services"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/servicesTitlePatientHistoryDoctor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <TextView
+        android:id="@+id/noServicesDocText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintVertical_bias="0"
+        android:visibility="gone"
+        android:text="Ο ασθενής δεν έχει ακόμα επισκέψεις!"
+        app:layout_constraintTop_toBottomOf="@id/noServicesDocIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/servicesListPatientHistoryDoctor"
         android:layout_width="match_parent"
