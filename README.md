@@ -1,7 +1,12 @@
 # Development-of-Android-Applications-Course-Project
 This project was developed as part of the Development of Android Applications Course, University of Macedonia.
-<br>
-<img src="screenshots/login_screen.jpg" width="200"/>
+<div float="left">
+    <img src="screenshots/login_screen.jpg" width="200"/>
+    <img src="screenshots/doc_home_page.jpg" width="200"/>
+    <img src="screenshots/patient_home_screen.jpg" width="200"/>
+    <img src="screenshots/psf_home_screen.jpg" width="200"/>
+</div>
+<hr>
 
 ### Team members
 <ul>
@@ -22,7 +27,7 @@ This project was developed as part of the Development of Android Applications Co
 <ul>
     <li>Android Studio</li>
     <li>Minimum API level 26</li>
-    <li>The app is responsive in all models (like Nexus One), but models like Nexus 5X provide an optimal experience</li>
+    <li>The app is responsive in all models, but models like Nexus 5X provide an optimal experience</li>
     <li>The server is live and there is no setup needed. However, you can setup the server locally if you want as described in the <a href="https://github.com/setokk/PhysioLink-Backend#running-the-app">PhysioLink-Backend</a> repository</li>
 </ul>
 
