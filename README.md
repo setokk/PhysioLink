@@ -1,10 +1,10 @@
 # Development-of-Android-Applications-Course-Project
 This project was developed as part of the Development of Android Applications Course, University of Macedonia.
 <div float="left">
-    <img src="screenshots/login_screen.jpg" width="200"/>
-    <img src="screenshots/doc_home_page.jpg" width="200"/>
-    <img src="screenshots/patient_home_screen.jpg" width="200"/>
-    <img src="screenshots/psf_home_screen.jpg" width="200"/>
+    <img src="screenshots/login_screen.jpg" width="200" height="2139"/>
+    <img src="screenshots/doc_home_page.jpg" width="200" height="2139"/>
+    <img src="screenshots/patient_home_screen.jpg" width="200" height="2139"/>
+    <img src="screenshots/psf_home_screen.jpg" width="200" height="2139"/>
 </div>
 <hr>
 
