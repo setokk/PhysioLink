@@ -21,6 +21,6 @@ This project was developed as part of the Development of Android Applications Co
     <li>Android Studio</li>
     <li>Minimum API level 26</li>
     <li>The app is responsive in all models (like Nexus One), but models like Nexus 5X provide an optimal experience</li>
-    
+    <li>The server is live and there is no setup needed. However, you can setup the server locally as described in the [PhysioLink-Backend](https://github.com/setokk/PhysioLink-Backend#running-the-app) repository</li>
 </ul>
 
