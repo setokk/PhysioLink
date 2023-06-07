@@ -15,3 +15,12 @@ This project was developed as part of the Development of Android Applications Co
     <li><b>Christos Tsarchopoulos</b></li>
 </ul>
 <hr>
+
+### Requirements
+<ul>
+    <li>Android Studio</li>
+    <li>Minimum API level 26</li>
+    <li>The app is responsive in all models (like Nexus One), but models like Nexus 5X provide an optimal experience</li>
+    
+</ul>
+
