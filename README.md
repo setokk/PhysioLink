@@ -1,5 +1,6 @@
 # Development-of-Android-Applications-Course-Project
 This project was developed as part of the Development of Android Applications Course, University of Macedonia.
+<img src="screenshots/login_screen.jpg"/>
 
 ### Team members
 <ul>
