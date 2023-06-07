@@ -8,7 +8,7 @@ This project was developed as part of the Development of Android Applications Co
 </div>
 <hr>
 
-### Team members
+### Team members (Team 11)
 <ul>
     <li><b>Kote Kostandin</b></li>
     <li><b>Theodora Katseisvili</b></li>
