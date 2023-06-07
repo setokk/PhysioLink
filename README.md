@@ -1,4 +1,4 @@
-# Development-of-Android-Applications-Course-Project
+# PhysioLink
 This project was developed as part of the Development of Android Applications Course, University of Macedonia.
 <div float="left">
     <img src="screenshots/login_screen.jpg" width="200" height="404"/>
