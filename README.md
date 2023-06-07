@@ -23,6 +23,8 @@ This project was developed as part of the Development of Android Applications Co
 </ul>
 <hr>
 
+### 
+
 ### Requirements
 <ul>
     <li>Android Studio</li>
