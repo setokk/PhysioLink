@@ -46,6 +46,7 @@ public class DoctorHomeFragment extends Fragment
         binding = FragmentDoctorHomeBinding.inflate(inflater, container, false);
 
         adapter = new AdapterForAppointments(this.requireActivity().getSupportFragmentManager());
+        adapter.setContext(getActivity());
         viewModel = new ViewModelProvider(this).get(DoctorHomeViewModel.class);
         viewModel.getLatestAppointments().observe(getViewLifecycleOwner(), appointments ->
         {
