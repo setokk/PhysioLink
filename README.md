@@ -31,5 +31,6 @@ This project was developed as part of the Development of Android Applications Co
     <li>Minimum API level 26</li>
     <li>The app is responsive in all models, but models like Nexus 5X provide an optimal experience</li>
     <li>The server is live and there is no setup needed. However, you can setup the server locally if you want as described in the <a href="https://github.com/setokk/PhysioLink-Backend#running-the-app">PhysioLink-Backend</a> repository</li>
+    <li>If you want to run the server locally, you'll have to change the "URL" field in the <a href="https://github.com/setokk/PhysioLink/blob/main/app/src/main/java/com/mobile/physiolink/service/api/API.java">API</a> class to <b>the ip of the machine you are running the server on</b></li>
 </ul>
 
