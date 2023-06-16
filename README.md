@@ -28,7 +28,7 @@ This project was developed as part of the <b>Development of Android Applications
 
 ### Running the app
 <pre>Step 1: Clone the Android repository
-Step 2: Open Android Studio
+Step 2: Open the project folder in Android Studio
 Step 3: Run the app as recommended below</pre>
 
 ### Requirements
